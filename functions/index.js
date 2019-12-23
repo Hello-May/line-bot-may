@@ -1,4 +1,5 @@
-
+const line = require('@line/bot-sdk');
+const client = new line.Client(config);
 
 const textCommandSolver = (event) => {
     // event
