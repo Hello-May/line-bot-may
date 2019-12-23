@@ -1,5 +1,6 @@
 const line = require('@line/bot-sdk');
 const config = require('./config');// 導入設定檔
+const functions = require('./functions');// 導入設定檔
 const express = require('express');
 const client = new line.Client(config);
 const app = express();
@@ -10,11 +11,8 @@ function handleEvent(event) {
       case 'message':
         switch (event.message.type) {
           case 'text':
-            return client.replyMessage(event.replyToken, {
-                type: 'text',
-                text: "test"
-              });
-            }
+            functions.textCommandSolver(event);
+            break;
     }
 }
 
