@@ -11,7 +11,7 @@ function handleEvent(event) {
           case 'text':
             return client.replyMessage(event.replyToken, {
                 type: 'text',
-                text: (test)
+                text: "test"
               });
             }
     }
