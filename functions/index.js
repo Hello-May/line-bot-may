@@ -1,5 +1,5 @@
 const line = require('@line/bot-sdk');
-const config = require('./config');// 導入設定檔
+const config = require('../config');// 導入設定檔
 const client = new line.Client(config);
 
 const textCommandSolver = (event) => {
