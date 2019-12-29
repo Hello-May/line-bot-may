@@ -5,13 +5,11 @@ const client = new line.Client(config);
 const main = require('./main');
 // const main = require('./test');
 
-var shutUp;
-
-if(shutUp!==undefined && event.message.text !== 'call' && shutUp){
-    return;
-}
-
 const textCommandSolver = (event) => {
+    var shutUp;
+    if(shutUp!==undefined && event.message.text !== 'call' && shutUp){
+        return;
+    }
     let msg = '無此功能'
     // event
     switch(event.message.text){
