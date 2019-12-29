@@ -18,7 +18,7 @@ const textCommandSolver = (event) => {
     if (input.includes('你') && input.includes('誰')) {
         msg = '我是May~'
     } else {
-        switch (input.includes) {
+        switch (input) {
             case '呼叫':
                 shutUp = false;
                 msg = pause.pause(event);
