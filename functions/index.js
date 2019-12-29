@@ -53,9 +53,11 @@ const stickerCommandSolver = (event) => {
     let msg = '哈哈'
     // event
     return client.replyMessage(event.replyToken, {
-        type: 'sticker',
-        packageId: '1',
-        stickerId: '2573'
+        type: 'text',
+        text: msg
+        // type: 'sticker',
+        // packageId: '1',
+        // stickerId: '2573'
     });
 }
 

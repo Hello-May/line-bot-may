@@ -14,7 +14,7 @@ function handleEvent(event) {
           case 'image':
             return functions.imgCommandSolver(event);
           case 'sticker':
-           return functions.stickerCommandSolver(event);
+            return functions.stickerCommandSolver(event);
         }
     }
 }
