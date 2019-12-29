@@ -3,7 +3,7 @@ const config = require('../config');// 導入設定檔
 const client = new line.Client(config);
 
 const main = require('./main');
-const main = require('./test');
+// const main = require('./test');
 
 // var shutUp;
 
