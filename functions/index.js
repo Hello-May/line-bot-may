@@ -12,7 +12,7 @@ const textCommandSolver = (event) => {
     if (shutUp !== null && event.message.text !== '呼叫' && shutUp) {
         return;
     }
-    let msg = '無此功能'
+    // let msg = '無此功能'
     // event
     switch (event.message.text) {
         case '呼叫':
@@ -50,11 +50,12 @@ const imgCommandSolver = (event) => {
 }
 
 const stickerCommandSolver = (event) => {
+    let msg = '哈哈'
     // event
     return client.replyMessage(event.replyToken, {
         type: 'sticker',
         packageId: '1',
-        stickerId: '2'
+        stickerId: '2573'
     });
 }
 
