@@ -5,9 +5,10 @@ const client = new line.Client(config);
 const main = require('./main');
 // const main = require('./test');
 
+var shutUp=null;
+
 const textCommandSolver = (event) => {
-    var shutUp;
-    if(shutUp!==undefined && event.message.text !== 'call' && shutUp){
+    if(shutUp!==null && event.message.text !== '呼叫' && shutUp){
         return;
     }
     let msg = '無此功能'
