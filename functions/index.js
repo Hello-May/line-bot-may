@@ -28,7 +28,7 @@ const textCommandSolver = (event) => {
             break;
         default:
             try{
-                msg='答案是'+math.eval(myMsg.toLowerCase()).toString();
+                msg='答案是'+math.eval(event.message.text.toLowerCase()).toString();
              }catch(err){
                 msg='哩洗咧恭啥小?';
              }
