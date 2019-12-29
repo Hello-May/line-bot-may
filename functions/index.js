@@ -41,10 +41,11 @@ const textCommandSolver = (event) => {
 }
 
 const imgCommandSolver = (event) => {
+    let msg = '水喔~'
     // event
     return client.replyMessage(event.replyToken, {
         type: 'text',
-        text: "test"
+        text: msg
     });
 }
 
