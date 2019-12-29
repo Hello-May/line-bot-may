@@ -2,6 +2,7 @@ const line = require('@line/bot-sdk');
 const config = require('../config');// 導入設定檔
 const client = new line.Client(config);
 
+const math = require('mathjs');
 const main = require('./main');
 const pause = require('./pause');
 
@@ -25,6 +26,12 @@ const textCommandSolver = (event) => {
         case '嗨':
             msg = main.test(event);
             break;
+        default:
+            try{
+                msg='答案是'+math.eval(myMsg.toLowerCase()).toString();
+             }catch(err){
+                msg='哩洗咧恭啥小?';
+             }
     }
 
     return client.replyMessage(event.replyToken, {
