@@ -5,25 +5,25 @@ const client = new line.Client(config);
 const main = require('./main');
 // const main = require('./test');
 
-// var shutUp;
+var shutUp;
 
-// if(shutUp!==undefined && event.message.text !== 'call' && shutUp){
-//     return;
-// }
+if(shutUp!==undefined && event.message.text !== 'call' && shutUp){
+    return;
+}
 
 const textCommandSolver = (event) => {
     let msg = '無此功能'
     // event
     switch(event.message.text){
-        case 'shut up':
-            // shutUp = true;
+        case '閉嘴':
+            shutUp = true;
             msg = main.test(event);
             break;
-        case 'call':
-            // shutUp = false;
+        case '呼叫':
+            shutUp = false;
             msg = main.test(event);
             break;
-        case 'HI':
+        case '嗨':
             msg = main.test(event);
             break;
     }
