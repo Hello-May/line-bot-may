@@ -9,29 +9,34 @@ const pause = require('./pause');
 var shutUp = null;
 
 const textCommandSolver = (event) => {
-    if (shutUp !== null && event.message.text !== '呼叫' && shutUp) {
+    let input = event.message.text;
+    if (shutUp !== null && input !== '呼叫' && shutUp) {
         return;
     }
-    // let msg = '無此功能'
-    // event
-    switch (event.message.text) {
-        case '呼叫':
-            shutUp = false;
-            msg = pause.pause(event);
-            break;
-        case '閉嘴':
-            shutUp = true;
-            msg = pause.pause(event);
-            break;     
-        case '嗨':
-            msg = main.test(event);
-            break;
-        default:
-            try{
-                msg='答案是'+math.eval(event.message.text.toLowerCase()).toString();
-             }catch(err){
-                msg='哩洗咧恭啥小?';
-             }
+
+    let msg = '無此功能'
+    if (input.includes('你') && input.includes('誰')) {
+        msg = '我是May~'
+    } else {
+        switch (input.includes) {
+            case '呼叫':
+                shutUp = false;
+                msg = pause.pause(event);
+                break;
+            case '閉嘴':
+                shutUp = true;
+                msg = pause.pause(event);
+                break;
+            case '嗨':
+                msg = main.test(event);
+                break;
+            default:
+                try {
+                    msg = '答案是' + math.eval(input.toLowerCase()).toString();
+                } catch (err) {
+                    msg = input;
+                }
+        }
     }
 
     return client.replyMessage(event.replyToken, {
