@@ -41,11 +41,20 @@ const textCommandSolver = (event) => {
 }
 
 const imgCommandSolver = (event) => {
-    let msg = '水喔~'
+    let msg = '水啦~'
     // event
     return client.replyMessage(event.replyToken, {
         type: 'text',
         text: msg
+    });
+}
+
+const stickerCommandSolver = (event) => {
+    // event
+    return client.replyMessage(event.replyToken, {
+        type: 'sticker',
+        packageId: '1',
+        stickerId: '2'
     });
 }
 

@@ -11,6 +11,10 @@ function handleEvent(event) {
         switch (event.message.type) {
           case 'text':
             return functions.textCommandSolver(event);
+          case 'image':
+            return functions.imgCommandSolver(event);
+          case 'sticker':
+           return functions.stickerCommandSolver(event);
         }
     }
 }
