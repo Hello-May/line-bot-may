@@ -1,6 +1,6 @@
 const line = require('@line/bot-sdk');
 const config = require('./config');// 導入設定檔
-const functions = require('./functions');// 導入設定檔
+const functions = require('./functions');// 導入方法
 const express = require('express');
 const app = express();
 
