@@ -67,7 +67,7 @@ const stickerCommandSolver = (event) => {
         id: '325708',
         type: 'sticker',
         packageId: '1',
-        stickerId: '1',
+        stickerId: '2573',
         stickerResourceType: 'STATIC'
     });
 }
