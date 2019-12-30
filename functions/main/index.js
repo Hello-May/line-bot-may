@@ -1,5 +1,8 @@
 const test = (event) => {
-    return "TEST"
+    event.source.profile().then(function (profile) {
+        return 'Hello ' + profile.displayName;
+      });
+    // return "TEST"
 }
 
 module.exports = {

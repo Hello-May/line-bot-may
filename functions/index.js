@@ -55,19 +55,12 @@ const imgCommandSolver = (event) => {
 }
 
 const stickerCommandSolver = (event) => {
-    let msg = '哈哈'
     // event
     return client.replyMessage(event.replyToken, {
-    //     type: 'text',
-    //     text: msg
-    // },{
-        // type: 'sticker',
-        // packageId: '1',
-        // stickerId: '2573'
         id: '325708',
         type: 'sticker',
         packageId: '1',
-        stickerId: '2573',
+        stickerId: '1',
         stickerResourceType: 'STATIC'
     });
 }
