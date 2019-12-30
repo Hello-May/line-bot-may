@@ -15,7 +15,23 @@ function handleEvent(event) {
             return functions.imgCommandSolver(event);
           case 'sticker':
             return functions.stickerCommandSolver(event);
+          case 'video':
+          case 'audio':
+          case 'file':
+          case 'location':
         }
+      case 'follow':
+      case 'unfollow':
+      case 'join':
+      case 'leave':
+      case 'member join':
+      case 'member leave':
+      case 'postback':
+      case 'beacon':
+      case 'account link':
+      case 'device link':
+      case 'device unlink':
+      case 'line things scenario execution'
     }
 }
 
