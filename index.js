@@ -31,7 +31,7 @@ function handleEvent(event) {
       case 'account link':
       case 'device link':
       case 'device unlink':
-      case 'line things scenario execution'
+      case 'line things scenario execution':
     }
 }
 

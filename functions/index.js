@@ -61,12 +61,14 @@ const stickerCommandSolver = (event) => {
         type: 'text',
         text: msg
     },{
-        type: 'text',
-        text: msg +'哈'
-    },{
+        // type: 'sticker',
+        // packageId: '1',
+        // stickerId: '2573'
+        id: '325708',
         type: 'sticker',
         packageId: '1',
-        stickerId: '2573'
+        stickerId: '1',
+        stickerResourceType: 'STATIC'
     });
 }
 
