@@ -60,9 +60,13 @@ const stickerCommandSolver = (event) => {
     return client.replyMessage(event.replyToken, {
         type: 'text',
         text: msg
-        // type: 'sticker',
-        // packageId: '1',
-        // stickerId: '2573'
+    },{
+        type: 'text',
+        text: msg +'哈'
+    },{
+        type: 'sticker',
+        packageId: '1',
+        stickerId: '2573'
     });
 }
 
