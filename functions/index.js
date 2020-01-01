@@ -35,7 +35,10 @@ const textCommandSolver = (event) => {
                     msg = '答案是' + math.eval(input.toLowerCase()).toString();
                 } catch (err) {
                     let s = new Date(event.timestamp).toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
-                    msg = s + '\n' + event.source.displaynName + '說了：' + input;
+                    event.source.profile().then(function (profile) {
+                       var name =  profile.displayName;
+                      });
+                    msg = s + '\n' + name + '說了：' + input;
                 }
         }
     }
