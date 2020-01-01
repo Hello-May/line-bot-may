@@ -35,7 +35,7 @@ const textCommandSolver = (event) => {
                     msg = '答案是' + math.eval(input.toLowerCase()).toString();
                 } catch (err) {
                     let s = new Date(event.timestamp).toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
-                    let name = event.source.userId + ' ' + event.source.profile().displayName;
+                    let name = event.source.userId;
                     // event.source.profile().then(function (profile) {
                     //     name = ' ' + profile.displayName;
                     // });
