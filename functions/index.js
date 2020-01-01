@@ -3,7 +3,7 @@ const config = require('../config');// 導入設定檔
 const client = new line.Client(config);
 
 const math = require('mathjs');
-const models = require('models');
+const models = require('./models');
 const main = require('./main');
 const pause = require('./pause');
 
