@@ -2,6 +2,7 @@ const line = require('@line/bot-sdk');
 const config = require('./config');// 導入設定檔
 const functions = require('./functions');// 導入方法
 const express = require('express');
+const bodyparser = require('body-parser');
 const app = express();
 
 function handleEvent(event) {
@@ -42,6 +43,16 @@ app.post('/', line.middleware(config), function(req, res) {
         res.json(result);
       });
 });
+
+// app.use(bodyparser.json())
+// app.post('/', function(req, res) {
+//   // res.json(handleEvent(req.body.event))
+//     Promise
+//       .all(req.body.events.map(handleEvent))
+//       .then(function(result) {
+//         res.json(result);
+//       });
+// })
 
 app.listen(process.env.PORT || 8080, function() {
     console.log('App now running on port', this.address().port);
