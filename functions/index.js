@@ -36,7 +36,7 @@ const textCommandSolver = (event) => {
                 } catch (err) {
                     // let d = new Date(event.Date);
                     // let dd = d+'';
-                    msg = event.Date + '~你剛剛說了：' + input;
+                    msg = event.timestamp + '~你剛剛說了：' + input;
                 }
         }
     }
