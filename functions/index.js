@@ -3,6 +3,7 @@ const config = require('../config');// 導入設定檔
 const client = new line.Client(config);
 
 const math = require('mathjs');
+const models = require('models');
 const main = require('./main');
 const pause = require('./pause');
 
@@ -34,12 +35,10 @@ const textCommandSolver = (event) => {
                 try {
                     msg = '答案是' + math.eval(input.toLowerCase()).toString();
                 } catch (err) {
-                    let s = new Date(event.timestamp).toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
+                    let timestamp = new Date(event.timestamp).toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
                     let name = event.source.userId;
-                    // event.source.profile().then(function (profile) {
-                    //     name = ' ' + profile.displayName;
-                    // });
-                    msg = s + '\n' + name + '說了：' + input;
+                    let profile = client.getChatMemberProfile;
+                    msg = profile.toString + '\n' + timestamp + '\n' + name + '說了：' + input;
                 }
         }
     }
