@@ -34,7 +34,7 @@ const textCommandSolver = (event) => {
                 try {
                     msg = '答案是' + math.eval(input.toLowerCase()).toString();
                 } catch (err) {
-                    msg = line.Client.name + '~你剛剛說了：' + input;
+                    msg = line.Client.toString + '~你剛剛說了：' + input;
                 }
         }
     }
