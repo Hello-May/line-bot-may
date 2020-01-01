@@ -34,8 +34,8 @@ const textCommandSolver = (event) => {
                 try {
                     msg = '答案是' + math.eval(input.toLowerCase()).toString();
                 } catch (err) {
-                    let s = new Date(event.timestamp).toLocaleString('zh-TW', {timeZone: 'Asia/Taipei'});
-                    msg = s + '\n你說了：' + input;
+                    let s = new Date(event.timestamp).toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
+                    msg = s + '\n' + event.source.displaynName + '說了：' + input;
                 }
         }
     }
