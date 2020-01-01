@@ -34,9 +34,10 @@ const textCommandSolver = (event) => {
                 try {
                     msg = '答案是' + math.eval(input.toLowerCase()).toString();
                 } catch (err) {
-                    // let d = new Date(event.Date);
-                    // let dd = d+'';
-                    msg = event.timestamp + '~你剛剛說了：' + input;
+                    let s = new Date(1577863026837);
+                    let d = s.getFullYear() + "-" + (s.getMonth() < 10 ? '0' + (s.getMonth() + 1) : (s.getMonth() + 1)) + "-" + (s.getDate() < 10 ? '0' + s.getDate() : s.getDate());
+                    let t = (s.getHours() < 10 ? '0' + s.getHours() : s.getHours()) + ":" + (s.getMinutes() < 10 ? '0' + s.getMinutes() : s.getMinutes()) + ":" + (s.getSeconds() < 10 ? '0' + s.getSeconds() : s.getSeconds());
+                    msg = d + ' ' + t + '\n你剛剛說了：' + input;
                 }
         }
     }
