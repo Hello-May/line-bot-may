@@ -37,11 +37,9 @@ const textCommandSolver = (event) => {
                 } catch (err) {
                     let timestamp = new Date(event.timestamp).toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
                     let name = event.source.userId;
-                    let profile = client.getChatMemberProfile(name);
-                    console.log(profile.toString());
+                    let profile = client.getProfile(name);
                     console.log(profile.toString);
                     console.log(profile.displayName);
-                    console.log(profile.displayName());
                     msg = profile.displayName + '\n' + timestamp + '\n' + name + '說了：' + input;
                 }
         }
