@@ -6,6 +6,7 @@ const math = require('mathjs');
 const models = require('../models');
 const main = require('./main');
 const pause = require('./pause');
+const richMenu = require('./main/richMenu');
 
 var shutUp = null;
 
@@ -34,55 +35,8 @@ const textCommandSolver = (event) => {
                 break;
             case '.':
                 // return client.replyMessage(event.replyToken, 
-                output = 
-                    {
-                        "type": "flex",
-                        "altText": "Flex Message",
-                        "contents": {
-                          "type": "bubble",
-                          "direction": "ltr",
-                          "header": {
-                            "type": "box",
-                            "layout": "vertical",
-                            "contents": [
-                              {
-                                "type": "text",
-                                "text": "鬥獸",
-                                "size": "lg",
-                                "align": "center",
-                                "weight": "bold",
-                                "color": "#000000"
-                              }
-                            ]
-                          },
-                          "hero": {
-                            "type": "image",
-                            "url": "https://images.clipartlogo.com/files/istock/previews/9083/90832359-community-team-friendship-togetherness-icon-teamwork-social-group-concept-line.jpg",
-                            "size": "xl",
-                            "aspectRatio": "1.51:1",
-                            "aspectMode": "fit"
-                          },
-                          "body": {
-                            "type": "box",
-                            "layout": "vertical",
-                            "contents": [
-                              {
-                                "type": "separator"
-                              },
-                              {
-                                "type": "text",
-                                "text": "blabla",
-                                "margin": "xxl",
-                                "align": "start",
-                                "gravity": "center",
-                                "weight": "bold",
-                                "wrap": true
-                              }
-                            ]
-                          }
-                        }
-                      };
-                // );
+                output = richMenu.life;
+                   
             default:
                 try {
                     msg = '答案是' + math.eval(input.toLowerCase()).toString();
