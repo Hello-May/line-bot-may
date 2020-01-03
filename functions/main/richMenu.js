@@ -49,6 +49,6 @@ const life = (event) => {
 }
 
 module.exports = {
-    life,
+    life
 
 }

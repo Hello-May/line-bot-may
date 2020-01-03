@@ -35,7 +35,7 @@ const textCommandSolver = (event) => {
                 break;
             case '.':
                 // return client.replyMessage(event.replyToken, 
-                output = richMenu.life;
+                output = richMenu.life(event);
                    
             default:
                 try {
