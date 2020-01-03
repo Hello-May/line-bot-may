@@ -3,7 +3,7 @@ const config = require('../config');// 導入設定檔
 const client = new line.Client(config);
 
 const math = require('mathjs');
-// const models = require('./models');
+const models = require('../models/mysql');
 const main = require('./main');
 const pause = require('./pause');
 
@@ -31,13 +31,16 @@ const textCommandSolver = (event) => {
             case '嗨':
                 msg = main.test(event);
                 break;
+            case '.':
+                msg = ['Hello, world 1', 'Hello, world 2'];
+                break;
             default:
                 try {
                     msg = '答案是' + math.eval(input.toLowerCase()).toString();
                 } catch (err) {
                     let timestamp = new Date(event.timestamp).toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
                     let name = event.source.userId;
-                    let profile = client.getChatMemberProfile.chatId;
+                    let profile = client.getChatMemberProfile;
                     msg = profile + '\n' + timestamp + '\n' + name + '說了：' + input;
                 }
         }

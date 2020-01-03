@@ -1,6 +1,6 @@
-var mysql = require('mysql');
+const mysql = require('mysql');
 
-var conn = mysql.createConnection({
+const sql = mysql.createConnection({
     host: '127.0.0.1',
     user: 'root',
     password: '1234',
@@ -8,57 +8,69 @@ var conn = mysql.createConnection({
     database: 'test'
 });
 
-conn.connect(function (err) {
-    if (err) throw err;
-    console.log('connect success');
-});
+//連線
+function connect() {
+    sql.connect(function (err) {
+        if (err) throw err;
+        console.log('connect success');
+    });
+};
+
+//結束連線
+function end() {
+    sql.end(function (err) {
+        if (err) throw err;
+        console.log('connect end');
+    })
+};
+
+//查詢
+function search(tableName) {
+    sql.query('select * from ' + tableName, function (err, result, fields) {
+        if (err) throw err;
+        console.log(result);
+        // console.log(result[0].name);
+    });
+};
+
+const testName = (tableName) => {
+    sql.query('select * from ' + tableName, function (err, result, fields) {
+        if (err) throw err;
+        console.log(result);
+        // console.log(result[0].name);
+    });
+};
+
+//插入
+// function insert(data) {
+//     conn.query("insert into `student` set `student_id`=8,`name`='ddd',`major`='eee'", function (err, result, fields) {
+//         if (err) throw err;
+//         console.log(result);
+//     });
+// };
 
 
-
-
-
-conn.query('select * from `student`', function (err, result, fields) {
-    if (err) throw err;
-    console.log(result);
-    console.log(result[0].name);
-});
-
-// conn.query("insert into `student` set `student_id`=8,`name`='ddd',`major`='eee'", function (err, result, fields) {
+//更新
+// function insert(data) {
+// conn.query('update `student` set `major`="test" where `student_id`=6', function (err, result) {
 //     if (err) throw err;
 //     console.log(result);
 // });
+// };
 
-// conn.query('select * from student', function (err, result, fields) {
+
+//刪除
+// function insert(data) {
+// conn.query('delete from `student` where `student_id`=8', function (err, result, fields) {
 //     if (err) throw err;
 //     console.log(result);
-//     console.log(result[3].name);
 // });
+// };
 
-conn.query('update `student` set `major`="test" where `student_id`=6', function (err, result) {
-    if (err) throw err;
-    console.log(result);
-});
+//連線池
 
-conn.query('select * from student', function (err, result, fields) {
-    if (err) throw err;
-    console.log(result);
-    console.log(result[3].name);
-});
-
-
-
-
-
-
-
-
-
-
-
-
-conn.end(function (err) {
-    if (err) throw err;
-    console.log('connect end');
-})
-
-
+module.exports = {
+    search,
+    testName,
+    sql
+}
