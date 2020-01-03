@@ -33,10 +33,12 @@ const textCommandSolver = (event) => {
             case '嗨':
                 msg = main.test(event);
                 break;
-            case '.':
-                // return client.replyMessage(event.replyToken, 
-                output = richMenu.life(event);
-                   
+            case '#修練':
+                output = richMenu.life(event);   
+                break; 
+            case '#任務':
+                output = richMenu.task(event);
+                break;
             default:
                 try {
                     msg = '答案是' + math.eval(input.toLowerCase()).toString();
