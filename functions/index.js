@@ -34,10 +34,16 @@ const textCommandSolver = (event) => {
                 msg = main.test(event);
                 break;
             case '#修練':
-                output = richMenu.life(event);   
-                break; 
+                output = richMenu.life(event);
+                break;
             case '#任務':
                 output = richMenu.task(event);
+                break;
+            case '#鬥獸':
+                output = richMenu.pk(event);
+                break;
+            case '#酒館':
+                output = richMenu.talk(event);
                 break;
             default:
                 try {
