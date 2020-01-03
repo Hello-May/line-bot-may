@@ -11,6 +11,7 @@ var shutUp = null;
 
 const textCommandSolver = (event) => {
     let input = event.message.text;
+    let output;
     if (shutUp !== null && input !== '呼叫' && shutUp) {
         return;
     }
@@ -32,7 +33,8 @@ const textCommandSolver = (event) => {
                 msg = main.test(event);
                 break;
             case '.':
-                return client.replyMessage(event.replyToken, 
+                // return client.replyMessage(event.replyToken, 
+                output = 
                     {
                         "type": "flex",
                         "altText": "Flex Message",
@@ -79,8 +81,8 @@ const textCommandSolver = (event) => {
                             ]
                           }
                         }
-                      }
-                );
+                      };
+                // );
             default:
                 try {
                     msg = '答案是' + math.eval(input.toLowerCase()).toString();
@@ -93,10 +95,12 @@ const textCommandSolver = (event) => {
         }
     }
 
-    return client.replyMessage(event.replyToken, {
-        type: 'text',
-        text: msg
-    });
+    return client.replyMessage(event.replyToken, output);
+
+    // return client.replyMessage(event.replyToken, {
+    //     type: 'text',
+    //     text: msg
+    // });
 }
 
 const imgCommandSolver = (event) => {
