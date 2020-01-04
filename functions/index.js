@@ -24,21 +24,11 @@ const textCommandSolver = (event) => {
         switch (input) {
             case '呼叫':
                 shutUp = false;
-                // msg = pause.pause(event);
-                output ={
-                    "type": "imagemap",
-                    "baseUrl": "PROVIDE_URL_FROM_YOUR_SERVER",
-                    "altText": "This is an imagemap",
-                    "baseSize": {
-                      "width": 1040,
-                      "height": 351
-                    },
-                    "actions": []
-                  };
+                output = pause.pause(event);
                 break;
             case '閉嘴':
                 shutUp = true;
-                msg = pause.pause(event);
+                output = pause.pause(event);
                 break;
             case '嗨':
                 msg = main.test(event);
