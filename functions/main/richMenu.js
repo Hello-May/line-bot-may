@@ -14,7 +14,7 @@ const life = (event) => {
                         "contents": [
                             {
                                 "type": "text",
-                                "text": "修練",
+                                "text": "修煉",
                                 "size": "lg",
                                 "align": "center",
                                 "gravity": "center",
@@ -25,7 +25,7 @@ const life = (event) => {
                     },
                     "hero": {
                         "type": "image",
-                        "url": "https://mtc.ntnu.edu.tw/upload_files/icon/planning.png",
+                        "url": "https://www.myguitarfriend.com/wp-content/uploads/2012/09/icon-form-fill.jpg",
                         "size": "xl",
                         "aspectRatio": "1.51:1",
                         "aspectMode": "fit",
@@ -558,7 +558,7 @@ const task = (event) => {
             "contents": [
                 {
                     "type": "bubble",
-                    "direction": "ltr",
+                    "direction": "rtl",
                     "header": {
                         "type": "box",
                         "layout": "vertical",
@@ -575,7 +575,7 @@ const task = (event) => {
                     },
                     "hero": {
                         "type": "image",
-                        "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOhXs9ZNg_VvIuEHGRhtVt9BZjeZbHAXcmVUtegcCK6I_r8GT7&s",
+                        "url": "https://us.123rf.com/450wm/pratyaksa/pratyaksa1509/pratyaksa150900044/44827953-시간-관리-개념입니다-.jpg?ver=6",
                         "size": "xl",
                         "aspectRatio": "1.51:1",
                         "aspectMode": "fit"
@@ -1024,7 +1024,7 @@ const pk = (event) => {
                         "contents": [
                             {
                                 "type": "text",
-                                "text": "鬥獸",
+                                "text": "戰鬥",
                                 "size": "lg",
                                 "align": "center",
                                 "weight": "bold",
@@ -1034,7 +1034,7 @@ const pk = (event) => {
                     },
                     "hero": {
                         "type": "image",
-                        "url": "https://images.clipartlogo.com/files/istock/previews/9083/90832359-community-team-friendship-togetherness-icon-teamwork-social-group-concept-line.jpg",
+                        "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbWVf29gHx_rYMtQqzauk_l2KxzlhdVZq0Y8q9GxDkWbFaDmAI&s",
                         "size": "xl",
                         "aspectRatio": "1.51:1",
                         "aspectMode": "fit"
@@ -1156,7 +1156,7 @@ const talk = (event) => {
                     },
                     "hero": {
                         "type": "image",
-                        "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiW-YnfWPUa6WadS76mUs5_cJABW5qT8v27Dz19eoJOdLvROai&s",
+                        "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN9jjDmULU_qrIn0MDbEQigSn-HXcsyQMew1cpPKmUCnCxWbsFRQ&s",
                         "size": "xl",
                         "aspectRatio": "1.51:1",
                         "aspectMode": "fit"
@@ -1199,7 +1199,7 @@ const talk = (event) => {
                     "body": {
                         "type": "box",
                         "layout": "vertical",
-                        "spacing": "md",
+                        "spacing": "sm",
                         "contents": [
                             {
                                 "type": "separator"
@@ -1236,10 +1236,124 @@ const talk = (event) => {
     }
 }
 
+const monster = (event) => {
+    return {
+        "type": "flex",
+        "altText": "Flex Message",
+        "contents": {
+            "type": "bubble",
+            "direction": "ltr",
+            "header": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "小怪獸",
+                        "size": "lg",
+                        "align": "center",
+                        "weight": "bold"
+                    }
+                ]
+            },
+            "hero": {
+                "type": "image",
+                "url": "https://images2.gamme.com.tw/news2/2018/86/51/qZqVnqaYl6aWp6Q.gif",
+                "size": "lg",
+                "aspectRatio": "1.51:1",
+                "aspectMode": "fit",
+                "action": {
+                    "type": "message",
+                    "label": "叫聲",
+                    "text": "皮卡皮卡~"
+                }
+            },
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "separator"
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "spacing": "none",
+                        "margin": "lg",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "名字：皮卡丘"
+                            },
+                            {
+                                "type": "text",
+                                "text": "誕辰：y/m/d"
+                            },
+                            {
+                                "type": "text",
+                                "text": "等級：2"
+                            },
+                            {
+                                "type": "text",
+                                "text": "經驗值：87%"
+                            },
+                            {
+                                "type": "text",
+                                "text": "性格：行動派"
+                            },
+                            {
+                                "type": "text",
+                                "text": "自律幣：$75"
+                            },
+                            {
+                                "type": "text",
+                                "text": "精神糧食：23 (每日-1)"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "separator",
+                        "margin": "lg"
+                    },
+                    {
+                        "type": "text",
+                        "text": "覺得為時已晚的時候，恰恰是最早的時候。Thought is already is late, exactly is the earliest time.",
+                        "margin": "lg",
+                        "action": {
+                            "type": "postback",
+                            "label": "小語",
+                            "text": "覺得為時已晚的時候，恰恰是最早的時候。Thought is already is late, exactly is the earliest time.",
+                            "data": "#whisper"
+                        },
+                        "wrap": true
+                    }
+                ]
+            },
+            "footer": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "separator"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                            "type": "message",
+                            "label": "修改",
+                            "text": "改名/初始化"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
+
 module.exports = {
     life,
     task,
     pk,
-    talk
-
+    talk,
+    monster
 }

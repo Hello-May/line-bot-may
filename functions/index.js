@@ -33,13 +33,16 @@ const textCommandSolver = (event) => {
             case '嗨':
                 msg = main.test(event);
                 break;
-            case '#修練':
+            case '#修煉':
                 output = richMenu.life(event);
                 break;
             case '#任務':
                 output = richMenu.task(event);
                 break;
-            case '#鬥獸':
+            case '#小怪獸':
+                output = richMenu.monster(event);
+                break;
+            case '#戰鬥':
                 output = richMenu.pk(event);
                 break;
             case '#酒館':
