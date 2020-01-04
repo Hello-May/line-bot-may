@@ -575,7 +575,7 @@ const task = (event) => {
                     },
                     "hero": {
                         "type": "image",
-                        "url": "https://us.123rf.com/450wm/pratyaksa/pratyaksa1509/pratyaksa150900044/44827953-시간-관리-개념입니다-.jpg?ver=6",
+                        "url": "https://making-the-web.com/sites/default/files/clipart/167862/time-management-clipart-167862-6494711.png",
                         "size": "xl",
                         "aspectRatio": "1.51:1",
                         "aspectMode": "fit"
