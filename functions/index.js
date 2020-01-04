@@ -4,7 +4,7 @@ const config = require('../config');// 導入設定檔
 const config2 = require('../config/notify');// 導入設定檔
 
 const client = new line.Client(config);
-const client2 = new notify.Client(config2);
+const client2 = new notify(config);
 
 
 const math = require('mathjs');
