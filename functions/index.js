@@ -33,7 +33,7 @@ const textCommandSolver = (event) => {
             case '嗨':
                 msg = main.test(event);
                 break;
-            case '#修煉':
+            case '#life':
                 output = richMenu.life(event);
                 break;
             case '#任務':
