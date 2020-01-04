@@ -1,10 +1,16 @@
 const pause = (event) => {
+    let msg = '無此功能';
     switch (event.message.text) {
         case '呼叫':
-            return "我在這~"
+            msg = "我在這~"
         case '閉嘴':
-            return "哼~不理你了~"   
-    }    
+            msg = "哼~不理你了~"
+    }
+
+    return {
+        type: 'text',
+        text: msg
+    };
 }
 
 module.exports = {
