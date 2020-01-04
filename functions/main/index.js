@@ -1,5 +1,8 @@
 const test = (event) => {
-    return "TEST"
+    return {
+        type: 'text',
+        text: 'test'
+    };
 }
 
 module.exports = {
