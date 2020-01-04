@@ -1,6 +1,11 @@
 const line = require('@line/bot-sdk');
+const notify = require('express-line-notify');
 const config = require('../config');// 導入設定檔
+const config2 = require('../config/notify');// 導入設定檔
+
 const client = new line.Client(config);
+const client2 = new notify.Client(config2);
+
 
 const math = require('mathjs');
 const models = require('../models');
@@ -65,8 +70,8 @@ const textCommandSolver = (event) => {
                 }
         }
     }
-
-    return client.replyMessage(event.replyToken, output);
+    return client2.replyMessage(event.replyToken, output);
+    // return client.replyMessage(event.replyToken, output);
 }
 
 const imgCommandSolver = (event) => {
