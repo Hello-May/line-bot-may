@@ -6,52 +6,52 @@ const bodyParser = require('body-parser');
 const app = express();
 
 function handleEvent(event) {
-    console.log(event);
-    switch (event.type) {
-      case 'message':
-        switch (event.message.type) {
-          case 'text':
-            return functions.textCommandSolver(event);
-          case 'image':
-            return functions.imgCommandSolver(event);
-          case 'sticker':
-            return functions.stickerCommandSolver(event);
-          case 'video':
-          case 'audio':
-          case 'file':
-          case 'location':
-        }
-      case 'follow':
-      case 'unfollow':
-      case 'join':
-      case 'leave':
-      case 'member join':
-      case 'member leave':
-      case 'postback':
-      case 'beacon':
-      case 'account link':
-      case 'device link':
-      case 'device unlink':
-      case 'line things scenario execution':
-    }
+  console.log(event);
+  switch (event.type) {
+    case 'message':
+      switch (event.message.type) {
+        case 'text':
+          return functions.textCommandSolver(event);
+        case 'image':
+          return functions.imgCommandSolver(event);
+        case 'sticker':
+          return functions.stickerCommandSolver(event);
+        case 'video':
+        case 'audio':
+        case 'file':
+        case 'location':
+      }
+    case 'follow':
+    case 'unfollow':
+    case 'join':
+    case 'leave':
+    case 'member join':
+    case 'member leave':
+    case 'postback':
+    case 'beacon':
+    case 'account link':
+    case 'device link':
+    case 'device unlink':
+    case 'line things scenario execution':
+  }
 }
 
-app.get("/", function (req, res) { 
-    res.send("Hello LineBot");
+app.get("/test", function (req, res) {
+  res.send("Hello LineBot");
 });
 
 app.get('/', (req, res) => {
   res.sendFile('C:\/Users\/user\/Desktop\/line_bot_may\/functions\/notify\/index.html', function (err) {
-      if (err) res.send(404);
+    if (err) res.send(404);
   });
 });
 
-app.post('/', lineBot.middleware(configBot), function(req, res) {
-    Promise
-      .all(req.body.events.map(handleEvent))
-      .then(function(result) {
-        res.json(result);
-      });
+app.post('/', lineBot.middleware(configBot), function (req, res) {
+  Promise
+    .all(req.body.events.map(handleEvent))
+    .then(function (result) {
+      res.json(result);
+    });
 });
 
 // app.use(bodyparser.json())
@@ -64,6 +64,6 @@ app.post('/', lineBot.middleware(configBot), function(req, res) {
 //       });
 // })
 
-app.listen(process.env.PORT || 8080, function() {
-    console.log('App now running on port', this.address().port);
+app.listen(process.env.PORT || 8080, function () {
+  console.log('App now running on port', this.address().port);
 });
