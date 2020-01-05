@@ -41,6 +41,7 @@ app.get("/test", function (req, res) {
 });
 
 app.get('/', (req, res) => {
+  console.log('I am heeeeeeeeeeeeeeeeeeeeeeeeeeeeeere!!');
   res.sendFile('C:\/Users\/user\/Desktop\/line_bot_may\/functions\/notify\/button.html', function (err) {
     if (err) res.send(404);
   });
