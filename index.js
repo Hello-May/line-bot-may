@@ -42,7 +42,7 @@ app.get("/test", function (req, res) {
 
 app.get("/button", function (req, res) {
   console.log(__dirname);
-  res.sendFile(__dirname+'\/funtions\/notify\/button.html', function (err) {
+  res.sendFile(__dirname+':\/line_bot_may\/funtions\/notify\/button.html', function (err) {
     if (err) res.send(404);
   });
 });
