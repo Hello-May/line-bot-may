@@ -4,7 +4,8 @@ const configBot = require('./config');// 導入設定檔
 const functions = require('./functions');// 導入方法
 const express = require('express');
 const bodyParser = require('body-parser');
-const lineBotParser = lineBot.parser();
+const clientBot = new lineBot.Client(configBot);
+const lineBotParser = clientBot.parser();
 const app = express();
 
 function handleEvent(event) {
