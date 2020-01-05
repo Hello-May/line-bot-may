@@ -41,7 +41,7 @@ app.get("/test", function (req, res) {
 });
 
 app.get("/button", function (req, res) {
-  res.sendFile(__dirname+ '\/button', function (err) {
+  res.sendFile(__dirname+'\/button.html', function (err) {
     if (err) res.send(404);
   });
 });
