@@ -9,7 +9,7 @@ const notify = (output) => {
             'Authorization': 'Bearer ' + configNotify.accessToken,
             'Content-Type': 'multipart/form-data; boundary=--------------------------054153815016971257363988'
         })
-        .field(output)
+        .field(output.type,output.text)
         .end(function (res) {
             if (res.error) throw new Error(res.error);
             console.log(res.raw_body);

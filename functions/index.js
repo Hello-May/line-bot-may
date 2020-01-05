@@ -66,7 +66,10 @@ const textCommandSolver = (event) => {
                 }
         }
     }
-    lineNotify.notify('message', 'hello world');
+    lineNotify.notify({
+        type: 'message',
+        text: 'hello world'
+    });
     return clientBot.replyMessage(event.replyToken, output);
 }
 
