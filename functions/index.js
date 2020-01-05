@@ -1,10 +1,10 @@
 const line = require('@line/bot-sdk');
 const notify = require('express-line-notify');
 const config = require('../config');// 導入設定檔
-const config2 = require('../config/notify');// 導入設定檔
+const config2 = require('../config/notify');
 
 const client = new line.Client(config);
-const client2 = notify(config2);
+const client2 = new notify(config2);
 
 
 const math = require('mathjs');
@@ -26,6 +26,22 @@ const textCommandSolver = (event) => {
             type: 'text',
             text: '我是May~'
         }
+
+        function doPost() {
+            UrlFetchApp.fetch('https://notify-api.line.me/api/notify', {
+                'headers': {
+                    'Authorization': 'Bearer ' + config2.channelAccessToken,
+                },
+                'method': 'post',
+                'payload': {
+                    'message':'測試一下！',
+                    'stickerPackageId':'1',
+                    'stickerId':'2'
+                }
+            });
+        }
+
+
     } else {
         switch (input) {
             case '呼叫':
