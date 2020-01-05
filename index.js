@@ -1,11 +1,8 @@
 const lineBot = require('@line/bot-sdk');
-const lineNotify = require('express-line-notify');
 const configBot = require('./config');
-const configNotify = require('./config/notify');
 const functions = require('./functions');
 const express = require('express');
 const bodyParser = require('body-parser');
-const unirest = require('unirest');
 const app = express();
 
 function handleEvent(event) {
@@ -14,19 +11,6 @@ function handleEvent(event) {
       case 'message':
         switch (event.message.type) {
           case 'text':
-         
-            var req = unirest('POST', configNotify.NotifyApi)
-              .headers({
-                'Authorization': 'Bearer fEIHxeKHz3aftAMHNBGT3gXEqV4h72es0IWfw0HxDH4',
-                'Content-Type': 'multipart/form-data; boundary=--------------------------054153815016971257363988'
-              })
-              .field('message', 'hello world')
-              .end(function (res) { 
-                if (res.error) throw new Error(res.error); 
-                console.log(res.raw_body);
-              });
-            
-
             return functions.textCommandSolver(event);
           case 'image':
             return functions.imgCommandSolver(event);

@@ -1,12 +1,10 @@
 const lineBot = require('@line/bot-sdk');
-const lineNotify = require('express-line-notify');
 const configBot = require('../config');
-const configNotify = require('../config/notify');
 const clientBot = new lineBot.Client(configBot);
-const clientNotify = lineNotify(configNotify);
-const unirest = require('unirest');
+const lineNotify = require('./notify');
 const math = require('mathjs');
-const models = require('../models');
+const db = require('../models');
+
 const main = require('./main');
 const pause = require('./pause');
 const richMenu = require('./main/richMenu');
@@ -68,6 +66,10 @@ const textCommandSolver = (event) => {
                 }
         }
     }
+    lineNotify.notify({
+        type:'message',
+        text:'hello world'
+    });
     return clientBot.replyMessage(event.replyToken, output);
 }
 

@@ -1,12 +1,13 @@
 const configNotify = {
     clientId: '3qZCtZ2rmMdUcDa3qhFfyM',
     clientSecret: 'GTFK3GaIa77WzB08gS9RH4446gpoZFRKd3YEineEJES',
-    channelAccessToken:'ZvIR3CGvofbTvYcSHozeHrzuPL3TUowrNzr3xIH10w5',
-    AuthorizeApi: 'https:\/\/notify-bot.line.me\/oauth\/authorize',
-    TokenApi: 'https:\/\/notify-bot.line.me\/oauth\/token',
-    NotifyApi: 'https:\/\/notify-api.line.me\/api\/notify',
-    StatusApi: 'https:\/\/notify-api.line.me\/api\/status',
-    RevokeApi: 'https:\/\/notify-api.line.me\/api\/revoke'
+    accessToken:'fEIHxeKHz3aftAMHNBGT3gXEqV4h72es0IWfw0HxDH4',
+    //使用者授權後，產生連動時取得token，存進資料庫
+    authorizeApi: 'https:\/\/notify-bot.line.me\/oauth\/authorize',
+    tokenApi: 'https:\/\/notify-bot.line.me\/oauth\/token',
+    notifyApi: 'https:\/\/notify-api.line.me\/api\/notify',
+    statusApi: 'https:\/\/notify-api.line.me\/api\/status',
+    revokeApi: 'https:\/\/notify-api.line.me\/api\/revoke'
 }
 
 // app.use('/linenotify',
