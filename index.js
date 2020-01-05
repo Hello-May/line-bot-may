@@ -12,6 +12,23 @@ function handleEvent(event) {
       case 'message':
         switch (event.message.type) {
           case 'text':
+            var request = require('request');
+var options = {
+  'method': 'POST',
+  'url': 'https://notify-api.line.me/api/notify',
+  'headers': {
+    'Authorization': 'Bearer fEIHxeKHz3aftAMHNBGT3gXEqV4h72es0IWfw0HxDH4',
+    'Content-Type': 'multipart/form-data; boundary=--------------------------054153815016971257363988'
+  },
+  formData: {
+    'message': 'hello world'
+  }
+};
+request(options, function (error, response) { 
+  if (error) throw new Error(error);
+  console.log(response.body);
+});
+
             return functions.textCommandSolver(event);
           case 'image':
             return functions.imgCommandSolver(event);
