@@ -4,7 +4,6 @@ const configBot = require('./config');// 導入設定檔
 const functions = require('./functions');// 導入方法
 const express = require('express');
 const bodyParser = require('body-parser');
-const lineBotParser = lineBot(configBot).parser();
 const app = express();
 
 function handleEvent(event) {
@@ -41,7 +40,6 @@ function handleEvent(event) {
 app.get("/", function (req, res) { 
     res.send("Hello LineBot");
 });
-app.post('/', lineBotParser);
 
 app.post('/', lineBot.middleware(configBot), function(req, res) {
     Promise

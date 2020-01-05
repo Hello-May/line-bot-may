@@ -2,7 +2,6 @@ const lineBot = require('@line/bot-sdk');
 const lineNotify = require('express-line-notify');
 const configBot = require('../config');// 導入設定檔
 const configNotify = require('../config/notify');
-
 const clientBot = new lineBot.Client(configBot);
 const clientNotify = lineNotify(configNotify);
 
