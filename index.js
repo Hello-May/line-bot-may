@@ -42,7 +42,7 @@ app.get("/test", function (req, res) {
 
 const path = require('path')
 app.get("/button", function (req, res) {
-  res.sendFile('./functions/notify/button.html', function (err) {
+  res.sendFile(path.resolve('./functions/notify/button.html'), function (err) {
     if (err) res.send(404);
   });
 });
