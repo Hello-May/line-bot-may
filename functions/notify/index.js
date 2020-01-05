@@ -1,5 +1,5 @@
 const lineNotify = require('express-line-notify');
-const configNotify = require('./config/notify');
+const configNotify = require('../../config/notify');
 const clientNotify = lineNotify(configNotify);
 const unirest = require('unirest');
 
