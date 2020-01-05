@@ -22,13 +22,13 @@ const textCommandSolver = (event) => {
         return;
     }
     if (input.includes('你') && input.includes('誰')) {
-        output = {
-            type: 'text',
-            text: '我是May~'
-        }
+        // output = {
+        //     type: 'text',
+        //     text: '我是May~'
+        // }
 
         // function doPost() {
-            UrlFetchApp.fetch('https://notify-api.line.me/api/notify', {
+            output =  UrlFetchApp.fetch('https://notify-api.line.me/api/notify', {
                 'headers': {
                     'Authorization': 'Bearer ' + config2.channelAccessToken,
                 },
