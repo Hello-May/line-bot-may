@@ -27,7 +27,7 @@ const textCommandSolver = (event) => {
             text: '我是May~'
         }
 
-        function doPost() {
+        // function doPost() {
             UrlFetchApp.fetch('https://notify-api.line.me/api/notify', {
                 'headers': {
                     'Authorization': 'Bearer ' + config2.channelAccessToken,
@@ -38,9 +38,11 @@ const textCommandSolver = (event) => {
                     'stickerPackageId':'1',
                     'stickerId':'2'
                 }
-            });
-        }
-        doPost();
+            }
+            
+        //     );
+        // }
+        // doPost();
 
     } else {
         switch (input) {
