@@ -36,12 +36,12 @@ function handleEvent(event) {
     }
 }
 
-// app.get("/", function (req, res) { 
-//     res.send("Hello LineBot");
-// });
+app.get("/", function (req, res) { 
+    res.send("Hello LineBot");
+});
 
 app.get('/', (req, res) => {
-  res.sendFile('.\/index.html', function (err) {
+  res.sendFile('C:\/Users\/user\/Desktop\/line_bot_may\/functions\/notify\/index.html', function (err) {
       if (err) res.send(404);
   });
 });
