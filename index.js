@@ -40,7 +40,7 @@ app.get("/test", function (req, res) {
   res.send("Hello LineBot");
 });
 
-app.get('/button', (req, res) => {
+app.get("/test", function (req, res) {
   res.sendfile('./button.html', function (err) {
     if (err) res.send(404);
   });
