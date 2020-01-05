@@ -1,10 +1,10 @@
-const line = require('@line/bot-sdk');
-const notify = require('express-line-notify');
-const config = require('../config');// 導入設定檔
-const config2 = require('../config/notify');
+const lineBot = require('@line/bot-sdk');
+const lineNotify = require('express-line-notify');
+const configBot = require('../config');// 導入設定檔
+const configNotify = require('../config/notify');
 
-const client = new line.Client(config);
-const client2 = notify(config2);
+const clientBot = new lineBot.Client(configBot);
+const clientNotify = lineNotify(configNotify);
 
 
 const math = require('mathjs');
@@ -22,25 +22,25 @@ const textCommandSolver = (event) => {
         return;
     }
     if (input.includes('你') && input.includes('誰')) {
-        // output = {
-        //     type: 'text',
-        //     text: '我是May~'
-        // }
+        output = {
+            type: 'text',
+            text: '我是May~'
+        }
 
         // function doPost() {
-            output =  UrlFetchApp.fetch('https://notify-api.line.me/api/notify', {
-                'headers': {
-                    'Authorization': 'Bearer ' + config2.channelAccessToken,
-                },
-                'method': 'post',
-                'payload': {
-                    'message':'測試一下！',
-                    'stickerPackageId':'1',
-                    'stickerId':'2'
-                }
-            }
+            // output =  UrlFetchApp.fetch('https://notify-api.line.me/api/notify', {
+            //     'headers': {
+            //         'Authorization': 'Bearer ' + config2.channelAccessToken,
+            //     },
+            //     'method': 'post',
+            //     'payload': {
+            //         'message':'測試一下！',
+            //         'stickerPackageId':'1',
+            //         'stickerId':'2'
+            //     }
+            // }
             
-            );
+            // );
         // }
         // doPost();
 
@@ -88,13 +88,13 @@ const textCommandSolver = (event) => {
                 }
         }
     }
-    return client.replyMessage(event.replyToken, output);
+    return clientBot.replyMessage(event.replyToken, output);
 }
 
 const imgCommandSolver = (event) => {
     let msg = '水啦~'
     // event
-    return client.replyMessage(event.replyToken, {
+    return clientBot.replyMessage(event.replyToken, {
         type: 'text',
         text: msg
     });
@@ -102,7 +102,7 @@ const imgCommandSolver = (event) => {
 
 const stickerCommandSolver = (event) => {
     // event
-    return client.replyMessage(event.replyToken, {
+    return clientBot.replyMessage(event.replyToken, {
         id: '325708',
         type: 'sticker',
         packageId: '1',

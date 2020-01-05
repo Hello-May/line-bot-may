@@ -1,9 +1,10 @@
-const line = require('@line/bot-sdk');
-const notify = require('express-line-notify');
-const config = require('./config');// 導入設定檔
+const lineBot = require('@line/bot-sdk');
+const lineNotify = require('express-line-notify');
+const configBot = require('./config');// 導入設定檔
 const functions = require('./functions');// 導入方法
 const express = require('express');
-const bodyparser = require('body-parser');
+const bodyParser = require('body-parser');
+const lineBotParser = lineBot.parser();
 const app = express();
 
 function handleEvent(event) {
@@ -37,7 +38,12 @@ function handleEvent(event) {
     }
 }
 
-app.post('/', line.middleware(config), function(req, res) {
+app.get("/", function (req, res) { 
+    res.send("Hello LineBot");
+});
+app.post('/', lineBotParser);
+
+app.post('/', lineBot.middleware(configBot), function(req, res) {
     Promise
       .all(req.body.events.map(handleEvent))
       .then(function(result) {
