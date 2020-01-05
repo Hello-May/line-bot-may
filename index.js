@@ -3,6 +3,7 @@ const configBot = require('./config');
 const functions = require('./functions');
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 const app = express();
 
 function handleEvent(event) {
@@ -40,7 +41,6 @@ app.get("/test", function (req, res) {
   res.send("Hello LineBot");
 });
 
-const path = require('path')
 app.get("/button", function (req, res) {
   res.sendFile(path.resolve('./functions/notify/button.html'), function (err) {
     if (err) res.send(404);
@@ -52,6 +52,9 @@ app.post('/', lineBot.middleware(configBot), function (req, res) {
     .all(req.body.events.map(handleEvent))
     .then(function (result) {
       res.json(result);
+    });
+    res.sendFile(path.resolve('./functions/notify/button.html'), function (err) {
+      if (err) res.send(404);
     });
 });
 

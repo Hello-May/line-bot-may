@@ -3,6 +3,7 @@ const configBot = require('../config');
 const clientBot = new lineBot.Client(configBot);
 const lineNotify = require('./notify');
 const math = require('mathjs');
+const path = require('path');
 const db = require('../models');
 
 const main = require('./main');
@@ -25,7 +26,7 @@ const textCommandSolver = (event) => {
     } else {
         switch (input) {
             case '連動':
-                break;
+                return;
             case '呼叫':
                 shutUp = false;
                 output = pause.pause(event);
