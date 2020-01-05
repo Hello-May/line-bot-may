@@ -41,7 +41,7 @@ function handleEvent(event) {
 // });
 
 app.get('/', (req, res) => {
-  res.sendFile('C:\/Users\/user\/Desktop\/line_bot_may\/functions\/notify\/index.html', function (err) {
+  res.sendFile('.\/index.html', function (err) {
       if (err) res.send(404);
   });
 });
