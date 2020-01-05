@@ -40,7 +40,7 @@ const textCommandSolver = (event) => {
                 }
             }
             
-        //     );
+            );
         // }
         // doPost();
 
