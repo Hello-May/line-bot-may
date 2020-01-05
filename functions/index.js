@@ -86,8 +86,7 @@ const textCommandSolver = (event) => {
                 }
         }
     }
-    return client2.replyMessage(event.replyToken, output);
-    // return client.replyMessage(event.replyToken, output);
+    return client.replyMessage(event.replyToken, output);
 }
 
 const imgCommandSolver = (event) => {
