@@ -42,18 +42,10 @@ app.get("/test", function (req, res) {
 
 const path = require('path')
 app.get("/button", function (req, res) {
-  console.log(path.resolve('./functions/notify/button.html'));
-  res.sendFile(path.resolve('./functions/notify/button.html'), function (err) {
+  res.sendFile('./functions/notify/button.html', function (err) {
     if (err) res.send(404);
   });
 });
-
-// app.get("/button", function (req, res) {
-//   console.log(__dirname);
-//   res.sendFile(__dirname+':\/line_bot_may\/funtions\/notify\/button.html', function (err) {
-//     if (err) res.send(404);
-//   });
-// });
 
 app.post('/', lineBot.middleware(configBot), function (req, res) {
   Promise
