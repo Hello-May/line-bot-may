@@ -40,11 +40,18 @@ app.get("/test", function (req, res) {
   res.send("Hello LineBot");
 });
 
+// app.get("/button", function (req, res) {
+//   console.log(__dirname);
+//   res.sendFile(__dirname+':\/line_bot_may\/funtions\/notify\/button.html', function (err) {
+//     if (err) res.send(404);
+//   });
+// });
+
 app.get("/button", function (req, res) {
-  console.log(__dirname);
-  res.sendFile(__dirname+':\/line_bot_may\/funtions\/notify\/button.html', function (err) {
+  res.sendFile(path.join(__dirname + '/button.html'), function (err) {
     if (err) res.send(404);
   });
+  console.log(path.join(__dirname + '/button.html'));
 });
 
 app.post('/', lineBot.middleware(configBot), function (req, res) {
