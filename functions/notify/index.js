@@ -15,6 +15,30 @@ const notify = (output) => {
             console.log(res.raw_body);
         });
 }
+const test = () => {
+    return {
+        "type": "flex",
+        "altText": "Flex Message",
+        "contents": {
+            "type": "bubble",
+            "direction": "ltr",
+            "footer": {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "button",
+                        "action": {
+                            "type": "uri",
+                            "label": "按此連動 Line Notify",
+                            "uri": "https://liff-paint-th.line-apps.com/"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
 
 const authorize = () => {
     return {
@@ -43,5 +67,6 @@ const authorize = () => {
 
 module.exports = {
     notify,
-    authorize
+    authorize,
+    test
 }

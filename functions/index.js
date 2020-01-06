@@ -26,6 +26,9 @@ const textCommandSolver = (event) => {
     } else {
         switch (input) {
             case '.':
+                output = richMenu.test();
+                break;
+            case '#':
                 output = richMenu.richMenu();
                 break;
             case '連動':
