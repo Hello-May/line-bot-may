@@ -17,19 +17,28 @@ const notify = (output) => {
 }
 
 const authorize = () => {
-    let req = unirest('POST', configNotify.authorizeApi)
-        .headers({
-            'Content-Type': 'multipart/form-data; boundary=--------------------------408739580452535410043793'
-        })
-        .field('response_type', 'code')
-        .field('client_id', configNotify.clientId)
-        .field('redirect_uri', configNotify.redirect_uri)
-        .field('scope', 'notify')
-        .field('state', 'NO_STATE')
-        .end(function (res) {
-            if (res.error) throw new Error(res.error);
-            console.log(res.raw_body);
-        });
+    return {
+        "type": "flex",
+        "altText": "Flex Message",
+        "contents": {
+            "type": "bubble",
+            "direction": "ltr",
+            "footer": {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "button",
+                        "action": {
+                            "type": "uri",
+                            "label": "按此連動 Line Notify",
+                            "uri": "line://app/1653656986-Nv8qOjMl"
+                        }
+                    }
+                ]
+            }
+        }
+    }
 }
 
 module.exports = {
