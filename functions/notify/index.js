@@ -19,7 +19,7 @@ const notify = (output) => {
 const richMenu = () => {
     return message = {
         "type": "imagemap",
-        "baseUrl": "line://app/1653656986-4q83mqvK",
+        "baseUrl": "https://www.kamigo.tw/assets/kamigo-c3b10dff4cdb60fa447496b22edad6c32fffde96de20262efba690892e4461e8.png#",
         "altText": "在不支援顯示影像地圖的地方顯示的文字",
         "baseSize": {
           "height": 1040,
