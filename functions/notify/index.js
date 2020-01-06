@@ -19,11 +19,11 @@ const notify = (output) => {
 const richMenu = () => {
     return {
         "type": "imagemap",
-        "baseUrl": "https://i.postimg.cc/wv7V4pBY/pic3.jpg",
+        "baseUrl": "https://i.postimg.cc/pVQhNS5w/pic3.jpg",
         "altText": "Example imagemap",
         "baseSize": {
-            "height": 1040,
-            "width": 1040
+            "height":843,
+            "width": 2500
         },
         "actions": [
             {
