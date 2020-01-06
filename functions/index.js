@@ -26,7 +26,7 @@ const textCommandSolver = (event) => {
     } else {
         switch (input) {
             case '.':
-                lineNotify.authorize();
+                // lineNotify.authorize();
                 break;;
             case '呼叫':
                 shutUp = false;
