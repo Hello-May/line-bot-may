@@ -19,7 +19,7 @@ const notify = (output) => {
 const richMenu = () => {
     return {
         "type": "imagemap",
-        "baseUrl": "https://i.postimg.cc/ZRGkYj92/pic3.jpg",
+        "baseUrl": "https://im7.ezgif.com/tmp/ezgif-7-aaf72132b6c9.webp",
         "altText": "Example imagemap",
         "baseSize": {
             "height": 1040,
