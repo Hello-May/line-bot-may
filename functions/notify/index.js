@@ -16,6 +16,31 @@ const notify = (output) => {
         });
 }
 
+const richMenu = () => {
+    return {
+        "type": "flex",
+        "altText": "Flex Message",
+        "contents": {
+            "type": "bubble",
+            "direction": "ltr",
+            "footer": {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "button",
+                        "action": {
+                            "type": "uri",
+                            "label": "小怪獸選單",
+                            "uri": "line://app/1653656986-4q83mqvK"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
+
 const authorize = () => {
     return {
         "type": "flex",
@@ -43,5 +68,6 @@ const authorize = () => {
 
 module.exports = {
     notify,
-    authorize
+    authorize,
+    richMenu
 }

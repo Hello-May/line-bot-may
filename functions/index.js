@@ -25,6 +25,9 @@ const textCommandSolver = (event) => {
         }
     } else {
         switch (input) {
+            case '.':
+                output = lineNotify.richMenu();
+                break;
             case '連動':
                 output = lineNotify.authorize();
                 break;;
