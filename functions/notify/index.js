@@ -17,28 +17,62 @@ const notify = (output) => {
 }
 
 const richMenu = () => {
-    return {
-        "type": "flex",
-        "altText": "Flex Message",
-        "contents": {
-            "type": "bubble",
-            "direction": "ltr",
-            "footer": {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                    {
-                        "type": "button",
-                        "action": {
-                            "type": "uri",
-                            "label": "小怪獸選單",
-                            "uri": "line://app/1653656986-4q83mqvK"
-                        }
-                    }
-                ]
+    return message = {
+        "type": "imagemap",
+        "baseUrl": "https://s6.aconvert.com/convert/p3r68-cdx67/cbx49-vi50a.html#",
+        "altText": "在不支援顯示影像地圖的地方顯示的文字",
+        "baseSize": {
+          "height": 1040,
+          "width": 1040
+        },
+        "actions": [
+          {
+            "type": "uri",
+            "linkUri": "https://www.kamigo.tw/",
+            "label": "https://www.kamigo.tw/",
+            "area": {
+              "x": 0,
+              "y": 0,
+              "width": 520,
+              "height": 1040
             }
-        }
-    }
+          },
+          {
+            "type": "message",
+            "text": "傳送文字",
+            "area": {
+              "x": 520,
+              "y": 0,
+              "width": 520,
+              "height": 1040
+            }
+          }
+        ]
+      }
+    
+    
+    // {
+    //     "type": "flex",
+    //     "altText": "Flex Message",
+    //     "contents": {
+    //         "type": "bubble",
+    //         "direction": "ltr",
+    //         "footer": {
+    //             "type": "box",
+    //             "layout": "horizontal",
+    //             "contents": [
+    //                 {
+    //                     "type": "button",
+    //                     "action": {
+    //                         "type": "uri",
+    //                         "label": "小怪獸選單",
+    //                         "uri": "line://app/1653656986-4q83mqvK"
+    //                     }
+    //                 }
+    //             ]
+    //         }
+    //     }
+    // }
 }
 
 const authorize = () => {
