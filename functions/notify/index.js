@@ -19,7 +19,7 @@ const notify = (output) => {
 const richMenu = () => {
     return message = {
         "type": "imagemap",
-        "baseUrl": "https://s6.aconvert.com/convert/p3r68-cdx67/cbx49-vi50a.html#",
+        "baseUrl": "line://app/1653656986-4q83mqvK",
         "altText": "在不支援顯示影像地圖的地方顯示的文字",
         "baseSize": {
           "height": 1040,
