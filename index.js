@@ -47,6 +47,12 @@ app.get("/button", function (req, res) {
   });
 });
 
+app.get("/paint", function (req, res) {
+  res.sendFile(path.resolve('./test/paint.html'), function (err) {
+    if (err) res.send(404);
+  });
+});
+
 app.post('/', lineBot.middleware(configBot), function (req, res) {
   Promise
     .all(req.body.events.map(handleEvent))
