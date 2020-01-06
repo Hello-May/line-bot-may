@@ -27,9 +27,8 @@ const richMenu = () => {
         },
         "actions": [
             {
-                "type": "postback",
+                "type": "message",
                 "text": "#修練",
-                "data": "#修練",
                 "area": {
                     "x": 64,
                     "y": 149,
