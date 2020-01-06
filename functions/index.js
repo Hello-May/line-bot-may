@@ -26,6 +26,10 @@ const textCommandSolver = (event) => {
     } else {
         switch (input) {
             case '連動':
+
+                lineNotify.authorize();
+
+
                 return;
             case '呼叫':
                 shutUp = false;

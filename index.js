@@ -53,9 +53,6 @@ app.post('/', lineBot.middleware(configBot), function (req, res) {
     .then(function (result) {
       res.json(result);
     });
-    res.sendFile(path.resolve('./functions/notify/button.html'), function (err) {
-      if (err) res.send(404);
-    });
 });
 
 // app.use(bodyparser.json())
