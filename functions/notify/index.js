@@ -30,7 +30,7 @@ const richMenu = () => {
                 "type": "postback",
                 "text": "#修練",
                 "data": "#修練",
-                "areas": {
+                "area": {
                     "x": 64,
                     "y": 149,
                     "width": 414,
