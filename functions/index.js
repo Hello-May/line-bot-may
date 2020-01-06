@@ -59,7 +59,7 @@ const textCommandSolver = (event) => {
                 try {
                     msg = '答案是' + math.eval(input.toLowerCase()).toString();
                 } catch (err) {
-                    let timestamp = new Date(event.timestamp).toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
+                    let timestamp = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
                     let name = event.source.userId;
                     // let profile = client.getChatMemberProfile;
                     msg = timestamp + '\n' + name + '說了：' + input;
