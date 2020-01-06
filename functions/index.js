@@ -25,12 +25,9 @@ const textCommandSolver = (event) => {
         }
     } else {
         switch (input) {
-            case '連動':
-
+            case '.':
                 lineNotify.authorize();
-
-
-                return;
+                break;;
             case '呼叫':
                 shutUp = false;
                 output = pause.pause(event);
@@ -75,7 +72,7 @@ const textCommandSolver = (event) => {
     }
     lineNotify.notify({
         type: 'message',
-        text: 'hello world'
+        text: input
     });
     return clientBot.replyMessage(event.replyToken, output);
 }
