@@ -5,9 +5,17 @@
 // console.log(s);
 
 
-const db = require('../models');
+// const db = require('../models');
 
-db.sql.query('select * from student', function (err, result, fields) {
-    if (err) throw err;
-    console.log(result);
+// db.sql.query('select * from student', function (err, result, fields) {
+//     if (err) throw err;
+//     console.log(result);
+// });
+
+const lineNotify = require('../functions/notify');
+lineNotify.notify({
+    type: 'message',
+    text: '提醒測試'
 });
+
+
