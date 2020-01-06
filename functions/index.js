@@ -26,7 +26,7 @@ const textCommandSolver = (event) => {
     } else {
         switch (input) {
             case '.':
-                output = richMenu.test();
+                output = lineNotify.test();
                 break;
             case '#':
                 output = richMenu.richMenu();
