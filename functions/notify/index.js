@@ -19,7 +19,7 @@ const notify = (output) => {
 const richMenu = () => {
     return {
         "type": "imagemap",
-        "baseUrl": "https://s6.aconvert.com/convert/p3r68-cdx67/cbx49-vi50a.html",
+        "baseUrl": "https://s6.aconvert.com/convert/p3r68-cdx67/cb0th-wgz6v.html",
         "altText": "Example imagemap",
         "baseSize": {
             "height": 1040,
