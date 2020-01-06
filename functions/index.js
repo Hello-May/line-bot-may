@@ -26,7 +26,28 @@ const textCommandSolver = (event) => {
     } else {
         switch (input) {
             case '.':
-                // lineNotify.authorize();
+                output = {
+                    "type": "flex",
+                    "altText": "Flex Message",
+                    "contents": {
+                      "type": "bubble",
+                      "direction": "ltr",
+                      "footer": {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                          {
+                            "type": "button",
+                            "action": {
+                              "type": "uri",
+                              "label": "按此連動 Line Notify",
+                              "uri": "line://app/1653656986-Nv8qOjMl"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
                 break;;
             case '呼叫':
                 shutUp = false;
