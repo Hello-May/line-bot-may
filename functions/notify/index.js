@@ -28,12 +28,52 @@ const richMenu = () => {
         "actions": [
             {
                 "type": "message",
-                "text": "#修練",
+                "text": "#修煉",
                 "area": {
                     "x": 64,
                     "y": 149,
                     "width": 414,
                     "height": 603
+                }
+            },
+            {
+                "type": "message",
+                "text": "#任務",
+                "area": {
+                    "x": 506,
+                    "y": 149,
+                    "width": 430,
+                    "height": 607
+                }
+            },
+            {
+                "type": "message",
+                "text": "#小怪獸",
+                "area": {
+                    "x": 961,
+                    "y": 145,
+                    "width": 566,
+                    "height": 611
+                }
+            },
+            {
+                "type": "message",
+                "text": "#戰鬥",
+                "area": {
+                    "x": 1554,
+                    "y": 141,
+                    "width": 440,
+                    "height": 615
+                }
+            },
+            {
+                "type": "message",
+                "text": "#酒館",
+                "area": {
+                    "x": 2022,
+                    "y": 141,
+                    "width": 418,
+                    "height": 615
                 }
             }
             // {
@@ -59,29 +99,6 @@ const richMenu = () => {
         ]
     }
 
-
-    // {
-    //     "type": "flex",
-    //     "altText": "Flex Message",
-    //     "contents": {
-    //         "type": "bubble",
-    //         "direction": "ltr",
-    //         "footer": {
-    //             "type": "box",
-    //             "layout": "horizontal",
-    //             "contents": [
-    //                 {
-    //                     "type": "button",
-    //                     "action": {
-    //                         "type": "uri",
-    //                         "label": "小怪獸選單",
-    //                         "uri": "line://app/1653656986-4q83mqvK"
-    //                     }
-    //                 }
-    //             ]
-    //         }
-    //     }
-    // }
 }
 
 const authorize = () => {
