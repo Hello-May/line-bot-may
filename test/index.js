@@ -5,19 +5,12 @@
 // console.log(s);
 
 
-// const db = require('../models');
+const db = require('../models');
 
-// db.sql.query('select * from student', function (err, result, fields) {
-//     if (err) throw err;
-//     console.log(result);
-// });
-
-var s = new Date().toLocaleString('zh-TW', {timeZone: 'Asia/Taipei'});
-
-const lineNotify = require('../functions/notify');
-lineNotify.notify({
-    type: 'message',
-    text: s
+db.sql.query('select * from student', function (err, result, fields) {
+    if (err) throw err;
+    console.log(result);
 });
+
 
 
