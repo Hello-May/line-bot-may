@@ -17,38 +17,37 @@ const notify = (output) => {
 }
 
 const richMenu = () => {
-    return message = {
+    return {
         "type": "imagemap",
-        "baseUrl": "https://ibb.co/n8jvYn4#",
-        "altText": "在不支援顯示影像地圖的地方顯示的文字",
+        "baseUrl": "https://api.reh.tw/line/bot/example/assets/images/example",
+        "altText": "Example imagemap",
         "baseSize": {
-          "height": 1040,
-          "width": 1040
+            "height": 1040,
+            "width": 1040
         },
         "actions": [
-          {
-            "type": "uri",
-            "linkUri": "https://www.kamigo.tw/",
-            "label": "https://www.kamigo.tw/",
-            "area": {
-              "x": 0,
-              "y": 0,
-              "width": 520,
-              "height": 1040
+            {
+                "type": "uri",
+                "linkUri": "https://github.com/GoneTone/line-example-bot-php",
+                "area": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 520,
+                    "height": 1040
+                }
+            },
+            {
+                "type": "message",
+                "text": "Hello",
+                "area": {
+                    "x": 520,
+                    "y": 0,
+                    "width": 520,
+                    "height": 1040
+                }
             }
-          },
-          {
-            "type": "message",
-            "text": "傳送文字",
-            "area": {
-              "x": 520,
-              "y": 0,
-              "width": 520,
-              "height": 1040
-            }
-          }
         ]
-      }
+    }
     
     
     // {
