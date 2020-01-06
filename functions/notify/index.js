@@ -19,7 +19,7 @@ const notify = (output) => {
 const richMenu = () => {
     return {
         "type": "imagemap",
-        "baseUrl": "https://api.reh.tw/line/bot/example/assets/images/example",
+        "baseUrl": "https://api.reh.tw/line/bot/example/assets/images/example#",
         "altText": "Example imagemap",
         "baseSize": {
             "height": 1040,
