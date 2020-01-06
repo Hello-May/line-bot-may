@@ -55,7 +55,7 @@ const authorize = () => {
                         "type": "button",
                         "action": {
                             "type": "uri",
-                            "label": "按此連動 Line Notify",
+                            "label": "PAINT SOMETHING",
                             "uri": "line://app/1653656986-EoA24gla"
                         }
                     }
