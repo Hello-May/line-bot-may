@@ -25,77 +25,6 @@ const textCommandSolver = (event) => {
         }
     } else {
         switch (input) {
-            case '....':
-                output = {
-                    "type": "template",
-                    "altText": "在不支援顯示樣板的地方顯示的文字",
-                    "template": {
-                      "type": "buttons",
-                      "text": "Buttons樣板2",
-                      "actions": [
-                        {
-                          "type": "message",
-                          "label": "第一個按鈕",
-                          "text": "1"
-                        },
-                        {
-                          "type": "message",
-                          "label": "第二個按鈕",
-                          "text": "2"
-                        },
-                        {
-                          "type": "message",
-                          "label": "第三個按鈕",
-                          "text": "3"
-                        },
-                        {
-                          "type": "message",
-                          "label": "第四個按鈕",
-                          "text": "4"
-                        }
-                      ]
-                    }
-                  }
-                break;
-            case '...':
-                output = {
-                    "type": "template",
-                    "altText": "在不支援顯示樣板的地方顯示的文字",
-                    "template": {
-                      "type": "buttons",
-                      "text": "Buttons樣板",
-                      "actions": [
-                        {
-                          "type": "message",
-                          "label": "第一個按鈕",
-                          "text": "1"
-                        }
-                      ]
-                    }
-                  }
-                break;
-            case '..':
-                output = {
-                    "type": "template",
-                    "altText": "在不支援顯示樣板的地方顯示的文字",
-                    "template": {
-                      "type": "confirm",
-                      "text": "Confirm樣板",
-                      "actions": [
-                        {
-                          "type": "message",
-                          "label": "第一個按鈕",
-                          "text": "1"
-                        },
-                        {
-                          "type": "message",
-                          "label": "第二個按鈕",
-                          "text": "2"
-                        }
-                      ]
-                    }
-                  }
-                  break;
             case '.':
                 output = lineNotify.test();
                 break;
@@ -160,6 +89,12 @@ const imgCommandSolver = (event) => {
     return clientBot.replyMessage(event.replyToken, {
         type: 'text',
         text: msg
+    }, {
+        id: '325708',
+        type: 'sticker',
+        packageId: '1',
+        stickerId: '1',
+        stickerResourceType: 'STATIC'
     });
 }
 
