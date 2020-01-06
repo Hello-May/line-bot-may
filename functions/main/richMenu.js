@@ -1217,7 +1217,7 @@ const talk = (event) => {
                                 "action": {
                                     "type": "uri",
                                     "label": "跟調酒師聊聊 feedback",
-                                    "uri": "line://app/101"
+                                    "uri": "line://app/1653656986-dygBGoqV"
                                 }
                             },
                             {

@@ -22,34 +22,45 @@ const richMenu = () => {
         "baseUrl": "https://i.postimg.cc/pVQhNS5w/pic3.jpg",
         "altText": "Example imagemap",
         "baseSize": {
-            "height":843,
+            "height": 843,
             "width": 2500
         },
         "actions": [
             {
-                "type": "uri",
-                "linkUri": "https://github.com/GoneTone/line-example-bot-php",
-                "area": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 520,
-                    "height": 1040
-                }
-            },
-            {
-                "type": "message",
-                "text": "Hello",
-                "area": {
-                    "x": 520,
-                    "y": 0,
-                    "width": 520,
-                    "height": 1040
+                "type": "postback",
+                "text": "#修練",
+                "data": "#修練",
+                "areas": {
+                    "x": 64,
+                    "y": 149,
+                    "width": 414,
+                    "height": 603
                 }
             }
+            // {
+            //     "type": "uri",
+            //     "linkUri": "https://github.com/GoneTone/line-example-bot-php",
+            //     "area": {
+            //         "x": 0,
+            //         "y": 0,
+            //         "width": 520,
+            //         "height": 1040
+            //     }
+            // },
+            // {
+            //     "type": "message",
+            //     "text": "Hello",
+            //     "area": {
+            //         "x": 520,
+            //         "y": 0,
+            //         "width": 520,
+            //         "height": 1040
+            //     }
+            // }
         ]
     }
-    
-    
+
+
     // {
     //     "type": "flex",
     //     "altText": "Flex Message",
