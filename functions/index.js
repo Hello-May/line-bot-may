@@ -26,15 +26,17 @@ const textCommandSolver = (event) => {
     } else {
         switch (input) {
             case '..':
-                const db = require('../models/sql');
-                db.sql.query('select * from student', function (err, result, fiels) {
-                    if (err) throw err;
-                    console.log(r);
-                    output = {
-                        type: 'text',
-                        text: result
-                    }
-                });
+                const db  = require('../models');
+                db.db.
+                // const db = require('../models/sql');
+                // db.sql.query('select * from student', function (err, result, fiels) {
+                //     if (err) throw err;
+                //     console.log(r);
+                //     output = {
+                //         type: 'text',
+                //         text: result
+                //     }
+                // });
                 break;
             case '.':
                 output = lineNotify.test();

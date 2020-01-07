@@ -45,16 +45,17 @@ sequelize
         console.error('Unable to connect to the database:', err);
     });
 
+// const db  = require('../models');
 
-const Test = sequelize.define('test', {
-    id: {
-        type: Sequelize.STRING,
-        primaryKey: true
-    }
-});
+// const Test = db.sequelize.define('test', {
+//     id: {
+//         type: Sequelize.STRING,
+//         primaryKey: true
+//     }
+// });
 
-Test.sync({
-    force:false});
+// Test.sync({
+//     force:false});
 
 // Test.sync({
 //     force: true
