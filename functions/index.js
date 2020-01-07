@@ -26,9 +26,7 @@ const textCommandSolver = (event) => {
     } else {
         switch (input) {
             case '..':
-
                 const db = require('../models/sql');
-
                 db.sql.query('select * from student', function (err, result, fiels) {
                     if (err) throw err;
                     var r = result[0].name;
@@ -37,9 +35,7 @@ const textCommandSolver = (event) => {
                         type: 'text',
                         text: r
                     }
-    
-                });
-               
+                });        
                 break;
             case '.':
                 output = lineNotify.test();
