@@ -33,7 +33,7 @@ db.sql.query('select * from student', function (err, result, fiels) {
     if (err) throw err;
     var r = result[0].name;
 });
-
+console.log(r);
 output = {
     type: 'text',
     text: r
