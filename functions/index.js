@@ -4,7 +4,7 @@ const clientBot = new lineBot.Client(configBot);
 const lineNotify = require('./notify');
 const math = require('mathjs');
 const path = require('path');
-const db = require('../models');
+const db = require('../models/sql');
 
 const main = require('./main');
 const pause = require('./pause');
@@ -27,7 +27,7 @@ const textCommandSolver = (event) => {
         switch (input) {
             case '..':
 
-                const db = require('../models');
+                const db = require('../models/sql');
 
                 db.sql.query('select * from student', function (err, result, fiels) {
                     if (err) throw err;
