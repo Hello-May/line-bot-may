@@ -32,7 +32,7 @@ const textCommandSolver = (event) => {
                     console.log(r);
                     output = {
                         type: 'text',
-                        text: result[0].name
+                        text: result
                     }
                 });
                 break;
