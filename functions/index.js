@@ -27,7 +27,7 @@ const textCommandSolver = (event) => {
         switch (input) {
             case '..':
                 
-const db = require('../models');
+const db = require('./models');
 
 db.sql.query('select * from student', function (err, result, fiels) {
     if (err) throw err;
