@@ -29,10 +29,15 @@ const textCommandSolver = (event) => {
                 
 const db = require('../models');
 
-db.sql.query('select * from student', function (err, result, fields) {
+db.sql.query('select * from student', function (err, result, fiels) {
     if (err) throw err;
-    output = result;
+    var r = result;
 });
+
+output = {
+    type: 'text',
+    text: r
+}
 
                 break;
             case '.':
