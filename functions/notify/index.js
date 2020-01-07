@@ -30,7 +30,7 @@ const test = () => {
                         "type": "button",
                         "action": {
                             "type": "uri",
-                            "label": "按此連動 Line Notify",
+                            "label": "PAINT SOMETHING",
                             "uri": "https://liff-paint-th.line-apps.com/"
                         }
                     }
@@ -55,7 +55,7 @@ const authorize = () => {
                         "type": "button",
                         "action": {
                             "type": "uri",
-                            "label": "PAINT SOMETHING",
+                            "label": "按此連動 Line Notify",
                             "uri": "line://app/1653656986-EoA24gla"
                         }
                     }

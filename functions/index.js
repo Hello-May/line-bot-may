@@ -25,6 +25,16 @@ const textCommandSolver = (event) => {
         }
     } else {
         switch (input) {
+            case '..':
+                
+const db = require('../models');
+
+db.sql.query('select * from student', function (err, result, fields) {
+    if (err) throw err;
+    output = result;
+});
+
+                break;
             case '.':
                 output = lineNotify.test();
                 break;
@@ -86,7 +96,7 @@ const textCommandSolver = (event) => {
 const imgCommandSolver = (event) => {
     let msg = '水啦~'
     // event
-    return clientBot.replyMessage(event.replyToken, {
+    return clientBot.replyMessage(event.replyToken, {   //要啥無法傳兩個?
         type: 'text',
         text: msg
     }, {
