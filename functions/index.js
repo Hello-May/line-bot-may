@@ -27,11 +27,11 @@ const textCommandSolver = (event) => {
         switch (input) {
             case '..':
                 
-const db = require('./models');
+const db = require('../models');
 
 db.sql.query('select * from student', function (err, result, fiels) {
     if (err) throw err;
-    var r = result;
+    var r = result[0].name;
 });
 
 output = {
