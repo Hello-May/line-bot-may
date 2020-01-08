@@ -26,7 +26,6 @@ const textCommandSolver = (event) => {
     } else {
         switch (input) {
             case '..':
-                const Sequelize = require('sequelize');
                 const { users } = require("../models");
 
                 (async () => {
@@ -42,6 +41,10 @@ const textCommandSolver = (event) => {
                     }
                     process.exit();
                     })()
+                    output = {
+                        type: 'text',
+                        text: user[0].id+' 阿阿阿阿阿'
+                    }
                 break;
             case '.':
                 output = lineNotify.test();
