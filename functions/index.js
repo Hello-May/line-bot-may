@@ -13,6 +13,7 @@ const { users } = require("../models");
 
 var shutUp = null;
 
+const app = express();
 const DelayedResponse = require('http-delayed-response');
 function verySlowFunction(callback) {
     // let's do something that could take a while...
