@@ -27,8 +27,6 @@ const textCommandSolver = (event) => {
     } else {
         switch (input) {
             case '..':
-                
-                // const user
                 (async () => {
                     // 搜尋多個例項
                     const user = await users.findAll()
@@ -42,10 +40,6 @@ const textCommandSolver = (event) => {
                     }
                     process.exit();
                 })()
-                // output = {
-                //     type: 'text',
-                //     text: user[0].id + ' 阿阿阿阿阿'
-                // }
                 break;
             case '.':
                 output = lineNotify.test();
