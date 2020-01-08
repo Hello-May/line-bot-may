@@ -4,7 +4,7 @@ const clientBot = new lineBot.Client(configBot);
 const lineNotify = require('./notify');
 const math = require('mathjs');
 const path = require('path');
-const db = require('../models/sql');
+const db = require('../test/sql');
 
 const main = require('./main');
 const pause = require('./pause');
@@ -26,17 +26,22 @@ const textCommandSolver = (event) => {
     } else {
         switch (input) {
             case '..':
-                const db  = require('../models');
-                db.db.
-                // const db = require('../models/sql');
-                // db.sql.query('select * from student', function (err, result, fiels) {
-                //     if (err) throw err;
-                //     console.log(r);
-                //     output = {
-                //         type: 'text',
-                //         text: result
-                //     }
-                // });
+                const Sequelize = require('sequelize');
+                const { users } = require("../models");
+
+                (async () => {
+                    // 搜尋多個例項
+                    const user = await users.findAll()
+                    // 條件搜尋name = 'John Doe'
+                    // const user = await users.findByPk(1)
+                    
+                    console.log(user)
+                    output = {
+                        type: 'text',
+                        text: user+''
+                    }
+                    process.exit();
+                    })()
                 break;
             case '.':
                 output = lineNotify.test();

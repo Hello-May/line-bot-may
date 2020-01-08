@@ -20,48 +20,57 @@
 
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('heroku_4937b744ad5d721', 'bbc0599e0bd410', '36b45c49', {
-    host: 'us-cdbr-iron-east-05.cleardb.net',
-    port: 3306,
-    dialect: 'mysql',
-    operatorsAliases: false,
-    // logging: false,
+// const sequelize = new Sequelize('heroku_4937b744ad5d721', 'bbc0599e0bd410', '36b45c49', {
+//     host: 'us-cdbr-iron-east-05.cleardb.net',
+//     port: 3306,
+//     dialect: 'mysql',
+//     operatorsAliases: false,
+//     // logging: false,
 
-    pool: {
-        max: 5,
-        min: 0,
-        acquire: 30000,
-        idle: 10000
-    },
-});
+//     pool: {
+//         max: 5,
+//         min: 0,
+//         acquire: 30000,
+//         idle: 10000
+//     },
+// });
 
-sequelize
-    .authenticate()
-    .then(() => {
-        console.log('Connection has been established successfully.');
-        process.exit();
-    })
-    .catch(err => {
-        console.error('Unable to connect to the database:', err);
-    });
+// sequelize
+//     .authenticate()
+//     .then(() => {
+//         console.log('Connection has been established successfully.');
+//         process.exit();
+//     })
+//     .catch(err => {
+//         console.error('Unable to connect to the database:', err);
+//     });
 
-// const db  = require('../models');
+const db  = require('../models');
+const { users } = require("../models");
 
-// const Test = db.sequelize.define('test', {
+(async () => {
+    // 搜尋多個例項
+    const user = await users.findAll()
+    // 條件搜尋name = 'John Doe'
+    // const user = await users.findByPk(1)
+    
+    console.log(user)
+    
+    process.exit();
+    })()
+
+// const User = db.sequelize.define('users', {
 //     id: {
 //         type: Sequelize.STRING,
 //         primaryKey: true
 //     }
 // });
 
-// Test.sync({
-//     force:false});
-
-// Test.sync({
+// User.sync({
 //     force: true
 // }).then(() => {
 //     // Table created
-//     return Test.create({
+//     return User.create({
 //         id: '1'
 //     });
 // }).then(() => {
