@@ -58,6 +58,10 @@ app.get("/button", function (req, res) {
 // })
 
 const DelayedResponse = require('http-delayed-response');
+function verySlowFunction (callback) {
+  // let's do something that could take a while...
+  console.log('wait');
+}
 
 app.use(function (req, res) {
   var delayed = new DelayedResponse(req, res);
