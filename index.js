@@ -118,7 +118,7 @@ app.get("/button", function (req, res) {
 
 const DelayedResponse = require('http-delayed-response');
 
-app.post('/', lineBot.middleware(configBot), function (req, res) {
+app.post('/', lineBot.middleware(configBot), function (req, res,next) {
   function slowfunction() {
   return Promise
     .all(req.body.events.map(handleEvent))
