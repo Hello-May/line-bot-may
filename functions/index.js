@@ -13,6 +13,13 @@ const { users } = require("../models");
 
 var shutUp = null;
 
+const DelayedResponse = require('http-delayed-response');
+function verySlowFunction(callback) {
+    // let's do something that could take a while...
+    console.log('wait');
+}
+
+
 const textCommandSolver = (event) => {
     let input = event.message.text;
     let output;
@@ -27,6 +34,13 @@ const textCommandSolver = (event) => {
     } else {
         switch (input) {
             case '..':
+               
+                app.use(function (req, res) {
+                    var delayed = new DelayedResponse(req, res);
+                    // verySlowFunction can now run indefinitely
+                    verySlowFunction(delayed.start());
+                });
+
                 (async () => {
                     // 搜尋多個例項
                     const user = await users.findAll()
@@ -36,8 +50,7 @@ const textCommandSolver = (event) => {
                     console.log(user[0].id + '<-------------------')
                     output = {
                         type: 'text',
-                        text: ' 阿阿阿阿'
-                        // text: user[0].id + ' 阿阿阿阿'
+                        text: user[0].id + ' 阿阿阿阿'
                     }
                     process.exit();
                 })()
