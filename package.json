@@ -15,7 +15,9 @@
     "seeder": "node_modules/.bin/sequelize seed:create --name init-users",
     "seeder:prod": "node_modules/.bin/sequelize seed:create --name init-users --env production",
     "seed": "node_modules/.bin/sequelize db:seed:all",
-    "seed:prod": "node_modules/.bin/sequelize db:seed:all --env production"
+    "seed:prod": "node_modules/.bin/sequelize db:seed:all --env production",
+    "debug":"sequelize db:seed:all --debug",
+    "undo":"sequelize db:migrate:undo"
   },
   "author": "",
   "license": "ISC",

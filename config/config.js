@@ -8,6 +8,7 @@ module.exports = {
     "development": {
         "username": env.DB_USERNAME,
         "password": env.DB_PASSWORD,
+        // "logging": true,
         "database": env.DB_NAME,
         "host": env.DB_HOST,
         "port": env.DB_PORT,

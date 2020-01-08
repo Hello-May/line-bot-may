@@ -12,8 +12,8 @@ module.exports = {
       //   type: DataTypes.STRING,
       //   allowNull: false,
       // },
-      created_at: DataTypes.DATE,
-      updated_at: DataTypes.DATE,
+      createdAt: DataTypes.DATE,
+      updatedAt: DataTypes.DATE,
     });
     /*
       Add altering commands here.

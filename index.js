@@ -65,6 +65,11 @@ app.post('/', lineBot.middleware(configBot), function (req, res) {
 //       });
 // })
 
+// app.listen(process.env.PORT || 8080, function () {
+//   console.log('App now running on port', this.address().port);
+// });
+
+
 app.listen(process.env.PORT || port, function () {
   console.log('App now running on port', this.address().port);
 });

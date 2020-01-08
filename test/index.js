@@ -59,6 +59,10 @@ const { users } = require("../models");
     console.log(user[0])
     console.log('---------------------------------')
     console.log(user[0].id)
+    console.log('---------------------------------')
+    console.log(user[0].createdAt)
+    console.log('---------------------------------')
+    console.log(user[0].updatedAt)
         
     process.exit();
     })()
