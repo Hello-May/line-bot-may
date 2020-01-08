@@ -62,68 +62,72 @@ app.get("/button", function (req, res) {
 // });
 
 
-const extendTimeoutMiddleware = (req, res, next) => {
-  const space = ' ';
-  let isFinished = false;
-  let isDataSent = false;
+// const extendTimeoutMiddleware = (req, res, next) => {
+//   const space = ' ';
+//   let isFinished = false;
+//   let isDataSent = false;
 
-  // Only extend the timeout for API requests
-  if (!req.url.includes('/api')) {
-    next();
-    return;
-  }
+//   // Only extend the timeout for API requests
+//   if (!req.url.includes('/api')) {
+//     next();
+//     return;
+//   }
 
-  res.once('finish', () => {
-    isFinished = true;
-  });
+//   res.once('finish', () => {
+//     isFinished = true;
+//   });
 
-  res.once('end', () => {
-    isFinished = true;
-  });
+//   res.once('end', () => {
+//     isFinished = true;
+//   });
 
-  res.once('close', () => {
-    isFinished = true;
-  });
+//   res.once('close', () => {
+//     isFinished = true;
+//   });
 
-  res.on('data', (data) => {
-    // Look for something other than our blank space to indicate that real
-    // data is now being sent back to the client.
-    if (data !== space) {
-      isDataSent = true;
-    }
-  });
+//   res.on('data', (data) => {
+//     // Look for something other than our blank space to indicate that real
+//     // data is now being sent back to the client.
+//     if (data !== space) {
+//       isDataSent = true;
+//     }
+//   });
 
-  const waitAndSend = () => {
-    setTimeout(() => {
-      // If the response hasn't finished and hasn't sent any data back....
-      if (!isFinished && !isDataSent) {
-        // Need to write the status code/headers if they haven't been sent yet.
-        if (!res.headersSent) {
-          res.writeHead(202);
-        }
+//   const waitAndSend = () => {
+//     setTimeout(() => {
+//       // If the response hasn't finished and hasn't sent any data back....
+//       if (!isFinished && !isDataSent) {
+//         // Need to write the status code/headers if they haven't been sent yet.
+//         if (!res.headersSent) {
+//           res.writeHead(202);
+//         }
 
-        res.write(space);
+//         res.write(space);
 
-        // Wait another 15 seconds
-        waitAndSend();
-      }
-    }, 15000);
-  };
+//         // Wait another 15 seconds
+//         waitAndSend();
+//       }
+//     }, 15000);
+//   };
 
-  waitAndSend();
-  next();
-};
+//   waitAndSend();
+//   next();
+// };
 
-app.use(extendTimeoutMiddleware);
+// app.use(extendTimeoutMiddleware);
 
 const DelayedResponse = require('http-delayed-response');
 
 app.post('/', lineBot.middleware(configBot), function (req, res) {
-  Promise
+  function slowfunction() {
+  return Promise
     .all(req.body.events.map(handleEvent))
     .then(function (result) {
       res.json(result);
     });
+  }
+    const delayed = new DelayedResponse(req, res, next);
+    slowfunction(delayed.start(20 * 1000, 20 * 1000));
 });
 
 app.listen(process.env.PORT || port, function () {
