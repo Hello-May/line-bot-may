@@ -9,6 +9,7 @@ const db = require('../test/sql');
 const main = require('./main');
 const pause = require('./pause');
 const richMenu = require('./main/richMenu');
+const { users } = require("../models");
 
 var shutUp = null;
 
@@ -26,7 +27,7 @@ const textCommandSolver = (event) => {
     } else {
         switch (input) {
             case '..':
-                const { users } = require("../models");
+                
                 // const user
                 (async () => {
                     // 搜尋多個例項
