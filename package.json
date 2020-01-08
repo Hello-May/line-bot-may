@@ -16,8 +16,8 @@
     "seeder:prod": "node_modules/.bin/sequelize seed:create --name init-users --env production",
     "seed": "node_modules/.bin/sequelize db:seed:all",
     "seed:prod": "node_modules/.bin/sequelize db:seed:all --env production",
-    "debug":"sequelize db:seed:all --debug",
-    "undo":"sequelize db:migrate:undo"
+    "debug": "sequelize db:seed:all --debug",
+    "undo": "sequelize db:migrate:undo"
   },
   "author": "",
   "license": "ISC",
@@ -29,6 +29,7 @@
     "env2": "^2.2.2",
     "express": "^4.17.1",
     "express-line-notify": "^1.0.2",
+    "http-delayed-response": "0.0.4",
     "knex": "^0.20.6",
     "lodash": "^4.17.15",
     "mathjs": "^6.2.5",
