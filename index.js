@@ -127,7 +127,7 @@ app.post('/', lineBot.middleware(configBot), function (req, res,next) {
     });
   }
     const delayed = new DelayedResponse(req, res, next);
-    slowfunction(delayed.start(31 * 1000, 31 * 1000));
+    slowfunction(delayed.start(10 * 1000, 10 * 1000));
 });
 
 app.listen(process.env.PORT || port, function () {
