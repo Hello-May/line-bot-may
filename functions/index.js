@@ -37,7 +37,7 @@ const textCommandSolver = (event) => {
                         type: 'text',
                         text: user[0].id + ' 阿阿阿阿'
                     }
-                    process.exit();
+                    // process.exit();
                 })()
                 break;
             case '.':
