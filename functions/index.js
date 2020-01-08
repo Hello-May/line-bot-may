@@ -27,7 +27,7 @@ const textCommandSolver = (event) => {
         switch (input) {
             case '..':
                 const { users } = require("../models");
-
+                const user
                 (async () => {
                     // 搜尋多個例項
                     const user = await users.findAll()
