@@ -4,21 +4,42 @@ const clientBot = new lineBot.Client(configBot);
 const lineNotify = require('./notify');
 const math = require('mathjs');
 const path = require('path');
-const db = require('../test/sql');
 
 const main = require('./main');
 const pause = require('./pause');
 const richMenu = require('./main/richMenu');
-const { users } = require("../models");
 
 var shutUp = null;
 
-const app = express();
-const DelayedResponse = require('http-delayed-response');
-function verySlowFunction(callback) {
-    // let's do something that could take a while...
-    console.log('wait');
-}
+const Sequelize = require('sequelize');
+
+const sequelize = new Sequelize('heroku_4937b744ad5d721', 'bbc0599e0bd410', '36b45c49', {
+    host: 'us-cdbr-iron-east-05.cleardb.net',
+    port: 3306,
+    dialect: 'mysql',
+    operatorsAliases: false,
+    // logging: false,
+
+    pool: {
+        max: 5,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
+    },
+});
+
+sequelize
+    .authenticate()
+    .then(() => {
+        console.log('Connection has been established successfully.');
+        process.exit();
+    })
+    .catch(err => {
+        console.error('Unable to connect to the database:', err);
+    });
+
+    const db  = require('../models');
+    const { users } = require("../models");
 
 
 const textCommandSolver = (event) => {
@@ -35,13 +56,6 @@ const textCommandSolver = (event) => {
     } else {
         switch (input) {
             case '..':
-               
-                app.use(function (req, res) {
-                    var delayed = new DelayedResponse(req, res);
-                    // verySlowFunction can now run indefinitely
-                    verySlowFunction(delayed.start());
-                });
-
                 (async () => {
                     // 搜尋多個例項
                     const user = await users.findAll()
