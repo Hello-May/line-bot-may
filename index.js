@@ -69,15 +69,6 @@ app.get("/button", function (req, res) {
 //   verySlowFunction(delayed.start());
 // });
 
-app.use(function(req, res, next) {
-  var startTime = Date.now();
-
-  res.on('close', function() {
-      var duration = Date.now() - startTime;
-      console.error('response closed duration=', duration + 'ms', 'statusCode=', res.statusCode, req.method, req.url, 'headers=', req.headers, 'body=', req.body);
-  });
-  next();
-});
 
 app.post('/', lineBot.middleware(configBot), function (req, res) {
 Promise
