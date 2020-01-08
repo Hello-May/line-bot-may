@@ -11,6 +11,17 @@ const pause = require('./pause');
 const richMenu = require('./main/richMenu');
 const { users } = require("../models");
 
+(async () => {
+    // 搜尋多個例項
+    const user = await users.findAll()
+    // 條件搜尋name = 'John Doe'
+    // const user = await users.findByPk(1)
+
+    console.log(user[0].id + '<-------------------')
+        var r =  user[0].id + ' 阿阿阿阿'
+    process.exit();
+})()
+
 var shutUp = null;
 
 const textCommandSolver = (event) => {
@@ -27,19 +38,10 @@ const textCommandSolver = (event) => {
     } else {
         switch (input) {
             case '..':
-                (async () => {
-                    // 搜尋多個例項
-                    const user = await users.findAll()
-                    // 條件搜尋name = 'John Doe'
-                    // const user = await users.findByPk(1)
-
-                    console.log(user[0].id + '<-------------------')
-                    output = {
-                        type: 'text',
-                        text: user[0].id + ' 阿阿阿阿'
-                    }
-                    process.exit();
-                })()
+                output = {
+                    type: 'text',
+                    text: r 
+                }
                 break;
             case '.':
                 output = lineNotify.test();
