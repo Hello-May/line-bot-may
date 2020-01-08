@@ -11,7 +11,7 @@ const richMenu = require('./main/richMenu');
 
 var shutUp = null;
 
-const textCommandSolver = (event) => {
+const textCommandSolver = async (event) => {
     let input = event.message.text;
     let output;
     if (shutUp !== null && input !== '呼叫' && shutUp) {
@@ -26,19 +26,16 @@ const textCommandSolver = (event) => {
         switch (input) {
             case '..':
                 const { users } = require("../models");
-                (async () => {
-                    // 搜尋多個例項
-                    const user = await users.findAll()
-                    // 條件搜尋name = 'John Doe'
-                    // const user = await users.findByPk(1)
+                // 搜尋多個例項
+                const user = await users.findAll()
+                // 條件搜尋name = 'John Doe'
+                // const user = await users.findByPk(1)
 
-                    console.log(user[0].id + '<-------------------')
-                    output = {
-                        type: 'text',
-                        text: user[0].id + ' 阿阿阿阿'
-                    }
-                    // process.exit();
-                })()
+                console.log(user[0].id + '<-------------------')
+                output = {
+                    type: 'text',
+                    text: user[0].id + ' 阿阿阿阿'
+                }
                 break;
             case '.':
                 output = lineNotify.test();
