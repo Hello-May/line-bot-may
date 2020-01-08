@@ -47,14 +47,6 @@ app.get("/button", function (req, res) {
   });
 });
 
-app.post('/', lineBot.middleware(configBot), function (req, res) {
-  Promise
-    .all(req.body.events.map(handleEvent))
-    .then(function (result) {
-      res.json(result);
-    });
-});
-
 // app.use(bodyparser.json())
 // app.post('/', function(req, res) {
 //   // res.json(handleEvent(req.body.event))
@@ -68,8 +60,6 @@ app.post('/', lineBot.middleware(configBot), function (req, res) {
 // app.listen(process.env.PORT || 8080, function () {
 //   console.log('App now running on port', this.address().port);
 // });
-
-
 
 
 const extendTimeoutMiddleware = (req, res, next) => {
@@ -125,6 +115,16 @@ const extendTimeoutMiddleware = (req, res, next) => {
 };
 
 app.use(extendTimeoutMiddleware);
+
+const DelayedResponse = require('http-delayed-response');
+
+app.post('/', lineBot.middleware(configBot), function (req, res) {
+  Promise
+    .all(req.body.events.map(handleEvent))
+    .then(function (result) {
+      res.json(result);
+    });
+});
 
 app.listen(process.env.PORT || port, function () {
   console.log('App now running on port', this.address().port);
