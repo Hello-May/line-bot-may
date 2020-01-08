@@ -38,7 +38,7 @@ const textCommandSolver = (event) => {
                     console.log(user)
                     output = {
                         type: 'text',
-                        text: user+''
+                        text: user[0].id+' 阿阿阿阿'
                     }
                     process.exit();
                     })()

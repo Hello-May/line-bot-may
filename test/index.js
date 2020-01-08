@@ -55,7 +55,11 @@ const { users } = require("../models");
     // const user = await users.findByPk(1)
     
     console.log(user)
-    
+    console.log('---------------------------------')
+    console.log(user[0])
+    console.log('---------------------------------')
+    console.log(user[0].id)
+        
     process.exit();
     })()
 
