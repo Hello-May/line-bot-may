@@ -57,17 +57,72 @@ app.get("/button", function (req, res) {
 //       });
 // })
 
-const DelayedResponse = require('http-delayed-response');
-function verySlowFunction (callback) {
-  // let's do something that could take a while...
-  console.log('wait');
-}
+// const DelayedResponse = require('http-delayed-response');
+// function verySlowFunction (callback) {
+//   // let's do something that could take a while...
+//   console.log('wait');
+// }
 
-app.use(function (req, res) {
-  var delayed = new DelayedResponse(req, res);
-  // verySlowFunction can now run indefinitely
-  verySlowFunction(delayed.start());
-});
+// app.use(function (req, res) {
+//   var delayed = new DelayedResponse(req, res);
+//   // verySlowFunction can now run indefinitely
+//   verySlowFunction(delayed.start());
+// });
+
+
+const extendTimeoutMiddleware = (req, res, next) => {
+  const space = ' ';
+  let isFinished = false;
+  let isDataSent = false;
+
+  // Only extend the timeout for API requests
+  if (!req.url.includes('/api')) {
+    next();
+    return;
+  }
+
+  res.once('finish', () => {
+    isFinished = true;
+  });
+
+  res.once('end', () => {
+    isFinished = true;
+  });
+
+  res.once('close', () => {
+    isFinished = true;
+  });
+
+  res.on('data', (data) => {
+    // Look for something other than our blank space to indicate that real
+    // data is now being sent back to the client.
+    if (data !== space) {
+      isDataSent = true;
+    }
+  });
+
+  const waitAndSend = () => {
+    setTimeout(() => {
+      // If the response hasn't finished and hasn't sent any data back....
+      if (!isFinished && !isDataSent) {
+        // Need to write the status code/headers if they haven't been sent yet.
+        if (!res.headersSent) {
+          res.writeHead(202);
+        }
+
+        res.write(space);
+
+        // Wait another 15 seconds
+        waitAndSend();
+      }
+    }, 15000);
+  };
+
+  waitAndSend();
+  next();
+};
+
+app.use(extendTimeoutMiddleware);
 
 
 app.post('/', lineBot.middleware(configBot), function (req, res) {
