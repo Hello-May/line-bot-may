@@ -48,13 +48,17 @@ app.get("/button", function (req, res) {
   });
 });
 
-app.get("/regisToken", (req, res, next) => {
+app.get("/regisToken", async (req, res, next) => {
   let code = req.query.code;
   res.sendFile(path.resolve('./functions/notify/res.html'), function (err) {
     if (err) res.send(404);
-     let token = lineNotify.getToken(code);
-     console.log(token+'<---------------------------------outside--');
   });
+  try{
+    let token = await lineNotify.getToken(code);
+    console.log(token + '<---------------------------------outside--');
+  }catch(err){
+    console.log(err);
+  }
 });
 
 // app.use(bodyparser.json())
@@ -136,7 +140,7 @@ app.get("/regisToken", (req, res, next) => {
 
 
 app.post('/', lineBot.middleware(configBot), function (req, res) {
-Promise
+  Promise
     .all(req.body.events.map(handleEvent))
     .then(function (result) {
       res.json(result);

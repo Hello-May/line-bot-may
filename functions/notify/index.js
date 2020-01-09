@@ -41,25 +41,27 @@ const test = () => {
 }
 
 const getToken = (code) => {
-    var unirest = require('unirest');
-    var req = unirest('POST', 'https://notify-bot.line.me/oauth/token')
-        .headers({
-            'Content-Type': 'multipart/form-data; boundary=--------------------------981829256093153292111726'
-        })
-        .field('grant_type', 'authorization_code')
-        .field('code', code)
-        .field('redirect_uri', 'https://linebot-may.herokuapp.com/regisToken')
-        .field('client_id', '3qZCtZ2rmMdUcDa3qhFfyM')
-        .field('client_secret', 'GTFK3GaIa77WzB08gS9RH4446gpoZFRKd3YEineEJES')
-        .end(function (res) {
-            if (res.error) throw new Error(res.error);
-            console.log(res.raw_body);
-            let response = JSON.parse(res.raw_body);
-            let token = response.access_token;
-            console.log(response.message+ '<--------------test---');
-            console.log(token+ '<--------------inside---');
-            return token;       
-        });
+    return new Promise((resolve,reject) => {
+        var unirest = require('unirest');
+        var req = unirest('POST', 'https://notify-bot.line.me/oauth/token')
+            .headers({
+                'Content-Type': 'multipart/form-data; boundary=--------------------------981829256093153292111726'
+            })
+            .field('grant_type', 'authorization_code')
+            .field('code', code)
+            .field('redirect_uri', 'https://linebot-may.herokuapp.com/regisToken')
+            .field('client_id', '3qZCtZ2rmMdUcDa3qhFfyM')
+            .field('client_secret', 'GTFK3GaIa77WzB08gS9RH4446gpoZFRKd3YEineEJES')
+            .end(function (res) {
+                if (res.error) return reject(new Error(res.error));
+                console.log(res.raw_body);
+                let response = JSON.parse(res.raw_body);
+                let token = response.access_token;
+                console.log(response.message+ '<--------------test---');
+                console.log(token+ '<--------------inside---');
+                return resolve(token);       
+            });
+    });
 }
 
 const authorize = () => {
