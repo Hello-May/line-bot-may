@@ -49,7 +49,7 @@ app.get("/button", function (req, res) {
 
 app.get("/regisToken", (req, res, next) => {
   let token = req.params.code;
-  
+  console.log(token+'<-----------------------------------');
 })
 
 // app.use(bodyparser.json())
