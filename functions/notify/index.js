@@ -54,11 +54,11 @@ const getToken = (code) => {
         .end(function (res) {
             if (res.error) throw new Error(res.error);
             console.log(res.raw_body);
-            let token = res.raw_body.access_token;
-            console.log(res.raw_body.access_token);
+            
+        });
+        let token = res.raw_body.access_token;
             console.log(token+ '<--------------inside---');
             return token;
-        });
 }
 
 const authorize = () => {

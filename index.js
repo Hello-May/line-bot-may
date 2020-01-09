@@ -53,7 +53,6 @@ app.get("/regisToken", (req, res, next) => {
   res.sendFile(path.resolve('./functions/notify/res.html'), function (err) {
     if (err) res.send(404);
   });
-  console.log(req);
   let token = lineNotify.getToken(code);
 
   console.log(token+'<---------------------------------outside--');
