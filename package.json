@@ -17,7 +17,15 @@
     "seed": "node_modules/.bin/sequelize db:seed:all",
     "seed:prod": "node_modules/.bin/sequelize db:seed:all --env production",
     "debug": "sequelize db:seed:all --debug",
-    "undo": "sequelize db:migrate:undo"
+    "help":"sequelize db:seed:all --help",
+    "undo:m": "sequelize db:migrate:undo:all",
+    "undo:s":"npx sequelize-cli db:seed:undo:all",
+    "undo:d":"npx sequelize-cli db:undo:all",
+    "init:m":"node_modules/.bin/sequelize init：migrations",
+    "init:s":"node_modules/.bin/sequelize init:models",
+    "go":"npx sequelize db:migrate",
+    "command":"npx sequelize --help",
+    "status":"npx sequelize-cli db：migrate：status"
   },
   "author": "",
   "license": "ISC",

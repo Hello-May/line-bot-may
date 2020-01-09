@@ -45,41 +45,48 @@ sequelize
         console.error('Unable to connect to the database:', err);
     });
 
-const db  = require('../models');
+const db = require('../models');
 const { users } = require("../models");
 
-(async () => {
-    // 搜尋多個例項
-    const user = await users.findAll()
-    // 條件搜尋name = 'John Doe'
-    // const user = await users.findByPk(1)
-    
-    console.log(user)
-    console.log('---------------------------------')
-    console.log(user[0])
-    console.log('---------------------------------')
-    console.log(user[0].id)
-    console.log('---------------------------------')
-    console.log(user[0].createdAt)
-    console.log('---------------------------------')
-    console.log(user[0].updatedAt)
-        
-    process.exit();
-    })()
+// (async () => {
+//     // 搜尋多個例項
+//     const user = await users.findAll()
+//     // 條件搜尋name = 'John Doe'
+//     // const user = await users.findByPk(1)
 
-// const User = db.sequelize.define('users', {
-//     id: {
-//         type: Sequelize.STRING,
-//         primaryKey: true
-//     }
-// });
+//     console.log(user)
+//     console.log('---------------------------------')
+//     console.log(user[0])
+//     console.log('---------------------------------')
+//     console.log(user[0].id)
+//     console.log('---------------------------------')
+//     console.log(user[0].createdAt)
+//     console.log('---------------------------------')
+//     console.log(user[0].updatedAt)
+
+//     process.exit();
+// })()
+
+const User = db.sequelize.define('users', {
+    userId: {
+        type: Sequelize.STRING,
+        autoIncrement: true,
+        primaryKey: true
+    }
+});
+
+User.create({
+    force: true,
+    userId: 'U68482'
+});
+
 
 // User.sync({
 //     force: true
 // }).then(() => {
 //     // Table created
 //     return User.create({
-//         id: '1'
+//         id: '5'
 //     });
 // }).then(() => {
 //     process.exit()

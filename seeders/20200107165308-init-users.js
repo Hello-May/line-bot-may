@@ -2,23 +2,29 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('users', [{
-      id: '1',
-      // isBetaMember: false
+    return queryInterface.bulkInsert('users', [
+      {
+        userId: 'U56556',
+        status:false,
+        // isBetaMember: false
         createdAt: new Date(),
         updatedAt: new Date()
-    },
-    {
-      id: '2',
-      // isBetaMember: false
+      },
+      {
+        userId: 'U51651',
+        status:false,
+        // isBetaMember: false
         createdAt: new Date(),
         updatedAt: new Date()
-    },{
-      id: '3',
-      // isBetaMember: false
+      },
+      {
+        userId: 'U51551',
+        status:false,
+        // isBetaMember: false
         createdAt: new Date(),
         updatedAt: new Date()
-    }], {});
+      }
+    ]);
     /*
       Add altering commands here.
       Return a promise to correctly handle asynchronicity.

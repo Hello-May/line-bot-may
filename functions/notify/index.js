@@ -56,7 +56,7 @@ const authorize = () => {
                         "action": {
                             "type": "uri",
                             "label": "按此連動 Line Notify",
-                            "uri": "line://app/1653656986-EoA24gla"
+                            "uri": "line://app/1653656986-Jq9lxgNw"
                         }
                     }
                 ]

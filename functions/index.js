@@ -24,14 +24,34 @@ const textCommandSolver = async (event) => {
         }
     } else {
         switch (input) {
+            case '+':
+                const User = db.sequelize.define('users', {
+                    id: {
+                        type: Sequelize.STRING,
+                        autoIncrement: true,
+                        primaryKey: true
+                    },
+                    createdAt: DataTypes.DATE,
+                    updatedAt: DataTypes.DATE,
+                });
+                
+                User.sync({
+                    force: true
+                }).then(() => {
+                    // Table created
+                    return User.create({
+                        id: '5'
+                    });
+                }).then(() => {
+                    process.exit()
+                })
+                break;
             case '..':
                 const { users } = require("../models");
                 // 搜尋多個例項
                 const user = await users.findAll()
                 // 條件搜尋name = 'John Doe'
                 // const user = await users.findByPk(1)
-
-                console.log(user[0].id + '<-------------------')
                 output = {
                     type: 'text',
                     text: user[0].id + ' 阿阿阿阿'
