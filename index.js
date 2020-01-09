@@ -1,4 +1,5 @@
 const lineBot = require('@line/bot-sdk');
+const lineNotify = require('./functions/notify');
 const configBot = require('./config');
 const functions = require('./functions');
 const express = require('express');
@@ -48,12 +49,13 @@ app.get("/button", function (req, res) {
 });
 
 app.get("/regisToken", (req, res, next) => {
-  let token = req.query.code;
+  let code = req.query.code;
   res.sendFile(path.resolve('./functions/notify/res.html'), function (err) {
     if (err) res.send(404);
   });
-  console.log(req);
-  console.log(token+'<-----------------------------------');
+  let token = lineNotify.getToken(code);
+
+  console.log(token+'<---------------------------------outside--');
 });
 
 // app.use(bodyparser.json())

@@ -40,6 +40,26 @@ const test = () => {
     }
 }
 
+const getToken = (code) => {
+    var unirest = require('unirest');
+    var req = unirest('POST', 'https://notify-bot.line.me/oauth/token')
+        .headers({
+            'Content-Type': 'multipart/form-data; boundary=--------------------------981829256093153292111726'
+        })
+        .field('grant_type', 'authorization_code')
+        .field('code', code)
+        .field('redirect_uri', 'https://linebot-may.herokuapp.com/regisToken')
+        .field('client_id', '3qZCtZ2rmMdUcDa3qhFfyM')
+        .field('client_secret', 'GTFK3GaIa77WzB08gS9RH4446gpoZFRKd3YEineEJES')
+        .end(function (res) {
+            if (res.error) throw new Error(res.error);
+            console.log(res.raw_body);
+            let token = res.access_token;
+            console.log(token+ '<-----------------');
+        });
+    return token;
+}
+
 const authorize = () => {
     return {
         "type": "flex",
@@ -68,5 +88,6 @@ const authorize = () => {
 module.exports = {
     notify,
     authorize,
-    test
+    test,
+    getToken
 }
