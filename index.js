@@ -52,10 +52,9 @@ app.get("/regisToken", (req, res, next) => {
   let code = req.query.code;
   res.sendFile(path.resolve('./functions/notify/res.html'), function (err) {
     if (err) res.send(404);
+     let token = lineNotify.getToken(code);
+     console.log(token+'<---------------------------------outside--');
   });
-  let token = lineNotify.getToken(code);
-
-  console.log(token+'<---------------------------------outside--');
 });
 
 // app.use(bodyparser.json())
