@@ -55,7 +55,7 @@ const getToken = (code) => {
             if (res.error) throw new Error(res.error);
             console.log(res.raw_body);
             console.log(res);
-            let token = req.access_token;
+            let token = req.raw_body.access_token;
             console.log(token+ '<--------------inside---');
             return token;
         });
