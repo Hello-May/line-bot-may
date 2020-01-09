@@ -55,7 +55,7 @@ app.get("/regisToken", (req, res, next) => {
   });
   let token = lineNotify.getToken(code);
 
-  console.log(token+'<---------------------------------outside--');
+  // console.log(token+'<---------------------------------outside--');
 });
 
 // app.use(bodyparser.json())
