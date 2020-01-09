@@ -56,8 +56,8 @@ const getToken = (code) => {
             console.log(res.raw_body);
             let token = res.access_token;
             console.log(token+ '<-----------------');
+            return token;
         });
-    return token;
 }
 
 const authorize = () => {
