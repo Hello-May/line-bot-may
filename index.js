@@ -49,9 +49,11 @@ app.get("/button", function (req, res) {
 
 app.get("/regisToken", (req, res, next) => {
   let token = req.params.code;
-  res.sendFile('./functions/notify/res.html');
+  res.sendFile(path.resolve('./functions/notify/res.html'), function (err) {
+    if (err) res.send(404);
+  });
   console.log(token+'<-----------------------------------');
-})
+});
 
 // app.use(bodyparser.json())
 // app.post('/', function(req, res) {
