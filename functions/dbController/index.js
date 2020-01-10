@@ -93,10 +93,10 @@ const getToken = async (event) => {
     // return new Promise( async (resolve, reject) => {
         switch (event.source.type) {
             case 'user':
-                let user = await users.findOne({ where: { userId: event.source.userId } });
+                let user = await users.findAll({ where: { userId: event.source.userId } });
                 return user[0].token;
             case 'group':
-                let group = await groups.findOne({ where: { groupId: event.source.groupId } });
+                let group = await groups.findAll({ where: { groupId: event.source.groupId } });
                 return group[0].token;
         }
     // });
