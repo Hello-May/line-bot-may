@@ -46,17 +46,17 @@ const textCommandSolver = async (event) => {
                     process.exit()
                 })
                 break;
-            case '..':
-                const { users } = require("../models");
-                // 搜尋多個例項
-                const user = await users.findAll()
-                // 條件搜尋name = 'John Doe'
-                // const user = await users.findByPk(1)
-                output = {
-                    type: 'text',
-                    text: (user[0].userId === undefined ? '沒東西啦~' : user[0].userId) + ' 阿阿阿阿'
-                }
-                break;
+            // case '..':
+            //     const { users } = require("../models");
+            //     // 搜尋多個例項
+            //     const user = await users.findAll()
+            //     // 條件搜尋name = 'John Doe'
+            //     // const user = await users.findByPk(1)
+            //     output = {
+            //         type: 'text',
+            //         text: (user[0].userId === undefined ? '沒東西啦~' : user[0].userId) + ' 阿阿阿阿'
+            //     }
+            //     break;
             case '.':
                 output = lineNotify.test();
                 break;
@@ -109,6 +109,7 @@ const textCommandSolver = async (event) => {
         }
     }
     lineNotify.notify({
+        accessToken:'fEIHxeKHz3aftAMHNBGT3gXEqV4h72es0IWfw0HxDH4',
         type: 'message',
         text: input
     });
