@@ -1,14 +1,17 @@
+const db = require('../models');
+const { users } = require("../models");
+const User = db.users;
+const { groups } = require("../models");
+const Group = db.groups;
+
 const saveId = (event) => {
     let id;
     let tmpId;
-    const db = require('./models');
     switch (event.source.type) {
         case 'user':
-            id = event.source.userId;
-            const { users } = require("./models");
+            id = event.source.userId;       
             tmpId = await users.findAll({ where: { userId: id } });
-            if (tmpId == '') {
-                const User = db.users;
+            if (tmpId == '') {           
                 User.create({
                     force: true,
                     userId: id,
@@ -21,11 +24,9 @@ const saveId = (event) => {
             }
             break;
         case 'group':
-            id = event.source.groupId;
-            const { groups } = require("./models");
+            id = event.source.groupId;     
             tmpId = await groups.findAll({ where: { groupId: id } });
             if (tmpId == '') {
-                const Group = db.groups;
                 Group.create({
                     force: true,
                     groupId: id,
