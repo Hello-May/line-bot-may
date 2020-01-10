@@ -28,12 +28,13 @@ async function handleEvent(event) {
     case 'unfollow':
     case 'join':
       let id;
+      let tmpId;
       switch (event.source.type) {
         case 'user':
           id = event.source.userId;
-          const User = db.users;
-          let data = await users.findAll({ where: { id: id } });
+          tmpId = await users.findAll({ where: { id: id } });
           if (data != '') {
+            const User = db.users;
             User.create({
               force: true,
               userId: id,
@@ -47,9 +48,9 @@ async function handleEvent(event) {
           break;
         case 'group':
           id = event.source.groupId;
-          const Group = db.groups;
-          let data = await groups.findAll({ where: { id: id } });
+          tmpId = await groups.findAll({ where: { id: id } });
           if (data != '') {
+            const Group = db.groups;
             Group.create({
               force: true,
               userId: id,
