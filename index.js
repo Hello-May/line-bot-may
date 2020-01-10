@@ -34,7 +34,7 @@ async function handleEvent(event) {
           id = event.source.userId;
           const { users } = require("./models");
           tmpId = await users.findAll({ where: { userId: id } });
-          if (data != '') {
+          if (tmpId != '') {
             const User = db.users;
             User.create({
               force: true,
@@ -51,7 +51,7 @@ async function handleEvent(event) {
           id = event.source.groupId;
           const { groups } = require("./models");
           tmpId = await groups.findAll({ where: { groupId: id } });
-          if (data != '') {
+          if (tmpId != '') {
             const Group = db.groups;
             Group.create({
               force: true,
