@@ -59,8 +59,6 @@ app.get("/regisToken", async (req, res, next) => {
   let code = req.query.code;
   res.sendFile(path.resolve('./functions/notify/res.html'), function (err) {
     if (err) res.send(404);
-    console.log(req);
-    console.log(res);
   });
   // lineNotify.getToken(code)
   // .then((token) => {
@@ -70,7 +68,6 @@ app.get("/regisToken", async (req, res, next) => {
   try {
     let token = await lineNotify.getToken(code);
     dbController.saveToken(token);
-    // console.log(token + '<---------------------------------outside--');
   } catch (err) {
     console.log(err);
   }

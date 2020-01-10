@@ -20,8 +20,6 @@ const saveTmpId = (event) => {
             tmpId = event.source.groupId;
             break;
     }
-    console.log('save type: '+type)
-    console.log('save tmpId: '+tmpId)
 }
 
 const saveId = async (event) => {
@@ -73,9 +71,6 @@ const checkId = (event) => {
 }
 
 const saveToken = async (token) => {
-    // let id;
-    console.log('use type: '+type)
-    console.log('use tmpId: '+tmpId)
     let judge;
     switch (type) {
         case 'user':
@@ -94,8 +89,20 @@ const saveToken = async (token) => {
     // });
 }
 
+const getToken = async (event) => {
+    switch (type) {
+        case 'user':
+            user = await groups.findAll({ where: { userId: event.source.userId } });
+            return user.token;
+        case 'group':
+            group = await groups.findAll({ where: { groupId: event.source.groupId } });
+            return group.token;
+    }
+}
+
 module.exports = {
     saveId,
     saveToken,
-    saveTmpId
+    saveTmpId,
+    getToken
 }

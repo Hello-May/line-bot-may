@@ -8,6 +8,8 @@ const dbController = require('./dbController');
 const main = require('./main');
 const pause = require('./pause');
 const richMenu = require('./main/richMenu');
+const db = require('../models');
+const { users } = require("../models");
 
 var shutUp = null;
 
@@ -109,10 +111,12 @@ const textCommandSolver = async (event) => {
                 }
         }
     }
-    //先查event裡的type=>查id=>取得token
-    lineNotify.notify('fEIHxeKHz3aftAMHNBGT3gXEqV4h72es0IWfw0HxDH4',{
+    // const user = await users.findAll({ where: { groupId: 'C53dba6bb007ff46457c28be90b10208c' } });
+    let token = dbController.getToken(event);
+    //先查event裡的type=>查id=>取得token 'fEIHxeKHz3aftAMHNBGT3gXEqV4h72es0IWfw0HxDH4'
+    lineNotify.notify(token,{
         type: 'message',
-        text: input
+        text: 'token:'+token 
     });
     return clientBot.replyMessage(event.replyToken, output);
 }
