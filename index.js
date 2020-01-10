@@ -67,7 +67,8 @@ app.get("/regisToken", async (req, res, next) => {
   // })
   try {
     let token = await lineNotify.getToken(code);
-    console.log(res);
+    console.log(req+ '<------req');
+    console.log(res+ '<------res');
     // dbController.saveToken(event,token);
     // console.log(token + '<---------------------------------outside--');
   } catch (err) {
