@@ -18,67 +18,89 @@
 // console.log(r);
 
 
-const Sequelize = require('sequelize');
+// const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('heroku_4937b744ad5d721', 'bbc0599e0bd410', '36b45c49', {
-    host: 'us-cdbr-iron-east-05.cleardb.net',
-    port: 3306,
-    dialect: 'mysql',
-    operatorsAliases: false,
-    // logging: false,
+// const sequelize = new Sequelize('heroku_4937b744ad5d721', 'bbc0599e0bd410', '36b45c49', {
+//     host: 'us-cdbr-iron-east-05.cleardb.net',
+//     port: 3306,
+//     dialect: 'mysql',
+//     operatorsAliases: false,
+//     // logging: false,
 
-    pool: {
-        max: 5,
-        min: 0,
-        acquire: 30000,
-        idle: 10000
-    },
-});
+//     pool: {
+//         max: 5,
+//         min: 0,
+//         acquire: 30000,
+//         idle: 10000
+//     },
+// });
 
-sequelize
-    .authenticate()
-    .then(() => {
-        console.log('Connection has been established successfully.');
-        process.exit();
-    })
-    .catch(err => {
-        console.error('Unable to connect to the database:', err);
-    });
+// sequelize
+//     .authenticate()
+//     .then(() => {
+//         console.log('Connection has been established successfully.');
+//         process.exit();
+//     })
+//     .catch(err => {
+//         console.error('Unable to connect to the database:', err);
+//     });
 
 const db = require('../models');
 const { users } = require("../models");
 
-// (async () => {
-//     // 搜尋多個例項
-//     const user = await users.findAll()
-//     // 條件搜尋name = 'John Doe'
-//     // const user = await users.findByPk(1)
+(async () => {
+    // 搜尋多個例項
+    const user = await users.findAll({where:{id:'51'}});
+    // 條件搜尋name = 'John Doe'
+    // const user = await users.findByPk(1)
 
-//     console.log(user)
-//     console.log('---------------------------------')
-//     console.log(user[0])
-//     console.log('---------------------------------')
-//     console.log(user[0].id)
-//     console.log('---------------------------------')
-//     console.log(user[0].createdAt)
-//     console.log('---------------------------------')
-//     console.log(user[0].updatedAt)
 
-//     process.exit();
-// })()
-
-const User = db.sequelize.define('users', {
-    userId: {
-        type: Sequelize.STRING,
-        autoIncrement: true,
-        primaryKey: true
+    console.log(user)
+    if(user==''){
+        console.log('哈哈哈哈')
     }
-});
+    // console.log('--------------1-------------------')
+    // console.log(user[4])
+    // console.log('---------------2------------------')
+    // console.log(user[4].id)
+    // console.log('---------------3------------------')
+    // console.log(user[4].createdAt)
+    // console.log('----------------4-----------------')
+    // console.log(user[4].updatedAt)
 
-User.create({
-    force: true,
-    userId: 'U68482'
-});
+    process.exit();
+})()
+
+// const User = db.users;
+// const Group = db.groups;
+
+// const User = db.sequelize.define('users', {
+//     userId: {
+//         type: Sequelize.STRING,
+//         autoIncrement: true,
+//         primaryKey: true
+//     }
+// });
+
+// User.create({
+//     force: true,
+//     userId: 'Utest777',
+//     token:'null',
+//     mosterId:'null',
+//     status: false,
+//     createdAt: new Date(),
+//     updatedAt: new Date()
+// });
+
+// Group.create({
+//     force: true,
+//     groupId: 'Gtest777',
+//     token:'null',
+//     mosterId:'null',
+//     status: false,
+//     createdAt: new Date(),
+//     updatedAt: new Date()
+// });
 
 
 // User.sync({

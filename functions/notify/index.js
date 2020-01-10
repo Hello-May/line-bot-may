@@ -57,8 +57,6 @@ const getToken = (code) => {
                 console.log(res.raw_body);
                 let response = JSON.parse(res.raw_body);
                 let token = response.access_token;
-                console.log(response.message+ '<--------------test---');
-                console.log(token+ '<--------------inside---');
                 return resolve(token);       
             });
     });

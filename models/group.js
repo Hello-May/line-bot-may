@@ -1,11 +1,11 @@
 module.exports = (sequelize, DataTypes) => sequelize.define(
-    'users', {
+    'groups', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         allowNull: false
     },
-    userId: {
+    groupId: {
         type: DataTypes.STRING,
         allowNull: false,
         primaryKey: true
@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => sequelize.define(
         allowNull: false,
     }
 }, {
-    tableName: 'users',
+    tableName: 'groups',
     // 以下兩個屬性是針對createAt、updateAt這兩個預設屬性的，timestamps是不使用，而underscored則是將createAt轉化為create_at
     timestamps: true,
     underscored: false,

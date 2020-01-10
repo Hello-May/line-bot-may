@@ -8,7 +8,7 @@ const clientBot = new lineBot.Client(configBot);
 const path = require('path');
 const app = express();
 
-function handleEvent(event) {
+async function handleEvent(event) {
   console.log(event);
   switch (event.type) {
     case 'message':
@@ -27,10 +27,45 @@ function handleEvent(event) {
     case 'follow':
     case 'unfollow':
     case 'join':
+      let id;
+      switch (event.source.type) {
+        case 'user':
+          id = event.source.userId;
+          const User = db.users;
+          let data = await users.findAll({ where: { id: id } });
+          if (data != '') {
+            User.create({
+              force: true,
+              userId: id,
+              token: 'null',
+              mosterId: 'null',
+              status: false,
+              createdAt: new Date(),
+              updatedAt: new Date()
+            });
+          }
+          break;
+        case 'group':
+          id = event.source.groupId;
+          const Group = db.groups;
+          let data = await groups.findAll({ where: { id: id } });
+          if (data != '') {
+            Group.create({
+              force: true,
+              userId: id,
+              token: 'null',
+              mosterId: 'null',
+              status: false,
+              createdAt: new Date(),
+              updatedAt: new Date()
+            });
+          }
+          break;
+      }
       //存id，如果資料庫已經有id的話，不重複新增
       return clientBot.replyMessage(event.replyToken, {
         type: 'text',
-        text: '我要存進db=>' + (event.source.type == 'user' ? 'userId:' + event.source.userId : 'groupId:' + event.source.groupId)
+        text: (data == '' ? '我沒存進db=>' : '我存進db=>') + (event.source.type == 'user' ? 'userId:' + id : 'groupId:' + id)
       });
     case 'leave':
     case 'memberJoined':
@@ -168,8 +203,3 @@ app.post('/', lineBot.middleware(configBot), function (req, res) {
 app.listen(process.env.PORT || 8080, function () {
   console.log('App now running on port', this.address().port);
 });
-
-
-// app.listen(process.env.PORT || port, function () {
-//   console.log('App now running on port', this.address().port);
-// });
