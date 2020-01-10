@@ -32,7 +32,7 @@ async function handleEvent(event) {
       switch (event.source.type) {
         case 'user':
           id = event.source.userId;
-          const { users } = require("../models");
+          const { users } = require("./models");
           tmpId = await users.findAll({ where: { id: id } });
           if (data != '') {
             const User = db.users;
@@ -49,7 +49,7 @@ async function handleEvent(event) {
           break;
         case 'group':
           id = event.source.groupId;
-          const { groups } = require("../models");
+          const { groups } = require("./models");
           tmpId = await groups.findAll({ where: { id: id } });
           if (data != '') {
             const Group = db.groups;
