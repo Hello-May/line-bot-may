@@ -4,6 +4,7 @@ const configBot = require('./config');
 const functions = require('./functions');
 const express = require('express');
 const bodyParser = require('body-parser');
+const clientBot = new lineBot.Client(configBot);
 const path = require('path');
 const app = express();
 
