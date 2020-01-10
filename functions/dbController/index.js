@@ -6,6 +6,14 @@ const { users } = require("../../models");
 const User = db.users;
 const { groups } = require("../../models");
 const Group = db.groups;
+var type;
+var tmpId;
+
+//這樣會有bug是當很多人傳訊息就被替換
+const saveTmpId = (event) => {
+    type = event.source.type;
+    tmpId = event.source.groupId;
+}
 
 const saveId = async (event) => {
     let id;
@@ -56,16 +64,16 @@ const checkId = (event) => {
 }
 
 const saveToken = async (token) => {
-    let id;
+    // let id;
     let judge;
-    switch (event.source.type) {
+    switch (type) {
         case 'user':
-            id = event.source.userId;
-            judge = await users.update({ token: token }, { where: { userId: id } });
+            // id = event.source.userId;
+            judge = await users.update({ token: token }, { where: { userId: tmpId } });
             break;
         case 'group':
-            id = event.source.groupId;
-            judge = await groups.findAll({ token: token }, { where: { groupId: id } });
+            // id = event.source.groupId;
+            judge = await groups.findAll({ token: token }, { where: { groupId: tmpId } });
             break;
     }
     console.log((judge == '1' ? '我存進db=>' : '沒存進db=>') + token);
@@ -77,5 +85,6 @@ const saveToken = async (token) => {
 
 module.exports = {
     saveId,
-    saveToken
+    saveToken,
+    saveTmpId
 }

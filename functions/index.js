@@ -4,7 +4,7 @@ const clientBot = new lineBot.Client(configBot);
 const lineNotify = require('./notify');
 const math = require('mathjs');
 const path = require('path');
-
+const dbController = require('./dbController');
 const main = require('./main');
 const pause = require('./pause');
 const richMenu = require('./main/richMenu');
@@ -64,6 +64,7 @@ const textCommandSolver = async (event) => {
                 output = richMenu.richMenu();
                 break;
             case '連動':
+                dbController.saveTmpId(event);
                 output = lineNotify.authorize();
                 break;;
             case '呼叫':
