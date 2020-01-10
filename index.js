@@ -5,6 +5,7 @@ const functions = require('./functions');
 const express = require('express');
 const bodyParser = require('body-parser');
 const clientBot = new lineBot.Client(configBot);
+const dbController = require('./functions/dbController');
 const path = require('path');
 const app = express();
 
@@ -27,50 +28,7 @@ async function handleEvent(event) {
     case 'follow':
     case 'unfollow':
     case 'join':
-      let id;
-      let tmpId;
-      const db = require('./models');
-      switch (event.source.type) {
-        case 'user':
-          id = event.source.userId;
-          const { users } = require("./models");
-          tmpId = await users.findAll({ where: { userId: id } });
-          if (tmpId == '') {
-            const User = db.users;
-            User.create({
-              force: true,
-              userId: id,
-              token: 'null',
-              mosterId: 'null',
-              status: false,
-              createdAt: new Date(),
-              updatedAt: new Date()
-            });
-          }
-          break;
-        case 'group':
-          id = event.source.groupId;
-          const { groups } = require("./models");
-          tmpId = await groups.findAll({ where: { groupId: id } });
-          if (tmpId == '') {
-            const Group = db.groups;
-            Group.create({
-              force: true,
-              groupId: id,
-              token: 'null',
-              mosterId: 'null',
-              status: false,
-              createdAt: new Date(),
-              updatedAt: new Date()
-            });
-          }
-          break;
-      }
-      //存id，如果資料庫已經有id的話，不重複新增
-      return clientBot.replyMessage(event.replyToken, {
-        type: 'text',
-        text: (tmpId == '' ? '我存進db=>' : '不用存進db=>') + (event.source.type == 'user' ? 'userId:' + id : 'groupId:' + id)
-      });
+      return dbController.saveId(event);
     case 'leave':
     case 'memberJoined':
       return clientBot.replyMessage(event.replyToken, {
