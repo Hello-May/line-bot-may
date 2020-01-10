@@ -50,13 +50,13 @@ const { users } = require("../models");
 
 (async () => {
     // 搜尋多個例項
-    const user = await users.findAll({where:{id:'51'}});
+    const user = await users.findAll({ where: { userId: '51' } });
     // 條件搜尋name = 'John Doe'
     // const user = await users.findByPk(1)
 
 
     console.log(user)
-    if(user==''){
+    if (user == '') {
         console.log('哈哈哈哈')
     }
     // console.log('--------------1-------------------')

@@ -1,10 +1,5 @@
 module.exports = (sequelize, DataTypes) => sequelize.define(
     'groups', {
-    id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        allowNull: false
-    },
     groupId: {
         type: DataTypes.STRING,
         allowNull: false,
