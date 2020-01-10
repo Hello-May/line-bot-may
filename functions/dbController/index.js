@@ -94,14 +94,10 @@ const getToken = async (event) => {
         switch (event.source.type) {
             case 'user':
                 let user = await users.findOne({ where: { userId: event.source.userId } });
-                console.log(user);
-                console.log(user.token);
-                return user.token;
+                return user[0].token;
             case 'group':
                 let group = await groups.findOne({ where: { groupId: event.source.groupId } });
-                console.log(group);
-                console.log(group.token);
-                return group.token;
+                return group[0].token;
         }
     // });
 }
