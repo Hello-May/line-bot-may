@@ -24,11 +24,35 @@ function handleEvent(event) {
         case 'location':
       }
     case 'follow':
+      return clientBot.replyMessage(event.replyToken, {   
+        type: 'text',
+        text: '被folloew了~~'
+    });
     case 'unfollow':
-    case 'join':
+      return clientBot.replyMessage(event.replyToken, { 
+        type: 'text',
+        text: '被unfollow了~~'
+    });
+    case 'join': 
+      return clientBot.replyMessage(event.replyToken, { 
+        type: 'text',
+        text: '我要存userId~~'
+    });
     case 'leave':
+      return clientBot.replyMessage(event.replyToken, {  
+        type: 'text',
+        text: '886~'
+    });
     case 'member join':
+      return clientBot.replyMessage(event.replyToken, {  
+        type: 'text',
+        text: '歡迎阿~~'
+    });
     case 'member leave':
+      return clientBot.replyMessage(event.replyToken, {   
+        type: 'text',
+        text: '慢走不送~~'
+    });
     case 'postback':
     case 'beacon':
     case 'account link':
@@ -53,9 +77,17 @@ app.get("/regisToken", async (req, res, next) => {
   res.sendFile(path.resolve('./functions/notify/res.html'), function (err) {
     if (err) res.send(404);
   });
+  // lineNotify.getToken(code)
+  // .then((token) => {
+
+  // })
+  // .catch((err) => {
+
+  // })
   try{
     let token = await lineNotify.getToken(code);
     console.log(token + '<---------------------------------outside--');
+    //存token
   }catch(err){
     console.log(err);
   }

@@ -24,7 +24,7 @@ const textCommandSolver = async (event) => {
         }
     } else {
         switch (input) {
-            case '+':
+            case '+':   //想插入userId
                 const User = db.sequelize.define('users', {
                     id: {
                         type: Sequelize.STRING,
