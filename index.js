@@ -56,7 +56,7 @@ async function handleEvent(event) {
             const Group = db.groups;
             Group.create({
               force: true,
-              userId: id,
+              groupId: id,
               token: 'null',
               mosterId: 'null',
               status: false,
