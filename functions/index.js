@@ -108,6 +108,7 @@ const textCommandSolver = async (event) => {
                 }
         }
     }
+    //先查event裡的type=>查id=>取得token
     lineNotify.notify('fEIHxeKHz3aftAMHNBGT3gXEqV4h72es0IWfw0HxDH4',{
         type: 'message',
         text: input

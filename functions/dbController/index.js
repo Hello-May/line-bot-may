@@ -12,9 +12,10 @@ const saveId = async (event) => {
     let tmpId;
     switch (event.source.type) {
         case 'user':
-            id = event.source.userId;       
+            id = event.source.userId;
             tmpId = await users.findAll({ where: { userId: id } });
-            if (tmpId == '') {           
+            if (tmpId == '') {
+                createOwnerModel(User, id);
                 User.create({
                     force: true,
                     userId: id,
@@ -27,9 +28,10 @@ const saveId = async (event) => {
             }
             break;
         case 'group':
-            id = event.source.groupId;     
+            id = event.source.groupId;
             tmpId = await groups.findAll({ where: { groupId: id } });
             if (tmpId == '') {
+                createOwnerModel(Group, id);
                 Group.create({
                     force: true,
                     groupId: id,
@@ -49,6 +51,30 @@ const saveId = async (event) => {
     });
 }
 
+const checkId = (event) => {
+    //回傳model跟id是啥，之後再寫
+}
+
+const saveToken = async (event, token) => {
+    let id;
+    let judge;
+    switch (event.source.type) {
+        case 'user':
+            id = event.source.userId;
+            judge = await users.update({ token: token }, { where: { userId: id } });
+            break;
+        case 'group':
+            id = event.source.groupId;
+            judge = await groups.findAll({ token: token }, { where: { groupId: id } });
+            break;
+    }
+    return clientBot.replyMessage(event.replyToken, {
+        type: 'text',
+        text: (judge == '1' ? '我存進db=>' : '沒存進db=>') + token
+    });
+}
+
 module.exports = {
-    saveId
+    saveId,
+    saveToken
 }

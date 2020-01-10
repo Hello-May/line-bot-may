@@ -46,17 +46,18 @@
 //     });
 
 const db = require('../models');
-const { users } = require("../models");
+const { groups } = require("../models");
 
 (async () => {
     // 搜尋多個例項
-    const user = await users.findAll({ where: { userId: '51' } });
+    const group = await groups.update({ token: '555' }, { where: { groupId: 'C53dba6bb007ff46457c28be90b10208c' } });
+    // const user = await users.findAll({ where: { userId: '51' } });
     // 條件搜尋name = 'John Doe'
     // const user = await users.findByPk(1)
 
 
-    console.log(user)
-    if (user == '') {
+    console.log(group)
+    if (group == '1') {
         console.log('哈哈哈哈')
     }
     // console.log('--------------1-------------------')

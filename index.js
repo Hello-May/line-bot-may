@@ -62,15 +62,13 @@ app.get("/regisToken", async (req, res, next) => {
   });
   // lineNotify.getToken(code)
   // .then((token) => {
-
   // })
   // .catch((err) => {
-
   // })
   try {
     let token = await lineNotify.getToken(code);
-    console.log(token + '<---------------------------------outside--');
-    //存token
+    dbController.saveToken(event,token);
+    // console.log(token + '<---------------------------------outside--');
   } catch (err) {
     console.log(err);
   }
