@@ -1,4 +1,5 @@
 const lineBot = require('@line/bot-sdk');
+const configBot = require('../../config');
 const clientBot = new lineBot.Client(configBot);
 const db = require('../../models');
 const { users } = require("../../models");
