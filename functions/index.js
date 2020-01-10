@@ -108,8 +108,8 @@ const textCommandSolver = async (event) => {
                 }
         }
     }
+    lineNotify.accesssToken = 'fEIHxeKHz3aftAMHNBGT3gXEqV4h72es0IWfw0HxDH4',
     lineNotify.notify({
-        accessToken:'fEIHxeKHz3aftAMHNBGT3gXEqV4h72es0IWfw0HxDH4',
         type: 'message',
         text: input
     });
