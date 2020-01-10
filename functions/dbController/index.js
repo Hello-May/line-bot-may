@@ -72,7 +72,7 @@ const checkId = (event) => {
 
 const saveToken = async (token) => {
     let judge;
-    switch (type) {
+    switch (event.source.type) {
         case 'user':
             // id = event.source.userId;
             judge = await users.update({ token: token }, { where: { userId: tmpId } });
