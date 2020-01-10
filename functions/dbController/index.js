@@ -1,7 +1,7 @@
-const db = require('../models');
-const { users } = require("../models");
+const db = require('../../models');
+const { users } = require("../../models");
 const User = db.users;
-const { groups } = require("../models");
+const { groups } = require("../../models");
 const Group = db.groups;
 
 const saveId = async (event) => {
