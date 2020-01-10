@@ -29,6 +29,7 @@ async function handleEvent(event) {
     case 'join':
       let id;
       let tmpId;
+      const db = require('../models');
       switch (event.source.type) {
         case 'user':
           id = event.source.userId;
