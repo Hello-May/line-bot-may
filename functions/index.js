@@ -34,7 +34,7 @@ const textCommandSolver = async (event) => {
                     createdAt: DataTypes.DATE,
                     updatedAt: DataTypes.DATE,
                 });
-                
+
                 User.sync({
                     force: true
                 }).then(() => {
@@ -54,7 +54,7 @@ const textCommandSolver = async (event) => {
                 // const user = await users.findByPk(1)
                 output = {
                     type: 'text',
-                    text: user[0].userId + ' 阿阿阿阿'
+                    text: (user[0].userId === undefined ? '沒東西啦~' : user[0].userId) + ' 阿阿阿阿'
                 }
                 break;
             case '.':
