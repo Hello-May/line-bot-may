@@ -4,7 +4,7 @@ const User = db.users;
 const { groups } = require("../models");
 const Group = db.groups;
 
-const saveId = (event) => {
+const saveId = async (event) => {
     let id;
     let tmpId;
     switch (event.source.type) {

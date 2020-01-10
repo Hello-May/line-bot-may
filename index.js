@@ -9,7 +9,7 @@ const dbController = require('./functions/dbController');
 const path = require('path');
 const app = express();
 
-async function handleEvent(event) {
+function handleEvent(event) {
   console.log(event);
   switch (event.type) {
     case 'message':
