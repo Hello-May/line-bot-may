@@ -90,18 +90,22 @@ const saveToken = async (token) => {
 }
 
 const getToken = (event) => {
-    return new Promise( async (resolve, reject) => {
+    new Promise( async (resolve, reject) => {
+        // let token;
         switch (event.source.type) {
             case 'user':
                 let user = await users.findAll({ where: { userId: event.source.userId } });
-                console.log('我都抓到了!!'+user[0].token)
-                return reslove(user[0].token);
+                // console.log('我都抓到了!!'+user[0].token)
+                // token =user[0].token;
+                return resolve(user[0].token);
             case 'group':
                 let group = await groups.findAll({ where: { groupId: event.source.groupId } });
-                console.log('我都抓到了!!'+group[0].token)
-                return reslove(group[0].token);
+                // console.log('我都抓到了!!'+group[0].token)
+                // token =group[0].token;
+                return resolve(group[0].token);
         }
     });
+
 }
 
 module.exports = {
