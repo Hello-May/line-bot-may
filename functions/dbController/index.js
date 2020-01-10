@@ -90,7 +90,7 @@ const saveToken = async (token) => {
 }
 
 const getToken = (event) => {
-    new Promise( async (resolve, reject) => {
+    return new Promise( async (resolve, reject) => {
         // let token;
         switch (event.source.type) {
             case 'user':
