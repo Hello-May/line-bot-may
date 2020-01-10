@@ -25,31 +25,19 @@ function handleEvent(event) {
         case 'location':
       }
     case 'follow':
-      return clientBot.replyMessage(event.replyToken, {   
-        type: 'text',
-        text: '被folloew了~~'
-    });
     case 'unfollow':
-      return clientBot.replyMessage(event.replyToken, { 
-        type: 'text',
-        text: '被unfollow了~~'
-    });
     case 'join': 
       return clientBot.replyMessage(event.replyToken, { 
         type: 'text',
-        text: '我要存userId~~'
+        text: '我要存userId或groupId~~'
     });
     case 'leave':
-      return clientBot.replyMessage(event.replyToken, {  
-        type: 'text',
-        text: '886~'
-    });
-    case 'member join':
+    case 'memberJoined':
       return clientBot.replyMessage(event.replyToken, {  
         type: 'text',
         text: '歡迎阿~~'
     });
-    case 'member leave':
+    case 'memberLeft':
       return clientBot.replyMessage(event.replyToken, {   
         type: 'text',
         text: '慢走不送~~'
