@@ -40,7 +40,7 @@ const saveId = async (event) => {
             }
             break;
     }
-    //存id，如果資料庫已經有id的話，不重複新增
+
     return clientBot.replyMessage(event.replyToken, {
         type: 'text',
         text: (tmpId == '' ? '我存進db=>' : '不用存進db=>') + (event.source.type == 'user' ? 'userId:' + id : 'groupId:' + id)
