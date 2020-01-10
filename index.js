@@ -26,22 +26,19 @@ function handleEvent(event) {
       }
     case 'follow':
     case 'unfollow':
-    case 'join': 
-      return clientBot.replyMessage(event.replyToken, { 
+    case 'join':
+      //存id，如果資料庫已經有id的話，不重複新增
+      return clientBot.replyMessage(event.replyToken, {
         type: 'text',
-        text: '我要存userId或groupId~~'
-    });
+        text: '我要存進db=>' + (event.source.type == 'user' ? 'userId:' + event.source.userId : 'groupId:' + event.source.groupId)
+      });
     case 'leave':
     case 'memberJoined':
-      return clientBot.replyMessage(event.replyToken, {  
+      return clientBot.replyMessage(event.replyToken, {
         type: 'text',
         text: '歡迎阿~~'
-    });
+      });
     case 'memberLeft':
-      return clientBot.replyMessage(event.replyToken, {   
-        type: 'text',
-        text: '慢走不送~~'
-    });
     case 'postback':
     case 'beacon':
     case 'account link':
@@ -73,11 +70,11 @@ app.get("/regisToken", async (req, res, next) => {
   // .catch((err) => {
 
   // })
-  try{
+  try {
     let token = await lineNotify.getToken(code);
     console.log(token + '<---------------------------------outside--');
     //存token
-  }catch(err){
+  } catch (err) {
     console.log(err);
   }
 });
