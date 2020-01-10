@@ -84,7 +84,7 @@ const saveToken = async (token) => {
             break;
         case 'group':
             // id = event.source.groupId;
-            judge = await groups.findAll({ token: token }, { where: { groupId: tmpId } });
+            judge = await groups.update({ token: token }, { where: { groupId: tmpId } });
             break;
     }
     console.log((judge == '1' ? '我存進db=>' : '沒存進db=>') + token);
