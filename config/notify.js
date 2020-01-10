@@ -1,7 +1,6 @@
 const configNotify = {
     clientId: '3qZCtZ2rmMdUcDa3qhFfyM',
     clientSecret: 'GTFK3GaIa77WzB08gS9RH4446gpoZFRKd3YEineEJES',
-    accessToken: '',
     // accessToken:'fEIHxeKHz3aftAMHNBGT3gXEqV4h72es0IWfw0HxDH4',
     //使用者授權後，產生連動時取得token，存進資料庫
     //先查event裡的type=>查id=>取得token

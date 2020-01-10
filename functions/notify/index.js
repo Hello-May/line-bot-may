@@ -3,10 +3,10 @@ const configNotify = require('../../config/notify');
 const clientNotify = lineNotify(configNotify);
 const unirest = require('unirest');
 
-const notify = (output) => {
+const notify = (accessToken,output) => {
     let req = unirest('POST', configNotify.notifyApi)
         .headers({
-            'Authorization': 'Bearer ' + configNotify.accessToken,
+            'Authorization': 'Bearer ' +accessToken,
             'Content-Type': 'multipart/form-data; boundary=--------------------------054153815016971257363988'
         })
         .field(output.type, output.text)
