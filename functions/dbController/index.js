@@ -55,7 +55,7 @@ const checkId = (event) => {
     //回傳model跟id是啥，之後再寫
 }
 
-const saveToken = async (event, token) => {
+const saveToken = async (token) => {
     let id;
     let judge;
     switch (event.source.type) {
@@ -68,10 +68,11 @@ const saveToken = async (event, token) => {
             judge = await groups.findAll({ token: token }, { where: { groupId: id } });
             break;
     }
-    return clientBot.replyMessage(event.replyToken, {
-        type: 'text',
-        text: (judge == '1' ? '我存進db=>' : '沒存進db=>') + token
-    });
+    console.log((judge == '1' ? '我存進db=>' : '沒存進db=>') + token);
+    // return clientBot.replyMessage(event.replyToken, {
+    //     type: 'text',
+    //     text: (judge == '1' ? '我存進db=>' : '沒存進db=>') + token
+    // });
 }
 
 module.exports = {
