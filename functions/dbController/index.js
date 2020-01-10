@@ -92,11 +92,10 @@ const saveToken = async (token) => {
 const getToken = async (event) => {
     switch (type) {
         case 'user':
-            user = await groups.findAll({ where: { userId: event.source.userId } });
-            return user.token;
+            return await groups.findAll({ where: { userId: event.source.userId } });
         case 'group':
-            group = await groups.findAll({ where: { groupId: event.source.groupId } });
-            return group.token;
+            return await groups.findAll({ where: { groupId: event.source.groupId } });
+            // return group.token;
     }
 }
 
