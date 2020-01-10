@@ -89,13 +89,17 @@ const saveToken = async (token) => {
     // });
 }
 
-const getToken = async (event) => {
-    switch (type) {
-        case 'user':
-            return await groups.findAll({ where: { userId: event.source.userId } });
-        case 'group':
-            return await groups.findAll({ where: { groupId: event.source.groupId } });
-            // return group.token;
+const getToken = (event) => {
+    return new Promise((resolve, reject) => {
+        let token;
+        switch (type) {
+            case 'user':
+                token = await groups.findAll({ where: { userId: event.source.userId } });
+                return resolve(token);
+            case 'group':
+                token = await groups.findAll({ where: { groupId: event.source.groupId } });
+                return resolve(token);
+        }
     }
 }
 

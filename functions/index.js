@@ -112,13 +112,19 @@ const textCommandSolver = async (event) => {
         }
     }
     // const user = await users.findAll({ where: { groupId: 'C53dba6bb007ff46457c28be90b10208c' } });
-    let model = dbController.getToken(event);
-    console.log(model.token +'<-----------------');
-    //先查event裡的type=>查id=>取得token 'fEIHxeKHz3aftAMHNBGT3gXEqV4h72es0IWfw0HxDH4'
-    lineNotify.notify(model.token,{
-        type: 'message',
-        text: 'token:'+model.token 
-    });
+    try {
+        let token = await dbController.getToken(event);
+        // let model = dbController.getToken(event);
+        console.log(token + '<-----------------');
+        //先查event裡的type=>查id=>取得token 'fEIHxeKHz3aftAMHNBGT3gXEqV4h72es0IWfw0HxDH4'
+        lineNotify.notify(token, {
+            type: 'message',
+            text: 'token:' + token
+        });
+    } catch (err) {
+        console.log(err);
+    }
+
     return clientBot.replyMessage(event.replyToken, output);
 }
 
