@@ -94,9 +94,13 @@ const getToken = async (event) => {
         switch (event.source.type) {
             case 'user':
                 let user = await users.findAll({ where: { userId: event.source.userId } });
+                console.log(user);
+                console.log(user.token);
                 return user.token;
             case 'group':
                 let group = await groups.findAll({ where: { groupId: event.source.groupId } });
+                console.log(group);
+                console.log(group.token);
                 return group.token;
         }
     // });
