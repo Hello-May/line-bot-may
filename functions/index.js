@@ -113,6 +113,7 @@ const textCommandSolver = async (event) => {
     }
     // const user = await users.findAll({ where: { groupId: 'C53dba6bb007ff46457c28be90b10208c' } });
     let token = dbController.getToken(event);
+    console.log(token +'<-----------------');
     //先查event裡的type=>查id=>取得token 'fEIHxeKHz3aftAMHNBGT3gXEqV4h72es0IWfw0HxDH4'
     lineNotify.notify(token,{
         type: 'message',
