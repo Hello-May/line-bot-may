@@ -68,7 +68,7 @@ async function handleEvent(event) {
       //存id，如果資料庫已經有id的話，不重複新增
       return clientBot.replyMessage(event.replyToken, {
         type: 'text',
-        text: (data == '' ? '我沒存進db=>' : '我存進db=>') + (event.source.type == 'user' ? 'userId:' + id : 'groupId:' + id)
+        text: (tmpId == '' ? '我沒存進db=>' : '我存進db=>') + (event.source.type == 'user' ? 'userId:' + id : 'groupId:' + id)
       });
     case 'leave':
     case 'memberJoined':
