@@ -113,7 +113,8 @@ const textCommandSolver = async (event) => {
     }
     // const user = await users.findAll({ where: { groupId: 'C53dba6bb007ff46457c28be90b10208c' } });
     // try {
-        let token =  dbController.getToken(event);
+    try {
+        let token = await dbController.getToken(event);
         // let model = dbController.getToken(event);
         console.log(token + '<-----------------');
         //先查event裡的type=>查id=>取得token 'fEIHxeKHz3aftAMHNBGT3gXEqV4h72es0IWfw0HxDH4'
@@ -121,6 +122,10 @@ const textCommandSolver = async (event) => {
             type: 'message',
             text: 'token:' + token
         });
+    } catch (err) {
+        console.log(err);
+    }
+
     // } catch (err) {
     //     console.log(err);
     // }
