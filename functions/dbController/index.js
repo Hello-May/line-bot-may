@@ -89,7 +89,7 @@ const saveToken = async (token) => {
     // });
 }
 
-const getToken = (event) => {
+const getToken = async (event) => {
     return new Promise((resolve, reject) => {
         let token;
         switch (type) {
