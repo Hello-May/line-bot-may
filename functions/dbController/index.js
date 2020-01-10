@@ -100,7 +100,7 @@ const getToken = (event) => {
                 token = await groups.findAll({ where: { groupId: event.source.groupId } });
                 return resolve(token);
         }
-    }
+    });
 }
 
 module.exports = {
