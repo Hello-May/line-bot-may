@@ -12,7 +12,16 @@ var tmpId;
 //這樣會有bug是當很多人傳訊息就被替換
 const saveTmpId = (event) => {
     type = event.source.type;
-    tmpId = event.source.groupId;
+    switch (type) {
+        case 'user':
+            tmpId = event.source.userId;
+            break;
+        case 'group':
+            tmpId = event.source.groupId;
+            break;
+    }
+    console.log('save type: '+type)
+    console.log('save tmpId: '+tmpId)
 }
 
 const saveId = async (event) => {
@@ -65,6 +74,8 @@ const checkId = (event) => {
 
 const saveToken = async (token) => {
     // let id;
+    console.log('use type: '+type)
+    console.log('use tmpId: '+tmpId)
     let judge;
     switch (type) {
         case 'user':
