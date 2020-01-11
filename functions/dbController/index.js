@@ -100,13 +100,13 @@ const getToken = (event) => {
                 // let user = await users.findAll({ where: { userId: event.source.userId } });
                 // console.log('我都抓到了!!'+user[0].token)
                 // token =user[0].token;
-                return resolve(user[0].token);
+                // return resolve(user[0].token);
             case 'group':
                 id = event.source.groupId;
                 // let group = await groups.findAll({ where: { groupId: event.source.groupId } });
                 // console.log('我都抓到了!!'+group[0].token)
                 // token =group[0].token;
-                return resolve(group[0].token);
+                // return resolve(group[0].token);
         }
         let user = await users.findAll({ where: { userId: id } });
         return resolve(user[0].token);
