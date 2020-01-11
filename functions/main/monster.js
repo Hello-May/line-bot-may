@@ -9,10 +9,10 @@ const dbMonster =require('../dbController/monster');
 const monster = async (event) => {
     let userId = event.source.userId;
     console.log(userId+"<---------------------------userId")
-    let user = await dbUser.searchById(userId);
+    let user = dbUser.searchById(userId);
     console.log(user)
     console.log(user.monsterId+"<-----------------------------monsterId");
-    let monster = await dbMonster.searchById(user.monsterId);
+    let monster = dbMonster.searchById(user.monsterId);
     console.log(monster)
     return {
         "type": "flex",
