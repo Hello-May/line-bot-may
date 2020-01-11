@@ -8,7 +8,10 @@ const dbController = require('./dbController');
 const main = require('./main');
 const pause = require('./pause');
 const richMenu = require('./main/richMenu');
-const monster = require('./main/monster');
+const life = require('./main/life');
+const task = require('./main/task');
+const pk = require('./main/pk');
+const talk = require('./main/talk');
 const db = require('../models');
 
 var shutUp = null;
@@ -66,9 +69,7 @@ const textCommandSolver = async (event) => {
                 output = richMenu.richMenu();
                 break;
             case '連動':
-                console.log('<save----------------------------')
                 dbController.saveTmpId(event);
-                console.log('<save---------end-------------------')
                 output = lineNotify.authorize();
                 break;;
             case '呼叫':
@@ -83,19 +84,19 @@ const textCommandSolver = async (event) => {
                 output = main.test(event);
                 break;
             case '#修煉':
-                output = richMenu.life(event);
+                output = life.life(event);
                 break;
             case '#任務':
-                output = richMenu.task(event);
+                output = task.task(event);
                 break;
             case '#小怪獸':
                 output = monster.monster(event);
                 break;
             case '#戰鬥':
-                output = richMenu.pk(event);
+                output = pk.pk(event);
                 break;
             case '#酒館':
-                output = richMenu.talk(event);
+                output = talk.talk(event);
                 break;
             default:
                 let msg;
@@ -116,9 +117,8 @@ const textCommandSolver = async (event) => {
     let token;
     try {
         token = await dbController.getToken(event);
-        console.log(token + "<--------------------------在這裡!?-------------------")
         if (token != 'null') {
-            console.log(token + "<--------------------------不-------------------")
+    
             lineNotify.notify(token, {
                 type: 'message',
                 text: 'token:' + token

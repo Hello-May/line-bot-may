@@ -9,7 +9,6 @@ var tmpId;
 
 //這樣會有bug是當很多人傳訊息就被替換
 const saveTmpId = (event) => {
-    console.log('<阿阿阿阿阿阿阿阿阿阿阿阿阿------------------你有拿到八?-----------')
     type = event.source.type;
     switch (type) {
         case 'user':
@@ -19,7 +18,6 @@ const saveTmpId = (event) => {
             tmpId = event.source.groupId;
             break;
     }
-    console.log(tmpId+'<------------------你有拿到八?-----------')
 }
 
 const saveId = async (event) => {
@@ -82,8 +80,6 @@ const saveToken = async (token) => {
     //         judge = await groups.update({ token: token }, { where: { groupId: tmpId } });
     //         break;
     // }
-    console.log(token+"<----------------saavvvvvve-----------------")
-    console.log(tmpId+"<----------------難道是你!!!!!!!!!!!!-----------------")
     judge = await users.update({ token: token }, { where: { userId: tmpId } });
     console.log((judge == '1' ? '我存進db=>' : '沒存進db=>') + token);
     // return clientBot.replyMessage(event.replyToken, {
@@ -111,7 +107,6 @@ const getToken = (event) => {
                 // return resolve(group[0].token);
                 break;
         }
-        console.log(id+'<-------------------getToken的id----------------')
         let user = await users.findAll({ where: { userId: id } });
         console.log(user[0].token)
         resolve(user[0].token);
