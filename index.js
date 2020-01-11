@@ -28,7 +28,8 @@ function handleEvent(event) {
     case 'follow':
     case 'unfollow':
     case 'join':
-      return dbController.saveId(event);
+      return dbControl
+      ler.saveId(event);
     case 'leave':
     case 'memberJoined':
       return clientBot.replyMessage(event.replyToken, {
