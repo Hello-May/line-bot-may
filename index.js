@@ -28,8 +28,7 @@ function handleEvent(event) {
     case 'follow':
     case 'unfollow':
     case 'join':
-      return dbControl
-      ler.saveId(event);
+      return dbController.saveId(event);
     case 'leave':
     case 'memberJoined':
       return clientBot.replyMessage(event.replyToken, {
@@ -38,10 +37,10 @@ function handleEvent(event) {
       });
     case 'memberLeft':
     case 'postback':
-      // return clientBot.replyMessage(event.replyToken, {
-      //   type: 'text',
-      //   text: '阿阿阿阿阿阿~~'+event.postback.data
-      // });
+    // return clientBot.replyMessage(event.replyToken, {
+    //   type: 'text',
+    //   text: '阿阿阿阿阿阿~~'+event.postback.data
+    // });
     case 'beacon':
     case 'account link':
     case 'device link':

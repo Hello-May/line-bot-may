@@ -28,36 +28,37 @@ const saveId = async (event) => {
     switch (event.source.type) {
         case 'user':
             id = event.source.userId;
-            tmpId = await users.findAll({ where: { userId: id } });
-            if (tmpId == '') {
-                createOwnerModel(User, id);
-                User.create({
-                    force: true,
-                    userId: id,
-                    token: 'null',
-                    monsterId: 'null',
-                    status: false,
-                    createdAt: new Date(),
-                    updatedAt: new Date()
-                });
-            }
+
             break;
         case 'group':
             id = event.source.groupId;
-            tmpId = await groups.findAll({ where: { groupId: id } });
-            if (tmpId == '') {
-                createOwnerModel(Group, id);
-                Group.create({
-                    force: true,
-                    groupId: id,
-                    token: 'null',
-                    monsterId: 'null',
-                    status: false,
-                    createdAt: new Date(),
-                    updatedAt: new Date()
-                });
-            }
+            // tmpId = await groups.findAll({ where: { groupId: id } });
+            // if (tmpId == '') {
+            //     createOwnerModel(Group, id);
+            //     Group.create({
+            //         force: true,
+            //         groupId: id,
+            //         token: 'null',
+            //         monsterId: 'null',
+            //         status: false,
+            //         createdAt: new Date(),
+            //         updatedAt: new Date()
+            //     });
+            // }
             break;
+    }
+    tmpId = await users.findAll({ where: { userId: id } });
+    if (tmpId == '') {
+        createOwnerModel(User, id);
+        User.create({
+            force: true,
+            userId: id,
+            token: 'null',
+            monsterId: 'null',
+            status: false,
+            createdAt: new Date(),
+            updatedAt: new Date()
+        });
     }
 
     return clientBot.replyMessage(event.replyToken, {
@@ -72,16 +73,17 @@ const checkId = (event) => {
 
 const saveToken = async (token) => {
     let judge;
-    switch (type) {
-        case 'user':
-            // id = event.source.userId;
-            judge = await users.update({ token: token }, { where: { userId: tmpId } });
-            break;
-        case 'group':
-            // id = event.source.groupId;
-            judge = await groups.update({ token: token }, { where: { groupId: tmpId } });
-            break;
-    }
+    // switch (type) {
+    //     case 'user':
+    //         // id = event.source.userId;
+    //         judge = await users.update({ token: token }, { where: { userId: tmpId } });
+    //         break;
+    //     case 'group':
+    //         // id = event.source.groupId;
+    //         judge = await groups.update({ token: token }, { where: { groupId: tmpId } });
+    //         break;
+    // }
+    judge = await users.update({ token: token }, { where: { userId: tmpId } });
     console.log((judge == '1' ? '我存進db=>' : '沒存進db=>') + token);
     // return clientBot.replyMessage(event.replyToken, {
     //     type: 'text',

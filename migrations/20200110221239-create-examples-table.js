@@ -28,29 +28,29 @@ module.exports = {
       }, {
         initialAutoIncrement: 1
       });
-      await queryInterface.createTable('groups', {
-        groupId: {
-          type: DataTypes.STRING,
-          allowNull: false,
-          primaryKey: true
-        },
-        status: {
-          type: DataTypes.BOOLEAN,
-          allowNull: false,
-        },
-        token: {
-          type: DataTypes.STRING,
-          allowNull: false,
-        },
-        monsterId: {
-          type: DataTypes.INTEGER,
-          allowNull: false,
-        },
-        createdAt: DataTypes.DATE,
-        updatedAt: DataTypes.DATE,
-      }, {
-        initialAutoIncrement: 1
-      });
+      // await queryInterface.createTable('groups', {
+      //   groupId: {
+      //     type: DataTypes.STRING,
+      //     allowNull: false,
+      //     primaryKey: true
+      //   },
+      //   status: {
+      //     type: DataTypes.BOOLEAN,
+      //     allowNull: false,
+      //   },
+      //   token: {
+      //     type: DataTypes.STRING,
+      //     allowNull: false,
+      //   },
+      //   monsterId: {
+      //     type: DataTypes.INTEGER,
+      //     allowNull: false,
+      //   },
+      //   createdAt: DataTypes.DATE,
+      //   updatedAt: DataTypes.DATE,
+      // }, {
+      //   initialAutoIncrement: 1
+      // });
       await queryInterface.createTable('monsters', {
         monsterId: {
           type: DataTypes.INTEGER,
@@ -107,7 +107,7 @@ module.exports = {
   down: async (queryInterface, Sequelize) => {
     try {
       await queryInterface.dropTable('users');
-      await queryInterface.dropTable('groups');
+      await queryInterface.dropTable('monsters');
       return Promise.resolve();
     } catch (e) {
       return Promise.reject(e);
