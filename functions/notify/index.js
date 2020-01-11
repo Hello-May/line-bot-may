@@ -3,10 +3,10 @@ const configNotify = require('../../config/notify');
 const clientNotify = lineNotify(configNotify);
 const unirest = require('unirest');
 
-const notify = (accessToken,output) => {
+const notify = (accessToken, output) => {
     let req = unirest('POST', configNotify.notifyApi)
         .headers({
-            'Authorization': 'Bearer ' +accessToken,
+            'Authorization': 'Bearer ' + accessToken,
             'Content-Type': 'multipart/form-data; boundary=--------------------------054153815016971257363988'
         })
         .field(output.type, output.text)
@@ -41,7 +41,7 @@ const test = () => {
 }
 
 const getToken = (code) => {
-    return new Promise((resolve,reject) => {
+    return new Promise((resolve, reject) => {
         var unirest = require('unirest');
         var req = unirest('POST', 'https://notify-bot.line.me/oauth/token')
             .headers({
@@ -57,7 +57,7 @@ const getToken = (code) => {
                 console.log(res.raw_body);
                 let response = JSON.parse(res.raw_body);
                 let token = response.access_token;
-                return resolve(token);       
+                return resolve(token);
             });
     });
 }
