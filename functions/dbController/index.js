@@ -113,7 +113,6 @@ const getToken = (event) => {
         }
         console.log(id+'<-------------------getToken的id----------------')
         let user = await users.findAll({ where: { userId: id } });
-        console.log(user)
         console.log(user[0].token)
         resolve(user[0].token);
     });
