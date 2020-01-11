@@ -6,6 +6,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const clientBot = new lineBot.Client(configBot);
 const dbController = require('./functions/dbController');
+const dbMonster = require('./functions/dbController/monster');
 const path = require('path');
 const app = express();
 
@@ -28,6 +29,7 @@ function handleEvent(event) {
     case 'follow':
     case 'unfollow':
     case 'join':
+      dbMonster.create();
       return dbController.saveId(event);
     case 'leave':
     case 'memberJoined':

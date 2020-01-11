@@ -119,3 +119,29 @@
 // // const user = await users.findByPk(1)
 
 // console.log(user)
+
+const db = require('../models');
+const { monsters } = require("../models");
+const Monster = db.monsters;
+
+    // Monster.create({
+    //     force: true,
+    //     name: '小怪獸',
+    //     born: new Date(),
+    //     level: 1,
+    //     exp: 0,
+    //     character: 0,
+    //     money: 0,
+    //     food: 10,
+    //     createdAt: new Date(),
+    //     updatedAt: new Date()
+    // });
+    const go = async (event) => {
+    let monster = await monsters.findAll();
+    console.log(monster);
+    console.log(monster.length);
+    console.log(monster[monster.length-1].monsterId);
+    }
+
+    go();
+

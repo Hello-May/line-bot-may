@@ -3,6 +3,7 @@ const configBot = require('../../config');
 const clientBot = new lineBot.Client(configBot);
 const db = require('../../models');
 const { users } = require("../../models");
+const { monsters } = require("../../models");
 const User = db.users;
 var type;
 var tmpId;
@@ -46,13 +47,14 @@ const saveId = async (event) => {
     }
 
     tmpId = await users.findAll({ where: { userId: id } });
+    let monster = await monsters.findAll();
     if (tmpId == '') {
         // createOwnerModel(User, id);
         User.create({
             force: true,
             userId: id,
             token: 'null',
-            monsterId: 'null',
+            monsterId: monster[monster.length-1].monsterId,
             status: false,
             createdAt: new Date(),
             updatedAt: new Date()

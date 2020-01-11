@@ -12,7 +12,7 @@ module.exports = {
           primaryKey: true
         },
         status: {
-          type: DataTypes.BOOLEAN,
+          type: DataTypes.STRING,
           allowNull: false,
         },
         token: {
@@ -28,29 +28,6 @@ module.exports = {
       }, {
         initialAutoIncrement: 1
       });
-      // await queryInterface.createTable('groups', {
-      //   groupId: {
-      //     type: DataTypes.STRING,
-      //     allowNull: false,
-      //     primaryKey: true
-      //   },
-      //   status: {
-      //     type: DataTypes.BOOLEAN,
-      //     allowNull: false,
-      //   },
-      //   token: {
-      //     type: DataTypes.STRING,
-      //     allowNull: false,
-      //   },
-      //   monsterId: {
-      //     type: DataTypes.INTEGER,
-      //     allowNull: false,
-      //   },
-      //   createdAt: DataTypes.DATE,
-      //   updatedAt: DataTypes.DATE,
-      // }, {
-      //   initialAutoIncrement: 1
-      // });
       await queryInterface.createTable('monsters', {
         monsterId: {
           type: DataTypes.INTEGER,
@@ -71,7 +48,7 @@ module.exports = {
           allowNull: false,
         },
         exp: {
-          type: DataTypes.DOUBLE,
+          type: DataTypes.INTEGER,
           allowNull: false,
         },
         character: {
@@ -91,6 +68,46 @@ module.exports = {
       }, {
         initialAutoIncrement: 1
       });
+      // await queryInterface.createTable('tasks', {
+      //   userId: {
+      //     type: DataTypes.INTEGER,
+      //     allowNull: false,
+      //     primaryKey: true,
+      //     autoIncrement:true
+      //   },
+      //   name: {
+      //     type: DataTypes.STRING,
+      //     allowNull: false,
+      //   },
+      //   born: {
+      //     type: DataTypes.DATE,
+      //     allowNull: false,
+      //   },
+      //   level: {
+      //     type: DataTypes.INTEGER,
+      //     allowNull: false,
+      //   },
+      //   exp: {
+      //     type: DataTypes.DOUBLE,
+      //     allowNull: false,
+      //   },
+      //   character: {
+      //     type: DataTypes.INTEGER,
+      //     allowNull: false,
+      //   },
+      //   money: {
+      //     type: DataTypes.INTEGER,
+      //     allowNull: false,
+      //   },
+      //   food: {
+      //     type: DataTypes.INTEGER,
+      //     allowNull: false,
+      //   },
+      //   createdAt: DataTypes.DATE,
+      //   updatedAt: DataTypes.DATE,
+      // }, {
+      //   initialAutoIncrement: 1
+      // });
       return Promise.resolve();
     } catch (e) {
       return Promise.reject(e);
