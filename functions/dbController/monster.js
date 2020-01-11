@@ -7,7 +7,7 @@ const searchById =  (id) => {
     let monster = await monsters.findAll({ where: { monsterId: id } });
     console.log(monster[0]);
     resolve(monster[0]);
-    }
+    });
 }
 
 const create = async () => {

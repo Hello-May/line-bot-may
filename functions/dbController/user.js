@@ -7,7 +7,7 @@ const searchById = (id) => {
         let user = await users.findAll({ where: { userId: id } });
         console.log(user[0]);
         resolve(user[0]);
-    }
+    });
     
 }
 
