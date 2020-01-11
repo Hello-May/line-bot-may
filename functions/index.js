@@ -66,7 +66,9 @@ const textCommandSolver = async (event) => {
                 output = richMenu.richMenu();
                 break;
             case '連動':
+                console.log('<save----------------------------')
                 dbController.saveTmpId(event);
+                console.log('<save---------end-------------------')
                 output = lineNotify.authorize();
                 break;;
             case '呼叫':
