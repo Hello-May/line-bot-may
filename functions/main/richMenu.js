@@ -1247,9 +1247,8 @@ const richMenu = () => {
         },
         "actions": [
             {
-                "type": "postback",
+                "type": "message",
                 "text": "#修煉",
-                "data": "#life",
                 "area": {
                     "x": 64,
                     "y": 149,
@@ -1258,9 +1257,8 @@ const richMenu = () => {
                 }
             },
             {
-                "type": "postback",
+                "type": "message",
                 "text": "#任務",
-                "data": "#task",
                 "area": {
                     "x": 506,
                     "y": 149,
@@ -1269,9 +1267,8 @@ const richMenu = () => {
                 }
             },
             {
-                "type": "postback",
+                "type": "message",
                 "text": "#小怪獸",
-                "data": "#monster",
                 "area": {
                     "x": 961,
                     "y": 145,
@@ -1280,9 +1277,8 @@ const richMenu = () => {
                 }
             },
             {
-                "type": "postback",
+                "type": "message",
                 "text": "#戰鬥",
-                "data": "#pk",
                 "area": {
                     "x": 1554,
                     "y": 141,
@@ -1291,9 +1287,8 @@ const richMenu = () => {
                 }
             },
             {
-                "type": "postback",
+                "type": "message",
                 "text": "#酒館",
-                "data": "#talk",
                 "area": {
                     "x": 2022,
                     "y": 141,
