@@ -110,9 +110,6 @@ const getToken = (event) => {
         }
         let user = await users.findAll({ where: { userId: id } });
         return resolve(user[0].token);
-
-
-
     });
 
 }
