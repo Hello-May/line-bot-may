@@ -11,6 +11,7 @@ var tmpId;
 
 //這樣會有bug是當很多人傳訊息就被替換
 const saveTmpId = (event) => {
+    console.log('<阿阿阿阿阿阿阿阿阿阿阿阿阿------------------你有拿到八?-----------')
     type = event.source.type;
     switch (type) {
         case 'user':
