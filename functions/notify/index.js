@@ -15,6 +15,20 @@ const notify = (accessToken, output) => {
             console.log(res.raw_body);
         });
 }
+
+const notify = (accessToken, output) => {
+    let req = unirest('POST', configNotify.notifyApi)
+        .headers({
+            'Authorization': 'Bearer ' + accessToken,
+            'Content-Type': 'multipart/form-data; boundary=--------------------------054153815016971257363988'
+        })
+        .field(output.type, output.text)
+        .end(function (res) {
+            if (res.error) throw new Error(res.error);
+            console.log(res.raw_body);
+        });
+}
+
 const test = () => {
     return {
         "type": "flex",

@@ -114,19 +114,19 @@ const textCommandSolver = async (event) => {
                 }
         }
     }
-    let token;
-    try {
-        token = await dbController.getToken(event);
-        if (token != 'null') {
     
-            lineNotify.notify(token, {
-                type: 'message',
-                text: 'token:' + token
-            });
-        }
-    } catch (err) {
-        console.log(err);
-    }
+    // try {
+    //     let token;
+    //     token = await dbController.getToken(event);
+    //     if (token != 'null') {
+    //         lineNotify.notify(token, {
+    //             type: 'message',
+    //             text: 'token:' + token
+    //         });
+    //     }
+    // } catch (err) {
+    //     console.log(err);
+    // }
     return clientBot.replyMessage(event.replyToken, output);
 }
 
