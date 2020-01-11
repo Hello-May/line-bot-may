@@ -3,15 +3,15 @@
 //使用者可以根據按鍵去修改資料庫的資料
 //先查event id是誰 查user表中的monsterID
 //再去monster表中找
-const dbUser =require('../dbController/user');
-const dbMonster =require('../dbController/monster');
+const dbUser = require('../dbController/user');
+const dbMonster = require('../dbController/monster');
 
 const monster = async (event) => {
-    let userId = event.source.userId;
-    console.log(userId+"<---------------------------userId")
+    let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
+    console.log(userId + "<---------------------------userId")
     let user = dbUser.searchById(userId);
     console.log(user)
-    console.log(user.monsterId+"<-----------------------------monsterId");
+    console.log(user.monsterId + "<-----------------------------monsterId");
     let monster = dbMonster.searchById(user.monsterId);
     console.log(monster)
     return {
@@ -60,31 +60,31 @@ const monster = async (event) => {
                         "contents": [
                             {
                                 "type": "text",
-                                "text": "名字："+monster.name
+                                "text": "名字：" + monster.name
                             },
                             {
                                 "type": "text",
-                                "text": "誕辰："+monster.born
+                                "text": "誕辰：" + monster.born
                             },
                             {
                                 "type": "text",
-                                "text": "等級："+monster.level
+                                "text": "等級：" + monster.level
                             },
                             {
                                 "type": "text",
-                                "text": "經驗值："+monster.exp
+                                "text": "經驗值：" + monster.exp
                             },
                             {
                                 "type": "text",
-                                "text": "性格:"+monster.character
+                                "text": "性格:" + monster.character
                             },
                             {
                                 "type": "text",
-                                "text": "自律幣:"+monster.money
+                                "text": "自律幣:" + monster.money
                             },
                             {
                                 "type": "text",
-                                "text": "精神糧食："+monster.food
+                                "text": "精神糧食：" + monster.food
                             }
                         ]
                     },
