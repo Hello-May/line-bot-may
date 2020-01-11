@@ -4,6 +4,7 @@ const Monster = db.monsters;
 
 const searchById = async (id) => {
     let monster = await monsters.findAll({ where: { monsterId: id } });
+    console.log(monster[0]);
     return monster[0];
 }
 
