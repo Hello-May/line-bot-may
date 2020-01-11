@@ -9,6 +9,7 @@ const main = require('./main');
 const pause = require('./pause');
 const richMenu = require('./main/richMenu');
 const life = require('./main/life');
+const monster = require('./main/monster');
 const task = require('./main/task');
 const pk = require('./main/pk');
 const talk = require('./main/talk');
@@ -115,6 +116,8 @@ const textCommandSolver = async (event) => {
         }
     }
     
+    //如果排程要如果取得token?
+
     // try {
     //     let token;
     //     token = await dbController.getToken(event);
