@@ -8,8 +8,12 @@ const dbMonster =require('../dbController/monster');
 
 const monster = (event) => {
     let userId = event.source.userId;
+    console.log(userId+"<---------------------------userId")
     let user = dbUser.searchById(userId);
+    console.log(user)
+    console.log(user.monsterId+"<-----------------------------monsterId");
     let monster = dbMonster.searchById(user.monsterId);
+    console.log(monster)
     return {
         "type": "flex",
         "altText": "Flex Message",
