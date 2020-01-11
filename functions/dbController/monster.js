@@ -9,7 +9,7 @@ const create = async () => {
         born: new Date(),
         level: 1,
         exp: 0,
-        characte: 0,
+        character: 0,
         money: 0,
         food: 10,
         createdAt: new Date(),
