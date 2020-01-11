@@ -1247,8 +1247,8 @@ const richMenu = () => {
         },
         "actions": [
             {
-                "type": "message",
-                "text": "#修煉",
+                "type": "postback",
+                "data": "#life",
                 "area": {
                     "x": 64,
                     "y": 149,
