@@ -117,7 +117,8 @@ const textCommandSolver = async (event) => {
     try {
         token = await dbController.getToken(event);
         console.log(token + "<--------------------------在這裡!?-------------------")
-        if (token != '') {
+        if (token == 'null') {
+            console.log(token + "<--------------------------不-------------------")
             lineNotify.notify(token, {
                 type: 'message',
                 text: 'token:' + token
