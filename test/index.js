@@ -45,20 +45,20 @@
 //         console.error('Unable to connect to the database:', err);
 //     });
 
-const db = require('../models');
-const { groups } = require("../models");
+// const db = require('../models');
+// const { groups } = require("../models");
 
-(async () => {
-    // 搜尋多個例項
-    const group = await groups.findAll({ where: { groupId: 'C53dba6bb007ff46457c28be90b10208c' } });
-    // 條件搜尋name = 'John Doe'
-    // const user = await users.findByPk(1)
+// (async () => {
+//     // 搜尋多個例項
+//     const group = await groups.findAll({ where: { groupId: 'C53dba6bb007ff46457c28be90b10208c' } });
+//     // 條件搜尋name = 'John Doe'
+//     // const user = await users.findByPk(1)
 
-    console.log(group)
-    if (group == '') {
-        console.log('哈哈哈哈')
-    }
-    console.log(group[0].token);
+//     console.log(group)
+//     if (group == '') {
+//         console.log('哈哈哈哈')
+//     }
+//     console.log(group[0].token);
     // console.log('--------------1-------------------')
     // console.log(user[4])
     // console.log('---------------2------------------')
@@ -68,8 +68,8 @@ const { groups } = require("../models");
     // console.log('----------------4-----------------')
     // console.log(user[4].updatedAt)
 
-    process.exit();
-})()
+//     process.exit();
+// })()
 
 // const User = db.users;
 // const Group = db.groups;

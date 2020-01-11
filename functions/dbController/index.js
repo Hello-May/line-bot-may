@@ -4,8 +4,6 @@ const clientBot = new lineBot.Client(configBot);
 const db = require('../../models');
 const { users } = require("../../models");
 const User = db.users;
-const { groups } = require("../../models");
-const Group = db.groups;
 var type;
 var tmpId;
 
