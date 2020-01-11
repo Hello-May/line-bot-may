@@ -111,16 +111,16 @@ const textCommandSolver = async (event) => {
                 }
         }
     }
+    let token;
     try {
-        let token = await dbController.getToken(event);
-        console.log(token + '<-----------------');
-        lineNotify.notify(token, {
-            type: 'message',
-            text: 'token:' + token
-        });
+        token = await dbController.getToken(event);  
     } catch (err) {
         console.log(err);
     }
+    lineNotify.notify(token, {
+            type: 'message',
+            text: 'token:' + token
+        });
     return clientBot.replyMessage(event.replyToken, output);
 }
 
