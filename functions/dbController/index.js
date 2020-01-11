@@ -94,7 +94,7 @@ const saveToken = async (token) => {
 
 const getToken = (event) => {
     return new Promise( async (resolve, reject) => {
-        var id;
+        let id;
         switch (event.source.type) {
             case 'user':
                 id = event.source.userId;
