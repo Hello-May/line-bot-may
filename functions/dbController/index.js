@@ -46,6 +46,7 @@ const saveId = async (event) => {
             // }
             break;
     }
+
     tmpId = await users.findAll({ where: { userId: id } });
     if (tmpId == '') {
         // createOwnerModel(User, id);
@@ -59,7 +60,6 @@ const saveId = async (event) => {
             updatedAt: new Date()
         });
     }
-
     return clientBot.replyMessage(event.replyToken, {
         type: 'text',
         text: (tmpId == '' ? '我存進db=>' : '不用存進db=>') + (event.source.type == 'user' ? 'userId:' + id : 'groupId:' + id)
@@ -83,6 +83,7 @@ const saveToken = async (token) => {
     //         break;
     // }
     console.log(token+"<----------------saavvvvvve-----------------")
+    console.log(tmpId+"<----------------難道是你!!!!!!!!!!!!-----------------")
     judge = await users.update({ token: token }, { where: { userId: tmpId } });
     console.log((judge == '1' ? '我存進db=>' : '沒存進db=>') + token);
     // return clientBot.replyMessage(event.replyToken, {
