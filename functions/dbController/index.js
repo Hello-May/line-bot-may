@@ -20,6 +20,7 @@ const saveTmpId = (event) => {
             tmpId = event.source.groupId;
             break;
     }
+    console.log(tmpId+'<------------------你有拿到八?-----------')
 }
 
 const saveId = async (event) => {
