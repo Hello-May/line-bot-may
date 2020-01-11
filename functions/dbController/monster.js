@@ -2,7 +2,7 @@ const db = require('../../models');
 const { monsters } = require("../../models");
 const Monster = db.monsters;
 
-const searchById =  (id) => {
+const searchById = (id) => {
     return new Promise(async (resolve, reject) => {
     let monster = await monsters.findAll({ where: { monsterId: id } });
     console.log(monster[0]);
