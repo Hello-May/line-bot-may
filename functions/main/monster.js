@@ -1,8 +1,15 @@
 //當創建user或groud的id時=>初始化小怪獸(創建資料庫的怪獸)
 //我的這些資料是從資料庫去拿
 //使用者可以根據按鍵去修改資料庫的資料
+//先查event id是誰 查user表中的monsterID
+//再去monster表中找
+const dbUser =require('../dbController/user');
+const dbMonster =require('../dbController/monster');
 
 const monster = (event) => {
+    let userId = event.source.userId;
+    let user = dbUser.searchById(userId);
+    let monster = dbMonster.searchById(user.monsterId);
     return {
         "type": "flex",
         "altText": "Flex Message",
@@ -49,31 +56,31 @@ const monster = (event) => {
                         "contents": [
                             {
                                 "type": "text",
-                                "text": "名字：皮卡丘"
+                                "text": "名字："+monster.name
                             },
                             {
                                 "type": "text",
-                                "text": "誕辰：y/m/d"
+                                "text": "誕辰："+monster.born
                             },
                             {
                                 "type": "text",
-                                "text": "等級：2"
+                                "text": "等級："+monster.level
                             },
                             {
                                 "type": "text",
-                                "text": "經驗值：87%"
+                                "text": "經驗值："+monster.exp
                             },
                             {
                                 "type": "text",
-                                "text": "性格：行動派"
+                                "text": "性格:"+monster.character
                             },
                             {
                                 "type": "text",
-                                "text": "自律幣：$75"
+                                "text": "自律幣:"+monster.money
                             },
                             {
                                 "type": "text",
-                                "text": "精神糧食：23 (每日-1)"
+                                "text": "精神糧食："+monster.food
                             }
                         ]
                     },
@@ -117,7 +124,7 @@ const monster = (event) => {
 }
 
 module.exports = {
-    monster,
+    monster
 }
 
 
