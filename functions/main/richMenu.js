@@ -1246,9 +1246,12 @@ const richMenu = () => {
             "width": 2500
         },
         "actions": [
-            {
-                "type": "postback",
-                "data": "#life",
+            { "type": "postback",
+            "label": "button1",
+            "text": "click",
+            "data": "data",
+                // "type": "message",
+                // "text": "#修煉",
                 "area": {
                     "x": 64,
                     "y": 149,
