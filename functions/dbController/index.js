@@ -49,7 +49,7 @@ const saveId = async (event) => {
     }
     tmpId = await users.findAll({ where: { userId: id } });
     if (tmpId == '') {
-        createOwnerModel(User, id);
+        // createOwnerModel(User, id);
         User.create({
             force: true,
             userId: id,
