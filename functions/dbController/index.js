@@ -28,7 +28,6 @@ const saveId = async (event) => {
     switch (event.source.type) {
         case 'user':
             id = event.source.userId;
-
             break;
         case 'group':
             id = event.source.groupId;
@@ -83,6 +82,7 @@ const saveToken = async (token) => {
     //         judge = await groups.update({ token: token }, { where: { groupId: tmpId } });
     //         break;
     // }
+    console.log(token+"<----------------saavvvvvve-----------------")
     judge = await users.update({ token: token }, { where: { userId: tmpId } });
     console.log((judge == '1' ? '我存進db=>' : '沒存進db=>') + token);
     // return clientBot.replyMessage(event.replyToken, {
