@@ -8,8 +8,8 @@ const dbController = require('./dbController');
 const main = require('./main');
 const pause = require('./pause');
 const richMenu = require('./main/richMenu');
+const monster = require('./main/monster');
 const db = require('../models');
-const { users } = require("../models");
 
 var shutUp = null;
 
@@ -87,7 +87,7 @@ const textCommandSolver = async (event) => {
                 output = richMenu.task(event);
                 break;
             case '#小怪獸':
-                output = richMenu.monster(event);
+                output = monster.monster(event);
                 break;
             case '#戰鬥':
                 output = richMenu.pk(event);
@@ -111,13 +111,9 @@ const textCommandSolver = async (event) => {
                 }
         }
     }
-    // const user = await users.findAll({ where: { groupId: 'C53dba6bb007ff46457c28be90b10208c' } });
-    // try {
     try {
         let token = await dbController.getToken(event);
-        // let model = dbController.getToken(event);
         console.log(token + '<-----------------');
-        //先查event裡的type=>查id=>取得token 'fEIHxeKHz3aftAMHNBGT3gXEqV4h72es0IWfw0HxDH4'
         lineNotify.notify(token, {
             type: 'message',
             text: 'token:' + token
@@ -125,11 +121,6 @@ const textCommandSolver = async (event) => {
     } catch (err) {
         console.log(err);
     }
-
-    // } catch (err) {
-    //     console.log(err);
-    // }
-
     return clientBot.replyMessage(event.replyToken, output);
 }
 

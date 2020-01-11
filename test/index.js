@@ -54,7 +54,6 @@ const { groups } = require("../models");
     // 條件搜尋name = 'John Doe'
     // const user = await users.findByPk(1)
 
-
     console.log(group)
     if (group == '') {
         console.log('哈哈哈哈')

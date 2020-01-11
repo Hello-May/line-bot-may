@@ -35,7 +35,7 @@ const saveId = async (event) => {
                     force: true,
                     userId: id,
                     token: 'null',
-                    mosterId: 'null',
+                    monsterId: 'null',
                     status: false,
                     createdAt: new Date(),
                     updatedAt: new Date()
