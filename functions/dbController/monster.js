@@ -23,8 +23,8 @@ const create = async () => {
         character: 0,
         money: 0,
         food: 10,
-        createdAt: new Date(),
-        updatedAt: new Date()
+        createdAt: new Date(event.timestamp).toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
+        updatedAt: new Date(event.timestamp).toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
     });
 }
 

@@ -44,8 +44,8 @@ const saveId = async (event) => {
             token: 'null',
             monsterId: monster[monster.length-1].monsterId,
             status: 'null',
-            createdAt: new Date(),
-            updatedAt: new Date()
+            createdAt: new Date(event.timestamp).toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
+            updatedAt: new Date(event.timestamp).toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
         });
     }
     return clientBot.replyMessage(event.replyToken, {
