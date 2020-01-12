@@ -133,43 +133,8 @@ const call = async (event) => {
                                 "type": "separator",
                                 "margin": "xs"
                             },
-                            {
-                                "type": "box",
-                                "layout": "vertical",
-                                "spacing": "xxl",
-                                "margin": "xxl",
-                                "contents": [
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                            {
-                                                "type": "text",
-                                                "text": "- 幫老闆接小孩",
-                                                "action": {
-                                                    "type": "postback",
-                                                    "label": "內容",
-                                                    "text": "- 幫老闆接小孩",
-                                                    "data": "#1-1"
-                                                },
-                                                "flex": 10,
-                                                "wrap": true
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": ">",
-                                                "action": {
-                                                    "type": "postback",
-                                                    "label": "內容",
-                                                    "text": "- 幫老闆接小孩",
-                                                    "data": "#1-1"
-                                                },
-                                                "gravity": "center",
-                                                "flex": 1,
-                                                "align": "end"
-                                            }
-                                        ]
-                                    },
+                            test
+                            ,
                                     {
                                         "type": "box",
                                         "layout": "horizontal",
