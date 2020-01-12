@@ -6,19 +6,19 @@
 const dbUser = require('../dbController/user');
 const dbMonster = require('../dbController/monster');
 
-const call = (event) => {
-    // var monster;
-    // let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
-    // console.log(userId + "<---------------------------userId")
-    // var user = await dbUser.searchById(userId)
-    //     .then(async (user) => {
-    //         console.log(user.monsterId + "<-----------------------------monsterId");
-    //         monster = await dbMonster.searchById(user.monsterId);
-    //         console.log(monster.name + "<-------------------------monster.name")
-    //     })
-    //     .catch((err) => {
-    //         console.log(err);
-    //     })
+const call = async (event) => {
+    var monster;
+    let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
+    console.log(userId + "<---------------------------userId")
+    var user = await dbUser.searchById(userId)
+        .then(async (user) => {
+            console.log(user.monsterId + "<-----------------------------monsterId");
+            monster = await dbMonster.searchById(user.monsterId);
+            console.log(monster.name + "<-------------------------monster.name")
+        })
+        .catch((err) => {
+            console.log(err);
+        })
 
     // var tmp;
     // try {
@@ -31,10 +31,7 @@ const call = (event) => {
     // } catch (err) {
     //     console.log(err);
     // }
-
     
-    var a = 'a'
-    var b = 1;
 
     return {
         "type": "flex",
@@ -82,31 +79,31 @@ const call = (event) => {
                         "contents": [
                             {
                                 "type": "text",
-                                "text": "名字：" + a
+                                "text": "名字：" + monster.name
                             },
                             {
                                 "type": "text",
-                                "text": "誕辰：" + b
+                                "text": "誕辰：" + monster.born
                             },
                             {
                                 "type": "text",
-                                "text": "等級：" + a
+                                "text": "等級：" + monster.level
                             },
                             {
                                 "type": "text",
-                                "text": "經驗值：" + b
+                                "text": "經驗值：" + monster.exp
                             },
                             {
                                 "type": "text",
-                                "text": "性格:" + a
+                                "text": "性格:" + monster.character
                             },
                             {
                                 "type": "text",
-                                "text": "自律幣:" + b
+                                "text": "自律幣:" + monster.money
                             },
                             {
                                 "type": "text",
-                                "text": "精神糧食：" +a
+                                "text": "精神糧食：" + monster.food
                             }
                         ]
                     },
