@@ -12,9 +12,8 @@ const monster = async (event) => {
         console.log(userId + "<---------------------------userId")
         let user = await dbUser.searchById(userId);
         console.log(user.monsterId + "<-----------------------------monsterId");
-        let monster = await dbMonster.searchById(user.monsterId);
-        console.log(monster);
-        console.log(monster.name + "<-------------------------monster.name")
+        let tmp = await dbMonster.searchById(user.monsterId);
+        console.log(tmp.name + "<-------------------------monster.name")
     } catch (err) {
         console.log(err);
     }
