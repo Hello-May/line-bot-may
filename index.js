@@ -17,7 +17,9 @@ async function handleEvent(event) {
   let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
   let user = await dbUser.searchById(userId);
   // console.log("user:" + JSON.stringify(user));
-  let status = user.status;
+  if (user !== undefined) {
+    let status = user.status;
+  }
   if (event.type === 'message' && event.message.text !== '呼叫' && status === '睡眠') {
     return;
   }
@@ -26,7 +28,7 @@ async function handleEvent(event) {
       switch (event.message.type) {
         case 'text':
           // return functions.textCommandSolver(event).catch(err=>{console.log(err)});
-          return functions.textCommandSolver(event,status);
+          return functions.textCommandSolver(event, status);
         case 'image':
           return functions.imgCommandSolver(event);
         case 'sticker':
@@ -49,7 +51,7 @@ async function handleEvent(event) {
       });
     case 'memberLeft':
     case 'postback':
-      return postback.postbackCommandSolver(event,status);
+      return postback.postbackCommandSolver(event, status);
     case 'beacon':
     case 'account link':
     case 'device link':
