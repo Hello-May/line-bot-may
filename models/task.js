@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => sequelize.define(
     'tasks', {
         userId: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
             primaryKey: true
           },

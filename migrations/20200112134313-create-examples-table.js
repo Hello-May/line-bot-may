@@ -70,7 +70,7 @@ module.exports = {
       });
       await queryInterface.createTable('tasks', {
         userId: {
-          type: DataTypes.INTEGER,
+          type: DataTypes.STRING,
           allowNull: false,
           primaryKey: true,
         },
