@@ -179,7 +179,7 @@ const call = async (event) => {
     }
 }
 
-const update = async (event) => {
+const update = (event) => {
     return {
         "type": "template",
         "altText": "this is a confirm template",
