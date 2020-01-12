@@ -12,6 +12,8 @@ const call = async (event) => {
         console.log(err);
     }
 
+    
+
     return {
         "type": "flex",
         "altText": "Flex Message",
@@ -22,146 +24,163 @@ const call = async (event) => {
                     "type": "bubble",
                     "direction": "ltr",
                     "header": {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "text",
-                                "text": "任務",
-                                "size": "lg",
-                                "align": "center",
-                                "weight": "bold",
-                                "color": "#000000"
-                            }
-                        ]
-                    },
-                    "hero": {
-                        "type": "image",
-                        "url": "https://making-the-web.com/sites/default/files/clipart/167862/time-management-clipart-167862-6494711.png",
-                        "size": "xl",
-                        "aspectRatio": "1.51:1",
-                        "aspectMode": "fit"
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "重+急=馬上做",
+                          "size": "lg",
+                          "align": "center",
+                          "weight": "bold"
+                        }
+                      ]
                     },
                     "body": {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "separator"
+                        },
+                        {
+                          "type": "box",
+                          "layout": "horizontal",
+                          "margin": "xs",
+                          "contents": [
                             {
-                                "type": "separator"
-                            },
-                            {
-                                "type": "text",
-                                "text": "這個世界的法則－時間四象限，象限的指標為緊急性和重要性，根據指標將任務分為輕重緩急，請幫助小怪獸順利完成任務，以達到時間價值最大化！",
-                                "margin": "xxl",
-                                "align": "start",
-                                "gravity": "center",
-                                "weight": "bold",
-                                "wrap": true
+                              "type": "text",
+                              "text": "待辦事項",
+                              "align": "center"
                             }
-                        ]
-                    }
-                },
-                {
-                    "type": "bubble",
-                    "direction": "ltr",
-                    "header": {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
+                          ]
+                        },
+                        {
+                          "type": "separator",
+                          "margin": "xs"
+                        },
+                        {
+                          "type": "box",
+                          "layout": "vertical",
+                          "spacing": "xxl",
+                          "margin": "xxl",
+                          "contents": [
                             {
-                                "type": "text",
-                                "text": "重+急=馬上做",
-                                "size": "lg",
-                                "align": "center",
-                                "weight": "bold"
+                              "type": "box",
+                              "layout": "horizontal",
+                              "contents": [
+                                {
+                                  "type": "text",
+                                  "text": "- 幫老闆接小孩",
+                                  "action": {
+                                    "type": "postback",
+                                    "label": "內容",
+                                    "text": "- 幫老闆接小孩",
+                                    "data": "#1-1"
+                                  },
+                                  "flex": 10,
+                                  "wrap": true
+                                },
+                                {
+                                  "type": "text",
+                                  "text": ">",
+                                  "action": {
+                                    "type": "postback",
+                                    "label": "內容",
+                                    "text": "- 幫老闆接小孩",
+                                    "data": "#1-1"
+                                  },
+                                  "gravity": "center",
+                                  "flex": 1,
+                                  "align": "end"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "box",
+                              "layout": "horizontal",
+                              "contents": [
+                                {
+                                  "type": "text",
+                                  "text": "- 繳電費要被斷電了阿阿阿阿",
+                                  "action": {
+                                    "type": "postback",
+                                    "label": "內容",
+                                    "text": "- 繳電費要被斷電了阿阿阿阿",
+                                    "data": "#1-2"
+                                  },
+                                  "flex": 10,
+                                  "wrap": true
+                                },
+                                {
+                                  "type": "text",
+                                  "text": ">",
+                                  "action": {
+                                    "type": "postback",
+                                    "label": "內容",
+                                    "text": "- 繳電費要被斷電了阿阿阿阿",
+                                    "data": "#1-2"
+                                  },
+                                  "gravity": "center",
+                                  "flex": 1,
+                                  "align": "end"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "box",
+                              "layout": "horizontal",
+                              "contents": [
+                                {
+                                  "type": "text",
+                                  "text": "- ptt.cc/bbs/Gossiping/index.html",
+                                  "action": {
+                                    "type": "postback",
+                                    "label": "內容",
+                                    "text": "- ptt.cc/bbs/Gossiping/index.html",
+                                    "data": "#1-3"
+                                  },
+                                  "flex": 10,
+                                  "wrap": true
+                                },
+                                {
+                                  "type": "text",
+                                  "text": ">",
+                                  "action": {
+                                    "type": "postback",
+                                    "label": "內容",
+                                    "text": "- ptt.cc/bbs/Gossiping/index.html",
+                                    "data": "#1-3"
+                                  },
+                                  "gravity": "center",
+                                  "flex": 1,
+                                  "align": "end"
+                                }
+                              ]
                             }
-                        ]
-                    },
-                    "body": {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "separator"
-                            },
-                            {
-                                "type": "box",
-                                "layout": "horizontal",
-                                "margin": "xs",
-                                "contents": [
-                                    {
-                                        "type": "text",
-                                        "text": "待辦事項",
-                                        "align": "center"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "separator",
-                                "margin": "xs"
-                            },
-                            {
-                                "type": "box",
-                                "layout": "vertical",
-                                "spacing": "xxl",
-                                "margin": "xxl",
-                                "contents": [
-                                    {
-                                        "type": "text",
-                                        "text": "- 幫老闆接小孩",
-                                        "action": {
-                                            "type": "postback",
-                                            "label": "內容",
-                                            "text": "- 幫老闆接小孩",
-                                            "data": "#1-1"
-                                        },
-                                        "wrap": true
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": "- 繳電費要被斷電了阿阿阿阿",
-                                        "action": {
-                                            "type": "postback",
-                                            "label": "內容",
-                                            "text": "- 繳電費要被斷電了阿阿阿阿",
-                                            "data": "#1-2"
-                                        },
-                                        "wrap": true
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": "- ptt.cc/bbs/Gossiping/index.html",
-                                        "action": {
-                                            "type": "postback",
-                                            "label": "內容",
-                                            "text": "- ptt.cc/bbs/Gossiping/index.html",
-                                            "data": "#1-3"
-                                        },
-                                        "wrap": true
-                                    }
-                                ]
-                            }
-                        ]
+                          ]
+                        }
+                      ]
                     },
                     "footer": {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "separator"
-                            },
-                            {
-                                "type": "button",
-                                "action": {
-                                    "type": "postback",
-                                    "label": "新增",
-                                    "text": "請輸入事項內容",
-                                    "data": "#1"
-                                }
-                            }
-                        ]
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "separator"
+                        },
+                        {
+                          "type": "button",
+                          "action": {
+                            "type": "postback",
+                            "label": "新增",
+                            "text": "請輸入事項內容",
+                            "data": "#1"
+                          }
+                        }
+                      ]
                     }
-                },
+                  },
                 {
                     "type": "bubble",
                     "direction": "ltr",
