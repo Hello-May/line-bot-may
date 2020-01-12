@@ -42,6 +42,7 @@ const call = async (event) => {
         user = await dbUser.searchById(userId);
         monster = await dbMonster.searchById(user.monsterId);
     } catch (err) {
+        console.log("以下錯誤");
         console.log(err);
     }
 
