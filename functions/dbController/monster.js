@@ -3,8 +3,8 @@ const { monsters } = require("../../models");
 const Monster = db.monsters;
 
 const searchById = (id) => {
+    try {
     return new Promise(async (resolve, reject) => {
-        try {
             let monster = await monsters.findAll({ where: { monsterId: id } });
             console.log(monster[0]);
             resolve(monster[0]);
