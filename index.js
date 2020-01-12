@@ -39,21 +39,19 @@ async function handleEvent(event) {
         case 'location':
       }
     case 'follow':
-      // dbMonster.create();
-      return dbController.saveId(event);
-    case 'unfollow':
     case 'join':
       // dbMonster.create();
       return dbController.saveId(event);
-    case 'leave':
     case 'memberJoined':
       return clientBot.replyMessage(event.replyToken, {
         type: 'text',
         text: '歡迎阿~~'
       });
-    case 'memberLeft':
     case 'postback':
       return postback.postbackCommandSolver(event, status);
+    case 'unfollow':
+    case 'leave':
+    case 'memberLeft':
     case 'beacon':
     case 'account link':
     case 'device link':

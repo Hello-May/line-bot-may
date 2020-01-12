@@ -28,7 +28,6 @@ const create = async () => {
     });
 }
 
-//這個還沒測試過
 const initialization = async (id) => {
     await Monster.update({
         force: true,
