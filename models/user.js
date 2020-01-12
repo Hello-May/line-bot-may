@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => sequelize.define(
         primaryKey: true
     },
     status: {
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.STRING,
         allowNull: false,
     },
     token: {

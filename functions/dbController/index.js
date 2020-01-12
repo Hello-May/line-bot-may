@@ -2,6 +2,7 @@ const lineBot = require('@line/bot-sdk');
 const configBot = require('../../config');
 const clientBot = new lineBot.Client(configBot);
 const db = require('../../models');
+const dbMonster = require('./monster');
 const { users } = require("../../models");
 const { monsters } = require("../../models");
 const User = db.users;
@@ -23,47 +24,33 @@ const saveTmpId = (event) => {
 
 const saveId = async (event) => {
     let id;
-    let tmpUser;
     switch (event.source.type) {
         case 'user':
             id = event.source.userId;
             break;
         case 'group':
             id = event.source.groupId;
-            // tmpId = await groups.findAll({ where: { groupId: id } });
-            // if (tmpId == '') {
-            //     createOwnerModel(Group, id);
-            //     Group.create({
-            //         force: true,
-            //         groupId: id,
-            //         token: 'null',
-            //         monsterId: 'null',
-            //         status: false,
-            //         createdAt: new Date(),
-            //         updatedAt: new Date()
-            //     });
-            // }
             break;
     }
-
-    tmpUser = await users.findAll({ where: { userId: id } });
-    let monster = await monsters.findAll();
-    console.log(tmpUser+"<------------------------------")
-    if (tmpUser == '') {
-        // createOwnerModel(User, id);
-        User.create({
+    let tmpUser = await users.findAll({ where: { userId: id } });
+    console.log(tmpUser)
+    console.log(tmpUser.length)
+    if (tmpUser.length == 0) {
+        await dbMonster.create();
+        let monster = await monsters.findAll();
+        await User.create({
             force: true,
             userId: id,
             token: 'null',
             monsterId: monster[monster.length-1].monsterId,
-            status: false,
+            status: 'null',
             createdAt: new Date(),
             updatedAt: new Date()
         });
     }
     return clientBot.replyMessage(event.replyToken, {
         type: 'text',
-        text: (tmpUser == '' ? '我存進db=>' : '不用存進db=>') + (event.source.type == 'user' ? 'userId:' + id : 'groupId:' + id)
+        text: (tmpUser.length == 0 ? '我存進db=>' : '不用存進db=>') + (event.source.type == 'user' ? 'userId:' + id : 'groupId:' + id)
     });
 }
 

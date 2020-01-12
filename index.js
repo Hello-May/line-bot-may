@@ -39,11 +39,11 @@ async function handleEvent(event) {
         case 'location':
       }
     case 'follow':
-      dbMonster.create();
+      // dbMonster.create();
       return dbController.saveId(event);
     case 'unfollow':
     case 'join':
-      dbMonster.create();
+      // dbMonster.create();
       return dbController.saveId(event);
     case 'leave':
     case 'memberJoined':
