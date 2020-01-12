@@ -189,13 +189,11 @@ const update = (event) => {
                 {
                     "type": "postback",
                     "label": "改名",
-                    "text": "是",
                     "data": "小怪獸改名"
                 },
                 {
                     "type": "postback",
                     "label": "初始化",
-                    "text": "否",
                     "data": "小怪獸初始化"
                 }
             ],
