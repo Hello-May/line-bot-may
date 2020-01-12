@@ -81,23 +81,23 @@ const call = async (event) => {
                         "contents": [
                             {
                                 "type": "text",
-                                "text": "名字：" + a
+                                "text": ("名字：" + a)
                             },
                             {
                                 "type": "text",
-                                "text": "誕辰：" + b
+                                "text": ("誕辰：" + b)
                             },
                             {
                                 "type": "text",
-                                "text": "等級：" + a
+                                "text": ("等級：" + a)
                             },
                             {
                                 "type": "text",
-                                "text": "經驗值：" + b
+                                "text": ("經驗值：" + b)
                             },
                             {
                                 "type": "text",
-                                "text": "性格:" + a
+                                "text": ("性格:" + a)
                             },
                             {
                                 "type": "text",
