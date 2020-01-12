@@ -26,7 +26,7 @@ const monster = async (event) => {
             console.log(tmp.name + "<-------------------------monster.name")
         })
         .catch((err) => {
-            onsole.log(err);
+            console.log(err);
         })
 
     // var tmp;
