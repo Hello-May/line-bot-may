@@ -184,14 +184,13 @@ const initialization = (event)=>{
         "altText": "this is a confirm template",
         "template": {
           "type": "confirm",
-          "actions": [
+          "actions": 
             {
               "type": "postback",
               "label": "是",
               "data": "小怪獸初始化確定"
-            }
-          ],
-          "text": "要做什麼修改？"
+            },
+          "text": "確定要初始化？"
         }
       }
 }
