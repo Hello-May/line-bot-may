@@ -36,8 +36,8 @@ const postbackCommandSolver = async (event, status) => {
             output = monster.initialization(event);
             break;
         case '小怪獸初始化確認':
-            user = await dbUser.searchById(userId);
-            monster = await dbMonster.searchById(user.monsterId);
+            let user = await dbUser.searchById(userId);
+            let monster = await dbMonster.searchById(user.monsterId);
             dbMonster.initialization(monster.monsterId);
             output = {
                 type: 'text',

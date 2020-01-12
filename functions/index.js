@@ -35,8 +35,8 @@ const textCommandSolver = async (event, status) => {
     } else {
         switch (status) {
             case '小怪獸改名監聽':
-                user = await dbUser.searchById(userId);
-                monster = await dbMonster.searchById(user.monsterId);
+                let user = await dbUser.searchById(userId);
+                let monster = await dbMonster.searchById(user.monsterId);
                 dbMonster.updateName(monster.monsterId, input);
                 output = {
                     type: 'text',
