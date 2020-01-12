@@ -45,10 +45,10 @@ function genByTask(task) {
             })
         }
     }
-    console.log("one:" + JSON.stringify(output.one));
-    console.log("two:" + JSON.stringify(output.two));
-    console.log("three:" + JSON.stringify(output.three));
-    console.log("four:" + JSON.stringify(output.four));
+    for(let i=0;i<4;i++){
+    console.log("------>:" + JSON.stringify(output[i]));
+    }
+
     return output;
 }
 
@@ -159,7 +159,7 @@ const call = async (event) => {
                                 "spacing": "xxl",
                                 "margin": "xxl",
                                 "contents": [
-                                    test
+                                    output[0]
                                     ,
                                     {
                                         "type": "box",
