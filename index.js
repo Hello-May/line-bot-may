@@ -16,7 +16,7 @@ function handleEvent(event) {
     case 'message':
       switch (event.message.type) {
         case 'text':
-          return functions.textCommandSolver(event);
+          return functions.textCommandSolver(event).catch(error => { console.log(err);});
         case 'image':
           return functions.imgCommandSolver(event);
         case 'sticker':
