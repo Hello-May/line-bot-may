@@ -92,7 +92,7 @@ const textCommandSolver = async (event) => {
                 break;
             case '#小怪獸':
                     output = monster.monster(event);
-                    output = monster.monster(event).catch(err=>{console.log(err)});
+                    // output = monster.monster(event).catch(err=>{console.log(err)});
                 break;
             case '#戰鬥':
                 output = pk.pk(event);
