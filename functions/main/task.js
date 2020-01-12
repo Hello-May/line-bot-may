@@ -11,7 +11,7 @@ const call = async (event) => {
     } catch (err) {
         console.log(err);
     }
-    let test;
+    let test=[];
     for (let i = 0; i < task.length; i++) {
         test =+ {
             "type": "box",
