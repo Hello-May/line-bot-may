@@ -91,8 +91,8 @@ const textCommandSolver = async (event) => {
                 output = task.call(event);
                 break;
             case '#小怪獸':
-                    // output = monster.monster(event);
-                    output = monster.call(event).catch(err=>{console.log(err)});
+                    output = monster.call(event);
+                    // output = monster.call(event).catch(err=>{console.log(err)});
                 break;
             case '#戰鬥':
                 output = pk.call(event);
