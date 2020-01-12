@@ -39,8 +39,12 @@ const call = async (event) => {
 
     var tmp;
     try {
+        console.log("userId:"+userId);
         user = await dbUser.searchById(userId);
+        console.log("user:"+JSON.stringify(user));
         monster = await dbMonster.searchById(user.monsterId);
+        console.log("monster:"+JSON.stringify(monster));
+
     } catch (err) {
         console.log("以下錯誤");
         console.log(err);
