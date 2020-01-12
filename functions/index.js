@@ -17,7 +17,7 @@ const db = require('../models');
 
 var shutUp = null;
 
-const textCommandSolver = (event) => {
+const textCommandSolver = async (event) => {
     let input = event.message.text;
     let output;
     if (shutUp !== null && input !== '呼叫' && shutUp) {
