@@ -24,6 +24,7 @@ const saveTmpId = (event) => {
 const saveId = async (event) => {
     let id;
     let tmpId;
+    let tmpUser;
     switch (event.source.type) {
         case 'user':
             id = event.source.userId;
@@ -46,9 +47,10 @@ const saveId = async (event) => {
             break;
     }
 
-    tmpId = await users.findAll({ where: { userId: id } });
+    tmpUser = await users.findAll({ where: { userId: id } });
+    tmpId = tmpUser[0].userId;
     let monster = await monsters.findAll();
-    if (tmpId == null) {
+    if (tmpId == '') {
         // createOwnerModel(User, id);
         User.create({
             force: true,
@@ -62,7 +64,7 @@ const saveId = async (event) => {
     }
     return clientBot.replyMessage(event.replyToken, {
         type: 'text',
-        text: (tmpId == null ? '我存進db=>' : '不用存進db=>') + (event.source.type == 'user' ? 'userId:' + id : 'groupId:' + id)
+        text: (tmpId == '' ? '我存進db=>' : '不用存進db=>') + (event.source.type == 'user' ? 'userId:' + id : 'groupId:' + id)
     });
 }
 

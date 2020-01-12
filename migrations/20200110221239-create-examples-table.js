@@ -26,7 +26,7 @@ module.exports = {
         createdAt: DataTypes.DATE,
         updatedAt: DataTypes.DATE,
       }, {
-        initialAutoIncrement: 1.0
+        initialAutoIncrement: 1
       });
       await queryInterface.createTable('monsters', {
         monsterId: {
@@ -66,7 +66,7 @@ module.exports = {
         createdAt: DataTypes.DATE,
         updatedAt: DataTypes.DATE,
       }, {
-        initialAutoIncrement: 1.0
+        initialAutoIncrement: 1
       });
       // await queryInterface.createTable('tasks', {
       //   userId: {
