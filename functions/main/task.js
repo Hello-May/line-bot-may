@@ -133,8 +133,14 @@ const call = async (event) => {
                                 "type": "separator",
                                 "margin": "xs"
                             },
-                            test
-                            ,
+                            {
+                                "type": "box",
+                                "layout": "vertical",
+                                "spacing": "xxl",
+                                "margin": "xxl",
+                                "contents": [
+                                    test
+                                    ,
                                     {
                                         "type": "box",
                                         "layout": "horizontal",
