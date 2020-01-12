@@ -29,7 +29,7 @@ const initialization = async (id) => {
         force: true,
         userId: id,
         level: 1,
-        desc: 'ptt.cc/bbs/Gossiping/index.html',
+        desc: 'ptt.cc\/bbs\/Gossiping\/index.html',
         createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
         updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
     });
