@@ -3,6 +3,7 @@ const configBot = require('../../config');
 const clientBot = new lineBot.Client(configBot);
 const db = require('../../models');
 const dbMonster = require('./monster');
+const dbTask = require('./task');
 const { users } = require("../../models");
 const { monsters } = require("../../models");
 const User = db.users;
@@ -33,10 +34,11 @@ const saveId = async (event) => {
             break;
     }
     let tmpUser = await users.findAll({ where: { userId: id } });
-    console.log(tmpUser)
-    console.log(tmpUser.length)
+    // console.log(tmpUser)
+    // console.log(tmpUser.length)
     if (tmpUser.length == 0) {
         await dbMonster.create();
+        await dbTask.initialization(id);
         let monster = await monsters.findAll();
         await User.create({
             force: true,

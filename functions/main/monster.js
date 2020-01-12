@@ -52,16 +52,15 @@ const call = async (event) => {
     let monster;
     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
 
-    var tmp;
     try {
-        console.log("userId:" + userId);
+        // console.log("userId:" + userId);
         user = await dbUser.searchById(userId);
-        console.log("user:" + JSON.stringify(user));
+        // console.log("user:" + JSON.stringify(user));
         monster = await dbMonster.searchById(user.monsterId);
-        console.log("monster:" + JSON.stringify(monster));
+        // console.log("monster:" + JSON.stringify(monster));
 
     } catch (err) {
-        console.log("以下錯誤");
+        // console.log("以下錯誤");
         console.log(err);
     }
 

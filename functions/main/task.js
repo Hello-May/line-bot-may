@@ -1,4 +1,17 @@
+const dbUser = require('../dbController/user');
+const dbTask = require('../dbController/task');
+
 const call = (event) => {
+    let task;
+    let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
+
+    try {
+        task = await dbTask.searchById(userId);
+        console.log("task:" + JSON.stringify(task));
+    } catch (err) {
+        console.log(err);
+    }
+
     return {
         "type": "flex",
         "altText": "Flex Message",

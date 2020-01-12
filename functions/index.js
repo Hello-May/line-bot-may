@@ -101,17 +101,17 @@ const textCommandSolver = async (event, status) => {
                         output = main.test(event);
                         break;
                     case '#修煉':
-                        output = life.call(event);
+                        output = await life.call(event);
                         break;
                     case '#任務':
-                        output = task.call(event);
+                        output = await task.call(event);
                         break;
                     case '#小怪獸':
                         output = await monster.call(event);
                         // output = monster.call(event).catch(err=>{console.log(err)});
                         break;
                     case '#戰鬥':
-                        output = pk.call(event);
+                        output = await pk.call(event);
                         break;
                     case '#酒館':
                         output = talk.call(event);
