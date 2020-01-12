@@ -169,7 +169,6 @@ const call = async (event) => {
                         "action": {
                             "type": "postback",
                             "label": "修改",
-                            "text": "改名/初始化",
                             "data":"小怪獸修改",
                         }
                     }
