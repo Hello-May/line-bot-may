@@ -10,9 +10,9 @@ const monster = async (event) => {
     try {
         let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
         console.log(userId + "<---------------------------userId")
-        let user = await dbUser.searchById(userId);
+        let user = await dbUser.searchById(userId).catch(error => { throw error});
         console.log(user.monsterId + "<-----------------------------monsterId");
-        let monster = await dbMonster.searchById(user.monsterId);
+        let monster = await dbMonster.searchById(user.monsterId).catch(error => { throw error});
         console.log(monster.name + "<-------------------------monster.name")
     } catch (err) {
         console.log(err);
