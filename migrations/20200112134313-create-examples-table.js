@@ -69,6 +69,12 @@ module.exports = {
         initialAutoIncrement: 1
       });
       await queryInterface.createTable('tasks', {
+        taskId: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+          primaryKey: true,
+          autoIncrement:true
+        },
         userId: {
           type: DataTypes.STRING,
           allowNull: false,
