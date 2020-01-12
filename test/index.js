@@ -136,12 +136,23 @@ const Monster = db.monsters;
     //     createdAt: new Date(),
     //     updatedAt: new Date()
     // });
-    const go = async (event) => {
-    let monster = await monsters.findAll();
-    console.log(monster);
-    console.log(monster.length);
-    console.log(monster[monster.length-1].monsterId);
+    // const go = async (event) => {
+    // let monster = await monsters.findAll();
+    // console.log(monster);
+    // console.log(monster.length);
+    // console.log(monster[monster.length-1].monsterId);
+    // }
+
+    // go();
+
+    const db = require('../../models');
+    const { monsters } = require("../../models");
+    const Monster = db.monsters;
+    
+    const updateName = async (id,name) => {
+        await Monster.update({
+            name: name,
+        }, { where: { monsterId: id } });
     }
 
-    go();
-
+    updateName()
