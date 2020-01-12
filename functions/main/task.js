@@ -11,9 +11,9 @@ const call = async (event) => {
     } catch (err) {
         console.log(err);
     }
-    let test=[];
-    for (let i = 0; i < task.length; i++) {
-        test =+ {
+    let test=[]; //四個
+    for (let i = 0; i < task.length ; i++) {
+        test.push({
             "type": "box",
             "layout": "horizontal",
             "contents": [
@@ -43,7 +43,7 @@ const call = async (event) => {
                     "align": "end"
                 }
             ]
-        }
+        })
     }
     console.log("test:" + JSON.stringify(test));
 
