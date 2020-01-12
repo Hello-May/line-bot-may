@@ -14,13 +14,33 @@ const task = require('./main/task');
 const pk = require('./main/pk');
 const talk = require('./main/talk');
 const db = require('../models');
+const dbUser = require('./dbController/user');
+const dbMonster = require('./dbController/monster');
 
-const postbackCommandSolver = async (event,status) => {
+const postbackCommandSolver = async (event, status) => {
     let input = event.postback.data;
     let output;
+    let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
     switch (input) {
         case '小怪獸修改':
             output = monster.update(event);
+            break;
+        case '小怪獸改名':
+            dbUser.saveStatus(userId, '小怪獸改名監聽');
+            output = {
+                type: 'text',
+                text: '請輸入小怪獸的新暱稱'
+            }
+            break;
+        case '小怪獸初始化':
+            output = monster.initialization(event);
+            break;
+        case '小怪獸初始化確認':
+            dbMonster.initialization(userId);
+            output = {
+                type: 'text',
+                text: '[已初始化小怪獸]'
+            }
             break;
         default:
             output = {

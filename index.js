@@ -26,7 +26,7 @@ async function handleEvent(event) {
       switch (event.message.type) {
         case 'text':
           // return functions.textCommandSolver(event).catch(err=>{console.log(err)});
-          return functions.textCommandSolver(event);
+          return functions.textCommandSolver(event,status);
         case 'image':
           return functions.imgCommandSolver(event);
         case 'sticker':

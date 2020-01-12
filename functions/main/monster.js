@@ -178,6 +178,24 @@ const call = async (event) => {
     }
 }
 
+const initialization = (event)=>{
+    return {
+        "type": "template",
+        "altText": "this is a confirm template",
+        "template": {
+          "type": "confirm",
+          "actions": [
+            {
+              "type": "postback",
+              "label": "是",
+              "data": "小怪獸初始化確定"
+            }
+          ],
+          "text": "要做什麼修改？"
+        }
+      }
+}
+
 const update = (event) => {
     return {
         "type": "template",
@@ -203,7 +221,8 @@ const update = (event) => {
 
 module.exports = {
     call,
-    update
+    update,
+    initialization
 }
 
 

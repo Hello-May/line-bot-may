@@ -7,6 +7,12 @@ const searchById = async (id) => {
     return monster[0];
 }
 
+const updateName = async (id,name) => {
+    await Monster.update({
+        name: name,
+    }, { where: { monsterId: id } });
+}
+
 const create = async () => {
     await Monster.create({
         force: true,
@@ -41,5 +47,6 @@ const initialization = async (id) => {
 module.exports = {
     create,
     initialization,
-    searchById
+    searchById,
+    updateName
 }
