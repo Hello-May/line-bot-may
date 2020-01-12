@@ -83,11 +83,11 @@ const textCommandSolver = async (event) => {
                 output = lineNotify.authorize();
                 break;;
             case '呼叫':
-                dbUser.saveStatus('正常');
+                dbUser.saveStatus(event.source.userId,'正常');
                 output = pause.pause(event);
                 break;
             case '閉嘴':
-                dbUser.saveStatus('睡眠');
+                dbUser.saveStatus(event.source.userId,'睡眠');
                 // shutUp = true;
                 output = pause.pause(event);
                 break;
