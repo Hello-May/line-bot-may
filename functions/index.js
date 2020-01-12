@@ -130,7 +130,7 @@ const textCommandSolver = async (event) => {
     // } catch (err) {
     //     console.log(err);
     // }
-    return clientBot.replyMessage(event.replyToken, output);
+    return clientBot.replyMessage(event.replyToken, output).catch(error => { console.log(err);});
 }
 
 const imgCommandSolver = (event) => {
