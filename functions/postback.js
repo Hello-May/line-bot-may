@@ -20,40 +20,7 @@ const postbackCommandSolver = async (event,status) => {
     let output;
     switch (input) {
         case '小怪獸修改':
-            output = monster.update;
-            break;
-        case '#':
-            output = richMenu.call();
-            break;
-        case '連動':
-            dbController.saveTmpId(event);
-            output = lineNotify.authorize();
-            break;;
-        case '呼叫':
-            shutUp = false;
-            output = pause.pause(event);
-            break;
-        case '閉嘴':
-            shutUp = true;
-            output = pause.pause(event);
-            break;
-        case '嗨':
-            output = main.test(event);
-            break;
-        case '#修煉':
-            output = life.call(event);
-            break;
-        case '#任務':
-            output = task.call(event);
-            break;
-        case '#小怪獸':
-            output = await monster.call(event);
-            break;
-        case '#戰鬥':
-            output = pk.call(event);
-            break;
-        case '#酒館':
-            output = talk.call(event);
+            output = monster.update(event);
             break;
         default:
             output = {

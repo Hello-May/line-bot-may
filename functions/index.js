@@ -70,7 +70,7 @@ const textCommandSolver = async (event) => {
                 output = lineNotify.test();
                 break;
             case '#':
-                output = richMenu.call();
+                output = richMenu.call(event);
                 break;
             case '連動':
                 dbController.saveTmpId(event);

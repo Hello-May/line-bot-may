@@ -49,7 +49,7 @@ async function handleEvent(event) {
       });
     case 'memberLeft':
     case 'postback':
-      return postback.postbackCommandSolver(event,stat);
+      return postback.postbackCommandSolver(event,status);
     case 'beacon':
     case 'account link':
     case 'device link':

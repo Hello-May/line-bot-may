@@ -1,4 +1,4 @@
-const call = () => {
+const call = (event) => {
     return {
         "type": "imagemap",
         "baseUrl": "https://i.postimg.cc/pVQhNS5w/pic3.jpg",
