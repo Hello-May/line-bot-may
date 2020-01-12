@@ -13,6 +13,7 @@ const monster = async (event) => {
         let user = await dbUser.searchById(userId);
         console.log(user.monsterId + "<-----------------------------monsterId");
         let monster = await dbMonster.searchById(user.monsterId);
+        console.log(monster);
         console.log(monster.name + "<-------------------------monster.name")
     } catch (err) {
         console.log(err);
