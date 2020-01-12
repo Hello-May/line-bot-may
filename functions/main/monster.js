@@ -63,31 +63,31 @@ const monster = async (event) => {
                         "contents": [
                             {
                                 "type": "text",
-                                "text": "名字：" + monster.name
+                                "text": "名字：" + tmp.name
                             },
                             {
                                 "type": "text",
-                                "text": "誕辰：" + monster.born
+                                "text": "誕辰：" +tmp.born
                             },
                             {
                                 "type": "text",
-                                "text": "等級：" + monster.level
+                                "text": "等級：" + tmp.level
                             },
                             {
                                 "type": "text",
-                                "text": "經驗值：" + monster.exp
+                                "text": "經驗值：" + tmp.exp
                             },
                             {
                                 "type": "text",
-                                "text": "性格:" + monster.character
+                                "text": "性格:" +tmp.character
                             },
                             {
                                 "type": "text",
-                                "text": "自律幣:" + monster.money
+                                "text": "自律幣:" + tmp.money
                             },
                             {
                                 "type": "text",
-                                "text": "精神糧食：" + monster.food
+                                "text": "精神糧食：" + tmp.food
                             }
                         ]
                     },
