@@ -18,11 +18,11 @@ function genByTask(task) {
                 "contents": [
                     {
                         "type": "text",
-                        "text": "- 幫老闆接小孩",
+                        "text": "- "+task[i].desc,
                         "action": {
                             "type": "postback",
                             "label": "內容",
-                            "text": "- 幫老闆接小孩",
+                            "text": task[i].desc,
                             "data": "#1-1"
                         },
                         "flex": 10,
@@ -34,7 +34,7 @@ function genByTask(task) {
                         "action": {
                             "type": "postback",
                             "label": "內容",
-                            "text": "- 幫老闆接小孩",
+                            "text": task[i].desc,
                             "data": "#1-1"
                         },
                         "gravity": "center",
@@ -46,7 +46,7 @@ function genByTask(task) {
         }
     }
     for(let i=0;i<4;i++){
-    console.log("------>:" + JSON.stringify(output[i]));
+    console.log(JSON.stringify(output[i]));
     }
 
     return output;
@@ -158,72 +158,8 @@ const call = async (event) => {
                                 "layout": "vertical",
                                 "spacing": "xxl",
                                 "margin": "xxl",
-                                "contents": [
-                                    output[0]
-                                    ,
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                            {
-                                                "type": "text",
-                                                "text": "- 繳電費要被斷電了阿阿阿阿",
-                                                "action": {
-                                                    "type": "postback",
-                                                    "label": "內容",
-                                                    "text": "- 繳電費要被斷電了阿阿阿阿",
-                                                    "data": "#1-2"
-                                                },
-                                                "flex": 10,
-                                                "wrap": true
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": ">",
-                                                "action": {
-                                                    "type": "postback",
-                                                    "label": "內容",
-                                                    "text": "- 繳電費要被斷電了阿阿阿阿",
-                                                    "data": "#1-2"
-                                                },
-                                                "gravity": "center",
-                                                "flex": 1,
-                                                "align": "end"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                            {
-                                                "type": "text",
-                                                "text": "- ptt.cc/bbs/Gossiping/index.html",
-                                                "action": {
-                                                    "type": "postback",
-                                                    "label": "內容",
-                                                    "text": "- ptt.cc/bbs/Gossiping/index.html",
-                                                    "data": "#1-3"
-                                                },
-                                                "flex": 10,
-                                                "wrap": true
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": ">",
-                                                "action": {
-                                                    "type": "postback",
-                                                    "label": "內容",
-                                                    "text": "- ptt.cc/bbs/Gossiping/index.html",
-                                                    "data": "#1-3"
-                                                },
-                                                "gravity": "center",
-                                                "flex": 1,
-                                                "align": "end"
-                                            }
-                                        ]
-                                    }
-                                ]
+                                "contents": 
+                                    output[0]                        
                             }
                         ]
                     },
