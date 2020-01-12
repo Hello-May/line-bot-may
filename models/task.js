@@ -3,15 +3,14 @@ module.exports = (sequelize, DataTypes) => sequelize.define(
         userId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            primaryKey: true,
-            autoIncrement:true
+            primaryKey: true
           },
           level: {
             type: DataTypes.INTEGER,
             allowNull: false,
           },
           desc: {
-            type: DataTypes.DATE,
+            type: DataTypes.STRING,
             allowNull: false,
           },
           createdAt: DataTypes.DATE,

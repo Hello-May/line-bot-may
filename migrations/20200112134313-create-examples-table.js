@@ -73,14 +73,13 @@ module.exports = {
           type: DataTypes.INTEGER,
           allowNull: false,
           primaryKey: true,
-          autoIncrement:true
         },
         level: {
           type: DataTypes.INTEGER,
           allowNull: false,
         },
         desc: {
-          type: DataTypes.DATE,
+          type: DataTypes.STRING,
           allowNull: false,
         },
         createdAt: DataTypes.DATE,

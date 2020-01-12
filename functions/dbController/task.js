@@ -37,7 +37,7 @@ const initialization = async (id) => {
     await Task.create({
         force: true,
         userId: id,
-        level: 3,
+        level: 2,
         desc: '客戶禮物挑選',
         createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
         updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
@@ -45,7 +45,7 @@ const initialization = async (id) => {
     await Task.create({
         force: true,
         userId: id,
-        level: 3,
+        level: 2,
         desc: '砍掉沒用的信用卡',
         createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
         updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
@@ -53,7 +53,7 @@ const initialization = async (id) => {
     await Task.create({
         force: true,
         userId: id,
-        level: 3,
+        level: 2,
         desc: '整理上課筆記',
         createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
         updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
