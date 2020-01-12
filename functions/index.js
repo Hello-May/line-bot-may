@@ -14,7 +14,7 @@ const task = require('./main/task');
 const pk = require('./main/pk');
 const talk = require('./main/talk');
 const db = require('../models');
-// const dbUser = require('./dbController/user');
+const dbUser = require('./dbController/user');
 
 const textCommandSolver = async (event) => {
     let input = event.message.text;
