@@ -9,7 +9,7 @@ function genByTask(task) {
     let output = [one, two, three, four];
     for (let j = 0; j < 4; j++) {
         for (let i = 0; i < task.length; i++) {
-            if (task[i].level != (j+1)) {
+            if (task[i].level != (j + 1)) {
                 continue;
             }
             output[j].push({
@@ -18,7 +18,7 @@ function genByTask(task) {
                 "contents": [
                     {
                         "type": "text",
-                        "text": "- "+task[i].desc,
+                        "text": "- " + task[i].desc,
                         "action": {
                             "type": "postback",
                             "label": "內容",
@@ -45,10 +45,9 @@ function genByTask(task) {
             })
         }
     }
-    for(let i=0;i<4;i++){
-    console.log(JSON.stringify(output[i]));
-    }
-
+    // for (let i = 0; i < 4; i++) {
+    //     console.log(JSON.stringify(output[i]));
+    // }
     return output;
 }
 
@@ -158,8 +157,7 @@ const call = async (event) => {
                                 "layout": "vertical",
                                 "spacing": "xxl",
                                 "margin": "xxl",
-                                "contents": 
-                                    output[0]                        
+                                "contents": output[0]
                             }
                         ]
                     },
@@ -201,68 +199,7 @@ const call = async (event) => {
                     "body": {
                         "type": "box",
                         "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "separator"
-                            },
-                            {
-                                "type": "box",
-                                "layout": "horizontal",
-                                "margin": "xs",
-                                "contents": [
-                                    {
-                                        "type": "text",
-                                        "text": "待辦事項",
-                                        "align": "center"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "separator",
-                                "margin": "xs"
-                            },
-                            {
-                                "type": "box",
-                                "layout": "vertical",
-                                "spacing": "xxl",
-                                "margin": "xxl",
-                                "contents": [
-                                    {
-                                        "type": "text",
-                                        "text": "- 客戶禮物挑選",
-                                        "action": {
-                                            "type": "postback",
-                                            "label": "內容",
-                                            "text": "- 客戶禮物挑選",
-                                            "data": "#2-1"
-                                        },
-                                        "wrap": true
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": "- 砍掉沒用的信用卡",
-                                        "action": {
-                                            "type": "postback",
-                                            "label": "內容",
-                                            "text": "- 砍掉沒用的信用卡",
-                                            "data": "#2-2"
-                                        },
-                                        "wrap": true
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": "- 整理上課筆記",
-                                        "action": {
-                                            "type": "postback",
-                                            "label": "內容",
-                                            "text": "- 整理上課筆記",
-                                            "data": "#2-3"
-                                        },
-                                        "wrap": true
-                                    }
-                                ]
-                            }
-                        ]
+                        "contents": output[1]
                     },
                     "footer": {
                         "type": "box",
@@ -302,68 +239,7 @@ const call = async (event) => {
                     "body": {
                         "type": "box",
                         "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "separator"
-                            },
-                            {
-                                "type": "box",
-                                "layout": "horizontal",
-                                "margin": "xs",
-                                "contents": [
-                                    {
-                                        "type": "text",
-                                        "text": "待辦事項",
-                                        "align": "center"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "separator",
-                                "margin": "xs"
-                            },
-                            {
-                                "type": "box",
-                                "layout": "vertical",
-                                "spacing": "xxl",
-                                "margin": "xxl",
-                                "contents": [
-                                    {
-                                        "type": "text",
-                                        "text": "- 晚上要倒垃圾",
-                                        "action": {
-                                            "type": "postback",
-                                            "label": "內容",
-                                            "text": "- 晚上要倒垃圾",
-                                            "data": "#3-3"
-                                        },
-                                        "wrap": true
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": "- 超市六折限時特價",
-                                        "action": {
-                                            "type": "postback",
-                                            "label": "內容",
-                                            "text": "- 超市六折限時特價",
-                                            "data": "#3-2"
-                                        },
-                                        "wrap": true
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": "- 冷氣漏水要找廠商修",
-                                        "action": {
-                                            "type": "postback",
-                                            "label": "內容",
-                                            "text": "- 冷氣漏水要找廠商修",
-                                            "data": "#3-3"
-                                        },
-                                        "wrap": true
-                                    }
-                                ]
-                            }
-                        ]
+                        "contents": output[2]
                     },
                     "footer": {
                         "type": "box",
@@ -403,68 +279,7 @@ const call = async (event) => {
                     "body": {
                         "type": "box",
                         "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "separator"
-                            },
-                            {
-                                "type": "box",
-                                "layout": "horizontal",
-                                "margin": "xs",
-                                "contents": [
-                                    {
-                                        "type": "text",
-                                        "text": "待辦事項",
-                                        "align": "center"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "separator",
-                                "margin": "xs"
-                            },
-                            {
-                                "type": "box",
-                                "layout": "vertical",
-                                "spacing": "xxl",
-                                "margin": "xxl",
-                                "contents": [
-                                    {
-                                        "type": "text",
-                                        "text": "- 進擊的巨人最新季",
-                                        "action": {
-                                            "type": "postback",
-                                            "label": "內容",
-                                            "text": "- 進擊的巨人最新季",
-                                            "data": "#4-1"
-                                        },
-                                        "wrap": true
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": "- 晚上跟朋友喇咧",
-                                        "action": {
-                                            "type": "postback",
-                                            "label": "內容",
-                                            "text": "- 晚上跟朋友喇咧",
-                                            "data": "#4-2"
-                                        },
-                                        "wrap": true
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": "- 想吃肉圓加辣椒",
-                                        "action": {
-                                            "type": "postback",
-                                            "label": "內容",
-                                            "text": "- 想吃肉圓加辣椒",
-                                            "data": "#4-3"
-                                        },
-                                        "wrap": true
-                                    }
-                                ]
-                            }
-                        ]
+                        "contents": output[3]
                     },
                     "footer": {
                         "type": "box",
