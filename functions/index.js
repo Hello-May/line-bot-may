@@ -19,7 +19,7 @@ const dbUser = require('./dbController/user');
 const textCommandSolver = async (event) => {
     let input = event.message.text;
     let output;
-    // let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
+    let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
     // let user = await dbUser.searchById(userId);
     // // console.log("user:" + JSON.stringify(user));
     // let status = user.status;
