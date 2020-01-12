@@ -91,7 +91,11 @@ const textCommandSolver = async (event) => {
                 output = task.task(event);
                 break;
             case '#小怪獸':
-                output = monster.monster(event).catch(error => { console.log(err);});
+            try{
+                output = monster.monster(event);
+            }catch(err){
+                console.log(err);
+            }
                 break;
             case '#戰鬥':
                 output = pk.pk(event);
@@ -130,7 +134,7 @@ const textCommandSolver = async (event) => {
     // } catch (err) {
     //     console.log(err);
     // }
-    return clientBot.replyMessage(event.replyToken, output).catch(error => { console.log(err);});
+    return clientBot.replyMessage(event.replyToken, output);
 }
 
 const imgCommandSolver = (event) => {
