@@ -19,7 +19,7 @@ const postbackCommandSolver = async (event) => {
     let input = event.postback.data;
     let output;
     switch (input) {
-        case '.':
+        case '#task':
             output = lineNotify.test();
             break;
         case '#':
@@ -65,5 +65,5 @@ const postbackCommandSolver = async (event) => {
 }
 
 module.exports = {
-
+    postbackCommandSolver
 }
