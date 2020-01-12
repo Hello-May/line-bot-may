@@ -91,7 +91,11 @@ const textCommandSolver = async (event) => {
                 output = task.task(event);
                 break;
             case '#小怪獸':
-                output = monster.monster(event).catch(error => { console.log(err);});
+                output = monster.monster(event).then(string => {
+                    console.log(string)
+                  }).catch(response => {
+                    console.log(string)
+                  });
                 break;
             case '#戰鬥':
                 output = pk.pk(event);

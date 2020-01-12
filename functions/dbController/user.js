@@ -3,13 +3,9 @@ const { users } = require("../../models");
 const User = db.users;
 
 const searchById = async (id) => {
-    try {
-        let user = await users.findAll({ where: { userId: id } });
-        console.log(user[0]);
-        return user[0];
-    } catch (err) {
-        return err;
-    }
+    let user = await users.findAll({ where: { userId: id } });
+    console.log(user[0]);
+    return user[0];
 }
 
 module.exports = {

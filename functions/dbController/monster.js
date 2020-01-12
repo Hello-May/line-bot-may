@@ -3,13 +3,9 @@ const { monsters } = require("../../models");
 const Monster = db.monsters;
 
 const searchById = async (id) => {
-    try {
-        let monster = await monsters.findAll({ where: { monsterId: id } });
-        console.log(monster[0]);
-        return monster[0];
-    } catch (err) {
-        return err;
-    }
+    let monster = await monsters.findAll({ where: { monsterId: id } });
+    console.log(monster[0]);
+    return monster[0];
 }
 
 const create = async () => {
