@@ -11,7 +11,38 @@ const call = async (event) => {
     } catch (err) {
         console.log(err);
     }
-
+    let test = {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+            {
+                "type": "text",
+                "text": "- 幫老闆接小孩",
+                "action": {
+                    "type": "postback",
+                    "label": "內容",
+                    "text": "- 幫老闆接小孩",
+                    "data": "#1-1"
+                },
+                "flex": 10,
+                "wrap": true
+            },
+            {
+                "type": "text",
+                "text": ">",
+                "action": {
+                    "type": "postback",
+                    "label": "內容",
+                    "text": "- 幫老闆接小孩",
+                    "data": "#1-1"
+                },
+                "gravity": "center",
+                "flex": 1,
+                "align": "end"
+            }
+        ]
+    }
+    console.log("test:" + JSON.stringify(test));
 
 
     return {
