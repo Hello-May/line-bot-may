@@ -12,7 +12,7 @@ const path = require('path');
 const app = express();
 const dbUser = require('./dbController/user');
 
-function handleEvent(event) {
+async function handleEvent(event) {
   console.log(event);
   let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
   let user = await dbUser.searchById(userId);
@@ -49,7 +49,7 @@ function handleEvent(event) {
       });
     case 'memberLeft':
     case 'postback':
-      return postback.postbackCommandSolver(event,status);
+      return postback.postbackCommandSolver(event,stat);
     case 'beacon':
     case 'account link':
     case 'device link':
