@@ -15,10 +15,12 @@ const monster = async (event) => {
             console.log(user.monsterId + "<-----------------------------monsterId");
             tmpMonster = await dbMonster.searchById(user.monsterId);
             console.log(tmpMonster.name + "<-------------------------monster.name")
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+
+
+
+
+
+        
 
     // var tmp;
     // try {
@@ -142,6 +144,11 @@ const monster = async (event) => {
             }
         }
     }
+
+})
+.catch((err) => {
+    console.log(err);
+})
 }
 
 module.exports = {
