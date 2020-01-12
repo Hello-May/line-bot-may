@@ -17,7 +17,7 @@ const db = require('../models');
 
 var shutUp = null;
 
-const textCommandSolver = async (event) => {
+const textCommandSolver = (event) => {
     let input = event.message.text;
     let output;
     if (shutUp !== null && input !== '呼叫' && shutUp) {
@@ -30,28 +30,28 @@ const textCommandSolver = async (event) => {
         }
     } else {
         switch (input) {
-            case '+':   //想插入userId
-                const User = db.sequelize.define('users', {
-                    id: {
-                        type: Sequelize.STRING,
-                        autoIncrement: true,
-                        primaryKey: true
-                    },
-                    createdAt: DataTypes.DATE,
-                    updatedAt: DataTypes.DATE,
-                });
+            // case '+':   //想插入userId
+            //     const User = db.sequelize.define('users', {
+            //         id: {
+            //             type: Sequelize.STRING,
+            //             autoIncrement: true,
+            //             primaryKey: true
+            //         },
+            //         createdAt: DataTypes.DATE,
+            //         updatedAt: DataTypes.DATE,
+            //     });
 
-                User.sync({
-                    force: true
-                }).then(() => {
-                    // Table created
-                    return User.create({
-                        id: '5'
-                    });
-                }).then(() => {
-                    process.exit()
-                })
-                break;
+            //     User.sync({
+            //         force: true
+            //     }).then(() => {
+            //         // Table created
+            //         return User.create({
+            //             id: '5'
+            //         });
+            //     }).then(() => {
+            //         process.exit()
+            //     })
+            //     break;
             // case '..':
             //     const { users } = require("../models");
             //     // 搜尋多個例項

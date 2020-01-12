@@ -6,7 +6,7 @@
 const dbUser = require('../dbController/user');
 const dbMonster = require('../dbController/monster');
 
-const call = (event) => {
+const call = async (event) => {
     // var monster;
     // let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
     // console.log(userId + "<---------------------------userId")
