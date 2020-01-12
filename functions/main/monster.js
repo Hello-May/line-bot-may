@@ -7,22 +7,39 @@ const dbUser = require('../dbController/user');
 const dbMonster = require('../dbController/monster');
 
 const monster = async (event) => {
+    // let [stat1, stat2] = await Promise.all([
+    //     timeoutOne().then(() => "one fulfilled", () => "one rejected"), 
+    //     timeoutTwo().then(() => "two fulfilled", () => "two rejected")
+    // ]);
+    // lineNotify.getToken(code)
+    // .then((token) => {
+    // })
+    // .catch((err) => {
+    // })
     var tmp;
-    try {
-        let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
-        console.log(userId + "<---------------------------userId")
-        let user = await dbUser.searchById(userId);
-        console.log(user.monsterId + "<-----------------------------monsterId");
+    let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
+    console.log(userId + "<---------------------------userId")
+    let user = await dbUser.searchById(userId)
+        .then(() => {
+            console.log(user.monsterId + "<-----------------------------monsterId");
+            tmp = await dbMonster.searchById(user.monsterId);
+            console.log(tmp.name + "<-------------------------monster.name")
+        })
+        .catch((err) => {
+            onsole.log(err);
+        })
 
-    } catch (err) {
-        console.log(err);
-    }
-    try {
-        tmp = await dbMonster.searchById(user.monsterId);
-        console.log(tmp.name + "<-------------------------monster.name")
-    } catch (err) {
-        console.log(err);
-    }
+    // var tmp;
+    // try {
+    //     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
+    //     console.log(userId + "<---------------------------userId")
+    //     let user = await dbUser.searchById(userId);
+    //     console.log(user.monsterId + "<-----------------------------monsterId");
+    //     tmp = await dbMonster.searchById(user.monsterId);
+    //     console.log(tmp.name + "<-------------------------monster.name")
+    // } catch (err) {
+    //     console.log(err);
+    // }
     return {
         "type": "flex",
         "altText": "Flex Message",
