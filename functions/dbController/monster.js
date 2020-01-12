@@ -4,9 +4,13 @@ const Monster = db.monsters;
 
 const searchById = (id) => {
     return new Promise(async (resolve, reject) => {
-    let monster = await monsters.findAll({ where: { monsterId: id } });
-    console.log(monster[0]);
-    resolve(monster[0]);
+        try {
+            let monster = await monsters.findAll({ where: { monsterId: id } });
+            console.log(monster[0]);
+            resolve(monster[0]);
+        } catch (e) {
+            reject(e);
+        }
     });
     // return monster[0];
 }

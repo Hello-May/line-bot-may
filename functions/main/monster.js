@@ -14,7 +14,10 @@ const monster = async (event) => {
         console.log(user.monsterId + "<-----------------------------monsterId");
         let monster = await dbMonster.searchById(user.monsterId);
         console.log(monster.name + "<-------------------------monster.name")
-    
+    } catch (err) {
+        console.log(err);
+        throw error;
+    }
     return {
         "type": "flex",
         "altText": "Flex Message",
@@ -126,9 +129,6 @@ const monster = async (event) => {
             }
         }
     }
-} catch (err) {
-    console.log(err);
-}
 }
 
 module.exports = {
