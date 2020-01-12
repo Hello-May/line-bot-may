@@ -8,7 +8,7 @@ const searchById = async (id) => {
         console.log(monster[0]);
         return monster[0];
     } catch (err) {
-        console.log(err);
+        return err;
     }
 }
 

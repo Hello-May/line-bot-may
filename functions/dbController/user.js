@@ -8,7 +8,7 @@ const searchById = async (id) => {
         console.log(user[0]);
         return user[0];
     } catch (err) {
-        console.log(err);
+        return err;
     }
 }
 
