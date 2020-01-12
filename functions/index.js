@@ -15,15 +15,23 @@ const pk = require('./main/pk');
 const talk = require('./main/talk');
 const db = require('../models');
 
-var shutUp = null;
+
+// var shutUp = null;
+
+const dbUser = require('./dbController/user');
 
 
 const textCommandSolver = async (event) => {
     let input = event.message.text;
     let output;
-    if (shutUp !== null && input !== '呼叫' && shutUp) {
+    let status =  dbUser.searchById(event.source.userId).status;
+    if(input !== '呼叫' && status == '睡眠'){
         return;
     }
+
+    // if (shutUp !== null && input !== '呼叫' && shutUp) {
+    //     return;
+    // }
     if (input.includes('你') && input.includes('誰')) {
         output = {
             type: 'text',
@@ -75,11 +83,12 @@ const textCommandSolver = async (event) => {
                 output = lineNotify.authorize();
                 break;;
             case '呼叫':
-                shutUp = false;
+                dbUser.saveStatus('正常');
                 output = pause.pause(event);
                 break;
             case '閉嘴':
-                shutUp = true;
+                dbUser.saveStatus('睡眠');
+                // shutUp = true;
                 output = pause.pause(event);
                 break;
             case '嗨':

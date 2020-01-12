@@ -7,8 +7,13 @@ const searchById = async (id) => {
     return user[0];
 }
 
+const saveStatus = async (id,status)=> {
+    await users.update({ status: status }, { where: { userId: id } });
+}
+
 module.exports = {
-    searchById
+    searchById,
+    saveStatus
 }
 
 

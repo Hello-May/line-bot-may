@@ -52,7 +52,6 @@ const call = async (event) => {
     let monster;
     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
 
-
     var tmp;
     try {
         console.log("userId:"+userId);
