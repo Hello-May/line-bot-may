@@ -17,6 +17,7 @@ const db = require('../models');
 
 var shutUp = null;
 
+
 const textCommandSolver = async (event) => {
     let input = event.message.text;
     let output;
