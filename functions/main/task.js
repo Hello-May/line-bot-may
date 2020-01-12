@@ -1,6 +1,57 @@
 const dbUser = require('../dbController/user');
 const dbTask = require('../dbController/task');
 
+function genByTask(task) {
+    let one = [];
+    let two = [];
+    let three = [];
+    let four = [];
+    let output = [one, two, three, four];
+    for (let j = 0; j < 4; j++) {
+        for (let i = 0; i < task.length; i++) {
+            if (task[i].level != (j+1)) {
+                continue;
+            }
+            output[j].push({
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "- 幫老闆接小孩",
+                        "action": {
+                            "type": "postback",
+                            "label": "內容",
+                            "text": "- 幫老闆接小孩",
+                            "data": "#1-1"
+                        },
+                        "flex": 10,
+                        "wrap": true
+                    },
+                    {
+                        "type": "text",
+                        "text": ">",
+                        "action": {
+                            "type": "postback",
+                            "label": "內容",
+                            "text": "- 幫老闆接小孩",
+                            "data": "#1-1"
+                        },
+                        "gravity": "center",
+                        "flex": 1,
+                        "align": "end"
+                    }
+                ]
+            })
+        }
+    }
+    console.log("one:" + JSON.stringify(output.one));
+    console.log("two:" + JSON.stringify(output.two));
+    console.log("three:" + JSON.stringify(output.three));
+    console.log("four:" + JSON.stringify(output.four));
+    return output;
+}
+
 const call = async (event) => {
     let task;
     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
@@ -11,45 +62,8 @@ const call = async (event) => {
     } catch (err) {
         console.log(err);
     }
-    let one = []; //四個
-    for (let i = 0; i < task.length; i++) {
-        if (task[i].level != 1) {
-            continue;
-        }
-        one.push({
-            "type": "box",
-            "layout": "horizontal",
-            "contents": [
-                {
-                    "type": "text",
-                    "text": "- 幫老闆接小孩",
-                    "action": {
-                        "type": "postback",
-                        "label": "內容",
-                        "text": "- 幫老闆接小孩",
-                        "data": "#1-1"
-                    },
-                    "flex": 10,
-                    "wrap": true
-                },
-                {
-                    "type": "text",
-                    "text": ">",
-                    "action": {
-                        "type": "postback",
-                        "label": "內容",
-                        "text": "- 幫老闆接小孩",
-                        "data": "#1-1"
-                    },
-                    "gravity": "center",
-                    "flex": 1,
-                    "align": "end"
-                }
-            ]
-        })
-    }
-    console.log("test:" + JSON.stringify(test));
 
+    let output = genByTask(task);
 
     return {
         "type": "flex",
