@@ -131,6 +131,8 @@ const textCommandSolver = (event) => {
     // } catch (err) {
     //     console.log(err);
     // }
+    console.log('<------------------------------------');
+    console.log(output);
     return clientBot.replyMessage(event.replyToken, output);
     // return clientBot.replyMessage(event.replyToken, output).catch(err=>{console.log(err)});
 }
