@@ -6,17 +6,17 @@
 const dbUser = require('../dbController/user');
 const dbMonster = require('../dbController/monster');
 
-const monster = async (event) => {
-    try {
+const monster = (event) => {
+    // try {
         let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
         console.log(userId + "<---------------------------userId")
-        let user = await dbUser.searchById(userId);
+        let user =  dbUser.searchById(userId);
         console.log(user.monsterId + "<-----------------------------monsterId");
-        let monster = await dbMonster.searchById(user.monsterId);
+        let monster =  dbMonster.searchById(user.monsterId);
         console.log(monster.name + "<-------------------------monster.name")
-    } catch (err) {
-        console.log(err);
-    }
+    // } catch (err) {
+    //     console.log(err);
+    // }
     return {
         "type": "flex",
         "altText": "Flex Message",
