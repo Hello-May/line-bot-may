@@ -17,8 +17,9 @@ async function handleEvent(event) {
   let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
   let user = await dbUser.searchById(userId);
   // console.log("user:" + JSON.stringify(user));
+  let status;
   if (user !== undefined) {
-    let status = user.status;
+    status = user.status;
   }
   if (event.type === 'message' && event.message.text !== '呼叫' && status === '睡眠') {
     return;
