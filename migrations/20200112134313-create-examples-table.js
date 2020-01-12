@@ -72,7 +72,6 @@ module.exports = {
         userId: {
           type: DataTypes.STRING,
           allowNull: false,
-          primaryKey: true,
         },
         level: {
           type: DataTypes.INTEGER,

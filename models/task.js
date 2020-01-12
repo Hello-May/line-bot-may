@@ -3,7 +3,6 @@ module.exports = (sequelize, DataTypes) => sequelize.define(
         userId: {
             type: DataTypes.STRING,
             allowNull: false,
-            primaryKey: true
           },
           level: {
             type: DataTypes.INTEGER,
