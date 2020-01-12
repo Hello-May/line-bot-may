@@ -1,7 +1,7 @@
 const dbUser = require('../dbController/user');
 const dbTask = require('../dbController/task');
 
-const call = (event) => {
+const call = async (event) => {
     let task;
     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
 
