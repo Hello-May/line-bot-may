@@ -169,7 +169,7 @@ const call = async (event) => {
                         "action": {
                             "type": "postback",
                             "label": "修改",
-                            "data":"小怪獸修改",
+                            "data": "小怪獸修改",
                         }
                     }
                 ]
@@ -178,21 +178,27 @@ const call = async (event) => {
     }
 }
 
-const initialization = (event)=>{
+const initialization = (event) => {
     return {
         "type": "template",
         "altText": "this is a confirm template",
         "template": {
-          "type": "confirm",
-          "actions": 
-            {
-              "type": "postback",
-              "label": "是",
-              "data": "小怪獸初始化確定"
-            },
-          "text": "確定要初始化？"
+            "type": "confirm",
+            "actions": [
+                {
+                    "type": "postback",
+                    "label": "是",
+                    "data": "小怪獸初始化確定"
+                },
+                {
+                    "type": "message",
+                    "label": "否",
+                    "text": "不要亂來齁~"
+                },
+            ],
+            "text": "確定要初始化？"
         }
-      }
+    }
 }
 
 const update = (event) => {
