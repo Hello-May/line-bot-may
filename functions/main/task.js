@@ -11,9 +11,12 @@ const call = async (event) => {
     } catch (err) {
         console.log(err);
     }
-    let test=[]; //四個
-    for (let i = 0; i < task.length ; i++) {
-        test.push({
+    let one = []; //四個
+    for (let i = 0; i < task.length; i++) {
+        if (task[i].level != 1) {
+            continue;
+        }
+        one.push({
             "type": "box",
             "layout": "horizontal",
             "contents": [
