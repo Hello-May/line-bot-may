@@ -7,23 +7,14 @@ const dbUser = require('../dbController/user');
 const dbMonster = require('../dbController/monster');
 
 const monster = async (event) => {
-    // let [stat1, stat2] = await Promise.all([
-    //     timeoutOne().then(() => "one fulfilled", () => "one rejected"), 
-    //     timeoutTwo().then(() => "two fulfilled", () => "two rejected")
-    // ]);
-    // lineNotify.getToken(code)
-    // .then((token) => {
-    // })
-    // .catch((err) => {
-    // })
-    var tmp;
+    var tmpMonster;
     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
     console.log(userId + "<---------------------------userId")
     var user = await dbUser.searchById(userId)
-        .then(async(user) => {
+        .then(async (user) => {
             console.log(user.monsterId + "<-----------------------------monsterId");
-            tmp = await dbMonster.searchById(user.monsterId);
-            console.log(tmp.name + "<-------------------------monster.name")
+            tmpMonster = await dbMonster.searchById(user.monsterId);
+            console.log(tmpMonster.name + "<-------------------------monster.name")
         })
         .catch((err) => {
             console.log(err);
@@ -86,31 +77,31 @@ const monster = async (event) => {
                         "contents": [
                             {
                                 "type": "text",
-                                "text": "名字：" + tmp.name
+                                "text": "名字：" + tmpMonster.name
                             },
                             {
                                 "type": "text",
-                                "text": "誕辰：" + tmp.born
+                                "text": "誕辰：" + tmpMonster.born
                             },
                             {
                                 "type": "text",
-                                "text": "等級：" + tmp.level
+                                "text": "等級：" + tmpMonster.level
                             },
                             {
                                 "type": "text",
-                                "text": "經驗值：" + tmp.exp
+                                "text": "經驗值：" + tmpMonster.exp
                             },
                             {
                                 "type": "text",
-                                "text": "性格:" + tmp.character
+                                "text": "性格:" + tmpMonster.character
                             },
                             {
                                 "type": "text",
-                                "text": "自律幣:" + tmp.money
+                                "text": "自律幣:" + tmpMonster.money
                             },
                             {
                                 "type": "text",
-                                "text": "精神糧食：" + tmp.food
+                                "text": "精神糧食：" + tmpMonster.food
                             }
                         ]
                     },
