@@ -7,18 +7,18 @@ const dbUser = require('../dbController/user');
 const dbMonster = require('../dbController/monster');
 
 const call = async (event) => {
-    var monster;
-    let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
-    console.log(userId + "<---------------------------userId")
-    var user = await dbUser.searchById(userId)
-        .then(async (user) => {
-            console.log(user.monsterId + "<-----------------------------monsterId");
-            monster = await dbMonster.searchById(user.monsterId);
-            console.log(monster.name + "<-------------------------monster.name")
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+    // var monster;
+    // let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
+    // console.log(userId + "<---------------------------userId")
+    // var user = await dbUser.searchById(userId)
+    //     .then(async (user) => {
+    //         console.log(user.monsterId + "<-----------------------------monsterId");
+    //         monster = await dbMonster.searchById(user.monsterId);
+    //         console.log(monster.name + "<-------------------------monster.name")
+    //     })
+    //     .catch((err) => {
+    //         console.log(err);
+    //     })
 
     // var tmp;
     // try {
@@ -31,7 +31,20 @@ const call = async (event) => {
     // } catch (err) {
     //     console.log(err);
     // }
-    
+
+    let user;
+    let monster;
+    let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
+
+
+    var tmp;
+    try {
+        user = await dbUser.searchById(userId);
+        monster = await dbMonster.searchById(user.monsterId);
+    } catch (err) {
+        console.log(err);
+    }
+
 
     return {
         "type": "flex",
