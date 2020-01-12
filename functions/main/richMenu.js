@@ -1,4 +1,4 @@
-const richMenu = () => {
+const call = () => {
     return {
         "type": "imagemap",
         "baseUrl": "https://i.postimg.cc/pVQhNS5w/pic3.jpg",
@@ -83,5 +83,5 @@ const richMenu = () => {
 }
 
 module.exports = {
-    richMenu
+    call
 }

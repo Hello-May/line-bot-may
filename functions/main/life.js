@@ -1,4 +1,4 @@
-const life = (event) => {
+const call = (event) => {
     return {
         "type": "flex",
         "altText": "Flex Message",
@@ -550,5 +550,5 @@ const life = (event) => {
 }
 
 module.exports = {
-    life
+    call
 }

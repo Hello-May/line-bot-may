@@ -1,4 +1,4 @@
-const talk = (event) => {
+const call = (event) => {
     return {
         "type": "flex",
         "altText": "Flex Message",
@@ -105,5 +105,5 @@ const talk = (event) => {
 }
 
 module.exports = {
-    talk
+    call
 }

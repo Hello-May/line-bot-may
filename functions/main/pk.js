@@ -1,4 +1,4 @@
-const pk = (event) => {
+const call = (event) => {
     return {
         "type": "flex",
         "altText": "Flex Message",
@@ -121,5 +121,5 @@ const pk = (event) => {
 }
 
 module.exports = {
-    pk
+    call
 }

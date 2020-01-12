@@ -85,20 +85,20 @@ const textCommandSolver = async (event) => {
                 output = main.test(event);
                 break;
             case '#修煉':
-                output = life.life(event);
+                output = life.call(event);
                 break;
             case '#任務':
-                output = task.task(event);
+                output = task.call(event);
                 break;
             case '#小怪獸':
-                    output = monster.monster(event);
-                    // output = monster.monster(event).catch(err=>{console.log(err)});
+                    // output = monster.monster(event);
+                    output = monster.call(event).catch(err=>{console.log(err)});
                 break;
             case '#戰鬥':
-                output = pk.pk(event);
+                output = pk.call(event);
                 break;
             case '#酒館':
-                output = talk.talk(event);
+                output = talk.call(event);
                 break;
             default:
                 let msg;

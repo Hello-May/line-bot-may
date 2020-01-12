@@ -1,4 +1,4 @@
-const task = (event) => {
+const call = (event) => {
     return {
         "type": "flex",
         "altText": "Flex Message",
@@ -458,5 +458,5 @@ const task = (event) => {
 }
 
 module.exports = {
-    task
+    call
 }
