@@ -140,7 +140,7 @@ const textCommandSolver = (event) => {
 const imgCommandSolver = (event) => {
     let msg = '水啦~'
     // event
-    return clientBot.replyMessage(event.replyToken, {   //要啥無法傳兩個?
+    return clientBot.replyMessage(event.replyToken, [{   //要啥無法傳兩個?
         type: 'text',
         text: msg
     }, {
@@ -149,7 +149,7 @@ const imgCommandSolver = (event) => {
         packageId: '1',
         stickerId: '1',
         stickerResourceType: 'STATIC'
-    });
+    }]);
 }
 
 const stickerCommandSolver = (event) => {
