@@ -2,6 +2,7 @@ const lineBot = require('@line/bot-sdk');
 const lineNotify = require('./functions/notify');
 const configBot = require('./config');
 const functions = require('./functions');
+const postback = require('./functions/postback');
 const express = require('express');
 const bodyParser = require('body-parser');
 const clientBot = new lineBot.Client(configBot);
@@ -40,10 +41,7 @@ function handleEvent(event) {
       });
     case 'memberLeft':
     case 'postback':
-    // return clientBot.replyMessage(event.replyToken, {
-    //   type: 'text',
-    //   text: '阿阿阿阿阿阿~~'+event.postback.data
-    // });
+      return postback.postbackCommandSolver(event);
     case 'beacon':
     case 'account link':
     case 'device link':
