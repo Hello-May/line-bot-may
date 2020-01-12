@@ -48,7 +48,7 @@ const saveId = async (event) => {
 
     tmpId = await users.findAll({ where: { userId: id } });
     let monster = await monsters.findAll();
-    if (tmpId == '') {
+    if (tmpId == null) {
         // createOwnerModel(User, id);
         User.create({
             force: true,
@@ -62,7 +62,7 @@ const saveId = async (event) => {
     }
     return clientBot.replyMessage(event.replyToken, {
         type: 'text',
-        text: (tmpId == '' ? '我存進db=>' : '不用存進db=>') + (event.source.type == 'user' ? 'userId:' + id : 'groupId:' + id)
+        text: (tmpId == null ? '我存進db=>' : '不用存進db=>') + (event.source.type == 'user' ? 'userId:' + id : 'groupId:' + id)
     });
 }
 
