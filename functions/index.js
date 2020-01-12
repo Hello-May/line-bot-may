@@ -24,7 +24,8 @@ const dbUser = require('./dbController/user');
 const textCommandSolver = async (event) => {
     let input = event.message.text;
     let output;
-    let status =  dbUser.searchById(event.source.userId).status;
+    let user =  dbUser.searchById(event.source.userId);
+    let status = user.status;
     console.log(status+'<-----------------------');
     if(input !== '呼叫' && status === '睡眠'){
         return;
