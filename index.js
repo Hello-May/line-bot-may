@@ -10,9 +10,17 @@ const dbController = require('./functions/dbController');
 const dbMonster = require('./functions/dbController/monster');
 const path = require('path');
 const app = express();
+const dbUser = require('./dbController/user');
 
 function handleEvent(event) {
   console.log(event);
+  let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
+  let user = await dbUser.searchById(userId);
+  // console.log("user:" + JSON.stringify(user));
+  let status = user.status;
+  if (input !== '呼叫' && status === '睡眠') {
+    return;
+  }
   switch (event.type) {
     case 'message':
       switch (event.message.type) {
@@ -41,7 +49,7 @@ function handleEvent(event) {
       });
     case 'memberLeft':
     case 'postback':
-      return postback.postbackCommandSolver(event);
+      return postback.postbackCommandSolver(event,status);
     case 'beacon':
     case 'account link':
     case 'device link':

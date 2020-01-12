@@ -15,12 +15,12 @@ const pk = require('./main/pk');
 const talk = require('./main/talk');
 const db = require('../models');
 
-const postbackCommandSolver = async (event) => {
+const postbackCommandSolver = async (event,status) => {
     let input = event.postback.data;
     let output;
     switch (input) {
-        case '#task':
-            output = lineNotify.test();
+        case '小怪獸修改':
+            output = monster.update;
             break;
         case '#':
             output = richMenu.call();

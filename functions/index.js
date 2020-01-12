@@ -14,25 +14,16 @@ const task = require('./main/task');
 const pk = require('./main/pk');
 const talk = require('./main/talk');
 const db = require('../models');
-
-
-// var shutUp = null;
-
-const dbUser = require('./dbController/user');
-
+// const dbUser = require('./dbController/user');
 
 const textCommandSolver = async (event) => {
     let input = event.message.text;
     let output;
-    let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
-    let user = await dbUser.searchById(userId);
-    // console.log("user:" + JSON.stringify(user));
-    let status = user.status;
-    if (input !== '呼叫' && status === '睡眠') {
-        return;
-    }
-
-    // if (shutUp !== null && input !== '呼叫' && shutUp) {
+    // let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
+    // let user = await dbUser.searchById(userId);
+    // // console.log("user:" + JSON.stringify(user));
+    // let status = user.status;
+    // if (input !== '呼叫' && status === '睡眠') {
     //     return;
     // }
     if (input.includes('你') && input.includes('誰')) {
@@ -91,7 +82,6 @@ const textCommandSolver = async (event) => {
                 break;
             case '閉嘴':
                 dbUser.saveStatus(userId, '睡眠');
-                // shutUp = true;
                 output = pause.pause(event);
                 break;
             case '嗨':
