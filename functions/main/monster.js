@@ -20,7 +20,7 @@ const monster = async (event) => {
     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
     console.log(userId + "<---------------------------userId")
     var user = await dbUser.searchById(userId)
-        .then(async() => {
+        .then(async(user) => {
             console.log(user.monsterId + "<-----------------------------monsterId");
             tmp = await dbMonster.searchById(user.monsterId);
             console.log(tmp.name + "<-------------------------monster.name")
