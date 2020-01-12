@@ -10,7 +10,7 @@ const dbController = require('./functions/dbController');
 const dbMonster = require('./functions/dbController/monster');
 const path = require('path');
 const app = express();
-const dbUser = require('./dbController/user');
+const dbUser = require('./functions/dbController/user');
 
 async function handleEvent(event) {
   console.log(event);
