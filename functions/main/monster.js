@@ -7,18 +7,18 @@ const dbUser = require('../dbController/user');
 const dbMonster = require('../dbController/monster');
 
 const monster = async (event) => {
-    var tmpMonster;
-    let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
-    console.log(userId + "<---------------------------userId")
-    var user = await dbUser.searchById(userId)
-        .then(async (user) => {
-            console.log(user.monsterId + "<-----------------------------monsterId");
-            tmpMonster = await dbMonster.searchById(user.monsterId);
-            console.log(tmpMonster.name + "<-------------------------monster.name")
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+    // var tmpMonster;
+    // let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
+    // console.log(userId + "<---------------------------userId")
+    // var user = await dbUser.searchById(userId)
+    //     .then(async (user) => {
+    //         console.log(user.monsterId + "<-----------------------------monsterId");
+    //         tmpMonster = await dbMonster.searchById(user.monsterId);
+    //         console.log(tmpMonster.name + "<-------------------------monster.name")
+    //     })
+    //     .catch((err) => {
+    //         console.log(err);
+    //     })
 
     // var tmp;
     // try {
