@@ -382,7 +382,7 @@ const call = async (event) => {
     }
 }
 
-const update = async (desc) => {
+const update = (desc) => {
     console.log(desc +'<---------------------')
     return {
         "type": "flex",
@@ -418,7 +418,7 @@ const update = async (desc) => {
                 "contents": [
                   {
                     "type": "text",
-                    "text": "- 繳電費要被斷電了阿阿阿阿",
+                    "text": "- "+desc,
                     "wrap": true
                   }
                 ]
@@ -434,7 +434,7 @@ const update = async (desc) => {
                 "action": {
                   "type": "postback",
                   "label": "修改",
-                  "data": "#1"
+                  "data": "任務修改:"+desc
                 }
               },
               {
@@ -445,7 +445,7 @@ const update = async (desc) => {
                 "action": {
                   "type": "postback",
                   "label": "刪除",
-                  "data": "#1"
+                  "data": "任務刪除:"+desc
                 }
               },
               {
@@ -456,7 +456,7 @@ const update = async (desc) => {
                 "action": {
                   "type": "postback",
                   "label": "完成",
-                  "data": "#1"
+                  "data": "任務完成"+desc
                 }
               }
             ]
