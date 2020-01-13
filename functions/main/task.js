@@ -388,84 +388,81 @@ const update = async (desc) => {
         "type": "flex",
         "altText": "Flex Message",
         "contents": {
-            "type": "bubble",
-            "direction": "ltr",
-            "header": {
+          "type": "bubble",
+          "direction": "ltr",
+          "header": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": " 事項內容",
+                "size": "lg",
+                "align": "center",
+                "weight": "bold"
+              }
+            ]
+          },
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "separator"
+              },
+              {
                 "type": "box",
                 "layout": "vertical",
+                "spacing": "xxl",
+                "margin": "xxl",
                 "contents": [
-                    {
-                        "type": "text",
-                        "text": " 事項內容",
-                        "size": "lg",
-                        "align": "center",
-                        "weight": "bold"
-                    }
+                  {
+                    "type": "text",
+                    "text": "- 繳電費要被斷電了阿阿阿阿",
+                    "wrap": true
+                  }
                 ]
-            },
-            "body": {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                    {
-                        "type": "separator"
-                    },
-                    {
-                        "type": "box",
-                        "layout": "vertical",
-                        "spacing": "xxl",
-                        "margin": "xxl",
-                        "contents": [
-                            {
-                                "type": "text",
-                                "text": "- " + desc,
-                                "wrap": true
-                            }
-                        ]
-                    }
-                ]
-            },
-            "footer": {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                    {
-                        "type": "button",
-                        "action": {
-                            "type": "postback",
-                            "label": "修改",
-                            "text": "bla",
-                            "data": "任務修改:" + desc
-                        }
-                    },
-                    {
-                        "type": "separator"
-                    },
-                    {
-                        "type": "button",
-                        "action": {
-                            "type": "postback",
-                            "label": "刪除",
-                            "text": "bla",
-                            "data": "任務刪除:" + desc
-                        }
-                    },
-                    {
-                        "type": "separator"
-                    },
-                    {
-                        "type": "button",
-                        "action": {
-                            "type": "postback",
-                            "label": "完成",
-                            "text": "bla",
-                            "data": "任務完成:" + desc
-                        }
-                    }
-                ]
-            }
+              }
+            ]
+          },
+          "footer": {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+              {
+                "type": "button",
+                "action": {
+                  "type": "postback",
+                  "label": "修改",
+                  "data": "#1"
+                }
+              },
+              {
+                "type": "separator"
+              },
+              {
+                "type": "button",
+                "action": {
+                  "type": "postback",
+                  "label": "刪除",
+                  "data": "#1"
+                }
+              },
+              {
+                "type": "separator"
+              },
+              {
+                "type": "button",
+                "action": {
+                  "type": "postback",
+                  "label": "完成",
+                  "data": "#1"
+                }
+              }
+            ]
+          }
         }
-    }
+      }
 }
 
 module.exports = {
