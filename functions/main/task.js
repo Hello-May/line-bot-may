@@ -383,6 +383,7 @@ const call = async (event) => {
 }
 
 const update = async (desc) => {
+    console.log(desc +'<---------------------');
     return {
         "type": "flex",
         "altText": "Flex Message",
