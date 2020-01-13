@@ -33,7 +33,7 @@ const textCommandSolver = async (event, status) => {
             type: 'text',
             text: '我是May~'
         }
-    } else if (status.includes('新增象限:')) {
+    } else if (status.includes('新增象限監聽:')) {
         let qadrant = status.split(":");
         await dbTask.create(userId, qadrant[1], input);
         output = {

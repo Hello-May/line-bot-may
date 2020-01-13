@@ -21,39 +21,43 @@ const dbTask = require('./dbController/task');
 const postbackCommandSolver = async (event, status) => {
     let input = event.postback.data;
     let output;
+    let str;
     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
-
-    if (input.includes('新增象限:')) {
-        let qadrant = input.split(":");
-        await dbUser.saveStatus(userId, '新增象限監聽:' + qadrant[1]);
-        output = {
-            type: 'text',
-            text: '請輸入事項內容'
-        }
-    } else if (input.includes('任務修改視窗:')) {
-        let desc = input.split(":");
-        output = task.update(desc[1]);
-    } else if (input.includes('任務修改:')) {
-        let desc = input.split(":");
-        await dbUser.saveStatus(userId, '任務修改監聽:'+desc[1]);
-        output = {
-            type: 'text',
-            text: '請輸入修改後的事項內容'
-        }
-    } else if (input.includes('任務刪除:')) {
-        let desc = input.split(":");
-        await dbTask.destroy(userId,desc[1]);
-        output = {
-            type: 'text',
-            text: '[已刪除任務]'
-        }
-    } else if (input.includes('任務完成:')) {
-        let desc = input.split(":");
-        await dbTask.destroy(userId,desc[1]);
-        //小怪獸+素質(影響性格)
-        output = {
-            type: 'text',
-            text: '[已完成任務] 小怪獸變聰明了~'
+    if (input.includes(':')) {
+        str = input.split(":");
+        switch (str[0]) {
+            case '新增象限':
+                await dbUser.saveStatus(userId, '新增象限監聽:' + str[1]);
+                output = {
+                    type: 'text',
+                    text: '請輸入事項內容'
+                }
+                break;
+            case '任務修改視窗':
+                output = task.update(str[1]);
+                break;
+            case '任務修改':
+                await dbUser.saveStatus(userId, '任務修改監聽:' + str[1]);
+                output = {
+                    type: 'text',
+                    text: '請輸入修改後的事項內容'
+                }
+                break;
+            case '任務刪除':
+                await dbTask.destroy(userId, str[1]);
+                output = {
+                    type: 'text',
+                    text: '[已刪除任務]'
+                }
+                break;
+            case '任務完成':
+                await dbTask.destroy(userId, str[1]);
+                //小怪獸+素質(影響性格)
+                output = {
+                    type: 'text',
+                    text: '[已完成任務] 小怪獸變聰明了~'
+                }
+                break;
         }
     } else {
         switch (input) {
