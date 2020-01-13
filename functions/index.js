@@ -16,7 +16,7 @@ const talk = require('./main/talk');
 const db = require('../models');
 const dbUser = require('./dbController/user');
 const dbMonster = require('./dbController/monster');
-const dbTask = require('./dbController/monster');
+const dbTask = require('./dbController/task');
 
 const textCommandSolver = async (event, status) => {
     let input = event.message.text;

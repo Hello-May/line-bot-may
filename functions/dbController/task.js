@@ -111,7 +111,7 @@ const initialization = async (id) => {
 }
 
 const create = async (id, level, desc) => {
-    let tmp = await Task.create({
+    await Task.create({
         force: true,
         userId: id,
         level: level,
@@ -119,7 +119,7 @@ const create = async (id, level, desc) => {
         createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
         updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
     });
-     console.log("task:" + JSON.stringify(tmp));
+    //  console.log("task:" + JSON.stringify(tmp));
 }
 
 const update = async (id, desc) => {
