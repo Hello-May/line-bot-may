@@ -68,7 +68,7 @@ const postbackCommandSolver = async (event, status) => {
             case '自律時間':
                 output = {
                     type: 'text',
-                    text:  event.postback.params.time
+                    text:  event.postback.params.time+''
                 }
                 break;
             case '小怪獸修改':
