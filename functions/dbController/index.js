@@ -4,6 +4,7 @@ const clientBot = new lineBot.Client(configBot);
 const db = require('../../models');
 const dbMonster = require('./monster');
 const dbTask = require('./task');
+const dbHabit = require('./habit');
 const { users } = require("../../models");
 const { monsters } = require("../../models");
 const User = db.users;
@@ -39,6 +40,7 @@ const saveId = async (event) => {
     if (tmpUser.length == 0) {
         await dbMonster.create();
         await dbTask.initialization(id);
+        await dbHabit.initialization(id);
         let monster = await monsters.findAll();
         await User.create({
             force: true,

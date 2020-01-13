@@ -120,9 +120,9 @@
 
 // console.log(user)
 
-const db = require('../models');
-const { monsters } = require("../models");
-const Monster = db.monsters;
+// const db = require('../models');
+// const { monsters } = require("../models");
+// const Monster = db.monsters;
 
     // Monster.create({
     //     force: true,
@@ -145,7 +145,7 @@ const Monster = db.monsters;
 
     // go();
 
-const Task = db.tasks;
+// const Task = db.tasks;
 
 // const create = async () => {
 //     await Task.create({
@@ -160,8 +160,8 @@ const Task = db.tasks;
 
 // create();
 
-const destroy = async (id, desc) => {
-    await Task.destroy({ where: { userId: id, desc: desc } });
-}
+// const destroy = async (id, desc) => {
+//     await Task.destroy({ where: { userId: id, desc: desc } });
+// }
 
-destroy('555','5566');
+// destroy('555','5566');
