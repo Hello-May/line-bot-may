@@ -434,6 +434,7 @@ const update = async (desc) => {
                         "action": {
                             "type": "postback",
                             "label": "修改",
+                            "text": "bla",
                             "data": "任務修改:" + desc
                         }
                     },
@@ -445,6 +446,7 @@ const update = async (desc) => {
                         "action": {
                             "type": "postback",
                             "label": "刪除",
+                            "text": "bla",
                             "data": "任務刪除:" + desc
                         }
                     },
@@ -456,6 +458,7 @@ const update = async (desc) => {
                         "action": {
                             "type": "postback",
                             "label": "完成",
+                            "text": "bla",
                             "data": "任務完成:" + desc
                         }
                     }
