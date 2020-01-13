@@ -122,10 +122,10 @@ const create = async (id, level, desc) => {
     //  console.log("task:" + JSON.stringify(tmp));
 }
 
-const update = async (id, desc) => {
+const update = async (id, oldDesc,newDesc) => {
     await Task.update({
-        desc: desc,
-    }, { where: { userId: id, desc: desc } });
+        desc: newDesc,
+    }, { where: { userId: id, desc: oldDesc } });
 }
 
 const destroy = async (id, desc) => {

@@ -35,7 +35,7 @@ const postbackCommandSolver = async (event, status) => {
         output = task.update(desc[1]);
     } else if (input.includes('任務修改:')) {
         let desc = input.split(":");
-        await dbUser.saveStatus(userId, '任務修改監聽');
+        await dbUser.saveStatus(userId, '任務修改監聽:'+desc[1]);
         output = {
             type: 'text',
             text: '請輸入修改後的事項內容'

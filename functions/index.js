@@ -33,7 +33,7 @@ const textCommandSolver = async (event, status) => {
             type: 'text',
             text: '我是May~'
         }
-    } else if (status.includes('新增象限')) {
+    } else if (status.includes('新增象限:')) {
         let qadrant = status.split(":");
         await dbTask.create(userId, qadrant[1], input);
         output = {
@@ -53,11 +53,12 @@ const textCommandSolver = async (event, status) => {
                 }
                 await dbUser.saveStatus(userId, '正常');
                 break;
-            case '任務修改監聽':
+            case '任務修改監聽:':
                 // let tmpUser = await dbUser.searchById(userId);
                 // let tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
                 // await dbMonster.updateName(tmpMonster.monsterId, input);
-                await dbTask.update(userId,input);
+                let desc = status.split(":");
+                await dbTask.update(userId,desc[1],input);
                 output = {
                     type: 'text',
                     text: '[任務已修改] ' + input
