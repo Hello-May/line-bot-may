@@ -24,11 +24,13 @@ const postbackCommandSolver = async (event, status) => {
 
     if (input.includes('新增象限')) {
         let qadrant = input.split(":");
-        await dbUser.saveStatus(userId, '新增象限監聽:'+qadrant[1]);
+        await dbUser.saveStatus(userId, '新增象限監聽:' + qadrant[1]);
         output = {
             type: 'text',
             text: '請輸入事項內容'
         }
+    } else if (input.includes('任務修改')) {
+
     } else {
         switch (input) {
             case '小怪獸修改':

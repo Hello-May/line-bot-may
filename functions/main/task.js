@@ -23,7 +23,7 @@ function genByTask(task) {
                             "type": "postback",
                             "label": "內容",
                             "text": task[i].desc,
-                            "data": "#1-1"
+                            "data": "任務修改:" + task[i].desc
                         },
                         "flex": 10,
                         "wrap": true
@@ -35,7 +35,7 @@ function genByTask(task) {
                             "type": "postback",
                             "label": "內容",
                             "text": task[i].desc,
-                            "data": "#1-1"
+                            "data": "任務修改:" + task[i].desc
                         },
                         "gravity": "center",
                         "flex": 1,
@@ -382,6 +382,98 @@ const call = async (event) => {
     }
 }
 
+const update = async (event) => {
+    return {
+        "type": "flex",
+        "altText": "Flex Message",
+        "contents": {
+            "type": "bubble",
+            "direction": "ltr",
+            "header": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": " 事項內容",
+                        "size": "lg",
+                        "align": "center",
+                        "weight": "bold"
+                    }
+                ]
+            },
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "separator"
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "spacing": "xxl",
+                        "margin": "xxl",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "- 繳電費要被斷電了阿阿阿阿",
+                                "action": {
+                                    "type": "postback",
+                                    "label": "內容",
+                                    "text": "繳電費要被斷電了阿阿阿阿",
+                                    "data": "#1 2"
+                                },
+                                "wrap": true
+                            }
+                        ]
+                    }
+                ]
+            },
+            "footer": {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "button",
+                        "action": {
+                            "type": "postback",
+                            "label": "修改",
+                            "text": "請直接點選文字項目",
+                            "data": "#1"
+                        }
+                    },
+                    {
+                        "type": "separator"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                            "type": "postback",
+                            "label": "刪除",
+                            "text": "請直接點選文字項目",
+                            "data": "#1"
+                        }
+                    },
+                    {
+                        "type": "separator"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                            "type": "postback",
+                            "label": "完成",
+                            "text": "請直接點選文字項目",
+                            "data": "#1"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
+
 module.exports = {
-    call
+    call,
+    update
 }
