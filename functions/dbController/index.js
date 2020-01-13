@@ -110,5 +110,5 @@ module.exports = {
     saveId,
     saveToken,
     saveTmpId,
-    getToken
+    getToken,
 }

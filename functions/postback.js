@@ -21,34 +21,44 @@ const postbackCommandSolver = async (event, status) => {
     let input = event.postback.data;
     let output;
     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
-    switch (input) {
-        case '小怪獸修改':
-            output = monster.update(event);
-            break;
-        case '小怪獸改名':
-            dbUser.saveStatus(userId, '小怪獸改名監聽');
-            output = {
-                type: 'text',
-                text: '請輸入小怪獸的新暱稱'
-            }
-            break;
-        case '小怪獸初始化':
-            output = monster.initialization(event);
-            break;
-        case '小怪獸初始化確定':
-            let tmpUser = await dbUser.searchById(userId);
-            let tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
-            dbMonster.initialization(tmpMonster.monsterId);
-            output = {
-                type: 'text',
-                text: '[已初始化小怪獸]'
-            }
-            break;
-        default:
-            output = {
-                type: 'text',
-                text: 'postback:' + input
-            }
+
+    if (input.includes('新增象限')) {
+        let qadrant = input.split(":");
+        dbUser.saveStatus(userId, '新增象限監聽:'+qadrant[1]);
+        output = {
+            type: 'text',
+            text: '請輸入事項內容'
+        }
+    } else {
+        switch (input) {
+            case '小怪獸修改':
+                output = monster.update(event);
+                break;
+            case '小怪獸改名':
+                dbUser.saveStatus(userId, '小怪獸改名監聽');
+                output = {
+                    type: 'text',
+                    text: '請輸入小怪獸的新暱稱'
+                }
+                break;
+            case '小怪獸初始化':
+                output = monster.initialization(event);
+                break;
+            case '小怪獸初始化確定':
+                let tmpUser = await dbUser.searchById(userId);
+                let tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
+                dbMonster.initialization(tmpMonster.monsterId);
+                output = {
+                    type: 'text',
+                    text: '[已初始化小怪獸]'
+                }
+                break;
+            default:
+                output = {
+                    type: 'text',
+                    text: 'postback:' + input
+                }
+        }
     }
     return clientBot.replyMessage(event.replyToken, output);
 }

@@ -109,7 +109,32 @@ const initialization = async (id) => {
         updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
     });
 }
+
+const create = async (id, level, desc) => {
+    await Task.create({
+        force: true,
+        userId: id,
+        level: level,
+        desc: desc,
+        createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
+        updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
+    });
+}
+
+const update = async (id, desc) => {
+    await Task.update({
+        desc: desc,
+    }, { where: { userId: id, desc: desc } });
+}
+
+const destroy = async (id, desc) => {
+    await Task.destroy({ where: { userId: id, desc: desc } });
+}
+
 module.exports = {
     searchById,
-    initialization
+    initialization,
+    create,
+    update,
+    destroy
 }

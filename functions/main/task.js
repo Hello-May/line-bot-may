@@ -173,8 +173,7 @@ const call = async (event) => {
                                 "action": {
                                     "type": "postback",
                                     "label": "新增",
-                                    "text": "請輸入事項內容",
-                                    "data": "#1"
+                                    "data": "新增象限:1"
                                 }
                             }
                         ]
@@ -240,8 +239,7 @@ const call = async (event) => {
                                 "action": {
                                     "type": "postback",
                                     "label": "新增",
-                                    "text": "請輸入事項內容",
-                                    "data": "#1"
+                                    "data": "新增象限:2"
                                 }
                             }
                         ]
@@ -307,8 +305,7 @@ const call = async (event) => {
                                 "action": {
                                     "type": "postback",
                                     "label": "新增",
-                                    "text": "請輸入事項內容",
-                                    "data": "#1"
+                                    "data": "新增象限:3"
                                 }
                             }
                         ]
@@ -374,8 +371,7 @@ const call = async (event) => {
                                 "action": {
                                     "type": "postback",
                                     "label": "新增",
-                                    "text": "請輸入事項內容",
-                                    "data": "#1"
+                                    "data": "新增象限:4"
                                 }
                             }
                         ]
