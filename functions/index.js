@@ -44,6 +44,17 @@ const textCommandSolver = async (event, status) => {
                 }
                 await dbUser.saveStatus(userId, '正常');
                 break;
+            case '任務修改監聽':
+                // let tmpUser = await dbUser.searchById(userId);
+                // let tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
+                // await dbMonster.updateName(tmpMonster.monsterId, input);
+                await dbTask.update(userId, str[1], input);
+                output = {
+                    type: 'text',
+                    text: '[任務已修改] ' + input
+                }
+                await dbUser.saveStatus(userId, '正常');
+                break;
         }
     } else {
         switch (status) {
@@ -54,18 +65,6 @@ const textCommandSolver = async (event, status) => {
                 output = {
                     type: 'text',
                     text: '[小怪獸已改名] ' + input
-                }
-                await dbUser.saveStatus(userId, '正常');
-                break;
-            case '任務修改監聽:':
-                // let tmpUser = await dbUser.searchById(userId);
-                // let tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
-                // await dbMonster.updateName(tmpMonster.monsterId, input);
-                let desc = status.split(":");
-                await dbTask.update(userId, desc[1], input);
-                output = {
-                    type: 'text',
-                    text: '[任務已修改] ' + input
                 }
                 await dbUser.saveStatus(userId, '正常');
                 break;
