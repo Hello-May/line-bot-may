@@ -199,7 +199,34 @@ const call = async (event) => {
                     "body": {
                         "type": "box",
                         "layout": "vertical",
-                        "contents": output[1]
+                        "contents": [
+                            {
+                                "type": "separator"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "margin": "xs",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "待辦事項",
+                                        "align": "center"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "separator",
+                                "margin": "xs"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "vertical",
+                                "spacing": "xxl",
+                                "margin": "xxl",
+                                "contents": output[1]
+                            }
+                        ]
                     },
                     "footer": {
                         "type": "box",
@@ -239,7 +266,34 @@ const call = async (event) => {
                     "body": {
                         "type": "box",
                         "layout": "vertical",
-                        "contents": output[2]
+                        "contents": [
+                            {
+                                "type": "separator"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "margin": "xs",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "待辦事項",
+                                        "align": "center"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "separator",
+                                "margin": "xs"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "vertical",
+                                "spacing": "xxl",
+                                "margin": "xxl",
+                                "contents": output[2]
+                            }
+                        ]
                     },
                     "footer": {
                         "type": "box",
@@ -279,7 +333,34 @@ const call = async (event) => {
                     "body": {
                         "type": "box",
                         "layout": "vertical",
-                        "contents": output[3]
+                        "contents": [
+                            {
+                                "type": "separator"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "margin": "xs",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "待辦事項",
+                                        "align": "center"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "separator",
+                                "margin": "xs"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "vertical",
+                                "spacing": "xxl",
+                                "margin": "xxl",
+                                "contents": output[3]
+                            }
+                        ]
                     },
                     "footer": {
                         "type": "box",
