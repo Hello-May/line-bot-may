@@ -65,6 +65,12 @@ const postbackCommandSolver = async (event, status) => {
         }
     } else {
         switch (input) {
+            case '自律時間':
+                output = {
+                    type: 'text',
+                    text:  event.postback.params.time
+                }
+                break;
             case '小怪獸修改':
                 output = monster.update(event);
                 break;

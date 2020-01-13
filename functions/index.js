@@ -97,7 +97,7 @@ const textCommandSolver = async (event, status) => {
                     //         text: (user[0].userId === undefined ? '沒東西啦~' : user[0].userId) + ' 阿阿阿阿'
                     //     }
                     //     break;
-                    case 't':
+                    case 'T':
                         output = {
                             "type": "flex",
                             "altText": "Flex Message",
@@ -113,7 +113,7 @@ const textCommandSolver = async (event, status) => {
                                     "action": {
                                         "type": "datetimepicker",
                                         "label": "選時間",
-                                        "data": "postback:time",
+                                        "data": "自律時間",
                                         "mode": "time"
                                       }
                                   }
