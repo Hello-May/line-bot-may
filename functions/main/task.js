@@ -22,7 +22,7 @@ function genByTask(task) {
                         "action": {
                             "type": "postback",
                             "label": "內容",
-                            // "text": task[i].desc,
+                            "text": task[i].desc,
                             "data": "任務修改視窗:" + task[i].desc
                         },
                         "flex": 10,
@@ -34,7 +34,7 @@ function genByTask(task) {
                         "action": {
                             "type": "postback",
                             "label": "內容",
-                            // "text": task[i].desc,
+                            "text": task[i].desc,
                             "data": "任務修改視窗:" + task[i].desc
                         },
                         "gravity": "center",
@@ -383,7 +383,7 @@ const call = async (event) => {
 }
 
 const update = async (desc) => {
-    console.log(desc +'<---------------------');
+    console.log(desc +'<---------------------')
     return {
         "type": "flex",
         "altText": "Flex Message",

@@ -34,7 +34,11 @@ const postbackCommandSolver = async (event, status) => {
                 }
                 break;
             case '任務修改視窗':
-                output = task.update(str[1]);
+                output = {
+                    type: 'text',
+                    text: 'test'
+                }
+                // output = task.update(str[1]);
                 break;
             case '任務修改':
                 await dbUser.saveStatus(userId, '任務修改監聽:' + str[1]);
