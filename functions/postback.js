@@ -23,31 +23,31 @@ const postbackCommandSolver = async (event, status) => {
     let output;
     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
 
-    if (input.includes('新增象限')) {
+    if (input.includes('新增象限:')) {
         let qadrant = input.split(":");
         await dbUser.saveStatus(userId, '新增象限監聽:' + qadrant[1]);
         output = {
             type: 'text',
             text: '請輸入事項內容'
         }
-    } else if (input.includes('任務修改視窗')) {
+    } else if (input.includes('任務修改視窗:')) {
         let desc = input.split(":");
         output = task.update(desc[1]);
-    } else if (input.includes('任務修改')) {
+    } else if (input.includes('任務修改:')) {
         let desc = input.split(":");
         await dbUser.saveStatus(userId, '任務修改監聽');
         output = {
             type: 'text',
             text: '請輸入修改後的事項內容'
         }
-    } else if (input.includes('任務刪除')) {
+    } else if (input.includes('任務刪除:')) {
         let desc = input.split(":");
         await dbTask.destroy(userId,desc[1]);
         output = {
             type: 'text',
             text: '[已刪除任務]'
         }
-    } else if (input.includes('任務完成')) {
+    } else if (input.includes('任務完成:')) {
         let desc = input.split(":");
         await dbTask.destroy(userId,desc[1]);
         //小怪獸+素質(影響性格)
