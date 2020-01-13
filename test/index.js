@@ -145,14 +145,17 @@ const Monster = db.monsters;
 
     // go();
 
-    const db = require('../../models');
-    const { monsters } = require("../../models");
-    const Monster = db.monsters;
-    
-    const updateName = async (id,name) => {
-        await Monster.update({
-            name: name,
-        }, { where: { monsterId: id } });
-    }
+const Task = db.tasks;
 
-    updateName()
+const create = async () => {
+    await Task.create({
+        force: true,
+        userId: '555',
+        level: 5,
+        desc: '5566',
+        createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
+        updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
+    });
+}
+
+create();
