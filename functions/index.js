@@ -22,12 +22,6 @@ const textCommandSolver = async (event, status) => {
     let input = event.message.text;
     let output;
     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
-    // let user = await dbUser.searchById(userId);
-    // // console.log("user:" + JSON.stringify(user));
-    // let status = user.status;
-    // if (input !== '呼叫' && status === '睡眠') {
-    //     return;
-    // }
     if (input.includes('你') && input.includes('誰')) {
         output = {
             type: 'text',
@@ -103,6 +97,31 @@ const textCommandSolver = async (event, status) => {
                     //         text: (user[0].userId === undefined ? '沒東西啦~' : user[0].userId) + ' 阿阿阿阿'
                     //     }
                     //     break;
+                    case 't':
+                        output = {
+                            "type": "flex",
+                            "altText": "Flex Message",
+                            "contents": {
+                              "type": "bubble",
+                              "direction": "ltr",
+                              "footer": {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                  {
+                                    "type": "button",
+                                    "action": {
+                                        "type": "datetimepicker",
+                                        "label": "選時間",
+                                        "data": "postback:time",
+                                        "mode": "time"
+                                      }
+                                  }
+                                ]
+                              }
+                            }
+                          };
+                        break;
                     case '.':
                         output = lineNotify.test();
                         break;
