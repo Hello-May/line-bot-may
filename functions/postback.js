@@ -24,7 +24,7 @@ const postbackCommandSolver = async (event, status) => {
 
     if (input.includes('新增象限')) {
         let qadrant = input.split(":");
-        dbUser.saveStatus(userId, '新增象限監聽:'+qadrant[1]);
+        await dbUser.saveStatus(userId, '新增象限監聽:'+qadrant[1]);
         output = {
             type: 'text',
             text: '請輸入事項內容'
@@ -35,7 +35,7 @@ const postbackCommandSolver = async (event, status) => {
                 output = monster.update(event);
                 break;
             case '小怪獸改名':
-                dbUser.saveStatus(userId, '小怪獸改名監聽');
+                await dbUser.saveStatus(userId, '小怪獸改名監聽');
                 output = {
                     type: 'text',
                     text: '請輸入小怪獸的新暱稱'

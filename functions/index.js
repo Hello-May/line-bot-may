@@ -35,23 +35,23 @@ const textCommandSolver = async (event, status) => {
         }
     } else if (status.includes('新增象限')){
         let qadrant = status.split(":");
-        dbTask.create(userId,qadrant[1],input);
+        await dbTask.create(userId,qadrant[1],input);
         output = {
             type: 'text',
             text: '[已新增任務]'
         }
-        dbUser.saveStatus(userId, '正常');
+        await dbUser.saveStatus(userId, '正常');
     } else {
         switch (status) {
             case '小怪獸改名監聽':
                 let tmpUser = await dbUser.searchById(userId);
                 let tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
-                dbMonster.updateName(tmpMonster.monsterId, input);
+                await dbMonster.updateName(tmpMonster.monsterId, input);
                 output = {
                     type: 'text',
                     text: '[小怪獸已改名]' + input
                 }
-                dbUser.saveStatus(userId, '正常');
+                await dbUser.saveStatus(userId, '正常');
                 break;               
             default:
                 switch (input) {

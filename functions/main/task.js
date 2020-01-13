@@ -57,7 +57,7 @@ const call = async (event) => {
 
     try {
         task = await dbTask.searchById(userId);
-        console.log("task:" + JSON.stringify(task));
+        // console.log("task:" + JSON.stringify(task));
     } catch (err) {
         console.log(err);
     }
