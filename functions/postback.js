@@ -30,7 +30,10 @@ const postbackCommandSolver = async (event, status) => {
             text: '請輸入事項內容'
         }
     } else if (input.includes('任務修改')) {
-
+        output = {
+            type: 'text',
+            text: 'postback:' + input
+        }
     } else {
         switch (input) {
             case '小怪獸修改':
