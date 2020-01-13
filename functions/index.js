@@ -40,6 +40,7 @@ const textCommandSolver = async (event, status) => {
             type: 'text',
             text: '[已新增任務]'
         }
+        dbUser.saveStatus(userId, '正常');
     } else {
         switch (status) {
             case '小怪獸改名監聽':
