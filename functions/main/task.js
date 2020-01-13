@@ -455,7 +455,7 @@ const update = (desc) => {
                 "action": {
                   "type": "postback",
                   "label": "完成",
-                  "data": "任務完成"+desc
+                  "data": "任務完成:"+desc
                 }
               }
             ]
