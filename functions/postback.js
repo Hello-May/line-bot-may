@@ -16,6 +16,7 @@ const talk = require('./main/talk');
 const db = require('../models');
 const dbUser = require('./dbController/user');
 const dbMonster = require('./dbController/monster');
+const dbTask = require('./dbController/task');
 
 const postbackCommandSolver = async (event, status) => {
     let input = event.postback.data;
@@ -29,10 +30,30 @@ const postbackCommandSolver = async (event, status) => {
             type: 'text',
             text: '請輸入事項內容'
         }
+    } else if (input.includes('任務修改視窗')) {
+        let desc = input.split(":");
+        output = task.update(desc[1]);
     } else if (input.includes('任務修改')) {
+        let desc = input.split(":");
+        await dbUser.saveStatus(userId, '任務修改監聽');
         output = {
             type: 'text',
-            text: 'postback:' + input
+            text: '請輸入修改後的事項內容'
+        }
+    } else if (input.includes('任務刪除')) {
+        let desc = input.split(":");
+        await dbTask.destroy(userId,desc[1]);
+        output = {
+            type: 'text',
+            text: '[已刪除任務]'
+        }
+    } else if (input.includes('任務完成')) {
+        let desc = input.split(":");
+        await dbTask.destroy(userId,desc[1]);
+        //小怪獸+素質(影響性格)
+        output = {
+            type: 'text',
+            text: '[已完成任務] 小怪獸變聰明了~'
         }
     } else {
         switch (input) {

@@ -147,15 +147,21 @@ const Monster = db.monsters;
 
 const Task = db.tasks;
 
-const create = async () => {
-    await Task.create({
-        force: true,
-        userId: '555',
-        level: 5,
-        desc: '5566',
-        createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
-        updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
-    });
+// const create = async () => {
+//     await Task.create({
+//         force: true,
+//         userId: '555',
+//         level: 5,
+//         desc: '5566',
+//         createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
+//         updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
+//     });
+// }
+
+// create();
+
+const destroy = async (id, desc) => {
+    await Task.destroy({ where: { userId: id, desc: desc } });
 }
 
-create();
+destroy('555','5566');

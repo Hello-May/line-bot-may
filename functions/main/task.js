@@ -23,7 +23,7 @@ function genByTask(task) {
                             "type": "postback",
                             "label": "內容",
                             "text": task[i].desc,
-                            "data": "任務修改:" + task[i].desc
+                            "data": "任務修改視窗:" + task[i].desc
                         },
                         "flex": 10,
                         "wrap": true
@@ -35,7 +35,7 @@ function genByTask(task) {
                             "type": "postback",
                             "label": "內容",
                             "text": task[i].desc,
-                            "data": "任務修改:" + task[i].desc
+                            "data": "任務修改視窗:" + task[i].desc
                         },
                         "gravity": "center",
                         "flex": 1,
@@ -382,7 +382,7 @@ const call = async (event) => {
     }
 }
 
-const update = async (event) => {
+const update = async (desc) => {
     return {
         "type": "flex",
         "altText": "Flex Message",
@@ -417,13 +417,7 @@ const update = async (event) => {
                         "contents": [
                             {
                                 "type": "text",
-                                "text": "- 繳電費要被斷電了阿阿阿阿",
-                                "action": {
-                                    "type": "postback",
-                                    "label": "內容",
-                                    "text": "繳電費要被斷電了阿阿阿阿",
-                                    "data": "#1 2"
-                                },
+                                "text": "- " + desc,
                                 "wrap": true
                             }
                         ]
@@ -439,8 +433,7 @@ const update = async (event) => {
                         "action": {
                             "type": "postback",
                             "label": "修改",
-                            "text": "請直接點選文字項目",
-                            "data": "#1"
+                            "data": "任務修改:" + desc
                         }
                     },
                     {
@@ -451,8 +444,7 @@ const update = async (event) => {
                         "action": {
                             "type": "postback",
                             "label": "刪除",
-                            "text": "請直接點選文字項目",
-                            "data": "#1"
+                            "data": "任務刪除:" + desc
                         }
                     },
                     {
@@ -463,8 +455,7 @@ const update = async (event) => {
                         "action": {
                             "type": "postback",
                             "label": "完成",
-                            "text": "請直接點選文字項目",
-                            "data": "#1"
+                            "data": "任務完成:" + desc
                         }
                     }
                 ]
