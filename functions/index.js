@@ -76,17 +76,28 @@ const textCommandSolver = async (event, status) => {
                 }
                 break;
             case '修改自律監聽':
-                switch (str[1]) {
-                    case '習慣監聽':
-                    case '密語監聽':
-                        await dbHabit.update(userId, str[1], str[2], input);
-                        output = {
-                            type: 'text',
-                            text: '[已修改自律指令] ' + input
-                        }
-                        break;
+                let j = await dbHabit.searchByHabit(userId, input);
+                if (j == 0) {
+                    output = {
+                        type: 'text',
+                        text: '已沒有此習慣 '
+                    }
+                    await dbUser.saveStatus(userId, '正常');
+                } else {
+                    switch (str[1]) {
+                        case '習慣監聽':
+                        case '密語監聽':
+                            await dbHabit.update(userId, str[1], str[2], input);
+                            output = {
+                                type: 'text',
+                                text: '[已修改自律指令] ' + input
+                            }
+                            await dbUser.saveStatus(userId, '正常');
+                            break;
+                    }
                 }
                 break;
+
         }
     } else {
         switch (status) {
