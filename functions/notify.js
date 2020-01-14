@@ -15,7 +15,7 @@ const send = () => {
     //   text: '測試每分鐘30秒:' + new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
     // });
     let date = new Date();
-    let hour = date.getHours();
+    let hour = date.getHours()+7;
     let min = date.getMinutes();
     let habitData = await dbHabit.searchByTime((hour < 10 ? '0' + hour : hour), (min < 10 ? '0' + min : min));
     console.log((hour < 10 ? '0' + hour : hour), (min < 10 ? '0' + min : min));

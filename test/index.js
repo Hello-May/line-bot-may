@@ -227,7 +227,7 @@ Date.prototype.Format = function (fmt) { //author: meizz
 // }
 // go();
 
-let d = new Date();
+let d = new Date().toLocaleTimeString;
 console.log(d);
 let h = d.getHours();
 console.log(h);
