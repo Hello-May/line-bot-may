@@ -8,7 +8,7 @@ const searchById = async (id) => {
 }
 
 const saveCharacter = async (id, character) => {
-    await monsters.update({ character: character }, { where: { userId: id } });
+    await monsters.update({ character: character }, { where: { monsterId: id } });
 }
 
 const updateName = async (id, name) => {

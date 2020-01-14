@@ -53,7 +53,9 @@ const postbackCommandSolver = async (event, status) => {
                 break;
             case '任務完成':
                 let tmpTask = await dbTask.searchByDesc(userId, str[1]);
-                await dbMonster.saveCharacter(userId,tmpTask.level); //怪物個性先直接存成任務象限
+                let tmpUser = await dbUser.searchById(userId);
+                let tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
+                await dbMonster.saveCharacter(tmpMonster.monsterId,tmpTask.level); //怪物個性先直接存成任務象限
                 await dbTask.destroy(userId, str[1]);
                 output = {
                     type: 'text',
