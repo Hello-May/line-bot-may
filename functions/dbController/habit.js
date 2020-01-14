@@ -48,14 +48,13 @@ const initialization = async (id) => {
         await Habit.create({
             force: true,
             userId: id,
-            time: tmpTimes[i].Format("hh:mm"),
+            time: tmpTimes[i],
             habit: tmpHabits[i],
             secret: tmpSecrets[i],
             createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
             updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
         });
     }
-
 }
 
 module.exports = {
