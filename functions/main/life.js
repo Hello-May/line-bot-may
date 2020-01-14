@@ -19,14 +19,16 @@ Date.prototype.Format = function (fmt) { //author: meizz
 
 function genByHabit(habit) {
     let output = [];
+    let tmpTime;
     for (let i = 0; i < habit.length; i++) {
+        tmpTime=habit[i].time.split(':');
         output.push({
             "type": "box",
             "layout": "horizontal",
             "contents": [
                 {
                     "type": "text",
-                    "text": habit[i].time.Format("hh:mm")
+                    "text": tmpTime[0]+":"+tmpTime[1]
                 },
                 {
                     "type": "text",
