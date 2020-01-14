@@ -26,8 +26,8 @@ const searchById = async (id) => {
 }
 
 const searchByHabit = async (id, habit) => {
-    let habit = await habits.findAll({ where: { userId: id, habit: habit } });
-    return habit;
+    let habitData = await habits.findAll({ where: { userId: id, habit: habit } });
+    return habitData;
 }
 
 function sortByTime(habit) {
