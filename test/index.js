@@ -248,7 +248,7 @@ Date.prototype.Format = function (fmt) { //author: meizz
 // console.log(date);
 // console.log(date.getHours());
 
-let d = new Date().toLocaleTimeString();
+let d = new Date().toLocaleTimeString('zh-TW', { timeZone: 'Asia/Taipei' });
 let str = d.split(':');
 console.log(str[1]);
 console.log(d);

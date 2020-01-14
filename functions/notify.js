@@ -12,7 +12,7 @@ const send = () => {
     //   type: 'message',
     //   text: '測試每分鐘30秒:' + new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
     // });
-    let date = new Date().toLocaleTimeString();
+    let date = new Date().toLocaleTimeString('zh-TW', { timeZone: 'Asia/Taipei' });
     let str = date.split(':');
     let hour = (str[0] < 10 ? '0' + str[0] : str[0]);
     let min = (str[1] < 10 ? '0' + str[1] : str[1]);
