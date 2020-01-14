@@ -227,8 +227,23 @@ Date.prototype.Format = function (fmt) { //author: meizz
 // }
 // go();
 
-let d = new Date().toLocaleTimeString;
-console.log(d);
-let h = d.getHours();
-console.log(h);
+function convertUTCDateToLocalDate(date) {
+    var newDate = new Date(date.getTime()+date.getTimezoneOffset()*60*1000);
+
+    var offset = date.getTimezoneOffset() / 60;
+    var hours = date.getHours();
+
+    newDate.setHours(hours - offset);
+
+    return newDate;   
+}
+var date = convertUTCDateToLocalDate(new Date());
+console.log(date);
+
+// let d = new Date();
+// console.log(d.getTimezoneOffset());
+// let n=toLocalTime(d);
+// console.log(n);
+// let h = n.getHours();
+// console.log(h);
 // console.log(date.getMinutes);
