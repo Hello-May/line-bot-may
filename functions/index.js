@@ -52,14 +52,14 @@ const textCommandSolver = async (event, status) => {
                 break;
             case '新增自律':
                 switch (str.length) {
-                    case 2:
+                    case 3:
                         await dbUser.saveStatus(userId, status + ':' + input);  //input是習慣
                         output = {
                             type: 'text',
                             text: '請輸入密語'
                         };
                         break;
-                    case 3:
+                    case 4:
                         await dbUser.saveStatus(userId, status + ':' + input);  //input是密語
                         await dbHabit.create(userId, str[1], str[2], input);
                         output = {
