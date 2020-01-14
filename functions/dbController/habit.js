@@ -48,7 +48,7 @@ const initialization = async (id) => {
         await Habit.create({
             force: true,
             userId: id,
-            time: tmpTimes[i],
+            time: tmpTimes[i].Format("hh:mm"),
             habit: tmpHabits[i],
             secret: tmpSecrets[i],
             createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),

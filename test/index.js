@@ -184,21 +184,25 @@ Date.prototype.Format = function (fmt) { //author: meizz
     return fmt;
 }
 
-let time = ['08:00','07:00','10:00','09:00'];
-let date = new Date().Format("yyyy/MM/dd");
-console.log(time);
+// let time = ['08:00','07:00','10:00','09:00'];
+// let date = new Date().Format("yyyy/MM/dd");
+// console.log(time);
 
-function sortByTime(habit) {
-    for (let i = 1; i < habit.length; i++) {
-        for (let j = 0; j < habit.length - i; j++) {
-            if ((Date.parse(date+' '+habit[j])).valueOf() > (Date.parse(date+' '+habit[j + 1])).valueOf()) {
-                let tmp = habit[j];
-                habit[j] = habit[j + 1];
-                habit[j + 1] = tmp;
-            }
-        }
-    }
-}
+// function sortByTime(habit) {
+//     for (let i = 1; i < habit.length; i++) {
+//         for (let j = 0; j < habit.length - i; j++) {
+//             if ((Date.parse(date+' '+habit[j])).valueOf() > (Date.parse(date+' '+habit[j + 1])).valueOf()) {
+//                 let tmp = habit[j];
+//                 habit[j] = habit[j + 1];
+//                 habit[j + 1] = tmp;
+//             }
+//         }
+//     }
+// }
 
-sortByTime(time);
-console.log(time);
+// sortByTime(time);
+// console.log(time);
+
+let tmp ='08:00:00';
+let tmp2 = tmp.Format("hh:mm");
+console.log(tmp2);
