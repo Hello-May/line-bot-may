@@ -88,14 +88,15 @@ const textCommandSolver = async (event, status) => {
                         text: '[已取消]'
                     }
                     await dbUser.saveStatus(userId, '正常');
-                }
-                let j = await dbHabit.destroy(userId, input);
-                if (j == 1) {
-                    await dbUser.saveStatus(userId, '正常');
-                }
-                output = {
-                    type: 'text',
-                    text: (j == 1 ? '[已刪除習慣] ' + input : '沒有此習慣，請重新輸入，或輸入取消')
+                } else {
+                    let j = await dbHabit.destroy(userId, input);
+                    if (j == 1) {
+                        await dbUser.saveStatus(userId, '正常');
+                    }
+                    output = {
+                        type: 'text',
+                        text: (j == 1 ? '[已刪除習慣] ' + input : '沒有此習慣，請重新輸入，或輸入取消')
+                    }
                 }
                 break;
             case '小怪獸改名監聽':
