@@ -51,7 +51,7 @@ const create = async (id, time, habit, secret) => {
 }
 
 const destroy = async (id, habit) => {
-    return await Habit.destroy({ where: { userId: id, habit:habit } });
+    return await Habit.destroy({ where: { userId: id, habit: habit } });
 }
 
 const initialization = async (id) => {
@@ -73,9 +73,30 @@ const initialization = async (id) => {
     }
 }
 
+const update = async (id, item, habit, input) => {
+    switch (item) {
+        case '時間監聽':
+            await Habit.update({
+                time: input
+            }, { where: { userId: id, habit: habit } });
+            break;
+        case '習慣監聽':
+            await Habit.update({
+                habit: input
+            }, { where: { userId: id, habit: habit } });
+            break;
+        case '密語監聽':
+            await Habit.update({
+                secret: input
+            }, { where: { userId: id, habit: habit } });
+            break;
+    }
+}
+
 module.exports = {
     initialization,
     searchById,
     create,
-    destroy
+    destroy,
+    update
 }

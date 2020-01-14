@@ -17,6 +17,7 @@ const db = require('../models');
 const dbUser = require('./dbController/user');
 const dbMonster = require('./dbController/monster');
 const dbTask = require('./dbController/task');
+const dbHabit = require('./dbController/habit');
 
 const postbackCommandSolver = async (event, status) => {
     let input = event.postback.data;
@@ -34,10 +35,6 @@ const postbackCommandSolver = async (event, status) => {
                 }
                 break;
             case '任務修改視窗':
-                // output = {
-                //     type: 'text',
-                //     text: 'test'
-                // }
                 output = task.update(str[1]);
                 break;
             case '任務修改':
@@ -62,6 +59,28 @@ const postbackCommandSolver = async (event, status) => {
                     text: '[已完成任務] 小怪獸變聰明了~'
                 }
                 break;
+            case '修改自律監聽':
+                switch (str[1]) {
+                    case '時間監聽':
+                        await dbHabit.update(userId, str[1], str[2], event.postback.params.time);
+                        output = {
+                            type: 'text',
+                            text: '[已修改自律指令] ' + event.postback.params.time
+                        }
+                        break;
+                    case '時間視窗':
+                        output = life.selectTime(str[0] + ":時間監聽:" + str[2]);
+                        break;
+                    case '習慣監聽':
+                    case '密語監聽':
+                        await dbUser.saveStatus(userId, status);
+                        output = {
+                            type: 'text',
+                            text: '請新增修改後內容'
+                        }
+                        break;
+                }
+                break;
         }
     } else {
         switch (input) {
@@ -69,14 +88,14 @@ const postbackCommandSolver = async (event, status) => {
                 await dbUser.saveStatus(userId, '刪除自律監聽');
                 output = {
                     type: 'text',
-                    text: '請輸入欲刪除之習慣'
+                    text: '請輸入欲刪除之習慣，或輸入取消'
                 };
                 break;
             case '修改自律指令':
-                // await dbUser.saveStatus(userId, '新增自律:' + event.postback.params.time);
+                await dbUser.saveStatus(userId, '修改自律視窗');
                 output = {
                     type: 'text',
-                    text: '修改自律指令'
+                    text: '請輸入欲修改之習慣，或輸入取消'
                 };
                 break;
             case '新增自律時間':
@@ -95,7 +114,7 @@ const postbackCommandSolver = async (event, status) => {
             case '自律時間':
                 output = {
                     type: 'text',
-                    text: event.postback.params.time + ''
+                    text: event.postback.params.time
                 }
                 break;
             case '小怪獸修改':

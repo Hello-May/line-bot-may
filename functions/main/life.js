@@ -21,14 +21,14 @@ function genByHabit(habit) {
     let output = [];
     let tmpTime;
     for (let i = 0; i < habit.length; i++) {
-        tmpTime=habit[i].time.split(':');
+        tmpTime = habit[i].time.split(':');
         output.push({
             "type": "box",
             "layout": "horizontal",
             "contents": [
                 {
                     "type": "text",
-                    "text": tmpTime[0]+":"+tmpTime[1]
+                    "text": tmpTime[0] + ":" + tmpTime[1]
                 },
                 {
                     "type": "text",
@@ -51,25 +51,25 @@ const selectTime = (postback) => {
         "type": "flex",
         "altText": "Flex Message",
         "contents": {
-          "type": "bubble",
-          "direction": "ltr",
-          "footer": {
-            "type": "box",
-            "layout": "horizontal",
-            "contents": [
-              {
-                "type": "button",
-                "action": {
-                    "type": "datetimepicker",
-                    "label": "按此選擇時間",
-                    "data": postback,
-                    "mode": "time"
-                  }
-              }
-            ]
-          }
+            "type": "bubble",
+            "direction": "ltr",
+            "footer": {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "button",
+                        "action": {
+                            "type": "datetimepicker",
+                            "label": "按此選擇時間",
+                            "data": postback,
+                            "mode": "time"
+                        }
+                    }
+                ]
+            }
         }
-      };
+    };
 }
 
 const call = async (event) => {
@@ -489,7 +489,67 @@ const call = async (event) => {
     }
 }
 
+const update = (habit) => {
+    return {
+        "type": "flex",
+        "altText": "Flex Message",
+        "contents": {
+            "type": "bubble",
+            "direction": "ltr",
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "要修改 " + habit + " 的什麼呢？",
+                        "align": "center",
+                        "wrap": true
+                    }
+                ]
+            },
+            "footer": {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "button",
+                        "action": {
+                            "type": "postback",
+                            "label": "時間",
+                            "data": "修改自律監聽:時間視窗:"+habit
+                        }
+                    },
+                    {
+                        "type": "separator"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                            "type": "postback",
+                            "label": "習慣",
+                            "data": "修改自律監聽:習慣監聽:"+habit
+                        }
+                    },
+                    {
+                        "type": "separator"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                            "type": "postback",
+                            "label": "密語",
+                            "data": "修改自律監聽:密語監聽:"+habit
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
+
 module.exports = {
     call,
-    selectTime
+    selectTime,
+    update
 }

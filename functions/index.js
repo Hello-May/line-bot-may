@@ -40,9 +40,6 @@ const textCommandSolver = async (event, status) => {
                 await dbUser.saveStatus(userId, '正常');
                 break;
             case '任務修改監聽':
-                // let tmpUser = await dbUser.searchById(userId);
-                // let tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
-                // await dbMonster.updateName(tmpMonster.monsterId, input);
                 await dbTask.update(userId, str[1], input);
                 output = {
                     type: 'text',
@@ -78,9 +75,25 @@ const textCommandSolver = async (event, status) => {
                     }
                 }
                 break;
+            case '修改自律監聽':
+                switch (str[1]) {
+                    case '習慣監聽':
+                    case '密語監聽':
+                        await dbHabit.update(userId, str[1], str[2], input);
+                        output = {
+                            type: 'text',
+                            text: '[已修改自律指令] ' + input
+                        }
+                        break;
+                }
+                break;
         }
     } else {
         switch (status) {
+            case '修改自律視窗':
+                output = life.update(input);
+                await dbUser.saveStatus(userId, '正常');
+                break;
             case '刪除自律監聽':
                 if (input == '取消') {
                     output = {
