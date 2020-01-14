@@ -1,7 +1,7 @@
 const lineBot = require('@line/bot-sdk');
 const configBot = require('../config');
 const clientBot = new lineBot.Client(configBot);
-const lineNotify = require('./notify');
+const lineNotify = require('./notification');
 const dbController = require('./dbController');
 const dbUser = require('./dbController/user');
 const dbHabit = require('./dbController/habit');
@@ -13,7 +13,7 @@ const send = async () => {
   schedule.scheduleJob('30 * * * * *', function () {
     lineNotify.notify('XNVldsovy2m6RTMubkUrIPM5FRIFXvDUir4G0Dq75eX', {
             type: 'message',
-            text: '測試每分鐘30秒'
+            text: '測試每分鐘30秒:'+ new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
           });
     // try {
 
