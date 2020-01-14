@@ -10,10 +10,10 @@ const schedule = require('node-schedule');
 
 const send = () => {
   schedule.scheduleJob('30 * * * * *',async function () {
-    lineNotify.notify('XNVldsovy2m6RTMubkUrIPM5FRIFXvDUir4G0Dq75eX', {
-      type: 'message',
-      text: '測試每分鐘30秒:' + new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
-    });
+    // lineNotify.notify('XNVldsovy2m6RTMubkUrIPM5FRIFXvDUir4G0Dq75eX', {
+    //   type: 'message',
+    //   text: '測試每分鐘30秒:' + new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
+    // });
     // try {
     let date = new Date();
     let hour = date.getHours();
