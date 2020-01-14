@@ -8,7 +8,7 @@ const searchById = async (id) => {
 }
 
 const increaseEXP= async (id) => {
-    await monsters.increment({ exp }, { where: { monsterId: id } });
+    await monsters.increment({ exp:1 }, { where: { monsterId: id } });
 }
 
 const saveCharacter = async (id, character) => {
