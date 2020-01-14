@@ -8,10 +8,6 @@ const schedule = require('node-schedule');
 
 const send = () => {
   schedule.scheduleJob('15 * * * * *', async function () {
-    // lineNotify.notify('XNVldsovy2m6RTMubkUrIPM5FRIFXvDUir4G0Dq75eX', {
-    //   type: 'message',
-    //   text: '測試每分鐘30秒:' + new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
-    // });
     let date = new Date().toLocaleTimeString('zh-TW', { timeZone: 'Asia/Taipei' });
     let str = date.split(':');
     let hour = (str[0] < 10 ? '0' + str[0] : str[0]);
@@ -20,7 +16,7 @@ const send = () => {
     console.log(hour, min);
     console.log(JSON.stringify(habitData));
 
-    for (let i; i < habitData.length; i++) {
+    for (let i = 0; i < habitData.length; i++) {
       let token = await dbUser.getToken(habitData[i].userId);
       console.log(token + '<------------------token');
       console.log(habitData[i].habit + '<------------------habit');
