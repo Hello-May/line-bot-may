@@ -1,8 +1,3 @@
-//當創建user或groud的id時=>初始化小怪獸(創建資料庫的怪獸)
-//我的這些資料是從資料庫去拿
-//使用者可以根據按鍵去修改資料庫的資料
-//先查event id是誰 查user表中的monsterID
-//再去monster表中找
 const dbUser = require('../dbController/user');
 const dbMonster = require('../dbController/monster');
 
@@ -51,17 +46,29 @@ const call = async (event) => {
     let user;
     let monster;
     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
-
     try {
-        // console.log("userId:" + userId);
         user = await dbUser.searchById(userId);
         // console.log("user:" + JSON.stringify(user));
         monster = await dbMonster.searchById(user.monsterId);
         // console.log("monster:" + JSON.stringify(monster));
-
     } catch (err) {
-        // console.log("以下錯誤");
         console.log(err);
+    }
+
+    let character;
+    switch (monster.character) {
+        case 1:
+            character ='行動派';
+            break;
+        case 2:
+            character ='嚴謹派';
+            break;
+        case 3:
+            character ='領導派';
+            break;
+        case 4:
+            character ='樂天派';
+            break;
     }
 
     return {
@@ -126,11 +133,11 @@ const call = async (event) => {
                             },
                             {
                                 "type": "text",
-                                "text": "性格:" + monster.character
+                                "text": "性格：" + character
                             },
                             {
                                 "type": "text",
-                                "text": "自律幣:" + monster.money
+                                "text": "自律幣：" + monster.money
                             },
                             {
                                 "type": "text",
