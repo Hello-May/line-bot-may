@@ -51,34 +51,51 @@ const textCommandSolver = async (event, status) => {
                 await dbUser.saveStatus(userId, '正常');
                 break;
             case '新增自律監聽':
-                switch (str.length) {
-                    case 3:
-                        await dbUser.saveStatus(userId, status + ':' + input);  //input是習慣
-                        output = {
-                            type: 'text',
-                            text: '請輸入密語'
-                        };
-                        break;
-                    case 4:
-                        await dbUser.saveStatus(userId, status + ':' + input);  //input是密語
-                        await dbHabit.create(userId, str[1] + ":" + str[2], str[3], input);
-                        output = {
-                            type: 'text',
-                            text: '[已新增自律指令]\n' + str[1] + ":" + str[2] + "/" + str[3] + "/" + input
-                        };
-                        await dbUser.saveStatus(userId, '正常');
-                        break;
+                if (input == '取消') {
+                    output = {
+                        type: 'text',
+                        text: '[已取消]'
+                    }
+                    await dbUser.saveStatus(userId, '正常');
+                } else {
+                    switch (str.length) {
+                        case 3:
+                            await dbUser.saveStatus(userId, status + ':' + input);  //input是習慣
+                            output = {
+                                type: 'text',
+                                text: '請輸入密語'
+                            };
+                            break;
+                        case 4:
+                            await dbUser.saveStatus(userId, status + ':' + input);  //input是密語
+                            await dbHabit.create(userId, str[1] + ":" + str[2], str[3], input);
+                            output = {
+                                type: 'text',
+                                text: '[已新增自律指令]\n' + str[1] + ":" + str[2] + "/" + str[3] + "/" + input
+                            };
+                            await dbUser.saveStatus(userId, '正常');
+                            break;
+                    }
                 }
                 break;
         }
     } else {
         switch (status) {
             case '刪除自律監聽':
+                if (input == '取消') {
+                    output = {
+                        type: 'text',
+                        text: '[已取消]'
+                    }
+                    await dbUser.saveStatus(userId, '正常');
+                }
                 let j = await dbHabit.destroy(userId, input);
-                await dbUser.saveStatus(userId, '正常');
+                if (j == 1) {
+                    await dbUser.saveStatus(userId, '正常');
+                }
                 output = {
                     type: 'text',
-                    text: (j == 1 ? '[已刪除習慣] ' + input : '沒有此習慣')
+                    text: (j == 1 ? '[已刪除習慣] ' + input : '沒有此習慣，請重新輸入，或輸入取消')
                 }
                 break;
             case '小怪獸改名監聽':

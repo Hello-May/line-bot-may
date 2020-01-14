@@ -89,7 +89,7 @@ const postbackCommandSolver = async (event, status) => {
             case '新增自律指令':
                 output = [{
                     type: 'text',
-                    text: '請依序輸入時間/習慣/密語'
+                    text: '請依序輸入時間/習慣/密語，或者輸入取消'
                 }, life.selectTime('新增自律時間')];
                 break;
             case '自律時間':
