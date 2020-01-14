@@ -20,7 +20,7 @@ Date.prototype.Format = function (fmt) { //author: meizz
 }
 
 const searchById = async (id) => {
-    let hablit = await habits.findAll({ where: { userId: id } });
+    let habit = await habits.findAll({ where: { userId: id } });
     sortByTime(habit);
     return hablit;
 }
