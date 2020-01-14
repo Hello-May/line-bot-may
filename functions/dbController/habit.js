@@ -51,7 +51,7 @@ const create = async (id, time, habit, secret) => {
 }
 
 const destroy = async (id, habit) => {
-    await Habit.destroy({ where: { userId: id, habit:habit } });
+    return await Habit.destroy({ where: { userId: id, habit:habit } });
 }
 
 const initialization = async (id) => {
