@@ -198,7 +198,7 @@ const call = async (event) => {
                                 "action": {
                                     "type": "postback",
                                     "label": "新增",
-                                    "text": "新增自律指令"
+                                    "data": "新增自律指令"
                                 }
                             },
                             {
