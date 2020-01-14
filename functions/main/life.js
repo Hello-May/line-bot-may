@@ -209,9 +209,9 @@ const call = async (event) => {
                             {
                                 "type": "button",
                                 "action": {
-                                    "type": "message",
+                                    "type": "postback",
                                     "label": "修改",
-                                    "text": "修改自律指令"
+                                    "data": "修改自律指令"
                                 }
                             },
                             {
@@ -220,9 +220,9 @@ const call = async (event) => {
                             {
                                 "type": "button",
                                 "action": {
-                                    "type": "message",
+                                    "type": "postback",
                                     "label": "刪除",
-                                    "text": "刪除自律指令"
+                                    "data": "刪除自律指令"
                                 }
                             }
                         ]
