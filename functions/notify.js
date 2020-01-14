@@ -6,27 +6,18 @@ const dbUser = require('./dbController/user');
 const dbHabit = require('./dbController/habit');
 const schedule = require('node-schedule');
 
-function convertUTCDateToLocalDate(date) {
-  let newDate = new Date(date.getTime()+date.getTimezoneOffset()*60*1000);
-  let offset = date.getTimezoneOffset() / 60;
-  let hours = date.getHours();
-  newDate.setHours(hours - offset);
-  return newDate;   
-}
-
-//先查habit表中的時間 存下userId 在查user表的token 如果沒token
-
 const send = () => {
   schedule.scheduleJob('15 * * * * *', async function () {
     // lineNotify.notify('XNVldsovy2m6RTMubkUrIPM5FRIFXvDUir4G0Dq75eX', {
     //   type: 'message',
     //   text: '測試每分鐘30秒:' + new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
     // });
-    let date = convertUTCDateToLocalDate(new Date());
-    let hour = date.getHours();
-    let min = date.getMinutes();
-    let habitData = await dbHabit.searchByTime((hour < 10 ? '0' + hour : hour), (min < 10 ? '0' + min : min));
-    console.log((hour < 10 ? '0' + hour : hour), (min < 10 ? '0' + min : min));
+    let date = new Date().toLocaleTimeString();
+    let str = date.split(':');
+    let hour = (str[0] < 10 ? '0' + str[0] : str[0]);
+    let min = (str[1] < 10 ? '0' + str[1] : str[1]);
+    let habitData = await dbHabit.searchByTime(hour, min);
+    console.log(hour, min);
     console.log(JSON.stringify(habitData));
 
     for (let i; i < habitData.length; i++) {

@@ -227,20 +227,33 @@ Date.prototype.Format = function (fmt) { //author: meizz
 // }
 // go();
 
-function convertUTCDateToLocalDate(date) {
-    var newDate = new Date(date.getTime()+date.getTimezoneOffset()*60*1000);
+// function convertUTCDateToLocalDate(date) {
+//     var newDate = new Date(date.getTime()+date.getTimezoneOffset()*60*1000);
 
-    var offset = date.getTimezoneOffset() / 60;
-    var hours = date.getHours();
+//     var offset = date.getTimezoneOffset() / 60;
+//     var hours = date.getHours();
 
-    newDate.setHours(hours - offset);
+//     newDate.setHours(hours - offset);
 
-    return newDate;   
-}
-var date = convertUTCDateToLocalDate(new Date());
-console.log(date);
+//     return newDate;   
+// }
+// function convertUTCDateToLocalDate(date) {
+//     var newDate = new Date(date.getTime() - date.getTimezoneOffset()*60*1000);
+//     return newDate;   
+// }
+// function convertUTCDateToLocalDate(date) {
+//     return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds()));
+// }
+// var date = convertUTCDateToLocalDate(new Date());
+// console.log(date);
+// console.log(date.getHours());
 
-// let d = new Date();
+let d = new Date().toLocaleTimeString();
+let str = d.split(':');
+console.log(str[1]);
+console.log(d);
+// console.log(d.toLo);
+
 // console.log(d.getTimezoneOffset());
 // let n=toLocalTime(d);
 // console.log(n);
