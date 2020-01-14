@@ -7,7 +7,11 @@ const searchById = async (id) => {
     return monster[0];
 }
 
-const updateName = async (id,name) => {
+const saveCharacter = async (id, character) => {
+    await monsters.update({ character: character }, { where: { userId: id } });
+}
+
+const updateName = async (id, name) => {
     await Monster.update({
         name: name,
     }, { where: { monsterId: id } });
@@ -47,5 +51,6 @@ module.exports = {
     create,
     initialization,
     searchById,
-    updateName
+    updateName,
+    saveCharacter
 }

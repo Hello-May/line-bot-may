@@ -7,6 +7,11 @@ const searchById = async (id) => {
     return task;
 }
 
+const searchByDesc = async (id, desc) => {
+    let task = await tasks.findAll({ where: { userId: id, desc: desc } });
+    return task[0];
+}
+
 const initialization = async (id) => {
     //1
     await Task.create({
@@ -122,7 +127,7 @@ const create = async (id, level, desc) => {
     //  console.log("task:" + JSON.stringify(tmp));
 }
 
-const update = async (id, oldDesc,newDesc) => {
+const update = async (id, oldDesc, newDesc) => {
     await Task.update({
         desc: newDesc,
     }, { where: { userId: id, desc: oldDesc } });
@@ -137,5 +142,6 @@ module.exports = {
     initialization,
     create,
     update,
-    destroy
+    destroy,
+    searchByDesc
 }

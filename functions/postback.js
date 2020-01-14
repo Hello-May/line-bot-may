@@ -52,8 +52,9 @@ const postbackCommandSolver = async (event, status) => {
                 }
                 break;
             case '任務完成':
+                let task = await dbTask.searchByDesc(userId, str[1]);
+                await dbMonster.saveCharacter(userId,task.level); //怪物個性先直接存成任務象限
                 await dbTask.destroy(userId, str[1]);
-                //小怪獸+素質(影響性格)
                 output = {
                     type: 'text',
                     text: '[已完成任務] 小怪獸變聰明了~'
