@@ -76,7 +76,7 @@ const postbackCommandSolver = async (event, status) => {
                         await dbUser.saveStatus(userId, input);
                         output = {
                             type: 'text',
-                            text: '請新增修改後內容'
+                            text: '請新增修改後內容，或輸入取消'
                         }
                         break;
                 }
