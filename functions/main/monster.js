@@ -56,7 +56,7 @@ const call = async (event) => {
     }
 
     let character;
-    switch (monster.character) {
+    switch (monster.character) {    //應該要算累積完成任務多寡，之後再改，要存在user表內
         case 1:
             character ='行動派';
             break;
@@ -70,7 +70,7 @@ const call = async (event) => {
             character ='樂天派';
             break;
         default:
-            character ="懵懂派";
+            character ="懵懂無知";
     }
 
     return {
