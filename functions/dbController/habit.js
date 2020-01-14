@@ -1,7 +1,7 @@
 const db = require('../../models');
 const { habits } = require("../../models");
 const Habit = db.habits;
-const date = new Date().Format("yyyy/MM/dd");
+// const date = new Date().Format("yyyy/MM/dd");
 
 Date.prototype.Format = function (fmt) { //author: meizz 
     var o = {
@@ -26,6 +26,7 @@ const searchById = async (id) => {
 }
 
 function sortByTime(habit) {
+    const date = new Date().Format("yyyy/MM/dd");
     for (let i = 1; i < habit.length; i++) {
         for (let j = 0; j < habit.length - i; j++) {
             if ((Date.parse(date+' '+habit[j].time)).valueOf() > (Date.parse(date+' '+habit[j + 1].time)).valueOf()) {
