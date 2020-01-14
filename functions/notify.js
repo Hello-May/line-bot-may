@@ -2,7 +2,6 @@ const lineBot = require('@line/bot-sdk');
 const configBot = require('../config');
 const clientBot = new lineBot.Client(configBot);
 const lineNotify = require('./notification');
-const dbController = require('./dbController');
 const dbUser = require('./dbController/user');
 const dbHabit = require('./dbController/habit');
 const schedule = require('node-schedule');
@@ -12,22 +11,24 @@ const schedule = require('node-schedule');
 const send = async () => {
   schedule.scheduleJob('30 * * * * *', function () {
     lineNotify.notify('XNVldsovy2m6RTMubkUrIPM5FRIFXvDUir4G0Dq75eX', {
-            type: 'message',
-            text: '測試每分鐘30秒:'+ new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
-          });
+      type: 'message',
+      text: '測試每分鐘30秒:' + new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
+    });
     // try {
-          let date = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
+    let date = new Date();
+    let hour = date.getHours();
+    let min = date.getMinutes();
+    let habitData = await dbHabit.searchByTime((hour < 10 ? '0' + hour : hour), (min < 10 ? '0' + min : min));
 
-    //   let token = await dbUser.getToken(userId);
-    //   if (token != 'null') {
-    //     lineNotify.notify(token, {
-    //       type: 'message',
-    //       text: 'token:' + token
-    //     });
-    //   }
-    // } catch (err) {
-    //   console.log(err);
-    // }
+    for (let i; i < habitData.length; i++) {
+      let token = await dbUser.getToken(habitData[i].userId);
+      if (token != 'null') {
+        lineNotify.notify(token, {
+          type: 'message',
+          text: habitData[i].habit + '，請30分鐘內輸入密語或按簽到！' //簽到
+        });
+      }
+    }
   });
 }
 

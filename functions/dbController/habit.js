@@ -30,6 +30,11 @@ const searchByHabit = async (id, habit) => {
     return habitData;
 }
 
+const searchByTime = async (hour, min) => {
+    let habit = await habits.findAll({ where: { time: hour + ":" + min } });
+    return habit;
+}
+
 function sortByTime(habit) {
     const date = new Date().Format("yyyy/MM/dd");
     for (let i = 1; i < habit.length; i++) {
@@ -104,5 +109,6 @@ module.exports = {
     create,
     destroy,
     update,
-    searchByHabit
+    searchByHabit,
+    searchByTime
 }
