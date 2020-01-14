@@ -63,7 +63,7 @@ const textCommandSolver = async (event, status) => {
                             await dbUser.saveStatus(userId, status + ':' + input);  //input是習慣
                             output = {
                                 type: 'text',
-                                text: '請輸入密語'
+                                text: '請輸入密語，或者輸入取消'
                             };
                             break;
                         case 4:
