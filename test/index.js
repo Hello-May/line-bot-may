@@ -206,10 +206,19 @@ Date.prototype.Format = function (fmt) { //author: meizz
 // let tmp ='08:00:00';
 // let tmp2 = tmp.Format("hh:mm");
 // console.log(tmp2);
-const dbHabit = require('../functions/dbController/habit');
-async function test() {
-    let j = await dbHabit.searchByHabit('Ue27cb7389b27243fb30e2c61c47539c4', '嘿嘿');
-    console.log(j);
-    console.log(j.length);
+const dbUser = require('../functions/dbController/user');
+const { users } = require("../models");
+// async function test() {
+//     let j = await dbHabit.searchByHabit('Ue27cb7389b27243fb30e2c61c47539c4', '嘿嘿');
+//     console.log(j);
+//     console.log(j.length);
+// }
+// test();
+
+const getToken = async (id) =>{
+    let user = await users.findAll({ where: { userId: id } });
+    return user[0].token;
 }
-test();
+
+let tmp = getToken(Ue27cb7389b27243fb30e2c61c47539c4);
+console.log(tmp);

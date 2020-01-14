@@ -159,39 +159,6 @@ const textCommandSolver = async (event, status) => {
                 break;
             default:
                 switch (input) {
-                    // case '+':   //想插入userId
-                    //     const User = db.sequelize.define('users', {
-                    //         id: {
-                    //             type: Sequelize.STRING,
-                    //             autoIncrement: true,
-                    //             primaryKey: true
-                    //         },
-                    //         createdAt: DataTypes.DATE,
-                    //         updatedAt: DataTypes.DATE,
-                    //     });
-
-                    //     User.sync({
-                    //         force: true
-                    //     }).then(() => {
-                    //         // Table created
-                    //         return User.create({
-                    //             id: '5'
-                    //         });
-                    //     }).then(() => {
-                    //         process.exit()
-                    //     })
-                    //     break;
-                    // case '..':
-                    //     const { users } = require("../models");
-                    //     // 搜尋多個例項
-                    //     const user = await users.findAll()
-                    //     // 條件搜尋name = 'John Doe'
-                    //     // const user = await users.findByPk(1)
-                    //     output = {
-                    //         type: 'text',
-                    //         text: (user[0].userId === undefined ? '沒東西啦~' : user[0].userId) + ' 阿阿阿阿'
-                    //     }
-                    //     break;
                     case 'T':
                         output = life.selectTime('自律時間');
                         break;
@@ -237,10 +204,11 @@ const textCommandSolver = async (event, status) => {
                         try {
                             msg = '答案是' + math.eval(input.toLowerCase()).toString();
                         } catch (err) {
-                            let timestamp = new Date(event.timestamp).toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
-                            let name = event.source.userId;
+                            // let timestamp = new Date(event.timestamp).toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
+                            // let name = event.source.userId;
                             // let profile = client.getChatMemberProfile;
-                            msg = timestamp + '\n' + name + '說了：' + input;
+                            // msg = timestamp + '\n' + name + '說了：' + input;
+                            msg = '你說了：' + input;
                         }
                         output = {
                             type: 'text',
@@ -269,8 +237,7 @@ const textCommandSolver = async (event, status) => {
 
 const imgCommandSolver = (event) => {
     let msg = '水啦~'
-    // event
-    return clientBot.replyMessage(event.replyToken, [{   //要啥無法傳兩個?
+    return clientBot.replyMessage(event.replyToken, [{
         type: 'text',
         text: msg
     }, {
@@ -283,7 +250,6 @@ const imgCommandSolver = (event) => {
 }
 
 const stickerCommandSolver = (event) => {
-    // event
     return clientBot.replyMessage(event.replyToken, {
         id: '325708',
         type: 'sticker',
