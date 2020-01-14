@@ -1,6 +1,3 @@
-const lineBot = require('@line/bot-sdk');
-const configBot = require('../config');
-const clientBot = new lineBot.Client(configBot);
 const lineNotify = require('./notification');
 const dbUser = require('./dbController/user');
 const dbHabit = require('./dbController/habit');
@@ -13,13 +10,9 @@ const send = () => {
     let hour = (str[0] < 10 ? '0' + str[0] : str[0]);
     let min = (str[1] < 10 ? '0' + str[1] : str[1]);
     let habitData = await dbHabit.searchByTime(hour, min);
-    console.log(hour, min);
-    console.log(JSON.stringify(habitData));
 
     for (let i = 0; i < habitData.length; i++) {
       let token = await dbUser.getToken(habitData[i].userId);
-      console.log(token + '<------------------token');
-      console.log(habitData[i].habit + '<------------------habit');
       if (token != 'null') {
         lineNotify.notify(token, {
           type: 'message',
@@ -31,7 +24,3 @@ const send = () => {
 }
 
 send();
-
-// module.exports = {
-//   send
-// }
