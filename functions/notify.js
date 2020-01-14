@@ -8,8 +8,8 @@ const schedule = require('node-schedule');
 
 //先查habit表中的時間 存下userId 在查user表的token 如果沒token
 
-const send = async () => {
-  schedule.scheduleJob('30 * * * * *', function () {
+const send = () => {
+  schedule.scheduleJob('30 * * * * *',async function () {
     lineNotify.notify('XNVldsovy2m6RTMubkUrIPM5FRIFXvDUir4G0Dq75eX', {
       type: 'message',
       text: '測試每分鐘30秒:' + new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
