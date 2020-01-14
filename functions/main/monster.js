@@ -69,6 +69,8 @@ const call = async (event) => {
         case 4:
             character ='樂天派';
             break;
+        default:
+            character ="懵懂派";
     }
 
     return {
