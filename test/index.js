@@ -206,23 +206,27 @@ Date.prototype.Format = function (fmt) { //author: meizz
 // let tmp ='08:00:00';
 // let tmp2 = tmp.Format("hh:mm");
 // console.log(tmp2);
-const dbUser = require('../functions/dbController/user');
-const { users } = require("../models");
+// const dbUser = require('../functions/dbController/user');
+// const { users } = require("../models");
 // async function test() {
 //     let j = await dbHabit.searchByHabit('Ue27cb7389b27243fb30e2c61c47539c4', '嘿嘿');
 //     console.log(j);
 //     console.log(j.length);
 // }
 // test();
-let tmp;
-const getToken = async (id) =>{
-    let user = await users.findAll({ where: { userId: id } });
-    console.log(JSON.stringify(user));
-    return user[0].token;
-}
-const go = async ()=>{
- tmp = await getToken('Ue27cb7389b27243fb30e2c61c47539c4');
- console.log(tmp);
-}
-go();
 
+// let tmp;
+// const getToken = async (id) =>{
+//     let user = await users.findAll({ where: { userId: id } });
+//     console.log(JSON.stringify(user));
+//     return user[0].token;
+// }
+// const go = async ()=>{
+//  tmp = await getToken('Ue27cb7389b27243fb30e2c61c47539c4');
+//  console.log(tmp);
+// }
+// go();
+
+let date = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
+console.log(date);
+console.log(date.Format("yyyy/MM/dd hh:mm:ss"));
