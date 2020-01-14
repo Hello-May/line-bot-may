@@ -44,6 +44,31 @@ function genByHabit(habit) {
     return output;
 }
 
+const selectTime = (postback) => {
+    return {
+        "type": "flex",
+        "altText": "Flex Message",
+        "contents": {
+          "type": "bubble",
+          "direction": "ltr",
+          "footer": {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+              {
+                "type": "button",
+                "action": {
+                    "type": "datetimepicker",
+                    "label": "按此選擇時間",
+                    "data": postback,
+                    "mode": "time"
+                  }
+              }
+            ]
+          }
+        }
+      };
+}
 
 const call = async (event) => {
     let habit;
@@ -171,9 +196,9 @@ const call = async (event) => {
                             {
                                 "type": "button",
                                 "action": {
-                                    "type": "message",
+                                    "type": "postback",
                                     "label": "新增",
-                                    "text": "請輸入時間/習慣/密語"
+                                    "text": "新增自律指令"
                                 }
                             },
                             {
@@ -463,5 +488,6 @@ const call = async (event) => {
 }
 
 module.exports = {
-    call
+    call,
+    selectTime
 }

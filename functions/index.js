@@ -17,6 +17,7 @@ const db = require('../models');
 const dbUser = require('./dbController/user');
 const dbMonster = require('./dbController/monster');
 const dbTask = require('./dbController/task');
+const dbHabit = require('./dbController/habit');
 
 const textCommandSolver = async (event, status) => {
     let input = event.message.text;
@@ -48,6 +49,25 @@ const textCommandSolver = async (event, status) => {
                     text: '[任務已修改] ' + input
                 }
                 await dbUser.saveStatus(userId, '正常');
+                break;
+            case '新增自律':
+                switch (str.length) {
+                    case 2:
+                        await dbUser.saveStatus(userId, status + ':' + input);  //input是習慣
+                        output = {
+                            type: 'text',
+                            text: '請輸入密語'
+                        };
+                        break;
+                    case 3:
+                        await dbUser.saveStatus(userId, status + ':' + input);  //input是密語
+                        await dbHabit.create(userId, str[1], str[2], input);
+                        output = {
+                            type: 'text',
+                            text: '[已新增自律指令] ' + str[1] + "/" + str[2] + "/" + input
+                        };
+                        break;
+                }
                 break;
         }
     } else {
@@ -98,29 +118,7 @@ const textCommandSolver = async (event, status) => {
                     //     }
                     //     break;
                     case 'T':
-                        output = {
-                            "type": "flex",
-                            "altText": "Flex Message",
-                            "contents": {
-                              "type": "bubble",
-                              "direction": "ltr",
-                              "footer": {
-                                "type": "box",
-                                "layout": "horizontal",
-                                "contents": [
-                                  {
-                                    "type": "button",
-                                    "action": {
-                                        "type": "datetimepicker",
-                                        "label": "選時間",
-                                        "data": "自律時間",
-                                        "mode": "time"
-                                      }
-                                  }
-                                ]
-                              }
-                            }
-                          };
+                        output = life.selectTime('自律時間');
                         break;
                     case '.':
                         output = lineNotify.test();

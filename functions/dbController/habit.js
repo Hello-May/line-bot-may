@@ -29,13 +29,25 @@ function sortByTime(habit) {
     const date = new Date().Format("yyyy/MM/dd");
     for (let i = 1; i < habit.length; i++) {
         for (let j = 0; j < habit.length - i; j++) {
-            if ((Date.parse(date+' '+habit[j].time)).valueOf() > (Date.parse(date+' '+habit[j + 1].time)).valueOf()) {
+            if ((Date.parse(date + ' ' + habit[j].time)).valueOf() > (Date.parse(date + ' ' + habit[j + 1].time)).valueOf()) {
                 let tmp = habit[j];
                 habit[j] = habit[j + 1];
                 habit[j + 1] = tmp;
             }
         }
     }
+}
+
+const create = async (id, time, habit, secret) => {
+    await Habit.create({
+        force: true,
+        userId: id,
+        time: time,
+        habit: habit,
+        secret: secret,
+        createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
+        updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
+    });
 }
 
 const initialization = async (id) => {
@@ -59,5 +71,6 @@ const initialization = async (id) => {
 
 module.exports = {
     initialization,
-    searchById
+    searchById,
+    create
 }

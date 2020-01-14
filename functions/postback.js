@@ -65,10 +65,23 @@ const postbackCommandSolver = async (event, status) => {
         }
     } else {
         switch (input) {
+            case '新增自律時間':
+                await dbUser.saveStatus(userId, '新增自律:' + event.postback.params.time);
+                output = {
+                    type: 'text',
+                    text: '請輸入習慣'
+                };
+                break;
+            case '新增自律指令':
+                output = [{
+                    type: 'text',
+                    text: '請依序輸入時間/習慣/密語'
+                }, life.selectTime('新增自律時間')];
+                break;
             case '自律時間':
                 output = {
                     type: 'text',
-                    text:  event.postback.params.time+''
+                    text: event.postback.params.time + ''
                 }
                 break;
             case '小怪獸修改':
