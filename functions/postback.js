@@ -65,18 +65,18 @@ const postbackCommandSolver = async (event, status) => {
         }
     } else {
         switch (input) {
-            case '刪除自律時間':
+            case '刪除自律指令':
                 await dbUser.saveStatus(userId, '刪除自律監聽');
                 output = {
                     type: 'text',
                     text: '請輸入欲刪除之習慣'
                 };
                 break;
-            case '修改自律時間':
+            case '修改自律指令':
                 // await dbUser.saveStatus(userId, '新增自律:' + event.postback.params.time);
                 output = {
                     type: 'text',
-                    text: '修改自律時間'
+                    text: '修改自律指令'
                 };
                 break;
             case '新增自律時間':
