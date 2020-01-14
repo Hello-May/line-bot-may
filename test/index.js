@@ -214,11 +214,15 @@ const { users } = require("../models");
 //     console.log(j.length);
 // }
 // test();
-
+let tmp;
 const getToken = async (id) =>{
     let user = await users.findAll({ where: { userId: id } });
+    console.log(JSON.stringify(user));
     return user[0].token;
 }
+const go = async ()=>{
+ tmp = await getToken('Ue27cb7389b27243fb30e2c61c47539c4');
+ console.log(tmp);
+}
+go();
 
-let tmp = getToken(Ue27cb7389b27243fb30e2c61c47539c4);
-console.log(tmp);

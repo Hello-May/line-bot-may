@@ -1,7 +1,7 @@
 const lineBot = require('@line/bot-sdk');
 const configBot = require('../config');
 const clientBot = new lineBot.Client(configBot);
-const lineNotify = require('./notify');
+const lineNotify = require('./notification');
 const math = require('mathjs');
 const path = require('path');
 const dbController = require('./dbController');

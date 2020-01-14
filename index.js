@@ -1,5 +1,5 @@
 const lineBot = require('@line/bot-sdk');
-const lineNotify = require('./functions/notify');
+const lineNotify = require('./functions/notification');
 const configBot = require('./config');
 const functions = require('./functions');
 const postback = require('./functions/postback');
