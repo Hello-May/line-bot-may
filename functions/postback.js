@@ -63,7 +63,7 @@ const postbackCommandSolver = async (event, status) => {
                 await dbTask.destroy(userId, str[1]);
                 output = {
                     type: 'text',
-                    text: '[已完成任務] 小怪獸變聰明了~'
+                    text: '[已完成任務] ' + tmpMonster.name + '更有主見了~'
                 }
                 break;
             case '修改自律監聽':
@@ -161,7 +161,17 @@ const postbackCommandSolver = async (event, status) => {
                 }
         }
     }
-    return clientBot.replyMessage(event.replyToken, output);
+    //判斷升等
+    if (tmpMonster.exp = tmpMonster.level * 5) {
+        await dbMonster.levelUp(tmpMonster.monsterId);
+        let output2 = {
+            type: 'text',
+            text: '[LEVEL UP] ' + tmpMonster.name + '升級了!!'
+        }
+        return clientBot.replyMessage(event.replyToken, [output, output2]);
+    } else {
+        return clientBot.replyMessage(event.replyToken, output);
+    }
 }
 
 module.exports = {
