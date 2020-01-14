@@ -60,25 +60,33 @@ const postbackCommandSolver = async (event, status) => {
                 }
                 break;
             case '修改自律監聽':
-                switch (str[1]) {
-                    case '時間監聽':
-                        await dbHabit.update(userId, str[1], str[2], event.postback.params.time);
-                        output = {
-                            type: 'text',
-                            text: '[已修改自律指令] ' + event.postback.params.time
-                        }
-                        break;
-                    case '時間視窗':
-                        output = life.selectTime(str[0] + ":時間監聽:" + str[2]);
-                        break;
-                    case '習慣監聽':
-                    case '密語監聽':
-                        await dbUser.saveStatus(userId, input);
-                        output = {
-                            type: 'text',
-                            text: '請新增修改後內容，或輸入取消'
-                        }
-                        break;
+                let j = await dbHabit.searchByHabit(userId, str[2]);
+                if (j == 0) {
+                    output = {
+                        type: 'text',
+                        text: '已沒有此習慣'
+                    }
+                } else {
+                    switch (str[1]) {
+                        case '時間監聽':
+                            await dbHabit.update(userId, str[1], str[2], event.postback.params.time);
+                            output = {
+                                type: 'text',
+                                text: '[已修改自律指令] ' + event.postback.params.time
+                            }
+                            break;
+                        case '時間視窗':
+                            output = life.selectTime(str[0] + ":時間監聽:" + str[2]);
+                            break;
+                        case '習慣監聽':
+                        case '密語監聽':
+                            await dbUser.saveStatus(userId, input);
+                            output = {
+                                type: 'text',
+                                text: '請新增修改後內容，或輸入取消'
+                            }
+                            break;
+                    }
                 }
                 break;
         }
