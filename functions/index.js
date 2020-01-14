@@ -47,7 +47,7 @@ const textCommandSolver = async (event, status) => {
                 }
                 await dbUser.saveStatus(userId, '正常');
                 break;
-            case '新增自律監聽':
+            case '新增自律監聽':         //如果有重複的習慣就擋掉，還沒做
                 if (input == '取消') {
                     output = {
                         type: 'text',

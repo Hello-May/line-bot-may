@@ -18,6 +18,7 @@ const send = () => {
     let hour = date.getHours();
     let min = date.getMinutes();
     let habitData = await dbHabit.searchByTime((hour < 10 ? '0' + hour : hour), (min < 10 ? '0' + min : min));
+    console.log((hour < 10 ? '0' + hour : hour), (min < 10 ? '0' + min : min));
     console.log(JSON.stringify(habitData));
 
     for (let i; i < habitData.length; i++) {
