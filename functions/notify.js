@@ -5,7 +5,7 @@ const lineNotify = require('./notify');
 const dbController = require('./dbController');
 const dbUser = require('./dbController/user');
 const dbHabit = require('./dbController/habit');
-const schedule = schedule = require('node-schedule');
+const schedule = require('node-schedule');
 
 //先查habit表中的時間 存下userId 在查user表的token 如果沒token
 
