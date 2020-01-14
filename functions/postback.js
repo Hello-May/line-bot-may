@@ -20,6 +20,10 @@ const dbTask = require('./dbController/task');
 const dbHabit = require('./dbController/habit');
 
 const postbackCommandSolver = async (event, status) => {
+    let tmpUser = await dbUser.searchById(userId);
+    let tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
+    await dbMonster.increaseEXP(tmpMonster.monsterId);
+    //↑增加經驗值
     let input = event.postback.data;
     let output;
     let str;
@@ -55,7 +59,7 @@ const postbackCommandSolver = async (event, status) => {
                 let tmpTask = await dbTask.searchByDesc(userId, str[1]);
                 let tmpUser = await dbUser.searchById(userId);
                 let tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
-                await dbMonster.saveCharacter(tmpMonster.monsterId,tmpTask.level); //怪物個性先直接存成任務象限
+                await dbMonster.saveCharacter(tmpMonster.monsterId, tmpTask.level); //怪物個性先直接存成任務象限
                 await dbTask.destroy(userId, str[1]);
                 output = {
                     type: 'text',

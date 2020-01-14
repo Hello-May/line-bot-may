@@ -7,6 +7,10 @@ const searchById = async (id) => {
     return monster[0];
 }
 
+const increaseEXP= async (id) => {
+    await monsters.increment({ exp }, { where: { monsterId: id } });
+}
+
 const saveCharacter = async (id, character) => {
     await monsters.update({ character: character }, { where: { monsterId: id } });
 }
@@ -52,5 +56,6 @@ module.exports = {
     initialization,
     searchById,
     updateName,
-    saveCharacter
+    saveCharacter,
+    increaseEXP
 }

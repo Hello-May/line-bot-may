@@ -137,11 +137,11 @@ const call = async (event) => {
                             },
                             {
                                 "type": "text",
-                                "text": "自律幣：" + monster.money
+                                "text": "自律幣：$" + monster.money
                             },
                             {
                                 "type": "text",
-                                "text": "精神糧食：" + monster.food
+                                "text": "精神糧食：" + monster.food +" (每日-1)"
                             }
                         ]
                     },
