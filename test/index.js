@@ -1,3 +1,5 @@
+// import { createPool } from "mysql";
+
 // var s = new Date(1577865102384).toLocaleString('zh-TW', {timeZone: 'Asia/Taipei'});
 // // var d = s.getFullYear() + "-" + (s.getMonth() < 10 ? '0' + (s.getMonth() + 1) : (s.getMonth() + 1)) + "-" + (s.getDate() < 10 ? '0' + s.getDate() : s.getDate());
 // // var t = (s.getHours() < 10 ? '0' + s.getHours() : s.getHours()) + ":" + (s.getMinutes() < 10 ? '0' + s.getMinutes() : s.getMinutes()) + ":" + (s.getSeconds() < 10 ? '0' + s.getSeconds() : s.getSeconds());
@@ -165,3 +167,38 @@
 // }
 
 // destroy('555','5566');
+
+Date.prototype.Format = function (fmt) { //author: meizz 
+    var o = {
+        "M+": this.getMonth() + 1, //月份 
+        "d+": this.getDate(), //日 
+        "h+": this.getHours(), //小时 
+        "m+": this.getMinutes(), //分 
+        "s+": this.getSeconds(), //秒 
+        "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
+        "S": this.getMilliseconds() //毫秒 
+    };
+    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o)
+        if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    return fmt;
+}
+
+let time = ['08:00','07:00','10:00','09:00'];
+let date = new Date().Format("yyyy/MM/dd");
+console.log(time);
+
+function sortByTime(habit) {
+    for (let i = 1; i < habit.length; i++) {
+        for (let j = 0; j < habit.length - i; j++) {
+            if ((Date.parse(date+' '+habit[j])).valueOf() > (Date.parse(date+' '+habit[j + 1])).valueOf()) {
+                let tmp = habit[j];
+                habit[j] = habit[j + 1];
+                habit[j + 1] = tmp;
+            }
+        }
+    }
+}
+
+sortByTime(time);
+console.log(time);

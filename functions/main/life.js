@@ -1,4 +1,43 @@
+const dbUser = require('../dbController/user');
+const dbHabit = require('../dbController/habit');
+
+function genByHabit(habit) {
+    let output = [];
+    for (let i = 0; i < habit.length; i++) {
+        output.push({
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+                {
+                    "type": "text",
+                    "text": habit[i].time
+                },
+                {
+                    "type": "text",
+                    "text": habit[i].habit
+                },
+                {
+                    "type": "text",
+                    "text": habit[i].secret
+                }
+            ]
+        })
+    }
+    return output;
+}
+
+
 const call = (event) => {
+    let habit;
+    let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
+    try {
+        habit = await dbHabit.searchById(userId);
+    } catch (err) {
+        console.log(err);
+    }
+
+    let output = genByHabit(habit);
+
     return {
         "type": "flex",
         "altText": "Flex Message",
@@ -102,152 +141,7 @@ const call = (event) => {
                                 "type": "box",
                                 "layout": "vertical",
                                 "margin": "lg",
-                                "contents": [
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                            {
-                                                "type": "text",
-                                                "text": "07:00"
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": "早起"
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": "早安"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                            {
-                                                "type": "text",
-                                                "text": "08:00"
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": "收信"
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": "開工啦"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                            {
-                                                "type": "text",
-                                                "text": "12:00"
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": "午餐"
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": "放風去"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                            {
-                                                "type": "text",
-                                                "text": "15:00"
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": "運動"
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": "跑起來"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                            {
-                                                "type": "text",
-                                                "text": "18:00"
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": "晚餐"
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": "爽爽吃"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                            {
-                                                "type": "text",
-                                                "text": "19:00"
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": "吃藥"
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": "我吃了"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                            {
-                                                "type": "text",
-                                                "text": "21:00"
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": "讀書"
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": "be better"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                            {
-                                                "type": "text",
-                                                "text": "23:00"
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": "早睡"
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": "晚安"
-                                            }
-                                        ]
-                                    }
-                                ]
+                                "contents": output
                             }
                         ]
                     },
