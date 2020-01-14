@@ -91,8 +91,24 @@ const textCommandSolver = async (event, status) => {
     } else {
         switch (status) {
             case '修改自律視窗':
-                output = life.update(input);
-                await dbUser.saveStatus(userId, '正常');
+                if (input == '取消') {
+                    output = {
+                        type: 'text',
+                        text: '[已取消]'
+                    }
+                    await dbUser.saveStatus(userId, '正常');
+                } else {
+                    let j = dbHabit.searchByHabit(userId, input);
+                    if (j.length == 0) {
+                        output = {
+                            type: 'text',
+                            text: '沒有此習慣，請重新輸入，或輸入取消'
+                        }
+                    } else {
+                        output = life.update(input);
+                        await dbUser.saveStatus(userId, '正常');
+                    }
+                }
                 break;
             case '刪除自律監聽':
                 if (input == '取消') {

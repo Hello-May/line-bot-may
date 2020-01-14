@@ -25,6 +25,11 @@ const searchById = async (id) => {
     return habit;
 }
 
+const searchByHabit = async (id, habit) => {
+    let habit = await habits.findAll({ where: { userId: id, habit: habit } });
+    return habit;
+}
+
 function sortByTime(habit) {
     const date = new Date().Format("yyyy/MM/dd");
     for (let i = 1; i < habit.length; i++) {
@@ -98,5 +103,6 @@ module.exports = {
     searchById,
     create,
     destroy,
-    update
+    update,
+    searchByHabit
 }
