@@ -73,7 +73,7 @@ const postbackCommandSolver = async (event, status) => {
                         break;
                     case '習慣監聽':
                     case '密語監聽':
-                        await dbUser.saveStatus(userId, status);
+                        await dbUser.saveStatus(userId, input);
                         output = {
                             type: 'text',
                             text: '請新增修改後內容'
