@@ -12,6 +12,7 @@ const increaseEXP= async (id) => {
 }
 
 const levelUp= async (id) => {
+    await monsters.update({ exp:0 }, { where: { monsterId: id } });
     await monsters.increment({ level:1 }, { where: { monsterId: id } });
 }
 
