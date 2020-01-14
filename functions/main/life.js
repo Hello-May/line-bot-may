@@ -27,7 +27,7 @@ function genByHabit(habit) {
 }
 
 
-const call = (event) => {
+const call = async (event) => {
     let habit;
     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
     try {
