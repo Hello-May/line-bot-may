@@ -66,6 +66,7 @@ const textCommandSolver = async (event, status) => {
                             type: 'text',
                             text: '[已新增自律指令] ' + str[1] + "/" + str[2] + "/" + input
                         };
+                        await dbUser.saveStatus(userId, '正常');
                         break;
                 }
                 break;
