@@ -76,6 +76,10 @@ const textCommandSolver = async (event, status) => {
             case '刪除自律監聽':
                 await dbHabit.destroy(userId, input);
                 await dbUser.saveStatus(userId, '正常');
+                output = {
+                    type: 'text',
+                    text: '[已刪除習慣] ' + input
+                }
                 break;
             case '小怪獸改名監聽':
                 let tmpUser = await dbUser.searchById(userId);
