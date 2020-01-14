@@ -32,11 +32,13 @@ function genByHabit(habit) {
                 },
                 {
                     "type": "text",
-                    "text": habit[i].habit
+                    "text": habit[i].habit,
+                    "wrap": true
                 },
                 {
                     "type": "text",
-                    "text": habit[i].secret
+                    "text": habit[i].secret,
+                    "wrap": true
                 }
             ]
         })
