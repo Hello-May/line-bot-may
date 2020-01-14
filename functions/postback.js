@@ -162,11 +162,11 @@ const postbackCommandSolver = async (event, status) => {
         }
     }
     //判斷升等
-    if (tmpMonster.exp = tmpMonster.level * 5) {
+    if (tmpMonster.exp == tmpMonster.level * 5) {
         await dbMonster.levelUp(tmpMonster.monsterId);
         let output2 = {
             type: 'text',
-            text: '[LEVEL UP] ' + tmpMonster.name + '升級了!!'
+            text: '[LEVEL UP] ' + tmpMonster.name + '長大了!!'
         }
         return clientBot.replyMessage(event.replyToken, [output, output2]);
     } else {
