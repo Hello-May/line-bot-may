@@ -20,14 +20,14 @@ const dbTask = require('./dbController/task');
 const dbHabit = require('./dbController/habit');
 
 const postbackCommandSolver = async (event, status) => {
-    let tmpUser = await dbUser.searchById(userId);
-    let tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
-    await dbMonster.increaseEXP(tmpMonster.monsterId);
-    //↑增加經驗值
     let input = event.postback.data;
     let output;
     let str;
     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
+    //↓增加經驗值
+    let tmpUser = await dbUser.searchById(userId);
+    let tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
+    await dbMonster.increaseEXP(tmpMonster.monsterId);
     if (input.includes(':')) {
         str = input.split(":");
         switch (str[0]) {
