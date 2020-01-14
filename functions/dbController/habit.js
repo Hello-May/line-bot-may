@@ -50,6 +50,10 @@ const create = async (id, time, habit, secret) => {
     });
 }
 
+const destroy = async (id, habit) => {
+    await Habit.destroy({ where: { userId: id, habit:habit } });
+}
+
 const initialization = async (id) => {
     // let time = [date.getHours()+':'+date.getMinutes()];
     let tmpTimes = ['07:00', '08:00', '12:00', '15:00', '18:00', '19:00', '21:00', '23:00'];
@@ -72,5 +76,6 @@ const initialization = async (id) => {
 module.exports = {
     initialization,
     searchById,
-    create
+    create,
+    destroy
 }

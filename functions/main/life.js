@@ -211,7 +211,7 @@ const call = async (event) => {
                                 "action": {
                                     "type": "message",
                                     "label": "修改",
-                                    "text": "改名/初始化"
+                                    "text": "修改自律指令"
                                 }
                             },
                             {
@@ -222,7 +222,7 @@ const call = async (event) => {
                                 "action": {
                                     "type": "message",
                                     "label": "刪除",
-                                    "text": "請輸入刪除之習慣"
+                                    "text": "刪除自律指令"
                                 }
                             }
                         ]
