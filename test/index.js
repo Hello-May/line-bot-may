@@ -227,6 +227,8 @@ Date.prototype.Format = function (fmt) { //author: meizz
 // }
 // go();
 
-let date = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
+let d = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
 console.log(date);
-console.log(date.Format("yyyy/MM/dd hh:mm:ss"));
+let h = d.getHours();
+console.log(h);
+// console.log(date.getMinutes);
