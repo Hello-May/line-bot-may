@@ -61,14 +61,14 @@
 //         console.log('哈哈哈哈')
 //     }
 //     console.log(group[0].token);
-    // console.log('--------------1-------------------')
-    // console.log(user[4])
-    // console.log('---------------2------------------')
-    // console.log(user[4].id)
-    // console.log('---------------3------------------')
-    // console.log(user[4].createdAt)
-    // console.log('----------------4-----------------')
-    // console.log(user[4].updatedAt)
+// console.log('--------------1-------------------')
+// console.log(user[4])
+// console.log('---------------2------------------')
+// console.log(user[4].id)
+// console.log('---------------3------------------')
+// console.log(user[4].createdAt)
+// console.log('----------------4-----------------')
+// console.log(user[4].updatedAt)
 
 //     process.exit();
 // })()
@@ -126,26 +126,26 @@
 // const { monsters } = require("../models");
 // const Monster = db.monsters;
 
-    // Monster.create({
-    //     force: true,
-    //     name: '小怪獸',
-    //     born: new Date(),
-    //     level: 1,
-    //     exp: 0,
-    //     character: 0,
-    //     money: 0,
-    //     food: 10,
-    //     createdAt: new Date(),
-    //     updatedAt: new Date()
-    // });
-    // const go = async (event) => {
-    // let monster = await monsters.findAll();
-    // console.log(monster);
-    // console.log(monster.length);
-    // console.log(monster[monster.length-1].monsterId);
-    // }
+// Monster.create({
+//     force: true,
+//     name: '小怪獸',
+//     born: new Date(),
+//     level: 1,
+//     exp: 0,
+//     character: 0,
+//     money: 0,
+//     food: 10,
+//     createdAt: new Date(),
+//     updatedAt: new Date()
+// });
+// const go = async (event) => {
+// let monster = await monsters.findAll();
+// console.log(monster);
+// console.log(monster.length);
+// console.log(monster[monster.length-1].monsterId);
+// }
 
-    // go();
+// go();
 
 // const Task = db.tasks;
 
@@ -203,6 +203,13 @@ Date.prototype.Format = function (fmt) { //author: meizz
 // sortByTime(time);
 // console.log(time);
 
-let tmp ='08:00:00';
-let tmp2 = tmp.Format("hh:mm");
-console.log(tmp2);
+// let tmp ='08:00:00';
+// let tmp2 = tmp.Format("hh:mm");
+// console.log(tmp2);
+const dbHabit = require('../functions/dbController/habit');
+async function test() {
+    let j = await dbHabit.searchByHabit('Ue27cb7389b27243fb30e2c61c47539c4', '嘿嘿');
+    console.log(j);
+    console.log(j.length);
+}
+test();

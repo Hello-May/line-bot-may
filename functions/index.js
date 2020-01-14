@@ -98,7 +98,7 @@ const textCommandSolver = async (event, status) => {
                     }
                     await dbUser.saveStatus(userId, '正常');
                 } else {
-                    let j = dbHabit.searchByHabit(userId, input);
+                    let j = await dbHabit.searchByHabit(userId, input);
                     if (j.length == 0) {
                         output = {
                             type: 'text',
