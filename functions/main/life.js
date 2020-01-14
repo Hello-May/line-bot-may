@@ -32,6 +32,7 @@ const call = async (event) => {
     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
     try {
         habit = await dbHabit.searchById(userId);
+        console.log("habit:" + JSON.stringify(habit));
     } catch (err) {
         console.log(err);
     }
