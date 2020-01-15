@@ -63,10 +63,6 @@ module.exports = {
           type: DataTypes.INTEGER,
           allowNull: false,
         },
-        done: {
-          type: DataTypes.BOOLEAN,
-          allowNull: false,
-        },
         createdAt: DataTypes.DATE,
         updatedAt: DataTypes.DATE,
       }, {
@@ -117,6 +113,10 @@ module.exports = {
         },
         secret: {
           type: DataTypes.STRING,
+          allowNull: false,
+        },
+        done: {
+          type: DataTypes.BOOLEAN,
           allowNull: false,
         },
         createdAt: DataTypes.DATE,
