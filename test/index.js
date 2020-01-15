@@ -1,3 +1,4 @@
+
 // import { createPool } from "mysql";
 
 // var s = new Date(1577865102384).toLocaleString('zh-TW', {timeZone: 'Asia/Taipei'});
@@ -248,10 +249,10 @@ Date.prototype.Format = function (fmt) { //author: meizz
 // console.log(date);
 // console.log(date.getHours());
 
-let d = new Date().toLocaleTimeString('zh-TW', { timeZone: 'Asia/Taipei' });
-let str = d.split(':');
-console.log(str[1]);
-console.log(d);
+// let d = new Date().toLocaleTimeString('zh-TW', { timeZone: 'Asia/Taipei' });
+// let str = d.split(':');
+// console.log(str[1]);
+// console.log(d);
 // console.log(d.toLo);
 
 // console.log(d.getTimezoneOffset());
@@ -260,3 +261,5 @@ console.log(d);
 // let h = n.getHours();
 // console.log(h);
 // console.log(date.getMinutes);
+
+console.log(Math.round((Math.random()*7)));

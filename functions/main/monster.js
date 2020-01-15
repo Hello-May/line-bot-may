@@ -1,5 +1,12 @@
 const dbUser = require('../dbController/user');
 const dbMonster = require('../dbController/monster');
+const pic = ["https://i.postimg.cc/d0k3NGNh/1.jpg",
+                "https://i.postimg.cc/bv7J7d43/2.jpg",
+                "https://i.postimg.cc/nzqzppJZ/3.jpg",
+                "https://i.postimg.cc/hvgGG6Dm/4.jpg",
+                "https://i.postimg.cc/FFgR6rpV/5.jpg",
+                "https://i.postimg.cc/4NfdkDFk/6.jpg",
+                "https://i.postimg.cc/prZL5Cr6/7.jpg"]
 
 Date.prototype.Format = function (fmt) { //author: meizz 
     var o = {
@@ -58,21 +65,21 @@ const call = async (event) => {
     let character;
     switch (monster.character) {    //應該要算累積完成任務多寡，之後再改，要存在user表內
         case 1:
-            character ='行動派';
+            character = '行動派';
             break;
         case 2:
-            character ='嚴謹派';
+            character = '嚴謹派';
             break;
         case 3:
-            character ='領導派';
+            character = '領導派';
             break;
         case 4:
-            character ='樂天派';
+            character = '樂天派';
             break;
         default:
-            character ="懵懂無知";
+            character = "懵懂無知";
     }
-
+    
     return {
         "type": "flex",
         "altText": "Flex Message",
@@ -95,7 +102,8 @@ const call = async (event) => {
             "hero": {
                 "type": "image",
                 // "url": "https://images2.gamme.com.tw/news2/2018/86/51/qZqVnqaYl6aWp6Q.gif",  //皮卡丘
-                "url": "https://i.imgur.com/YptXiwa.gif",   //綠水靈
+                // "url": "https://i.imgur.com/YptXiwa.gif",   //綠水靈
+                "url": pic[Math.round((Math.random()*6))],
                 "size": "lg",
                 "aspectRatio": "1.51:1",
                 "aspectMode": "fit",
@@ -144,7 +152,7 @@ const call = async (event) => {
                             },
                             {
                                 "type": "text",
-                                "text": "精神糧食：" + monster.food +" (每日-1)"
+                                "text": "精神糧食：" + monster.food + " (每日-1)"
                             }
                         ]
                     },
