@@ -165,23 +165,23 @@ const textCommandSolver = async (event, status) => {
                     case '.':
                         output = lineNotify.test();
                         break;
+                    case '嗨':
+                        output = main.test(event);
+                        break;
                     case '#':
                         output = richMenu.call(event);
                         break;
-                    case '連動':
+                    case '#連動':
                         dbController.saveTmpId(event);
                         output = lineNotify.authorize();
                         break;;
-                    case '呼叫':
+                    case '#呼叫':
                         dbUser.saveStatus(userId, '正常');
                         output = pause.pause(event);
                         break;
-                    case '閉嘴':
+                    case '#閉嘴':
                         dbUser.saveStatus(userId, '睡眠');
                         output = pause.pause(event);
-                        break;
-                    case '嗨':
-                        output = main.test(event);
                         break;
                     case '#修煉':
                         output = await life.call(event);
@@ -203,36 +203,36 @@ const textCommandSolver = async (event, status) => {
                         let msg;
                         try {
                             msg = '答案是' + math.eval(input.toLowerCase()).toString();
+                            output = {
+                                type: 'text',
+                                text: msg
+                            }
                         } catch (err) {
                             // let timestamp = new Date(event.timestamp).toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
                             // let name = event.source.userId;
                             // let profile = client.getChatMemberProfile;
                             // msg = timestamp + '\n' + name + '說了：' + input;
-                            msg = '你說了：' + input;
-                        }
-                        output = {
-                            type: 'text',
-                            text: msg
+                            // msg = '你說了：' + input;
+                            console.log(err);
                         }
                 }
         }
     }
-    // if (input.includes('#') && event.source.type == 'group') {
-    //     let tmpUser = await dbUser.searchById(userId);
-    //     let tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
-    //     await dbMonster.increaseEXP(tmpMonster.monsterId);
-    // }
-    // if (tmpMonster.exp == tmpMonster.level * 5) {
-    //     await dbMonster.levelUp(tmpMonster.monsterId);
-    //     let output2 = {
-    //         type: 'text',
-    //         text: '[LEVEL UP] ' + tmpMonster.name + '長大了!!'
-    //     }
-    //     return clientBot.replyMessage(event.replyToken, [output, output2]);
-    // } else {
-    //     return clientBot.replyMessage(event.replyToken, output);
-    // }
-    return clientBot.replyMessage(event.replyToken, output);
+    if (input.includes("#")) {  //這樣會有缺點是非指令也會增加經驗值
+        let tmpUser = await dbUser.searchById(userId);
+        let tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
+        await dbMonster.increaseEXP(tmpMonster.monsterId);
+    }
+    if (tmpMonster.exp == tmpMonster.level * 5) {
+        await dbMonster.levelUp(tmpMonster.monsterId);
+        let output2 = {
+            type: 'text',
+            text: '[LEVEL UP] ' + tmpMonster.name + '長大了!!'
+        }
+        return clientBot.replyMessage(event.replyToken, [output, output2]);
+    } else {
+        return clientBot.replyMessage(event.replyToken, output);
+    }
 }
 
 const imgCommandSolver = (event) => {
