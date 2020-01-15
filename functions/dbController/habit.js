@@ -78,6 +78,7 @@ const initialization = async (id) => {
             time: tmpTimes[i],
             habit: tmpHabits[i],
             secret: tmpSecrets[i],
+            done: false,
             createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
             updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
         });
