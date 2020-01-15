@@ -121,9 +121,9 @@ const call = async (event) => {
                 "aspectRatio": "1.51:1",
                 "aspectMode": "fit",
                 "action": {
-                    "type": "message",
+                    "type": "postback",
                     "label": "叫聲",
-                    "text": res[r]
+                    "data": res[r]
                 }
             },
             "body": {

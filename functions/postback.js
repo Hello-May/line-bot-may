@@ -157,7 +157,7 @@ const postbackCommandSolver = async (event, status) => {
             default:
                 output = {
                     type: 'text',
-                    text: 'postback:' + input
+                    text: input
                 }
         }
     }
