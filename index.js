@@ -72,7 +72,7 @@ app.get("/button", function (req, res) {
 
 app.get("/regisToken", async (req, res, next) => {
   let code = req.query.code;
-  res.sendFile(path.resolve('./functions/notify/res.html'), function (err) {
+  res.sendFile(path.resolve('./functions/notification/res.html'), function (err) {
     if (err) res.send(404);
   });
   // lineNotify.getToken(code)
