@@ -7,7 +7,7 @@ async function back() {
   let stickno = Math.floor(Math.random() * sticker.length)
   for (let i = 0; i < user.length; i++) {
     lineNotify.notify(user[i].token, {
-      'message': '記得回來看看小怪獸',
+      'message': '\n記得回來看看小怪獸～',
       'stickerPackageId': sticker[stickno][0].toString(),
       'stickerId': sticker[stickno][1].toString(),
     });

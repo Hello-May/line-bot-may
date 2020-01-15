@@ -17,7 +17,7 @@ const send = () => {
       let token = await dbUser.getToken(habitData[i].userId);
       if (token != 'null') {
         lineNotify.notify(token, {
-          'message': habitData[i].habit + '，請30分鐘內輸入密語！',
+          'message': habitData[i].habit + '～\n請30分鐘內輸入密語！',
           'stickerPackageId': sticker[stickno][0].toString(),
           'stickerId': sticker[stickno][1].toString(),
         });
