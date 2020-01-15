@@ -41,7 +41,6 @@ async function handleEvent(event) {
       }
     case 'follow':
     case 'join':
-      // dbMonster.create();
       return dbController.saveId(event);
     case 'memberJoined':
       return clientBot.replyMessage(event.replyToken, {
@@ -66,7 +65,7 @@ app.get("/test", function (req, res) {
 });
 
 app.get("/button", function (req, res) {
-  res.sendFile(path.resolve('./functions/notify/button.html'), function (err) {
+  res.sendFile(path.resolve('./functions/notification/button.html'), function (err) {
     if (err) res.send(404);
   });
 });
