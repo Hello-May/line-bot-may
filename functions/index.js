@@ -222,14 +222,14 @@ const textCommandSolver = async (event, status) => {
         let tmpUser = await dbUser.searchById(userId);
         let tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
         await dbMonster.increaseEXP(tmpMonster.monsterId);
-    }
-    if (tmpMonster.exp == tmpMonster.level * 5) {
-        await dbMonster.levelUp(tmpMonster.monsterId);
-        let output2 = {
-            type: 'text',
-            text: '[LEVEL UP] ' + tmpMonster.name + '長大了!!'
+        if (tmpMonster.exp == tmpMonster.level * 5) {
+            await dbMonster.levelUp(tmpMonster.monsterId);
+            let output2 = {
+                type: 'text',
+                text: '[LEVEL UP] ' + tmpMonster.name + '長大了!!'
+            }
+            return clientBot.replyMessage(event.replyToken, [output, output2]);
         }
-        return clientBot.replyMessage(event.replyToken, [output, output2]);
     } else {
         return clientBot.replyMessage(event.replyToken, output);
     }
