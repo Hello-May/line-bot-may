@@ -121,6 +121,7 @@ const create = async (id, level, desc) => {
         userId: id,
         level: level,
         desc: desc,
+        done: false,
         createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
         updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
     });

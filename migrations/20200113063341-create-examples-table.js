@@ -33,7 +33,7 @@ module.exports = {
           type: DataTypes.INTEGER,
           allowNull: false,
           primaryKey: true,
-          autoIncrement:true
+          autoIncrement: true
         },
         name: {
           type: DataTypes.STRING,
@@ -63,6 +63,10 @@ module.exports = {
           type: DataTypes.INTEGER,
           allowNull: false,
         },
+        done: {
+          type: DataTypes.BOOLEAN,
+          allowNull: false,
+        },
         createdAt: DataTypes.DATE,
         updatedAt: DataTypes.DATE,
       }, {
@@ -73,7 +77,7 @@ module.exports = {
           type: DataTypes.INTEGER,
           allowNull: false,
           primaryKey: true,
-          autoIncrement:true
+          autoIncrement: true
         },
         userId: {
           type: DataTypes.STRING,
@@ -97,7 +101,7 @@ module.exports = {
           type: DataTypes.INTEGER,
           allowNull: false,
           primaryKey: true,
-          autoIncrement:true
+          autoIncrement: true
         },
         userId: {
           type: DataTypes.STRING,
