@@ -82,6 +82,8 @@ const call = async (event) => {
             character = "懵懂無知";
     }
 
+    let r = Math.round((Math.random() * 6));
+
     return {
         "type": "flex",
         "altText": "Flex Message",
@@ -105,14 +107,14 @@ const call = async (event) => {
                 "type": "image",
                 // "url": "https://images2.gamme.com.tw/news2/2018/86/51/qZqVnqaYl6aWp6Q.gif",  //皮卡丘
                 // "url": "https://i.imgur.com/YptXiwa.gif",   //綠水靈
-                "url": pic[Math.round((Math.random() * 6))],
+                "url": pic[r],
                 "size": "lg",
                 "aspectRatio": "1.51:1",
                 "aspectMode": "fit",
                 "action": {
                     "type": "message",
                     "label": "叫聲",
-                    "text": res[Math.round((Math.random() * 6))]
+                    "text": res[r]
                 }
             },
             "body": {
