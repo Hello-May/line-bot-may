@@ -8,7 +8,7 @@ const pic = ["https://i.postimg.cc/d0k3NGNh/1.jpg",
     "https://i.postimg.cc/4NfdkDFk/6.jpg",
     "https://i.postimg.cc/prZL5Cr6/7.jpg"];
 
-const res = ["噢嗚～", "嘿嘿～", "姆啾～", "好吃～", "喵喵～", "抱抱～", "累累～"];
+const res = ["噢嗚～", "呼嚕～", "姆啾～", "好吃～", "喵喵～", "抱抱～", "累累～"];
 
 const card = ["覺得為時已晚的時候，恰恰是最早的時候。Thought is already is late, exactly is the earliest time.",
     "適當的準備能解決生活中87%的問題。Proper preparation solves 87 percent of life’s problems.",

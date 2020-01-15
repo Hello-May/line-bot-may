@@ -155,9 +155,11 @@ const postbackCommandSolver = async (event, status) => {
                 }
                 break;
             default:
-                output = {
-                    type: 'text',
-                    text: input
+                if (!input.includes("#")) {
+                    output = {
+                        type: 'text',
+                        text: input
+                    }
                 }
         }
     }
