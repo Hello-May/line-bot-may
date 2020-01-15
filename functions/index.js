@@ -22,6 +22,8 @@ const dbHabit = require('./dbController/habit');
 const textCommandSolver = async (event, status) => {
     let input = event.message.text;
     let output;
+    let tmpUser;
+    let tmpMonster;
     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
     if (input.includes('你') && input.includes('誰')) {
         output = {
@@ -148,8 +150,8 @@ const textCommandSolver = async (event, status) => {
                 }
                 break;
             case '小怪獸改名監聽':
-                let tmpUser = await dbUser.searchById(userId);
-                let tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
+                tmpUser = await dbUser.searchById(userId);
+                tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
                 await dbMonster.updateName(tmpMonster.monsterId, input);
                 output = {
                     type: 'text',
@@ -219,8 +221,8 @@ const textCommandSolver = async (event, status) => {
         }
     }
     if (input.includes("#")) {  //這樣會有缺點是非指令也會增加經驗值
-        let tmpUser = await dbUser.searchById(userId);
-        let tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
+        tmpUser = await dbUser.searchById(userId);
+        tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
         await dbMonster.increaseEXP(tmpMonster.monsterId);
         if (tmpMonster.exp == tmpMonster.level * 5) {
             await dbMonster.levelUp(tmpMonster.monsterId);
@@ -230,9 +232,8 @@ const textCommandSolver = async (event, status) => {
             }
             return clientBot.replyMessage(event.replyToken, [output, output2]);
         }
-    } else {
-        return clientBot.replyMessage(event.replyToken, output);
     }
+    return clientBot.replyMessage(event.replyToken, output);
 }
 
 const imgCommandSolver = (event) => {
