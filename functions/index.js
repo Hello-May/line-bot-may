@@ -217,20 +217,20 @@ const textCommandSolver = async (event, status) => {
                 }
         }
     }
-
-    //如果排程要如果取得token?
-
-    // try {
-    //     let token;
-    //     token = await dbController.getToken(event);
-    //     if (token != 'null') {
-    //         lineNotify.notify(token, {
-    //             type: 'message',
-    //             text: 'token:' + token
-    //         });
+    // if (input.includes('#') && event.source.type == 'group') {
+    //     let tmpUser = await dbUser.searchById(userId);
+    //     let tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
+    //     await dbMonster.increaseEXP(tmpMonster.monsterId);
+    // }
+    // if (tmpMonster.exp == tmpMonster.level * 5) {
+    //     await dbMonster.levelUp(tmpMonster.monsterId);
+    //     let output2 = {
+    //         type: 'text',
+    //         text: '[LEVEL UP] ' + tmpMonster.name + '長大了!!'
     //     }
-    // } catch (err) {
-    //     console.log(err);
+    //     return clientBot.replyMessage(event.replyToken, [output, output2]);
+    // } else {
+    //     return clientBot.replyMessage(event.replyToken, output);
     // }
     return clientBot.replyMessage(event.replyToken, output);
 }
