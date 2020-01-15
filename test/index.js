@@ -262,4 +262,18 @@ Date.prototype.Format = function (fmt) { //author: meizz
 // console.log(h);
 // console.log(date.getMinutes);
 
-console.log(Math.round((Math.random()*7)));
+// console.log(Math.round((Math.random()*7)));
+const lineNotify = require('../functions/notification/index');
+lineNotify.notify('QMaunpHdxlny8lbiQSSeGb5pvJd4sPcRmei8KlDEUhv', {
+    // type: 'message',
+    // text:'阿阿阿'
+    type: 'sticker',
+    stickerPackageId: 1,
+    stickerId: 2571
+});
+
+// {
+//     "type": "sticker",
+//     "packageId": "1",
+//     "stickerId": "2571"
+//   }

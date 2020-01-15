@@ -44,15 +44,15 @@ const test = () => {
 const getToken = (code) => {
     return new Promise((resolve, reject) => {
         var unirest = require('unirest');
-        var req = unirest('POST', 'https://notify-bot.line.me/oauth/token')
+        var req = unirest('POST', configNotify.tokenApi)
             .headers({
                 'Content-Type': 'multipart/form-data; boundary=--------------------------981829256093153292111726'
             })
             .field('grant_type', 'authorization_code')
             .field('code', code)
-            .field('redirect_uri', 'https://linebot-may.herokuapp.com/regisToken')
-            .field('client_id', '3qZCtZ2rmMdUcDa3qhFfyM')
-            .field('client_secret', 'GTFK3GaIa77WzB08gS9RH4446gpoZFRKd3YEineEJES')
+            .field('redirect_uri', configNotify.redirectUri)
+            .field('client_id', configNotify.clientId)
+            .field('client_secret', configNotify.clientSecret)
             .end(function (res) {
                 if (res.error) return reject(new Error(res.error));
                 console.log(res.raw_body);

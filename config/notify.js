@@ -6,7 +6,8 @@ const configNotify = {
     tokenApi: 'https:\/\/notify-bot.line.me\/oauth\/token',
     notifyApi: 'https:\/\/notify-api.line.me\/api\/notify',
     statusApi: 'https:\/\/notify-api.line.me\/api\/status',
-    revokeApi: 'https:\/\/notify-api.line.me\/api\/revoke'
+    revokeApi: 'https:\/\/notify-api.line.me\/api\/revoke',
+    redirectUri: 'https:\/\/linebot-may.herokuapp.com\/regisToken'
 }
 
 // app.use('/linenotify',

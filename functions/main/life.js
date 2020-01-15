@@ -1,5 +1,8 @@
 const dbUser = require('../dbController/user');
 const dbHabit = require('../dbController/habit');
+const dbMonster = require('../dbController/monster');
+const reward = [""];
+const price = [];
 
 Date.prototype.Format = function (fmt) { //author: meizz 
     var o = {
@@ -15,6 +18,10 @@ Date.prototype.Format = function (fmt) { //author: meizz
     for (var k in o)
         if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
     return fmt;
+}
+
+function genByReward(reward, price) {
+
 }
 
 function genByHabit(habit) {
@@ -74,10 +81,13 @@ const selectTime = (postback) => {
 
 const call = async (event) => {
     let habit;
+    let user;
+    let monster;
     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
     try {
         habit = await dbHabit.searchById(userId);
-        // console.log("habit:" + JSON.stringify(habit));
+        user = await dbUser.searchById(userId);
+        monster = await dbMonster.searchById(user.monsterId);
     } catch (err) {
         console.log(err);
     }
@@ -403,7 +413,7 @@ const call = async (event) => {
                             },
                             {
                                 "type": "text",
-                                "text": "目前小怪獸擁有自律幣 $64",
+                                "text": "目前小怪獸擁有自律幣 $" + monster.money,
                                 "margin": "lg",
                                 "align": "center",
                                 "wrap": false
@@ -517,7 +527,7 @@ const update = (habit) => {
                         "action": {
                             "type": "postback",
                             "label": "時間",
-                            "data": "修改自律監聽:時間視窗:"+habit
+                            "data": "修改自律監聽:時間視窗:" + habit
                         }
                     },
                     {
@@ -528,7 +538,7 @@ const update = (habit) => {
                         "action": {
                             "type": "postback",
                             "label": "習慣",
-                            "data": "修改自律監聽:習慣監聽:"+habit
+                            "data": "修改自律監聽:習慣監聽:" + habit
                         }
                     },
                     {
@@ -539,7 +549,7 @@ const update = (habit) => {
                         "action": {
                             "type": "postback",
                             "label": "密語",
-                            "data": "修改自律監聽:密語監聽:"+habit
+                            "data": "修改自律監聽:密語監聽:" + habit
                         }
                     }
                 ]
