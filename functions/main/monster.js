@@ -95,7 +95,8 @@ const call = async (event) => {
             "hero": {
                 "type": "image",
                 // "url": "https://images2.gamme.com.tw/news2/2018/86/51/qZqVnqaYl6aWp6Q.gif",  //皮卡丘
-                "url": "https://i.imgur.com/eamUyhF.gif",   //水靈
+                // "url": "https://i.imgur.com/eamUyhF.gif",   //水靈
+                "url": "http://3.bp.blogspot.com/-8eG7cQ9ggU0/TbLk2LzftxI/AAAAAAAAAMw/rAZO3drro5w/s1600/13542225.gif",      //皮卡啾
                 "size": "lg",
                 "aspectRatio": "1.51:1",
                 "aspectMode": "fit",
