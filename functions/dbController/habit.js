@@ -55,6 +55,7 @@ const create = async (id, time, habit, secret) => {
         time: time,
         habit: habit,
         secret: secret,
+        done: false,
         createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
         updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
     });
