@@ -263,14 +263,66 @@ Date.prototype.Format = function (fmt) { //author: meizz
 // console.log(date.getMinutes);
 
 // console.log(Math.round((Math.random()*7)));
-const lineNotify = require('../functions/notification/index');
-lineNotify.notify('QMaunpHdxlny8lbiQSSeGb5pvJd4sPcRmei8KlDEUhv', {
-    type: 'message',
-    text:'阿阿阿'
+
+const lineNotify = require('express-line-notify');
+const configNotify = require('../config/notify');
+const clientNotify = lineNotify(configNotify);
+const unirest = require('unirest');
+
+const notify = () => {
+    var sticker = [[1, 2], [1, 4], [1, 5], [1, 13], [1, 14], [1, 114], [1, 119], [1, 125], [1, 132], [1, 134], [1, 137], [1, 138], [1, 139], [1, 407], [2, 34], [2, 45], [2, 144], [2, 164], [2, 166], [2, 171], [2, 172], [2, 516], [3, 180], [3, 184], [3, 186], [3, 195], [3, 200]];
+    var stickno = Math.floor(Math.random() * sticker.length)
+
+    let req = unirest('POST', configNotify.notifyApi)
+        .headers({
+            'Authorization': 'Bearer ' + 'QMaunpHdxlny8lbiQSSeGb5pvJd4sPcRmei8KlDEUhv',
+            'Content-Type': 'multipart/form-data; boundary=--------------------------054153815016971257363988'
+        })
+        .field({
+            'message': "Hello!",
+            'stickerPackageId': sticker[stickno][0].toString(),
+            'stickerId': sticker[stickno][1].toString(),
+        })
+        .end(function (res) {
+            if (res.error) throw new Error(res.error);
+            console.log(res.raw_body);
+        });
+}
+
+notify();
+
+// function sayHello() {
+    // var sticker = [[1, 2], [1, 4], [1, 5], [1, 13], [1, 14], [1, 114], [1, 119], [1, 125], [1, 132], [1, 134], [1, 137], [1, 138], [1, 139], [1, 407], [2, 34], [2, 45], [2, 144], [2, 164], [2, 166], [2, 171], [2, 172], [2, 516], [3, 180], [3, 184], [3, 186], [3, 195], [3, 200]];
+    // var stickno = Math.floor(Math.random() * sticker.length);
+
+//     var ss = SpreadsheetApp.getActive();
+
+//     var tokenlist = ss.getRange("設定!P1").getValue().split(',');
+//     var sending_url = 'https://notify-api.line.me/api/notify';
+//     for (var i = 0; i < tokenlist.length; i++) {
+//         var param = {
+//             'headers': { 'Authorization': 'Bearer ' + 'QMaunpHdxlny8lbiQSSeGb5pvJd4sPcRmei8KlDEUhv' },
+//             'method': 'post',
+//             'payload':
+//             {
+//                 'message': "\nHello!",
+//                 'stickerPackageId': sticker[stickno][0].toString(),
+//                 'stickerId': sticker[stickno][1].toString(),
+//             }
+//         }
+//         UrlFetchApp.fetch(sending_url, param)
+//     }
+// }
+// sayHello();
+
+
+// notify('QMaunpHdxlny8lbiQSSeGb5pvJd4sPcRmei8KlDEUhv', {
+//     type: 'message',
+//     text: '阿阿阿'
     // type: 'sticker',
     // stickerPackageId: 1,
     // stickerId: 2571
-});
+// });
 
 // {
 //     "type": "sticker",
