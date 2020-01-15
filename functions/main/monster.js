@@ -10,6 +10,14 @@ const pic = ["https://i.postimg.cc/d0k3NGNh/1.jpg",
 
 const res = ["噢嗚～", "嘿嘿～", "姆啾～", "好吃～", "喵喵～", "抱抱～", "累累～"];
 
+const card = ["覺得為時已晚的時候，恰恰是最早的時候。Thought is already is late, exactly is the earliest time.",
+    "適當的準備能解決生活中87%的問題。Proper preparation solves 87 percent of life’s problems.",
+    "拖延就是時間的小偷。Procrastination is the thief of time.",
+    "浪費時間就是掠奪自己。Wasting time is robbing oneself.",
+    "要做到不可替代，就要與眾不同。In order to be irreplaceable one must always be different.",
+    "唯堅韌者始能遂其志。He that can have patience, can have what he will.",
+    "腦中有知識，勝過手中有金錢。Wisdom in the mind is better than money in the hand."]
+
 Date.prototype.Format = function (fmt) { //author: meizz 
     var o = {
         "M+": this.getMonth() + 1, //月份 
@@ -83,6 +91,7 @@ const call = async (event) => {
     }
 
     let r = Math.round((Math.random() * 6));
+    let r2 = Math.round((Math.random() * 6));
 
     return {
         "type": "flex",
@@ -166,12 +175,12 @@ const call = async (event) => {
                     },
                     {
                         "type": "text",
-                        "text": "覺得為時已晚的時候，恰恰是最早的時候。Thought is already is late, exactly is the earliest time.",
+                        "text": card[r2],
                         "margin": "lg",
                         "action": {
                             "type": "postback",
                             "label": "小語",
-                            "text": "覺得為時已晚的時候，恰恰是最早的時候。Thought is already is late, exactly is the earliest time.",
+                            "text": card[r2],
                             "data": "#whisper"
                         },
                         "wrap": true
