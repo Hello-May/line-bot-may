@@ -105,7 +105,7 @@ const call = async (event) => {
                 "contents": [
                     {
                         "type": "text",
-                        "text": "小怪獸",
+                        "text": monster.name,
                         "size": "lg",
                         "align": "center",
                         "weight": "bold"
@@ -139,10 +139,6 @@ const call = async (event) => {
                         "spacing": "none",
                         "margin": "lg",
                         "contents": [
-                            {
-                                "type": "text",
-                                "text": "名字：" + monster.name
-                            },
                             {
                                 "type": "text",
                                 "text": "誕辰：" + monster.born.Format("yyyy/MM/dd hh:mm:ss")
