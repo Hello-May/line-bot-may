@@ -1,7 +1,21 @@
-var s = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
+const dbUser = require('../dbController/user');
 
+
+const s = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
 const lineNotify = require('./index');
-lineNotify.notify('XNVldsovy2m6RTMubkUrIPM5FRIFXvDUir4G0Dq75eX', {
-    type: 'message',
-    text: '保持清醒\n' + s
-});
+
+async function wake() {
+    let token = await dbUser.getToken('Ue27cb7389b27243fb30e2c61c47539c4');
+    console.log(token);
+    lineNotify.notify(token, {
+        type: 'message',
+        text: '保持清醒\n' + s
+    });
+}
+
+// lineNotify.notify('XNVldsovy2m6RTMubkUrIPM5FRIFXvDUir4G0Dq75eX', {
+//     type: 'message',
+//     text: '保持清醒\n' + s
+// });
+
+wake();
