@@ -2,7 +2,7 @@ const dbUser = require('../dbController/user');
 const dbHabit = require('../dbController/habit');
 const dbMonster = require('../dbController/monster');
 const reward = ["商品1", "商品2", "商品3", "商品4", "商品5", "商品6"];
-const price = [600, 300, 200, 100, 50, 10];
+const price = ['600', '300', '200', '100', '50', '10'];
 
 Date.prototype.Format = function (fmt) { //author: meizz 
     var o = {
@@ -20,7 +20,7 @@ Date.prototype.Format = function (fmt) { //author: meizz
     return fmt;
 }
 
-function genByReward(reward,price) {
+function genByReward(reward, price) {
     let output = [];
     for (let i = 0; i < reward.length; i++) {
         output.push({
@@ -38,7 +38,7 @@ function genByReward(reward,price) {
                 },
                 {
                     "type": "text",
-                    "text": price[i]
+                    "text": '$' + price[i]
                 }
             ]
         })
@@ -115,7 +115,7 @@ const call = async (event) => {
     }
 
     let output = genByHabit(habit);
-    let output2 = genByReward(reward,price);
+    let output2 = genByReward(reward, price);
 
     return {
         "type": "flex",
