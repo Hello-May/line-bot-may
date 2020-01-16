@@ -53,7 +53,7 @@ const textCommandSolver = async (event, status) => {
             await dbHabit.done(userId, input);
             return clientBot.replyMessage(event.replyToken, [{
                 type: 'text',
-                text: [已簽到]
+                text: '[已簽到]'
             }, {
                 // id: '325708',
                 type: 'sticker',
