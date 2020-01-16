@@ -42,11 +42,11 @@ function timeFn(d1) {//di作为一个变量传进来
 }
 
 const textCommandSolver = async (event, status) => {
+    let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
     let input = event.message.text;
     let output;
     let tmpMonster;
-    let tmpUser = await dbUser.searchById(userId);
-    let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
+    let tmpUser = await dbUser.searchById(userId); 
     let habit = await dbHabit.getAll();
     for (let i = 0; i < habit.length; i++) {
         if (habit[i].secret == input && timeFn(date + ' ' + habit[i].time) < 30) {
