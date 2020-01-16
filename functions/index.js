@@ -157,7 +157,7 @@ const textCommandSolver = async (event, status) => {
                         text: '沒有此商品編號，請重新輸入，或輸入取消'
                     }
                 } else {
-                    output = {      //還沒做完
+                    output = {      //還沒做完  //還要扣錢，不夠錢要擋
                         type: 'text',
                         text: '[已購買] 商品編號:' + input
                     }

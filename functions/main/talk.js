@@ -75,9 +75,9 @@ const call = (event) => {
                             {
                                 "type": "button",
                                 "action": {
-                                    "type": "message",
+                                    "type": "postback",
                                     "label": "探聽情報 key word",
-                                    "text": "#查詢"
+                                    "text": "查詢指令"
                                 }
                             },
                             {
@@ -91,9 +91,9 @@ const call = (event) => {
                             {
                                 "type": "button",
                                 "action": {
-                                    "type": "message",
+                                    "type": "postback",
                                     "label": "請酒館老闆喝酒 donate",
-                                    "text": "#抖內"
+                                    "text": "抖內開發者"
                                 }
                             }
                         ]
