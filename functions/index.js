@@ -46,7 +46,7 @@ const textCommandSolver = async (event, status) => {
     let input = event.message.text;
     let output;
     let tmpMonster;
-    let tmpUser = await dbUser.searchById(userId); 
+    var tmpUser = await dbUser.searchById(userId); 
     let habit = await dbHabit.getAll();
     for (let i = 0; i < habit.length; i++) {
         if (habit[i].secret == input && timeFn(date + ' ' + habit[i].time) < 30) {
