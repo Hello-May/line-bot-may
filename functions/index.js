@@ -46,13 +46,13 @@ const textCommandSolver = async (event, status) => {
     let input = event.message.text;
     let output;
     let tmpMonster;
-    var tmpUser = await dbUser.searchById(userId); 
+    let tmpUser = await dbUser.searchById(userId); 
     let habit = await dbHabit.getAll();
     for (let i = 0; i < habit.length; i++) {
         if (habit[i].secret == input && timeFn(date + ' ' + habit[i].time) < 30) {
             let stickno = Math.floor(Math.random() * sticker.length);
             await dbHabit.done(userId, input);
-            // await dbMonster.increaseMoney(tmpUser.monsterId);
+            await dbMonster.increaseMoney(tmpUser.monsterId);
             return clientBot.replyMessage(event.replyToken, [{
                 type: 'text',
                 text: '[已簽到] 賺取自律幣$1'
