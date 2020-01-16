@@ -50,7 +50,7 @@ const textCommandSolver = async (event, status) => {
     let habit = await dbHabit.getAll();
     for (let i = 0; i < habit.length; i++) {
         if (habit[i].secret == input && timeFn(date + ' ' + habit[i].time) < 30) {
-            await dbHabit.done(userId,input);
+            await dbHabit.done(userId, input);
             return clientBot.replyMessage(event.replyToken, [{
                 type: 'text',
                 text: msg
@@ -61,6 +61,7 @@ const textCommandSolver = async (event, status) => {
                 stickerId: sticker[stickno][1].toString(),
                 stickerResourceType: 'STATIC'
             }]);
+        }
     }
 
     if (input.includes('你') && input.includes('誰')) {
