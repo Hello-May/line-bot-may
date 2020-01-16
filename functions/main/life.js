@@ -115,7 +115,8 @@ const call = async (event) => {
     }
 
     let output = genByHabit(habit);
-
+    genByReward();
+    
     return {
         "type": "flex",
         "altText": "Flex Message",
