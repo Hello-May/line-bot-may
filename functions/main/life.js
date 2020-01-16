@@ -29,7 +29,7 @@ function genByReward(reward, price) {
             "contents": [
                 {
                     "type": "text",
-                    "text": (i + 1) +'',
+                    "text": (i + 1) + '',
                     "align": "center"
                 },
                 {
@@ -335,9 +335,9 @@ const call = async (event) => {
                             {
                                 "type": "button",
                                 "action": {
-                                    "type": "message",
+                                    "type": "postback",
                                     "label": "購買",
-                                    "text": "請輸入欲購買之商品編號"
+                                    "data": "購買自律商品"
                                 }
                             }
                         ]

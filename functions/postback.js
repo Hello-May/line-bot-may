@@ -99,6 +99,13 @@ const postbackCommandSolver = async (event, status) => {
         }
     } else {
         switch (input) {
+            case '購買自律商品':
+                await dbUser.saveStatus(userId, '購買商品監聽');
+                output = {
+                    type: 'text',
+                    text: '請輸入欲購買之商品編號'
+                };
+                break;
             case '刪除自律指令':
                 await dbUser.saveStatus(userId, '刪除自律監聽');
                 output = {

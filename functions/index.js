@@ -46,7 +46,7 @@ const textCommandSolver = async (event, status) => {
     let input = event.message.text;
     let output;
     let tmpMonster;
-    let tmpUser = await dbUser.searchById(userId); 
+    let tmpUser = await dbUser.searchById(userId);
     let habit = await dbHabit.getAll();
     for (let i = 0; i < habit.length; i++) {
         if (habit[i].secret == input && timeFn(date + ' ' + habit[i].time) < 30) {
@@ -150,6 +150,20 @@ const textCommandSolver = async (event, status) => {
         }
     } else {
         switch (status) {
+            case '購買商品監聽':
+                if (input < 1 || input > 6) {
+                    output = {
+                        type: 'text',
+                        text: '沒有此商品編號，請重新輸入，或輸入取消'
+                    }
+                } else {
+                    output = {      //還沒做完
+                        type: 'text',
+                        text: '[已購買] 商品編號:' + input
+                    }
+                    await dbUser.saveStatus(userId, '正常');
+                }
+                break;
             case '修改自律視窗':
                 if (input == '取消') {
                     output = {
