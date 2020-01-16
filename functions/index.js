@@ -52,7 +52,7 @@ const textCommandSolver = async (event, status) => {
         if (habit[i].secret == input && timeFn(date + ' ' + habit[i].time) < 30) {
             let stickno = Math.floor(Math.random() * sticker.length);
             await dbHabit.done(userId, input);
-            await dbMonster.increaseMoney(tmpUser.monster);
+            await dbMonster.increaseMoney(tmpUser.monsterId);
             return clientBot.replyMessage(event.replyToken, [{
                 type: 'text',
                 text: '[已簽到] 賺取自律幣$1'
