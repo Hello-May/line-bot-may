@@ -29,7 +29,7 @@ function genByReward(reward, price) {
             "contents": [
                 {
                     "type": "text",
-                    "text": i + 1,
+                    "text": (i + 1) +'',
                     "align": "center"
                 },
                 {
