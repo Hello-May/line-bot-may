@@ -20,7 +20,7 @@ Date.prototype.Format = function (fmt) { //author: meizz
     return fmt;
 }
 
-function genByReward() {
+function genByReward(reward, price) {
     let output = [];
     for (let i = 0; i < reward.length; i++) {
         output.push({
@@ -115,8 +115,8 @@ const call = async (event) => {
     }
 
     let output = genByHabit(habit);
-    genByReward();
-    
+    let output2 = genByReward(reward, price);
+
     return {
         "type": "flex",
         "altText": "Flex Message",
@@ -317,7 +317,7 @@ const call = async (event) => {
                                     {
                                         "type": "box",
                                         "layout": "horizontal",
-                                        "contents": output
+                                        "contents": output2
                                     }
                                 ]
                             },
