@@ -18,6 +18,28 @@ const dbUser = require('./dbController/user');
 const dbMonster = require('./dbController/monster');
 const dbTask = require('./dbController/task');
 const dbHabit = require('./dbController/habit');
+const date = new Date().Format("yyyy/MM/dd");
+const sticker = [[1, 2], [1, 4], [1, 5], [1, 13], [1, 14], [1, 114], [1, 119], [1, 125], [1, 132], [1, 134], [1, 137], [1, 138], [1, 139], [1, 407], [2, 34], [2, 45], [2, 144], [2, 164], [2, 166], [2, 171], [2, 172], [2, 516], [3, 180], [3, 184], [3, 186], [3, 195], [3, 200]];
+
+function timeFn(d1) {//di作为一个变量传进来
+    //如果时间格式是正确的，那下面这一步转化时间格式就可以不用了
+    var dateBegin = new Date(d1.replace(/-/g, "/"));//将-转化为/，使用new Date
+    var dateEnd = new Date();//获取当前时间
+    var dateDiff = dateEnd.getTime() - dateBegin.getTime();//时间差的毫秒数
+    var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天数
+    var leave1 = dateDiff % (24 * 3600 * 1000)    //计算天数后剩余的毫秒数
+    var hours = Math.floor(leave1 / (3600 * 1000))//计算出小时数
+    //计算相差分钟数
+    var leave2 = leave1 % (3600 * 1000)    //计算小时数后剩余的毫秒数
+    var minutes = Math.floor(leave2 / (60 * 1000))//计算相差分钟数
+    //计算相差秒数
+    var leave3 = leave2 % (60 * 1000)      //计算分钟数后剩余的毫秒数
+    var seconds = Math.round(leave3 / 1000)
+    return minutes;
+    // console.log(" 相差 "+dayDiff+"天 "+hours+"小时 "+minutes+" 分钟"+seconds+" 秒")
+    // console.log(dateDiff+"时间差的毫秒数",dayDiff+"计算出相差天数",leave1+"计算天数后剩余的毫秒数"
+    // ,hours+"计算出小时数",minutes+"计算相差分钟数",seconds+"计算相差秒数");
+}
 
 const textCommandSolver = async (event, status) => {
     let input = event.message.text;
@@ -25,10 +47,26 @@ const textCommandSolver = async (event, status) => {
     let tmpUser;
     let tmpMonster;
     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
+    let habit = await dbHabit.getAll();
+    for (let i = 0; i < habit.length; i++) {
+        if (habit[i].secret == input && timeFn(date + ' ' + habit[i].time) < 30) {
+            await dbHabit.done(userId,input);
+            return clientBot.replyMessage(event.replyToken, [{
+                type: 'text',
+                text: msg
+            }, {
+                // id: '325708',
+                type: 'sticker',
+                packageId: sticker[stickno][0].toString(),
+                stickerId: sticker[stickno][1].toString(),
+                stickerResourceType: 'STATIC'
+            }]);
+    }
+
     if (input.includes('你') && input.includes('誰')) {
         output = {
             type: 'text',
-            text: '我是May~'
+            text: '我是小怪獸～'
         }
     } else if (status.includes(':')) {
         let str = status.split(":");

@@ -19,6 +19,18 @@ Date.prototype.Format = function (fmt) { //author: meizz
     return fmt;
 }
 
+const getAll = async () => {
+    return await Habit.findAll();
+}
+
+const done = async (id, secret) => {
+    await Habit.update({ done: true }, { where: { userId: id, secret: secret } });
+}
+
+const clearAllDone = async () => {
+    await Habit.update({ done: false }, { where: { done: true } });
+}
+
 const searchById = async (id) => {
     let habit = await habits.findAll({ where: { userId: id } });
     sortByTime(habit);
@@ -112,5 +124,8 @@ module.exports = {
     destroy,
     update,
     searchByHabit,
-    searchByTime
+    searchByTime,
+    clearAllDone,
+    done,
+    getAll
 }
