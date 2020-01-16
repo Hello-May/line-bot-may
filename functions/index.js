@@ -52,11 +52,11 @@ const textCommandSolver = async (event, status) => {
         if (habit[i].secret == input && timeFn(date + ' ' + habit[i].time) < 30) {
             let stickno = Math.floor(Math.random() * sticker.length);
             await dbHabit.done(userId, input);
+            await dbMonster.increaseMoney(userId);
             return clientBot.replyMessage(event.replyToken, [{
                 type: 'text',
-                text: '[已簽到]'
+                text: '[已簽到] 賺取自律幣$1'
             }, {
-                // id: '325708',
                 type: 'sticker',
                 packageId: sticker[stickno][0].toString(),
                 stickerId: sticker[stickno][1].toString(),
@@ -64,7 +64,6 @@ const textCommandSolver = async (event, status) => {
             }]);
         }
     }
-
     if (input.includes('你') && input.includes('誰')) {
         output = {
             type: 'text',

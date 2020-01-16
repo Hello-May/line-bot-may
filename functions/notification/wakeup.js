@@ -1,6 +1,4 @@
 const dbUser = require('../dbController/user');
-
-
 const s = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
 const lineNotify = require('./index');
 
