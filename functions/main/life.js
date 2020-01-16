@@ -1,8 +1,8 @@
 const dbUser = require('../dbController/user');
 const dbHabit = require('../dbController/habit');
 const dbMonster = require('../dbController/monster');
-const reward = [""];
-const price = [];
+const reward = ["商品1", "商品2", "商品3", "商品4", "商品5", "商品6"];
+const price = [600, 300, 200, 100, 50, 10];
 
 Date.prototype.Format = function (fmt) { //author: meizz 
     var o = {
@@ -20,8 +20,30 @@ Date.prototype.Format = function (fmt) { //author: meizz
     return fmt;
 }
 
-function genByReward(reward, price) {
-
+function genByReward() {
+    let output = [];
+    for (let i = 0; i < reward.length; i++) {
+        output.push({
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+                {
+                    "type": "text",
+                    "text": i + 1,
+                    "align": "center"
+                },
+                {
+                    "type": "text",
+                    "text": reward[i]
+                },
+                {
+                    "type": "text",
+                    "text": price[i]
+                }
+            ]
+        })
+    }
+    return output;
 }
 
 function genByHabit(habit) {
@@ -294,116 +316,7 @@ const call = async (event) => {
                                     {
                                         "type": "box",
                                         "layout": "horizontal",
-                                        "contents": [
-                                            {
-                                                "type": "text",
-                                                "text": "1",
-                                                "align": "center"
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": "小旅行"
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": "$600"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                            {
-                                                "type": "text",
-                                                "text": "2",
-                                                "align": "center"
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": "看電影"
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": "$300"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                            {
-                                                "type": "text",
-                                                "text": "3",
-                                                "align": "center"
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": "玩桌遊"
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": "$200"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                            {
-                                                "type": "text",
-                                                "text": "4",
-                                                "align": "center"
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": "吃好料"
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": "$100"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                            {
-                                                "type": "text",
-                                                "text": "5",
-                                                "align": "center"
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": "逛街"
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": "$50"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                            {
-                                                "type": "text",
-                                                "text": "6",
-                                                "align": "center"
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": "一場lol"
-                                            },
-                                            {
-                                                "type": "text",
-                                                "text": "$10"
-                                            }
-                                        ]
+                                        "contents": output
                                     }
                                 ]
                             },
