@@ -38,7 +38,7 @@ const create = async () => {
         level: 1,
         exp: 0,
         character: 0,
-        money: 0,
+        money: 50,
         food: 10,
         createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
         updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })

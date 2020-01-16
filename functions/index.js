@@ -44,15 +44,15 @@ function timeFn(d1) {//di作为一个变量传进来
 const textCommandSolver = async (event, status) => {
     let input = event.message.text;
     let output;
-    let tmpUser;
     let tmpMonster;
+    let tmpUser = await dbUser.searchById(userId);
     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
     let habit = await dbHabit.getAll();
     for (let i = 0; i < habit.length; i++) {
         if (habit[i].secret == input && timeFn(date + ' ' + habit[i].time) < 30) {
             let stickno = Math.floor(Math.random() * sticker.length);
             await dbHabit.done(userId, input);
-            await dbMonster.increaseMoney(userId);
+            await dbMonster.increaseMoney(tmpUser.monster);
             return clientBot.replyMessage(event.replyToken, [{
                 type: 'text',
                 text: '[已簽到] 賺取自律幣$1'
@@ -189,7 +189,6 @@ const textCommandSolver = async (event, status) => {
                 }
                 break;
             case '小怪獸改名監聽':
-                tmpUser = await dbUser.searchById(userId);
                 tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
                 await dbMonster.updateName(tmpMonster.monsterId, input);
                 output = {
@@ -260,7 +259,6 @@ const textCommandSolver = async (event, status) => {
         }
     }
     if (input.includes("#")) {  //這樣會有缺點是非指令也會增加經驗值
-        tmpUser = await dbUser.searchById(userId);
         tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
         await dbMonster.increaseEXP(tmpMonster.monsterId);
         if (tmpMonster.exp == tmpMonster.level * 5) {
