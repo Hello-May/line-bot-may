@@ -229,7 +229,7 @@ const textCommandSolver = async (event, status) => {
                                             "action": {
                                                 "type": "uri",
                                                 "label": "TEST",
-                                                "uri": "line://app/1653656986-yxJ0qVzG"
+                                                "uri": "line://app/1653656986-RmBdnj2y"
                                             }
                                         }
                                     ]
