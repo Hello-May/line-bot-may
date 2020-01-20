@@ -214,7 +214,7 @@ const textCommandSolver = async (event, status) => {
             default:
                 switch (input) {
                     case '.':
-                        return {
+                        output = {
                             "type": "flex",
                             "altText": "Flex Message",
                             "contents": {
