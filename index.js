@@ -60,18 +60,6 @@ async function handleEvent(event) {
   }
 }
 
-app.get("/paint", function (req, res) {
-  res.sendFile(path.resolve('./test/paint.html'), function (err) {
-    if (err) res.send(404);
-  });
-});
-
-app.get("/paint2", function (req, res) {
-  res.sendFile(path.resolve('./test/paint2.html'), function (err) {
-    if (err) res.send(404);
-  });
-});
-
 app.get("/test", function (req, res) {
   res.send("Hello LineBot");
 });

@@ -213,10 +213,34 @@ const textCommandSolver = async (event, status) => {
                 break;
             default:
                 switch (input) {
+                    case '.':
+                        return {
+                            "type": "flex",
+                            "altText": "Flex Message",
+                            "contents": {
+                                "type": "bubble",
+                                "direction": "ltr",
+                                "footer": {
+                                    "type": "box",
+                                    "layout": "horizontal",
+                                    "contents": [
+                                        {
+                                            "type": "button",
+                                            "action": {
+                                                "type": "uri",
+                                                "label": "TEST",
+                                                "uri": "line://app/1653656986-yxJ0qVzG"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                        break;
                     case 'T':
                         output = life.selectTime('自律時間');
                         break;
-                    case '.':
+                    case 'P':
                         output = lineNotify.test();
                         break;
                     case '嗨':
