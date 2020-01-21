@@ -229,8 +229,9 @@ const textCommandSolver = async (event, status) => {
                                             "action": {
                                                 "type": "uri",
                                                 "label": "TEST",
-                                                // "uri": "line://app/1653656986-RmBdnj2y"
-                                                "uri": "line://app/1653656986-QqKNREdB"
+                                                // "uri": "line://app/1653656986-RmBdnj2y"  //別人的網址
+                                                // "uri": "line://app/1653656986-QqKNREdB"  //自己做api
+                                                "uri": "line://app/ 1653656986-LAkwoP2V"
                                             }
                                         }
                                     ]
