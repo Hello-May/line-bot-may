@@ -70,6 +70,12 @@ app.get("/button", function (req, res) {
   });
 });
 
+app.get("/send", function (req, res) {
+  res.sendFile(path.resolve('./functions/notification/send.html'), function (err) {
+    if (err) res.send(404);
+  });
+});
+
 app.get("/regisToken", async (req, res, next) => {
   let code = req.query.code;
   res.sendFile(path.resolve('./functions/notification/res.html'), function (err) {
