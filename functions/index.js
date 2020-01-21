@@ -230,7 +230,7 @@ const textCommandSolver = async (event, status) => {
                                                 "type": "uri",
                                                 "label": "TEST",
                                                 // "uri": "line://app/1653656986-RmBdnj2y"  //別人的網址
-                                                "uri": "line://app/1653656986-QqKNREdB"  //自己做api
+                                                "uri": "line://app/1653656986-Vk7PXO28"  //自己做api
                                                 // "uri": "line://app/1653656986-LAkwoP2V"
                                             }
                                         }
