@@ -71,7 +71,7 @@ app.get("/button", function (req, res) {
 });
 
 app.get("/send", function (req, res) {
-  res.sendFile(path.resolve('./functions/notification/send.html'), function (err) {
+  res.sendFile(path.resolve('./test/send.html'), function (err) {
     if (err) res.send(404);
   });
 });
