@@ -78,25 +78,17 @@
                 });
             });
 
-            $('#ButtonQrCode').click(function () {
-                // if (liff.scanCode) {
-                liff.scanCode().then(result => {
-                    // e.g. result = { value: "Hello LIFF app!" }
-                    const stringifiedResult = JSON.stringify(result);
-                    document.getElementById('scanQrField').textContent = stringifiedResult;
-                    toggleQrCodeReader();
-                }).catch(err => {
-                    document.getElementById('scanQrField').textContent = "scanCode failed!";
-                });
-                // }
+            $('#ButtonTest').click(function () {
+                liff.sendMessages([
+                    {
+                        type: 'postback',
+                        data: $('#msg').val()
+                    }
+                ])
+                    .then(() => {
+                        alert('done');
+                    })
             });
-
-            // $('#ButtonLogout').click(function () {
-            //     if (liff.isLoggedIn()) {
-            //         liff.logout();
-            //         window.location.reload();
-            //     }
-            // });
         });
     </script>
 </head>
@@ -118,7 +110,7 @@
             <button class="btn btn-primary" id="ButtonSendMsg">要傳送的訊息</button>
             <button class="btn btn-primary" id="ButtonSendPic">要傳送的圖片</button>
             <button class="btn btn-primary" id="ButtonOpenWindow">打開新視窗</button>
-            <button class="btn btn-primary" id="ButtonQrCode">QR碼閱讀器</button>
+            <button class="btn btn-primary" id="ButtonTest">測試postback</button>
             <button class="btn btn-primary" id="ButtonCloseWindow">關閉</button>
         </div>
     </div>
