@@ -43,7 +43,6 @@
                 );
             });
 
-            //ButtonSendMsg
             $('#ButtonSendMsg').click(function () {
                 liff.sendMessages([
                     {
@@ -56,7 +55,6 @@
                     })
             });
 
-            //ButtonSendPic
             $('#ButtonSendPic').click(function () {
                 liff.sendMessages([
                     {
@@ -69,7 +67,12 @@
                     })
             });
 
-
+            $('#ButtonCloseWindow').click(function () {
+                liff.closeWindow()
+                    .then(() => {
+                        alert('done');
+                    })
+            });
 
 
         });
@@ -92,6 +95,7 @@
             <input class="form-control" type="text" id="msg" value="測試" /><br />
             <button class="btn btn-primary" id="ButtonSendMsg">要傳送的訊息</button>
             <button class="btn btn-primary" id="ButtonSendPic">要傳送的圖片</button>
+            <button class="btn btn-primary" id="ButtonCloseWindow">關閉</button>
         </div>
     </div>
 </body>
