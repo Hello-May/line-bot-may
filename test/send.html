@@ -78,16 +78,16 @@
                 });
             });
 
-            $('#ButtonLogin').click(function () {
+            $('#ButtonQrCode').click(function () {
                 // if (liff.scanCode) {
-                    liff.scanCode().then(result => {
-                        // e.g. result = { value: "Hello LIFF app!" }
-                        const stringifiedResult = JSON.stringify(result);
-                        document.getElementById('scanQrField').textContent = stringifiedResult;
-                        toggleQrCodeReader();
-                    }).catch(err => {
-                        document.getElementById('scanQrField').textContent = "scanCode failed!";
-                    });
+                liff.scanCode().then(result => {
+                    // e.g. result = { value: "Hello LIFF app!" }
+                    const stringifiedResult = JSON.stringify(result);
+                    document.getElementById('scanQrField').textContent = stringifiedResult;
+                    toggleQrCodeReader();
+                }).catch(err => {
+                    document.getElementById('scanQrField').textContent = "scanCode failed!";
+                });
                 // }
             });
 
