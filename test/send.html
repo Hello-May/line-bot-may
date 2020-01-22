@@ -84,6 +84,13 @@
                     liff.login();
                 }
             });
+
+            $('#ButtonLogout').click(function () {
+                if (liff.isLoggedIn()) {
+                    liff.logout();
+                    window.location.reload();
+                }
+            });
         });
     </script>
 </head>
@@ -106,6 +113,7 @@
             <button class="btn btn-primary" id="ButtonSendPic">要傳送的圖片</button>
             <button class="btn btn-primary" id="ButtonOpenWindow">打開新視窗</button>
             <button class="btn btn-primary" id="ButtonLogin">登入</button>
+            <button class="btn btn-primary" id="ButtonLogout">登出</button>
             <button class="btn btn-primary" id="ButtonCloseWindow">關閉</button>
         </div>
     </div>
