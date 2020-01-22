@@ -58,8 +58,9 @@
             $('#ButtonSendPic').click(function () {
                 liff.sendMessages([
                     {
-                        type: 'text',
-                        text: $('#pictureUrl').val()
+                        type: 'image',
+                        originalContentUrl: $('#pictureUrl').val(),
+                        previewImageUrl: $('#pictureUrl').val()
                     }
                 ])
                     .then(() => {
@@ -78,17 +79,6 @@
                 });
             });
 
-            $('#ButtonTest').click(function () {
-                liff.sendMessages([
-                    {
-                        type: 'postback',
-                        data: $('#msg').val()
-                    }
-                ])
-                    .then(() => {
-                        alert('done');
-                    })
-            });
         });
     </script>
 </head>
@@ -110,7 +100,6 @@
             <button class="btn btn-primary" id="ButtonSendMsg">要傳送的訊息</button>
             <button class="btn btn-primary" id="ButtonSendPic">要傳送的圖片</button>
             <button class="btn btn-primary" id="ButtonOpenWindow">打開新視窗</button>
-            <button class="btn btn-primary" id="ButtonTest">測試postback</button>
             <button class="btn btn-primary" id="ButtonCloseWindow">關閉</button>
         </div>
     </div>
