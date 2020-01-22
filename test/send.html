@@ -9,28 +9,20 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
-    
-
-
-    <script src="https://d.line-scdn.net/liff/1.0/sdk.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
-      <script>
-        const canvas = document.querySelector('#canvas');
-        const signaturePad = new SignaturePad(canvas, {
-          backgroundColor: 'rgb(238,238,238)',
-        });
-    
-        $(window).on('load', function(){
-          canvas.setAttribute('width', $('.container').width());
-          canvas.setAttribute('height', window.innerHeight - $('#btn').outerHeight() - 10);
-          signaturePad.clear();
-          // Initializes a LIFF app
-          liff.init(function (data) {});
-        });
-      </script>
-
 
     <script>
+        const canvas = document.querySelector('#canvas');
+        const signaturePad = new SignaturePad(canvas, {
+            backgroundColor: 'rgb(238,238,238)',
+        });
+
+        $(window).on('load', function () {
+            canvas.setAttribute('width', $('.container').width());
+            canvas.setAttribute('height', window.innerHeight - $('#btn').outerHeight() - 10);
+            signaturePad.clear();
+        });
+
         //init LIFF
         function initializeApp(data) {
             //取得QueryString
