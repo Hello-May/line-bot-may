@@ -78,6 +78,12 @@
                 });
             });
 
+            $('#ButtonLogin').click(function () {
+                if (!liff.isLoggedIn()) {
+                    // set `redirectUri` to redirect the user to a URL other than the front page of your LIFF app.
+                    liff.login();
+                }
+            });
         });
     </script>
 </head>
@@ -98,7 +104,8 @@
             <input class="form-control" type="text" id="msg" value="測試" /><br />
             <button class="btn btn-primary" id="ButtonSendMsg">要傳送的訊息</button>
             <button class="btn btn-primary" id="ButtonSendPic">要傳送的圖片</button>
-            <button class="btn btn-primary" id="ButtonOpenWindow">打開視窗</button>
+            <button class="btn btn-primary" id="ButtonOpenWindow">打開新視窗</button>
+            <button class="btn btn-primary" id="ButtonLogin">登入</button>
             <button class="btn btn-primary" id="ButtonCloseWindow">關閉</button>
         </div>
     </div>
