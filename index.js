@@ -70,6 +70,12 @@ app.get("/button", function (req, res) {
   });
 });
 
+app.get("/get", function (req, res) {
+  res.sendFile(path.resolve('./test/get.html'), function (err) {
+    if (err) res.send(404);
+  });
+});
+
 app.get("/send", function (req, res) {
   res.sendFile(path.resolve('./test/send.html'), function (err) {
     if (err) res.send(404);
