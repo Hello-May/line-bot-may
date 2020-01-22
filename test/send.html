@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -30,7 +31,7 @@
             $('#ButtonGetProfile').click(function () {
                 //取得User Proile
                 liff.getProfile().then(
-                    profile=> {
+                    profile => {
                         //顯示在text box中
                         $('#displayName').val(profile.displayName);
                         $('#userId').val(profile.userId);
@@ -45,34 +46,54 @@
             //ButtonSendMsg
             $('#ButtonSendMsg').click(function () {
                 liff.sendMessages([
-                 {
-                     type: 'text',
-                     text: $('#msg').val()
-                 }
+                    {
+                        type: 'text',
+                        text: $('#msg').val()
+                    }
                 ])
-               .then(() => {
-                   alert('done');
-               })
+                    .then(() => {
+                        alert('done');
+                    })
             });
+
+            //ButtonSendPic
+            $('#ButtonSendPic').click(function () {
+                liff.sendMessages([
+                    {
+                        type: 'image',
+                        text: $('#pictureUrl').val()
+                    }
+                ])
+                    .then(() => {
+                        alert('done');
+                    })
+            });
+
+
+
+
         });
     </script>
 </head>
+
 <body>
-        <div class="row">
-            <div class="col-md-6" style="margin:5px">
-                <label>user id:</label>
-                <input class="form-control" type="text" id="userid" />   <br />
-                <label>QueryString:</label>
-                <input class="form-control" type="text" id="QueryString" /><br />
-                <button class="btn btn-primary" id="ButtonGetProfile">Get Profile</button>
-                <input class="form-control" type="text" id="displayName" /><br />
-                <input class="form-control" type="text" id="userId" /><br />
-                <input class="form-control" type="text" id="pictureUrl" /><br />
-                <input class="form-control" type="text" id="statusMessage" /><br />
-                <label>要傳送的訊息:</label>
-                <input class="form-control" type="text" id="msg" value="測試" /><br />
-                <button class="btn btn-primary" id="ButtonSendMsg"  >要傳送的訊息</button>
-            </div>
+    <div class="row">
+        <div class="col-md-6" style="margin:5px">
+            <label>user id:</label>
+            <input class="form-control" type="text" id="userid" /> <br />
+            <label>QueryString:</label>
+            <input class="form-control" type="text" id="QueryString" /><br />
+            <button class="btn btn-primary" id="ButtonGetProfile">Get Profile</button>
+            <input class="form-control" type="text" id="displayName" /><br />
+            <input class="form-control" type="text" id="userId" /><br />
+            <input class="form-control" type="text" id="pictureUrl" /><br />
+            <input class="form-control" type="text" id="statusMessage" /><br />
+            <label>要傳送的訊息:</label>
+            <input class="form-control" type="text" id="msg" value="測試" /><br />
+            <button class="btn btn-primary" id="ButtonSendMsg">要傳送的訊息</button>
+            <button class="btn btn-primary" id="ButtonSendPic">要傳送的圖片</button>
         </div>
+    </div>
 </body>
+
 </html>
