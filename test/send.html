@@ -78,7 +78,7 @@
                 });
             });
 
-            $('#ButtonQrCode').click(function () {
+            $('#ButtonLogin').click(function () {
                 if (liff.scanCode) {
                     liff.scanCode().then(result => {
                         // e.g. result = { value: "Hello LIFF app!" }
@@ -88,7 +88,8 @@
                     }).catch(err => {
                         document.getElementById('scanQrField').textContent = "scanCode failed!";
                     });
-                });
+                }
+            });
 
             // $('#ButtonLogout').click(function () {
             //     if (liff.isLoggedIn()) {
