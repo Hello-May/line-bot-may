@@ -213,7 +213,31 @@ const textCommandSolver = async (event, status) => {
                 break;
             default:
                 switch (input) {
-                    case '.':
+                    case 'get':
+                        output = {
+                            "type": "flex",
+                            "altText": "Flex Message",
+                            "contents": {
+                                "type": "bubble",
+                                "direction": "ltr",
+                                "footer": {
+                                    "type": "box",
+                                    "layout": "horizontal",
+                                    "contents": [
+                                        {
+                                            "type": "button",
+                                            "action": {
+                                                "type": "uri",
+                                                "label": "TEST",
+                                                "uri": "line://app/1653656986-4qXdKG0k"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                        break;
+                    case 'send':
                         output = {
                             "type": "flex",
                             "altText": "Flex Message",
