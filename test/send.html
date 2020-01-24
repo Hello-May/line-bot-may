@@ -28,7 +28,7 @@
             $('#btn').on('click', function () {
                 $.ajax({
                     type: 'POST',
-                    url: '/saveimage',
+                    url: 'https://linebot-may.herokuapp.com/saveimage',
                     data: {
                         'image': signaturePad.toDataURL('image/jpeg')
                     },

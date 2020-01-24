@@ -82,6 +82,56 @@ app.get("/send", function (req, res) {
   });
 });
 
+// app.post("/saveimage", function (req, res) {
+//   function saveImage(data, filename) {
+//     var matches = data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/), imageBuffer = {};
+//     if (matches.length !== 3) {
+//       return new Error('無效的影像編碼');
+//     }
+
+//     imageBuffer.type = matches[1];
+//     imageBuffer.data = new Buffer(matches[2], 'base64');
+
+//     require('fs').writeFile('/path/to/' + filename, imageBuffer.data, function (err) {
+//       if (err) {
+//         console.error(err);
+//       }
+//       console.log('file ' + filename + ' saved.')
+//     });
+//   }
+// });
+
+app.post("/upload",
+  upload.single("file" /* name attribute of <file> element in your form */),
+  (req, res) => {
+    const tempPath = req.file.path;
+    const targetPath = path.join(__dirname, "./imgs/image.png");
+
+    if (path.extname(req.file.originalname).toLowerCase() === ".png") {
+      fs.rename(tempPath, targetPath, err => {
+        if (err) return handleError(err, res);
+
+        res
+          .status(200)
+          .contentType("text/plain")
+          .end("File uploaded!");
+      });
+    } else {
+      fs.unlink(tempPath, err => {
+        if (err) return handleError(err, res);
+
+        res
+          .status(403)
+          .contentType("text/plain")
+          .end("Only .png files are allowed!");
+      });
+    }
+  });
+
+app.get("/image.png", (req, res) => {
+  res.sendFile(path.join(__dirname, "./imgs/image.png"));
+});
+
 app.get("/regisToken", async (req, res, next) => {
   let code = req.query.code;
   res.sendFile(path.resolve('./functions/notification/res.html'), function (err) {
