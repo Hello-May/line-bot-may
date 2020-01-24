@@ -2,26 +2,64 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>test LIFF</title>
     <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- <script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <script>
-        // const canvas = document.querySelector('#canvas');
-        // const signaturePad = new SignaturePad(canvas, {
-        //     backgroundColor: 'rgb(238,238,238)',
-        // });
+        const canvas = document.querySelector('#canvas');
+        const signaturePad = new SignaturePad(canvas, {
+            backgroundColor: 'rgb(238,238,238)',
+        });
 
-        // $(window).on('load', function () {
-        //     canvas.setAttribute('width', $('.container').width());
-        //     canvas.setAttribute('height', window.innerHeight - $('#btn').outerHeight() - 10);
-        //     signaturePad.clear();
-        // });
+        $(window).on('load', function () {
+            canvas.setAttribute('width', $('.container').width());
+            canvas.setAttribute('height', window.innerHeight - $('#btn').outerHeight() - 10);
+            signaturePad.clear();
+        });
+
+        $('#btn').on('click', function () {
+            $.ajax({
+                type: 'POST',
+                url: '/saveimage',
+                data: {
+                    'image': signaturePad.toDataURL('image/jpeg')
+                },
+                success: function (res, status) {
+                    liff.getProfile().then(function (profile) {
+                        liff.sendMessages([
+                            {
+                                type: 'image',
+                                originalContentUrl: 'https://' + document.domain + '/imgs/' + res + '.jpg',
+                                previewImageUrl: 'https://' + document.domain + '/imgs/' + res + '_240.jpg'
+                            },
+                            {
+                                type: 'text',
+                                text: 'From:' + profile.displayName
+                            }
+                        ]).then(function () {
+                            liff.closeWindow();
+                        }).catch(function (error) {
+                            window.alert('Error sending message: ' + error.message);
+                        });
+                    }).catch(function (error) {
+                        window.alert("Error getting profile: " + error.message);
+                    });
+                },
+                error: function (res) {
+                    window.alert('Error saving image: ' + res.status);
+                },
+                complete: function (data) {
+                }
+            });
+        });
+
 
         //init LIFF
         function initializeApp(data) {
@@ -116,6 +154,13 @@
             <button class="btn btn-primary" id="ButtonCloseWindow">關閉</button>
         </div>
     </div>
+
+    <div class="container">
+        <canvas id="canvas"></canvas>
+        <button id="btn" type="button" class="btn btn-primary btn-block">Share</button>
+    </div>
+
+
 </body>
 
 </html>
