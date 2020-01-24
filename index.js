@@ -101,7 +101,7 @@ app.get("/send", function (req, res) {
 //   }
 // });
 
-app.post("/upload",
+app.post("/saveimage",
   upload.single("file" /* name attribute of <file> element in your form */),
   (req, res) => {
     const tempPath = req.file.path;
