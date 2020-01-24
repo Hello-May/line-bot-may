@@ -18,12 +18,13 @@
             const signaturePad = new SignaturePad(canvas, {
                 backgroundColor: 'rgb(238,238,238)',
             });
-        });
 
-        $(window).on('load', function () {
-            canvas.setAttribute('width', $('.container').width());
-            canvas.setAttribute('height', window.innerHeight - $('#btn').outerHeight() - 10);
-            signaturePad.clear();
+            $(window).on('load', function () {
+                canvas.setAttribute('width', $('.container').width());
+                canvas.setAttribute('height', window.innerHeight - $('#btn').outerHeight() - 10);
+                signaturePad.clear();
+            });
+
         });
 
         $('#btn').on('click', function () {
