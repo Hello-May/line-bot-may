@@ -101,36 +101,36 @@ app.get("/send", function (req, res) {
 //   }
 // });
 
-// app.post("/saveimage",
-//   upload.single("file" /* name attribute of <file> element in your form */),
-//   (req, res) => {
-//     const tempPath = req.file.path;
-//     const targetPath = path.join(__dirname, "./imgs/image.png");
+app.post("/saveimage",
+  upload.single("file" /* name attribute of <file> element in your form */),
+  (req, res) => {
+    const tempPath = req.file.path;
+    const targetPath = path.join(__dirname, "./imgs/image.png");
 
-//     if (path.extname(req.file.originalname).toLowerCase() === ".png") {
-//       fs.rename(tempPath, targetPath, err => {
-//         if (err) return handleError(err, res);
+    if (path.extname(req.file.originalname).toLowerCase() === ".png") {
+      fs.rename(tempPath, targetPath, err => {
+        if (err) return handleError(err, res);
 
-//         res
-//           .status(200)
-//           .contentType("text/plain")
-//           .end("File uploaded!");
-//       });
-//     } else {
-//       fs.unlink(tempPath, err => {
-//         if (err) return handleError(err, res);
+        res
+          .status(200)
+          .contentType("text/plain")
+          .end("File uploaded!");
+      });
+    } else {
+      fs.unlink(tempPath, err => {
+        if (err) return handleError(err, res);
 
-//         res
-//           .status(403)
-//           .contentType("text/plain")
-//           .end("Only .png files are allowed!");
-//       });
-//     }
-//   });
+        res
+          .status(403)
+          .contentType("text/plain")
+          .end("Only .png files are allowed!");
+      });
+    }
+  });
 
-// app.get("/image.png", (req, res) => {
-//   res.sendFile(path.join(__dirname, "./imgs/image.png"));
-// });
+app.get("/image.png", (req, res) => {
+  res.sendFile(path.join(__dirname, "./imgs/image.png"));
+});
 
 app.get("/regisToken", async (req, res, next) => {
   let code = req.query.code;
