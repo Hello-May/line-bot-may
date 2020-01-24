@@ -13,9 +13,11 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <script>
-        const canvas = document.querySelector('#canvas');
-        const signaturePad = new SignaturePad(canvas, {
-            backgroundColor: 'rgb(238,238,238)',
+        $(function () {
+            const canvas = document.querySelector('#canvas');
+            const signaturePad = new SignaturePad(canvas, {
+                backgroundColor: 'rgb(238,238,238)',
+            });
         });
 
         $(window).on('load', function () {
