@@ -132,8 +132,13 @@ app.get("/send", function (req, res) {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.post("/saveimage", function (req, res) {
+app.post("/saveimage", function async (req, res) {
   console.log(req);
+  console.log("-------------------");
+  console.log(bodyParser.json());
+  console.log("-------------------");
+  const body = await getRequestBody(req, res);
+  console.log(body);
   console.log("-------------------");
   let data = req.image;
   console.log(data+"<------data");
