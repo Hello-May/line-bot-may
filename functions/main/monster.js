@@ -11,14 +11,6 @@ const pic = ["https://i.postimg.cc/d0k3NGNh/1.jpg",
 
 const res = ["噢嗚～", "呼嚕～", "姆啾～", "好吃～", "喵喵～", "抱抱～", "累累～"];
 
-const card = ["覺得為時已晚的時候，恰恰是最早的時候。Thought is already is late, exactly is the earliest time.",
-    "適當的準備能解決生活中87%的問題。Proper preparation solves 87 percent of life’s problems.",
-    "拖延就是時間的小偷。Procrastination is the thief of time.",
-    "浪費時間就是掠奪自己。Wasting time is robbing oneself.",
-    "要做到不可替代，就要與眾不同。In order to be irreplaceable one must always be different.",
-    "唯堅韌者始能遂其志。He that can have patience, can have what he will.",
-    "腦中有知識，勝過手中有金錢。Wisdom in the mind is better than money in the hand."]
-
 Date.prototype.Format = function (fmt) { //author: meizz 
     var o = {
         "M+": this.getMonth() + 1, //月份 
@@ -36,31 +28,6 @@ Date.prototype.Format = function (fmt) { //author: meizz
 }
 
 const call = async (event) => {
-    // var monster;
-    // let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
-    // console.log(userId + "<---------------------------userId")
-    // var user = await dbUser.searchById(userId)
-    //     .then(async (user) => {
-    //         console.log(user.monsterId + "<-----------------------------monsterId");
-    //         monster = await dbMonster.searchById(user.monsterId);
-    //         console.log(monster.name + "<-------------------------monster.name")
-    //     })
-    //     .catch((err) => {
-    //         console.log(err);
-    //     })
-
-    // var tmp;
-    // try {
-    //     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
-    //     console.log(userId + "<---------------------------userId")
-    //     let user = await dbUser.searchById(userId);
-    //     console.log(user.monsterId + "<-----------------------------monsterId");
-    //     tmp = await dbMonster.searchById(user.monsterId);
-    //     console.log(tmp.name + "<-------------------------monster.name")
-    // } catch (err) {
-    //     console.log(err);
-    // }
-
     let user;
     let monster;
     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
@@ -76,23 +43,22 @@ const call = async (event) => {
     let character;
     switch (monster.character) {    //應該要算累積完成任務多寡，之後再改，要存在user表內
         case 1:
-            character = '行動派';
+            character = '行動派';   //agi
             break;
         case 2:
-            character = '嚴謹派';
+            character = '嚴謹派';   //vit
             break;
         case 3:
-            character = '領導派';
+            character = '領導派';   //str
             break;
         case 4:
-            character = '樂天派';
+            character = '樂天派';   //lucky
             break;
         default:
             character = "懵懂無知";
     }
 
     let r = Math.round((Math.random() * 6));
-    let r2 = Math.round((Math.random() * 6));
     let saying = await dbSaying.searchByRandom();
 
     return {

@@ -34,12 +34,17 @@ const create = async () => {
     await Monster.create({
         force: true,
         name: '小怪獸',
+        skin: '喵仔獸',
         born: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
         level: 1,
         exp: 0,
         character: 0,
         money: 0,
         food: 10,
+        agi: 1,
+        vit: 1,
+        str: 1,
+        lucky: 1,
         createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
         updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
     });
@@ -49,12 +54,17 @@ const initialization = async (id) => {
     await Monster.update({
         force: true,
         name: '小怪獸',
+        skin: '喵仔獸',
         born: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
         level: 1,
         exp: 0,
         character: 0,
         money: 0,
         food: 10,
+        agi: 1,
+        vit: 1,
+        str: 1,
+        lucky: 1,
         createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
         updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
     }, { where: { monsterId: id } });

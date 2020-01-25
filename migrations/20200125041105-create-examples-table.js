@@ -39,6 +39,10 @@ module.exports = {
           type: DataTypes.STRING,
           allowNull: false,
         },
+        skin: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
         born: {
           type: DataTypes.DATE,
           allowNull: false,
@@ -60,6 +64,22 @@ module.exports = {
           allowNull: false,
         },
         food: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+        },
+        agi: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+        },
+        vit: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+        },
+        str: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+        },
+        lucky: {
           type: DataTypes.INTEGER,
           allowNull: false,
         },
@@ -124,6 +144,46 @@ module.exports = {
       }, {
         initialAutoIncrement: 1
       });
+      await queryInterface.createTable('sayings', {
+        sayingId: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+          primaryKey: true,
+          autoIncrement: true
+        },
+        sentence: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
+        createdAt: DataTypes.DATE,
+        updatedAt: DataTypes.DATE,
+      }, {
+        initialAutoIncrement: 1
+      });
+      await queryInterface.createTable('skins', {
+        skinId: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+          primaryKey: true,
+          autoIncrement: true
+        },
+        name: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
+        image: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
+        say: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
+        createdAt: DataTypes.DATE,
+        updatedAt: DataTypes.DATE,
+      }, {
+        initialAutoIncrement: 1
+      });
       return Promise.resolve();
     } catch (e) {
       return Promise.reject(e);
@@ -136,6 +196,8 @@ module.exports = {
       await queryInterface.dropTable('monsters');
       await queryInterface.dropTable('tasks');
       await queryInterface.dropTable('habits');
+      await queryInterface.dropTable('sayings');
+      await queryInterface.dropTable('skins');
       return Promise.resolve();
     } catch (e) {
       return Promise.reject(e);

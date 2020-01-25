@@ -10,6 +10,10 @@ module.exports = (sequelize, DataTypes) => sequelize.define(
         type: DataTypes.STRING,
         allowNull: false,
     },
+    skin: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
     born: {
         type: DataTypes.DATE,
         allowNull: false,
@@ -19,7 +23,7 @@ module.exports = (sequelize, DataTypes) => sequelize.define(
         allowNull: false,
     },
     exp: {
-        type: DataTypes.DOUBLE,
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
     character: {
@@ -31,6 +35,22 @@ module.exports = (sequelize, DataTypes) => sequelize.define(
         allowNull: false,
     },
     food: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+    agi: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+    vit: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+    str: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+    lucky: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
