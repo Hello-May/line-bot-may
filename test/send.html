@@ -30,7 +30,7 @@
                     type: 'POST',
                     url: 'https://linebot-may.herokuapp.com/saveimage',
                     data: {
-                        'image': signaturePad.toDataURL('image/jpeg')
+                        image: signaturePad.toDataURL('image/jpeg')
                     },
                     success: function (res, status) {
                         liff.getProfile().then(function (profile) {
