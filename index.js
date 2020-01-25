@@ -135,7 +135,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.post("/saveimage", async function (req, res) {
   console.log(req);
   console.log("-------------------");
-  console.log(bodyParser.json());
+  let r = bodyParser.json();
+  console.log(r);
   console.log("-------------------");
   const body = await getRequestBody(req, res);
   console.log(body);
