@@ -151,7 +151,7 @@ app.post("/saveimage", async function (req, res) {
     imageBuffer.data = Buffer.from(matches[2], 'base64');
     console.log('ya~~~');
 
-    await fs.writeFile('/imgs/' + imgName + '.jpg', imageBuffer.data, function (err) {
+    await fs.writeFile(__dirname + '/imgs/' + imgName + '.jpg', imageBuffer.data, function (err) {
       if (err) {
         console.error(err);
       }
