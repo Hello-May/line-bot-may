@@ -173,12 +173,12 @@ const call = async (event) => {
                     },
                     {
                         "type": "text",
-                        "text": saying,
+                        "text": saying.sentence,
                         "margin": "lg",
                         "action": {
                             "type": "postback",
                             "label": "小語",
-                            "text": saying,
+                            "text": saying.sentence,
                             "data": "#whisper"
                         },
                         "wrap": true
