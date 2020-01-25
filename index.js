@@ -153,7 +153,7 @@ app.post("/saveimage", async function (req, res) {
     if (err) {
       console.error(err);
     }
-    console.log('file ' + filename + ' saved.')
+    console.log('file ' + imgName + ' saved.')
   });
 
   res.send(imgName, function (err) {
