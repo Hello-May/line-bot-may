@@ -129,6 +129,9 @@ app.get("/send", function (req, res) {
 //     }
 //   });
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
 app.post("/saveimage", function (req, res) {
   console.log(req);
   // console.log(req);
