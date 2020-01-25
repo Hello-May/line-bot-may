@@ -132,7 +132,7 @@ app.get("/send", function (req, res) {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.post("/saveimage", function async (req, res) {
+app.post("/saveimage", async function (req, res) {
   console.log(req);
   console.log("-------------------");
   console.log(bodyParser.json());
@@ -141,7 +141,7 @@ app.post("/saveimage", function async (req, res) {
   console.log(body);
   console.log("-------------------");
   let data = req.image;
-  console.log(data+"<------data");
+  console.log(data + "<------data");
   let matches = data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/), imageBuffer = {};
   if (matches.length !== 3) {
     // res.send('無效的影像編碼');
