@@ -1,12 +1,12 @@
 const db = require('../../models');
-const { sayings } = require("../../models");
-const Saying = db.sayings;
+const { skins } = require("../../models");
+const Skin = db.skins;
 
-const searchByRandom = async () => {
-  let saying = await sayings.findAll();
-  return saying[Math.round((Math.random() * (saying.length - 1)))];
+const searchByNameAndRandom = async (name) => {
+  let skin = await skins.findAll();
+  return skin[Math.round((Math.random() * (skin.length - 1)))];
 }
 
 module.exports = {
-  searchByRandom
+  searchByNameAndRandom
 }

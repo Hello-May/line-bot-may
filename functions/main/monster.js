@@ -1,15 +1,16 @@
 const dbUser = require('../dbController/user');
 const dbMonster = require('../dbController/monster');
 const dbSaying = require('../dbController/saying');
-const pic = ["https://i.postimg.cc/d0k3NGNh/1.jpg",
-    "https://i.postimg.cc/bv7J7d43/2.jpg",
-    "https://i.postimg.cc/nzqzppJZ/3.jpg",
-    "https://i.postimg.cc/hvgGG6Dm/4.jpg",
-    "https://i.postimg.cc/FFgR6rpV/5.jpg",
-    "https://i.postimg.cc/4NfdkDFk/6.jpg",
-    "https://i.postimg.cc/prZL5Cr6/7.jpg"];
+const dbSkin = require('../dbController/skin');
+// const pic = ["https://i.postimg.cc/d0k3NGNh/1.jpg",
+//     "https://i.postimg.cc/bv7J7d43/2.jpg",
+//     "https://i.postimg.cc/nzqzppJZ/3.jpg",
+//     "https://i.postimg.cc/hvgGG6Dm/4.jpg",
+//     "https://i.postimg.cc/FFgR6rpV/5.jpg",
+//     "https://i.postimg.cc/4NfdkDFk/6.jpg",
+//     "https://i.postimg.cc/prZL5Cr6/7.jpg"];
 
-const res = ["噢嗚～", "呼嚕～", "姆啾～", "好吃～", "喵喵～", "抱抱～", "累累～"];
+// const res = ["噢嗚～", "呼嚕～", "姆啾～", "好吃～", "喵喵～", "抱抱～", "累累～"];
 
 Date.prototype.Format = function (fmt) { //author: meizz 
     var o = {
@@ -30,15 +31,20 @@ Date.prototype.Format = function (fmt) { //author: meizz
 const call = async (event) => {
     let user;
     let monster;
+    let saying;
+    let skin;
     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
     try {
         user = await dbUser.searchById(userId);
-        // console.log("user:" + JSON.stringify(user));
         monster = await dbMonster.searchById(user.monsterId);
         // console.log("monster:" + JSON.stringify(monster));
+        saying = await dbSaying.searchByRandom();
+        skin = await dbSkin.searchByNameAndRandom(monster.skin);
     } catch (err) {
         console.log(err);
     }
+
+    // let r = Math.round((Math.random() * 6));
 
     let character;
     switch (monster.character) {    //應該要算累積完成任務多寡，之後再改，要存在user表內
@@ -57,10 +63,7 @@ const call = async (event) => {
         default:
             character = "懵懂無知";
     }
-
-    let r = Math.round((Math.random() * 6));
-    let saying = await dbSaying.searchByRandom();
-
+   
     return {
         "type": "flex",
         "altText": "Flex Message",
@@ -84,14 +87,15 @@ const call = async (event) => {
                 "type": "image",
                 // "url": "https://images2.gamme.com.tw/news2/2018/86/51/qZqVnqaYl6aWp6Q.gif",  //皮卡丘
                 // "url": "https://i.imgur.com/YptXiwa.gif",   //綠水靈
-                "url": pic[r],
+                // "url": pic[r],
+                "url": skin.image,
                 "size": "lg",
                 "aspectRatio": "1.51:1",
                 "aspectMode": "fit",
                 "action": {
                     "type": "postback",
                     "label": "叫聲",
-                    "data": res[r]
+                    "data": skin.say
                 }
             },
             "body": {
