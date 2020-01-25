@@ -130,7 +130,9 @@ app.get("/send", function (req, res) {
 //   });
 
 app.post("/saveimage", function (req, res) {
-  let matches = req.data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/), imageBuffer = {};
+  let data = req.data;
+  console.log(data+"<------data");
+  let matches = data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/), imageBuffer = {};
   if (matches.length !== 3) {
     // res.send('無效的影像編碼');
     console.log('無效的影像編碼');
