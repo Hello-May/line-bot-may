@@ -130,7 +130,8 @@ app.get("/send", function (req, res) {
 //   });
 
 app.post("/saveimage", function (req, res) {
-  let data = req.data;
+  console.log(req);
+  let data = req.form.data;
   console.log(data+"<------data");
   let matches = data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/), imageBuffer = {};
   if (matches.length !== 3) {
