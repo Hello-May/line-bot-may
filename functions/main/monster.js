@@ -1,5 +1,6 @@
 const dbUser = require('../dbController/user');
 const dbMonster = require('../dbController/monster');
+const dbSaying = require('../dbController/saying');
 const pic = ["https://i.postimg.cc/d0k3NGNh/1.jpg",
     "https://i.postimg.cc/bv7J7d43/2.jpg",
     "https://i.postimg.cc/nzqzppJZ/3.jpg",
@@ -92,6 +93,7 @@ const call = async (event) => {
 
     let r = Math.round((Math.random() * 6));
     let r2 = Math.round((Math.random() * 6));
+    let saying = await dbSaying.searchByRandom();
 
     return {
         "type": "flex",
@@ -171,12 +173,12 @@ const call = async (event) => {
                     },
                     {
                         "type": "text",
-                        "text": card[r2],
+                        "text": saying,
                         "margin": "lg",
                         "action": {
                             "type": "postback",
                             "label": "小語",
-                            "text": card[r2],
+                            "text": saying,
                             "data": "#whisper"
                         },
                         "wrap": true
