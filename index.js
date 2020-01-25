@@ -141,6 +141,10 @@ app.post("/saveimage", async function (req, res) {
   if (matches.length !== 3) {
     // res.send('無效的影像編碼');
     console.log('無效的影像編碼');
+  }else{
+    console.log('有效的影像編碼');
+    console.log(matches[1]);
+    console.log(matches[2]);
   }
 
   // let data = req.form.data;
