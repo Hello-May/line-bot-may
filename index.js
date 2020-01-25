@@ -134,11 +134,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.post("/saveimage", function (req, res) {
   console.log(req);
-  // console.log(req);
   console.log("-------------------");
-  // console.log(JSON.stringify(req.form));
-  console.log(req.body+"<------body");
-  let data = req.data;
+  let data = req.image;
   console.log(data+"<------data");
   let matches = data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/), imageBuffer = {};
   if (matches.length !== 3) {
