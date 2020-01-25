@@ -11,6 +11,7 @@ const dbMonster = require('./functions/dbController/monster');
 const path = require('path');
 const app = express();
 const dbUser = require('./functions/dbController/user');
+const uuidV4 = require('uuid/v4');
 
 async function handleEvent(event) {
   console.log(event);
@@ -128,9 +129,34 @@ app.get("/send", function (req, res) {
 //     }
 //   });
 
-app.get("/image.png", (req, res) => {
-  res.sendFile(path.join(__dirname, "./imgs/image.png"));
+app.post("/saveimage", function (req, res) {
+  let matches = req.form.data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/), imageBuffer = {};
+  if (matches.length !== 3) {
+    // res.send('無效的影像編碼');
+    console.log('無效的影像編碼');
+  }
+
+  // let data = req.form.data;
+  let imgName = uuidV4();
+
+  imageBuffer.type = matches[1];
+  imageBuffer.data = new Buffer(matches[2], 'base64');
+
+  require('fs').writeFile('/imgs' + imgName, imageBuffer.data, function (err) {
+    if (err) {
+      console.error(err);
+    }
+    console.log('file ' + filename + ' saved.')
+  });
+
+  res.send(imgName, function (err) {
+    if (err) res.send(404);
+  });
 });
+
+// app.get("/image.png", (req, res) => {
+//   res.sendFile(path.join(__dirname, "./imgs/image.png"));
+// });
 
 app.get("/regisToken", async (req, res, next) => {
   let code = req.query.code;
