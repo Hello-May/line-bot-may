@@ -149,13 +149,13 @@ app.post("/saveimage", async function (req, res) {
   try {
     imageBuffer.type = matches[1];
     imageBuffer.data = Buffer.from(matches[2], 'base64');
-    console.log('ya~~~');
+    console.log(imageBuffer.data);
 
     await fs.writeFile(imgName + '.jpg', imageBuffer.data, function (err) {
       if (err) {
         console.error(err);
       }
-      console.log('file ' + imgName + ' saved.')
+      console.log('file ' + imgName + '.jpg saved.')
     });
 
   } catch (err) {
