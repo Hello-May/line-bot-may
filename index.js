@@ -141,7 +141,7 @@ app.post("/saveimage", async function (req, res) {
   if (matches.length !== 3) {
     // res.send('無效的影像編碼');
     console.log('無效的影像編碼');
-  }else{
+  } else {
     console.log('有效的影像編碼');
     console.log(matches[1]);
     console.log(matches[2]);
@@ -150,10 +150,15 @@ app.post("/saveimage", async function (req, res) {
   // let data = req.form.data;
   let imgName = uuidV4();
 
-  imageBuffer.type = matches[1];
-  imageBuffer.data = new Buffer(matches[2], 'base64');
+  try {
+    imageBuffer.type = matches[1];
+    imageBuffer.data = new Buffer(matches[2], 'base64');
+    console.log('ya~~~');
+  } catch (err) {
+    console.log(err);
+  }
 
-  require('fs').writeFile('/imgs' + imgName, imageBuffer.data, function (err) {
+  require('fs').writeFile('/imgs/' + imgName, imageBuffer.data, function (err) {
     if (err) {
       console.error(err);
     }
