@@ -12,6 +12,7 @@ const path = require('path');
 const app = express();
 const dbUser = require('./functions/dbController/user');
 const uuidV4 = require('uuid/v4');
+const fs = require('fs');
 
 async function handleEvent(event) {
   console.log(event);
@@ -149,16 +150,17 @@ app.post("/saveimage", async function (req, res) {
     imageBuffer.type = matches[1];
     imageBuffer.data = Buffer.from(matches[2], 'base64');
     console.log('ya~~~');
+
+    await fs.writeFile('/imgs/' + imgName + '.jpg', imageBuffer.data, function (err) {
+      if (err) {
+        console.error(err);
+      }
+      console.log('file ' + imgName + ' saved.')
+    });
+
   } catch (err) {
     console.log(err);
   }
-
-  require('fs').writeFile('/imgs/' + imgName, imageBuffer.data, function (err) {
-    if (err) {
-      console.error(err);
-    }
-    console.log('file ' + imgName + ' saved.')
-  });
 
   res.send(imgName, function (err) {
     if (err) res.send(404);
