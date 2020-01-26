@@ -33,6 +33,10 @@ const target = async (event) => {
     }
 
     // let r = Math.round((Math.random() * (name.length - 1)));
+    return {
+        type: 'text',
+        text: '測試'
+    };
 
     return {
         "type": "flex",
