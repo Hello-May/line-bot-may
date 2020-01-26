@@ -9,14 +9,30 @@ const searchById = async (id) => {
     return monster[0];
 }
 
-const searchByRandomAndLevel = async (level) => {
+const searchByRandomAndLevel = async (level, count) => {
     let monster = await monsters.findAll({ where: { level: level } });
-    if (monster.length == 0) {
-        createByRandom(level);
-        let monster = await monsters.findAll({ where: { level: level, target: true } });
-        return monster[monster.length - 1];
+    if (monster.length < count) {
+        for (let i = 0; i < count - monster.length; i++) {
+            createByRandom(level);
+        }
+        monster = await monsters.findAll({ where: { level: level } });
+        return monster;
     }
-    return monster[Math.round((Math.random() * (monster.length - 1)))];
+    let t = [];
+    let output = [];
+    for (let i = 0; i < monster.length; i++) {
+        t.push(i);
+    }
+    for (let i = 0; i < count; i++) {
+        let r = Math.round(((Math.random() * ((t.length - 1) - i)) + i));
+        let tmp = t[i];
+        t[i] = t[r];
+        t[r] = tmp;
+    }
+    for (let i = 0; i < count; i++) {
+        output.push(monster[t[i]])
+    }
+    return output;
 }
 
 const increaseMoney = async (id) => {

@@ -22,13 +22,27 @@ Date.prototype.Format = function (fmt) { //author: meizz
 }
 
 async function genByTarget(target) {
-    console.log('----------------------------------');
-    console.log(JSON.stringify(target));
-    console.log('----------------------------------');
     let output = [];
     let skin;
+    let character;
     for (let i = 0; i < target.length; i++) {
         skin = await dbSkin.searchByNameAndRandom(target[i].skin);
+        switch (target[i].character) {
+            case 1:
+                character = '行動派';   //agi
+                break;
+            case 2:
+                character = '嚴謹派';   //vit
+                break;
+            case 3:
+                character = '領導派';   //str
+                break;
+            case 4:
+                character = '樂天派';   //lucky
+                break;
+            default:
+                character = "懵懂無知";
+        }
         output.push({
             "type": "bubble",
             "direction": "ltr",
@@ -86,7 +100,7 @@ async function genByTarget(target) {
                             },
                             {
                                 "type": "text",
-                                "text": "性格：" + target[i].character,
+                                "text": "性格：" + character,
                             },
                             {
                                 "type": "text",
@@ -115,27 +129,20 @@ async function genByTarget(target) {
             }
         })
     }
-    console.log('----------------------------------');
-    console.log(output);
-    console.log('----------------------------------');
     return output;
 }
 
 const target = async (event) => {
     let user;
     let monster;
-    let target = [];
-    let tmp;
+    let target;
     let output;
     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
 
     try {
         user = await dbUser.searchById(userId);
         monster = await dbMonster.searchById(user.monsterId);
-        for (let i = 0; i < 3; i++) {
-            tmp = await dbMonster.searchByRandomAndLevel(monster.level);
-            target.push(tmp);
-        }
+        target = await dbMonster.searchByRandomAndLevel(monster.level);
         output = await genByTarget(target);
         // console.log("monster:" + JSON.stringify(monster));
     } catch (err) {
@@ -147,98 +154,6 @@ const target = async (event) => {
         "contents": {
             "type": "carousel",
             "contents": output
-            // "contents": [{
-            //       "type": "bubble",
-            //       "direction": "ltr",
-            //       "header": {
-            //         "type": "box",
-            //         "layout": "vertical",
-            //         "contents": [
-            //           {
-            //             "type": "text",
-            //             "text": "小怪獸",
-            //             "size": "lg",
-            //             "align": "center",
-            //             "weight": "bold"
-            //           }
-            //         ]
-            //       },
-            //       "hero": {
-            //         "type": "image",
-            //         "url": "https://i.postimg.cc/d0k3NGNh/1.jpg",
-            //         "size": "lg",
-            //         "aspectRatio": "1.51:1",
-            //         "aspectMode": "fit",
-            //         "action": {
-            //           "type": "message",
-            //           "label": "叫聲",
-            //           "text": "皮卡皮卡~"
-            //         }
-            //       },
-            //       "body": {
-            //         "type": "box",
-            //         "layout": "vertical",
-            //         "contents": [
-            //           {
-            //             "type": "separator"
-            //           },
-            //           {
-            //             "type": "box",
-            //             "layout": "vertical",
-            //             "spacing": "none",
-            //             "margin": "lg",
-            //             "contents": [
-            //               {
-            //                 "type": "text",
-            //                 "text": "名字：皮卡丘"
-            //               },
-            //               {
-            //                 "type": "text",
-            //                 "text": "誕辰：y/m/d"
-            //               },
-            //               {
-            //                 "type": "text",
-            //                 "text": "等級：2"
-            //               },
-            //               {
-            //                 "type": "text",
-            //                 "text": "經驗值：87%"
-            //               },
-            //               {
-            //                 "type": "text",
-            //                 "text": "性格：行動派"
-            //               },
-            //               {
-            //                 "type": "text",
-            //                 "text": "自律幣：$75"
-            //               },
-            //               {
-            //                 "type": "text",
-            //                 "text": "精神糧食：23 (每日-1)"
-            //               }
-            //             ]
-            //           }
-            //         ]
-            //       },
-            //       "footer": {
-            //         "type": "box",
-            //         "layout": "vertical",
-            //         "contents": [
-            //           {
-            //             "type": "separator"
-            //           },
-            //           {
-            //             "type": "button",
-            //             "action": {
-            //               "type": "message",
-            //               "label": "修改",
-            //               "text": "改名/初始化"
-            //             }
-            //           }
-            //         ]
-            //       }
-            //     }
-            // ]
         }
     }
 }

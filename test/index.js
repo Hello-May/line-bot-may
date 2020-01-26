@@ -374,20 +374,37 @@ Date.prototype.Format = function (fmt) { //author: meizz
 // let s = d.Format("yyyy/MM/dd hh:mm:ss");
 // console.log(dd.Format("yyyy/MM/dd hh:mm:ss"));
 
-let level = 10;
-let n = level - 1;
-let a = Math.round((Math.random() * n));
-let b = Math.round((Math.random() * (n - a)));
-let c = Math.round((Math.random() * (n - a - b)));
-let d = n - a - b - c;
-let point = [a, b, c, d];
-console.log(point);
+// let level = 10;
+// let n = level - 1;
+// let a = Math.round((Math.random() * n));
+// let b = Math.round((Math.random() * (n - a)));
+// let c = Math.round((Math.random() * (n - a - b)));
+// let d = n - a - b - c;
+// let point = [a, b, c, d];
+// console.log(point);
 
-for (let i = 0; i < point.length; i++) {
-    let r = Math.round((Math.random() * ((point.length - 1) - i) + i));
-    console.log('i=' + i + '  r=' + r);
-    let tmp = point[i];
-    point[i] = point[r];
-    point[r] = tmp;
+// for (let i = 0; i < point.length; i++) {
+//     let r = Math.round((Math.random() * ((point.length - 1) - i) + i));
+//     console.log('i=' + i + '  r=' + r);
+//     let tmp = point[i];
+//     point[i] = point[r];
+//     point[r] = tmp;
+// }
+// console.log(point);
+
+let c = 3;
+let target = [00, 11, 22, 33, 44, 55];
+let t = [];
+for (let i = 0; i < target.length; i++) {
+    t.push(i);
 }
-console.log(point);
+console.log(t);
+
+for (let i = 0; i < c; i++) {
+    let r = Math.round(((Math.random() * ((t.length - 1) - i)) + i));
+    console.log('i=' + i + '  r=' + r);
+    let tmp = t[i];
+    t[i] = t[r];
+    t[r] = tmp;
+}
+console.log(t);
