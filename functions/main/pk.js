@@ -2,8 +2,7 @@ const dbUser = require('../dbController/user');
 const dbMonster = require('../dbController/monster');
 const name = ['AAA', 'BBB', 'CCC'];
 const character = ['行動派', '嚴謹派', '領導派', '樂天派', '懵懂無知'];
-// const date = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
-const date = new Date();
+const date = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
 
 Date.prototype.Format = function (fmt) { //author: meizz 
     var o = {
