@@ -10,17 +10,12 @@ const searchById = async (id) => {
 }
 
 const searchByRandomAndLevel = async (level, count) => {
-    console.log('searchByRandomAndLevel')
     let monster = await monsters.findAll({ where: { level: level } });
-    console.log('monster.length=' + monster.length)
     if (monster.length < count) {
         for (let i = 0; i < count - monster.length; i++) {
             await createByRandom(level);
-            console.log('createByRandom')
         }
         monster = await monsters.findAll({ where: { level: level } });
-        console.log('monster')
-        console.log(monster)
         return monster;
     }
     let t = [];
@@ -37,8 +32,6 @@ const searchByRandomAndLevel = async (level, count) => {
     for (let i = 0; i < count; i++) {
         output.push(monster[t[i]])
     }
-    console.log('output')
-    console.log(output)
     return output;
 }
 
@@ -89,7 +82,7 @@ async function createByRandom(level) {
         born: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
         level: level,
         exp: 0,
-        character: character[Math.round((Math.random() * (character.length - 1)))],
+        character: Math.round((Math.random() * (character.length - 1))),
         money: 0,
         food: 3,
         agi: 1 + point[0],

@@ -148,11 +148,7 @@ const target = async (event) => {
     } catch (err) {
         console.log(err);
     }
-
-    console.log('-----------------')
-    console.log(output)
-    console.log('-----------------')
-
+    
     return {
         "type": "flex",
         "altText": "Flex Message",
