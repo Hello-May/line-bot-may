@@ -2,7 +2,7 @@ const dbUser = require('../dbController/user');
 const dbMonster = require('../dbController/monster');
 const name = ['AAA', 'BBB', 'CCC'];
 const character = ['行動派', '嚴謹派', '領導派', '樂天派', '懵懂無知'];
-let date = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
+const date = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
 
 Date.prototype.Format = function (fmt) { //author: meizz 
     var o = {
@@ -85,7 +85,7 @@ const target = async (event) => {
                                 "contents": [
                                     {
                                         "type": "text",
-                                        "text": "誕辰：" + date.Format("yyyy/MM/dd hh:mm:ss")
+                                        "text": "誕辰：" + date
                                     },
                                     {
                                         "type": "text",
@@ -170,7 +170,7 @@ const target = async (event) => {
                                 "contents": [
                                     {
                                         "type": "text",
-                                        "text": "誕辰：" + date.Format("yyyy/MM/dd hh:mm:ss")
+                                        "text": "誕辰：" + date
                                     },
                                     {
                                         "type": "text",
