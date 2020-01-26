@@ -23,12 +23,12 @@ Date.prototype.Format = function (fmt) { //author: meizz
 
 async function genByTarget(target) {
     console.log('----------------------------------');
-    console.log(target);
+    console.log(JSON.stringify(target));
     console.log('----------------------------------');
     let output = [];
     let skin;
     for (let i = 0; i < target.length; i++) {
-        skin = await dbSkin.searchByNameAndRandom(target.skin);
+        skin = await dbSkin.searchByNameAndRandom(target[i].skin);
         output.push(
             {
                 "type": "bubble",
