@@ -131,7 +131,7 @@ const target = async (event) => {
     try {
         user = await dbUser.searchById(userId);
         monster = await dbMonster.searchById(user.monsterId);
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < 1; i++) {
             tmp = await dbMonster.searchByRandomAndLevel(monster.level);
             target.push(tmp);
         }
@@ -140,7 +140,6 @@ const target = async (event) => {
     } catch (err) {
         console.log(err);
     }
-    // let r = Math.round((Math.random() * (name.length - 1)));
 
     return {
         "type": "flex",
