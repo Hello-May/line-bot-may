@@ -141,10 +141,10 @@ const target = async (event) => {
         console.log(err);
     }
 
-    return {
-        "type":"text",
-        "text":'阿阿阿阿'
-    }
+    // return {
+    //     "type":"text",
+    //     "text":'阿阿阿阿'
+    // }
 
     return {
         "type": "flex",
@@ -152,9 +152,6 @@ const target = async (event) => {
         "contents": {
             "type": "carousel",
             "contents": {
-                "type": "flex",
-                "altText": "Flex Message",
-                "contents": {
                   "type": "bubble",
                   "direction": "ltr",
                   "header": {
@@ -245,7 +242,6 @@ const target = async (event) => {
                     ]
                   }
                 }
-              }
         }
     }
 }
