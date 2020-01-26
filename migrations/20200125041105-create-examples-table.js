@@ -83,6 +83,10 @@ module.exports = {
           type: DataTypes.INTEGER,
           allowNull: false,
         },
+        target: {
+          type: DataTypes.BOOLEAN,
+          allowNull: false,
+        },
         createdAt: DataTypes.DATE,
         updatedAt: DataTypes.DATE,
       }, {

@@ -10,7 +10,7 @@ const searchById = async (id) => {
 
 const searchByRandomAndLevel = async (level) => {
     let monster = await monsters.findAll({ where: { level: level } });
-    if(monster.length==0){
+    if (monster.length == 0) {
 
     }
     return monster[Math.round((Math.random() * (monster.length - 1)))];
@@ -39,8 +39,23 @@ const updateName = async (id, name) => {
     }, { where: { monsterId: id } });
 }
 
-const createRandom = async (level) => {
-    let point = []
+async function createByRandom(level) {
+    let n = level - 1;
+    let a = Math.round((Math.random() * n));
+    let b = Math.round((Math.random() * (n - a)));
+    let c = Math.round((Math.random() * (n - a - b)));
+    let d = n - a - b - c;
+    let point = [a, b, c, d];
+    let r;
+    let tmp;
+    for (let i = 0; i < point.length; i++) {
+        r = Math.round((Math.random() * ((point.length - 1) - i) + i));
+        console.log('i=' + i + '  r=' + r);
+        tmp = point[i];
+        point[i] = point[r];
+        point[r] = tmp;
+    }
+
     await Monster.create({
         force: true,
         name: '小怪獸',
@@ -50,11 +65,12 @@ const createRandom = async (level) => {
         exp: 0,
         character: character[Math.round((Math.random() * (character.length - 1)))],
         money: 0,
-        food: 10,
-        agi: 1,
-        vit: 1,
-        str: 1,
-        lucky: 1,
+        food: 3,
+        agi: 1 + point[0],
+        vit: 1 + point[1],
+        str: 1 + point[2],
+        lucky: 1 + point[3],
+        target :true,
         createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
         updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
     });
@@ -75,6 +91,7 @@ const create = async () => {
         vit: 1,
         str: 1,
         lucky: 1,
+        target :false,
         createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
         updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
     });
@@ -95,6 +112,7 @@ const initialization = async (id) => {
         vit: 1,
         str: 1,
         lucky: 1,
+        target :false,
         createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
         updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
     }, { where: { monsterId: id } });

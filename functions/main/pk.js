@@ -23,11 +23,13 @@ Date.prototype.Format = function (fmt) { //author: meizz
 const target = async (event) => {
     let user;
     let monster;
+    let target;
     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
     
     try {
         user = await dbUser.searchById(userId);
         monster = await dbMonster.searchById(user.monsterId);
+        target = await dbMonster.searchByRandom();
         // console.log("monster:" + JSON.stringify(monster));
     } catch (err) {
         console.log(err);

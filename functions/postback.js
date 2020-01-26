@@ -99,8 +99,8 @@ const postbackCommandSolver = async (event, status) => {
         }
     } else {
         switch (input) {
-            case '':
-                
+            case '戰鬥':
+
                 break;
             case '戰鬥隨機':
                 output = await pk.target(event);
