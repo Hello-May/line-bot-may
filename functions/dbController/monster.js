@@ -10,14 +10,16 @@ const searchById = async (id) => {
 }
 
 const searchByRandomAndLevel = async (level, count) => {
+    console.log('searchByRandomAndLevel')
     let monster = await monsters.findAll({ where: { level: level } });
+    console.log('monster.length=' + monster.length)
     if (monster.length < count) {
-        console.log('monster.length=' + monster.length)
         for (let i = 0; i < count - monster.length; i++) {
             await createByRandom(level);
             console.log('createByRandom')
         }
         monster = await monsters.findAll({ where: { level: level } });
+        console.log('monster')
         console.log(monster)
         return monster;
     }
@@ -35,6 +37,7 @@ const searchByRandomAndLevel = async (level, count) => {
     for (let i = 0; i < count; i++) {
         output.push(monster[t[i]])
     }
+    console.log('output')
     console.log(output)
     return output;
 }
