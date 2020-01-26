@@ -151,98 +151,99 @@ const target = async (event) => {
         "altText": "Flex Message",
         "contents": {
             "type": "carousel",
-            "contents": [{
-                  "type": "bubble",
-                  "direction": "ltr",
-                  "header": {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [
-                      {
-                        "type": "text",
-                        "text": "小怪獸",
-                        "size": "lg",
-                        "align": "center",
-                        "weight": "bold"
-                      }
-                    ]
-                  },
-                  "hero": {
-                    "type": "image",
-                    "url": "https://i.postimg.cc/d0k3NGNh/1.jpg",
-                    "size": "lg",
-                    "aspectRatio": "1.51:1",
-                    "aspectMode": "fit",
-                    "action": {
-                      "type": "message",
-                      "label": "叫聲",
-                      "text": "皮卡皮卡~"
-                    }
-                  },
-                  "body": {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [
-                      {
-                        "type": "separator"
-                      },
-                      {
-                        "type": "box",
-                        "layout": "vertical",
-                        "spacing": "none",
-                        "margin": "lg",
-                        "contents": [
-                          {
-                            "type": "text",
-                            "text": "名字：皮卡丘"
-                          },
-                          {
-                            "type": "text",
-                            "text": "誕辰：y/m/d"
-                          },
-                          {
-                            "type": "text",
-                            "text": "等級：2"
-                          },
-                          {
-                            "type": "text",
-                            "text": "經驗值：87%"
-                          },
-                          {
-                            "type": "text",
-                            "text": "性格：行動派"
-                          },
-                          {
-                            "type": "text",
-                            "text": "自律幣：$75"
-                          },
-                          {
-                            "type": "text",
-                            "text": "精神糧食：23 (每日-1)"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  "footer": {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [
-                      {
-                        "type": "separator"
-                      },
-                      {
-                        "type": "button",
-                        "action": {
-                          "type": "message",
-                          "label": "修改",
-                          "text": "改名/初始化"
-                        }
-                      }
-                    ]
-                  }
-                }
-            ]
+            "contents":output
+            // "contents": [{
+            //       "type": "bubble",
+            //       "direction": "ltr",
+            //       "header": {
+            //         "type": "box",
+            //         "layout": "vertical",
+            //         "contents": [
+            //           {
+            //             "type": "text",
+            //             "text": "小怪獸",
+            //             "size": "lg",
+            //             "align": "center",
+            //             "weight": "bold"
+            //           }
+            //         ]
+            //       },
+            //       "hero": {
+            //         "type": "image",
+            //         "url": "https://i.postimg.cc/d0k3NGNh/1.jpg",
+            //         "size": "lg",
+            //         "aspectRatio": "1.51:1",
+            //         "aspectMode": "fit",
+            //         "action": {
+            //           "type": "message",
+            //           "label": "叫聲",
+            //           "text": "皮卡皮卡~"
+            //         }
+            //       },
+            //       "body": {
+            //         "type": "box",
+            //         "layout": "vertical",
+            //         "contents": [
+            //           {
+            //             "type": "separator"
+            //           },
+            //           {
+            //             "type": "box",
+            //             "layout": "vertical",
+            //             "spacing": "none",
+            //             "margin": "lg",
+            //             "contents": [
+            //               {
+            //                 "type": "text",
+            //                 "text": "名字：皮卡丘"
+            //               },
+            //               {
+            //                 "type": "text",
+            //                 "text": "誕辰：y/m/d"
+            //               },
+            //               {
+            //                 "type": "text",
+            //                 "text": "等級：2"
+            //               },
+            //               {
+            //                 "type": "text",
+            //                 "text": "經驗值：87%"
+            //               },
+            //               {
+            //                 "type": "text",
+            //                 "text": "性格：行動派"
+            //               },
+            //               {
+            //                 "type": "text",
+            //                 "text": "自律幣：$75"
+            //               },
+            //               {
+            //                 "type": "text",
+            //                 "text": "精神糧食：23 (每日-1)"
+            //               }
+            //             ]
+            //           }
+            //         ]
+            //       },
+            //       "footer": {
+            //         "type": "box",
+            //         "layout": "vertical",
+            //         "contents": [
+            //           {
+            //             "type": "separator"
+            //           },
+            //           {
+            //             "type": "button",
+            //             "action": {
+            //               "type": "message",
+            //               "label": "修改",
+            //               "text": "改名/初始化"
+            //             }
+            //           }
+            //         ]
+            //       }
+            //     }
+            // ]
         }
     }
 }
