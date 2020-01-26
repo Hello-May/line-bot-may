@@ -100,11 +100,11 @@ const postbackCommandSolver = async (event, status) => {
     } else {
         switch (input) {
             case '戰鬥隨機':
-                // output = pk.target(event);
-                output =  {
-                    type: 'text',
-                    text: '測試'
-                };
+                output = pk.target(event);
+                // output =  {
+                //     type: 'text',
+                //     text: '測試'
+                // };
                 break;
             case '查詢指令':
                 output = {
