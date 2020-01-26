@@ -13,7 +13,7 @@ const searchByRandomAndLevel = async (level, count) => {
     let monster = await monsters.findAll({ where: { level: level } });
     if (monster.length < count) {
         for (let i = 0; i < count - monster.length; i++) {
-            createByRandom(level);
+            await createByRandom(level);
         }
         monster = await monsters.findAll({ where: { level: level } });
         return monster;
