@@ -382,3 +382,12 @@ let c = Math.round((Math.random() * (n - a - b)));
 let d = n - a - b - c;
 let point = [a, b, c, d];
 console.log(point);
+
+for (let i = 0; i < point.length; i++) {
+    let r = Math.round((Math.random() * ((point.length - 1) - i) + i));
+    console.log('i=' + i + '  r=' + r);
+    let tmp = point[i];
+    point[i] = point[r];
+    point[r] = tmp;
+}
+console.log(point);
