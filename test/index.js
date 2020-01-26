@@ -367,5 +367,9 @@ Date.prototype.Format = function (fmt) { //author: meizz
 // let n = uuidV4();
 // console.log(n);
 
-let date =  new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
-console.log(date);
+let dd = new Date();
+let date = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
+let d = '2020-01-25 14:11:52';
+// console.log(date.Format("yyyy/MM/dd hh:mm:ss"));
+// let s = d.Format("yyyy/MM/dd hh:mm:ss");
+console.log(dd.Format("yyyy/MM/dd hh:mm:ss"));
