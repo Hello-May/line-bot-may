@@ -29,93 +29,91 @@ async function genByTarget(target) {
     let skin;
     for (let i = 0; i < target.length; i++) {
         skin = await dbSkin.searchByNameAndRandom(target[i].skin);
-        output.push(
-            {
-                "type": "bubble",
-                "direction": "ltr",
-                "header": {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [
-                        {
-                            "type": "text",
-                            "text": target[i].name,
-                            "size": "lg",
-                            "align": "center",
-                            "weight": "bold"
-                        }
-                    ]
-                },
-                "hero": {
-                    "type": "image",
-                    // "url": "https://images2.gamme.com.tw/news2/2018/86/51/qZqVnqaYl6aWp6Q.gif",  //皮卡丘
-                    // "url": "https://i.imgur.com/YptXiwa.gif",   //綠水靈
-                    "url": skin.image,
-                    "size": "lg",
-                    "aspectRatio": "1.51:1",
-                    "aspectMode": "fit",
-                    "action": {
-                        "type": "postback",
-                        "label": "叫聲",
-                        "data": skin.say
+        output.push({
+            "type": "bubble",
+            "direction": "ltr",
+            "header": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": target[i].name,
+                        "size": "lg",
+                        "align": "center",
+                        "weight": "bold"
                     }
-                },
-                "body": {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [
-                        {
-                            "type": "separator"
-                        },
-                        {
-                            "type": "box",
-                            "layout": "vertical",
-                            "spacing": "none",
-                            "margin": "lg",
-                            "contents": [
-                                {
-                                    "type": "text",
-                                    "text": "誕辰：" + target[i].born.Format("yyyy/MM/dd hh:mm:ss")
-                                },
-                                {
-                                    "type": "text",
-                                    "text": "品種：" + target[i].skin
-                                },
-                                {
-                                    "type": "text",
-                                    "text": "等級：" + target[i].level
-                                },
-                                {
-                                    "type": "text",
-                                    "text": "性格：" + target[i].character,
-                                },
-                                {
-                                    "type": "text",
-                                    "text": "agi/vit/str/lucky：" + target[i].agi + '/' + target[i].vit + '/' + target[i].str + '/' + target[i].lucky
-                                }
-                            ]
-                        }
-                    ]
-                },
-                "footer": {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [
-                        {
-                            "type": "separator"
-                        },
-                        {
-                            "type": "button",
-                            "action": {
-                                "type": "postback",
-                                "label": "戰鬥",
-                                "data": "戰鬥:" + target[i].monsterId,
-                            }
-                        }
-                    ]
+                ]
+            },
+            "hero": {
+                "type": "image",
+                // "url": "https://images2.gamme.com.tw/news2/2018/86/51/qZqVnqaYl6aWp6Q.gif",  //皮卡丘
+                // "url": "https://i.imgur.com/YptXiwa.gif",   //綠水靈
+                "url": skin.image,
+                "size": "lg",
+                "aspectRatio": "1.51:1",
+                "aspectMode": "fit",
+                "action": {
+                    "type": "postback",
+                    "label": "叫聲",
+                    "data": skin.say
                 }
+            },
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "separator"
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "spacing": "none",
+                        "margin": "lg",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "誕辰：" + target[i].born.Format("yyyy/MM/dd hh:mm:ss")
+                            },
+                            {
+                                "type": "text",
+                                "text": "品種：" + target[i].skin
+                            },
+                            {
+                                "type": "text",
+                                "text": "等級：" + target[i].level
+                            },
+                            {
+                                "type": "text",
+                                "text": "性格：" + target[i].character,
+                            },
+                            {
+                                "type": "text",
+                                "text": "agi/vit/str/lucky：" + target[i].agi + '/' + target[i].vit + '/' + target[i].str + '/' + target[i].lucky
+                            }
+                        ]
+                    }
+                ]
+            },
+            "footer": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "separator"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                            "type": "postback",
+                            "label": "戰鬥",
+                            "data": "戰鬥:" + target[i].monsterId,
+                        }
+                    }
+                ]
             }
-        )
+        })
     }
     console.log('----------------------------------');
     console.log(output);
@@ -138,23 +136,17 @@ const target = async (event) => {
             tmp = await dbMonster.searchByRandomAndLevel(monster.level);
             target.push(tmp);
         }
-        output = genByTarget(target);
+        output = await genByTarget(target);
         // console.log("monster:" + JSON.stringify(monster));
     } catch (err) {
         console.log(err);
     }
-
-    // return {
-    //     "type":"text",
-    //     "text":'阿阿阿阿'
-    // }
-
     return {
         "type": "flex",
         "altText": "Flex Message",
         "contents": {
             "type": "carousel",
-            "contents":output
+            "contents": output
             // "contents": [{
             //       "type": "bubble",
             //       "direction": "ltr",
