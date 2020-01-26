@@ -1,6 +1,6 @@
 const dbUser = require('../dbController/user');
 const dbMonster = require('../dbController/monster');
-const name = [AAA, BBB, CCC];
+const name = ['AAA', 'BBB', 'CCC'];
 const character = ['行動派', '嚴謹派', '領導派', '樂天派', '懵懂無知'];
 let date = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
 
