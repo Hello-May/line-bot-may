@@ -22,6 +22,9 @@ Date.prototype.Format = function (fmt) { //author: meizz
 }
 
 async function genByTarget(target) {
+    console.log('----------------------------------');
+    console.log(target);
+    console.log('----------------------------------');
     let output = [];
     let skin;
     for (let i = 0; i < target.length; i++) {
@@ -72,23 +75,23 @@ async function genByTarget(target) {
                             "contents": [
                                 {
                                     "type": "text",
-                                    "text": "誕辰：" + target.born.Format("yyyy/MM/dd hh:mm:ss")
+                                    "text": "誕辰：" + target[i].born.Format("yyyy/MM/dd hh:mm:ss")
                                 },
                                 {
                                     "type": "text",
-                                    "text": "品種：" + target.skin
+                                    "text": "品種：" + target[i].skin
                                 },
                                 {
                                     "type": "text",
-                                    "text": "等級：" + target.level
+                                    "text": "等級：" + target[i].level
                                 },
                                 {
                                     "type": "text",
-                                    "text": "性格：" + target.character,
+                                    "text": "性格：" + target[i].character,
                                 },
                                 {
                                     "type": "text",
-                                    "text": "agi/vit/str/lucky：" + target.agi + '/' + target.vit + '/' + target.str + '/' + target.lucky
+                                    "text": "agi/vit/str/lucky：" + target[i].agi + '/' + target[i].vit + '/' + target[i].str + '/' + target[i].lucky
                                 }
                             ]
                         }
@@ -106,7 +109,7 @@ async function genByTarget(target) {
                             "action": {
                                 "type": "postback",
                                 "label": "戰鬥",
-                                "data": "戰鬥:" + target.monsterId,
+                                "data": "戰鬥:" + target[i].monsterId,
                             }
                         }
                     ]
