@@ -142,7 +142,7 @@ const target = async (event) => {
     try {
         user = await dbUser.searchById(userId);
         monster = await dbMonster.searchById(user.monsterId);
-        target = await dbMonster.searchByRandomAndLevel(monster.level);
+        target = await dbMonster.searchByRandomAndLevel(monster.level,3);
         output = await genByTarget(target);
         // console.log("monster:" + JSON.stringify(monster));
     } catch (err) {
