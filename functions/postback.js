@@ -66,6 +66,12 @@ const postbackCommandSolver = async (event, status) => {
                     text: '[已完成任務] ' + tmpMonster.name + '更有主見了~'
                 }
                 break;
+            case '戰鬥':
+                output = {
+                    type: 'text',
+                    text: input
+                }
+                break;
             case '修改自律監聽':
                 let j = await dbHabit.searchByHabit(userId, str[2]);
                 if (j == 0) {
@@ -99,9 +105,6 @@ const postbackCommandSolver = async (event, status) => {
         }
     } else {
         switch (input) {
-            case '戰鬥':
-
-                break;
             case '戰鬥隨機':
                 output = await pk.target(event);
                 break;
