@@ -187,7 +187,7 @@ module.exports = {
       return Promise.resolve();
     } catch (e) {
       return Promise.reject(e);
-    }
+    }  
   },
 
   down: async (queryInterface, Sequelize) => {
