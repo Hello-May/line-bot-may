@@ -142,6 +142,11 @@ const target = async (event) => {
     }
 
     return {
+        "type":"text",
+        "text":'阿阿阿阿'
+    }
+
+    return {
         "type": "flex",
         "altText": "Flex Message",
         "contents": {
