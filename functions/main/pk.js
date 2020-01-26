@@ -1,8 +1,9 @@
 const dbUser = require('../dbController/user');
 const dbMonster = require('../dbController/monster');
-const name = ['AAA', 'BBB', 'CCC'];
-const character = ['行動派', '嚴謹派', '領導派', '樂天派', '懵懂無知'];
-const date = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
+// const name = ['AAA', 'BBB', 'CCC'];
+// const character = ['行動派', '嚴謹派', '領導派', '樂天派', '懵懂無知'];
+// const date = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
+const dbSkin = require('../dbController/skin');
 
 Date.prototype.Format = function (fmt) { //author: meizz 
     var o = {
@@ -20,204 +21,133 @@ Date.prototype.Format = function (fmt) { //author: meizz
     return fmt;
 }
 
+async function genByTarget(target) {
+    let output = [];
+    let skin;
+    for (let i = 0; i < target.length; i++) {
+        skin = await dbSkin.searchByNameAndRandom(monster.skin);
+        output.push(
+            {
+                "type": "bubble",
+                "direction": "ltr",
+                "header": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "text": target[i].name,
+                            "size": "lg",
+                            "align": "center",
+                            "weight": "bold"
+                        }
+                    ]
+                },
+                "hero": {
+                    "type": "image",
+                    // "url": "https://images2.gamme.com.tw/news2/2018/86/51/qZqVnqaYl6aWp6Q.gif",  //皮卡丘
+                    // "url": "https://i.imgur.com/YptXiwa.gif",   //綠水靈
+                    "url": skin.image,
+                    "size": "lg",
+                    "aspectRatio": "1.51:1",
+                    "aspectMode": "fit",
+                    "action": {
+                        "type": "postback",
+                        "label": "叫聲",
+                        "data": skin.say
+                    }
+                },
+                "body": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                        {
+                            "type": "separator"
+                        },
+                        {
+                            "type": "box",
+                            "layout": "vertical",
+                            "spacing": "none",
+                            "margin": "lg",
+                            "contents": [
+                                {
+                                    "type": "text",
+                                    "text": "誕辰：" + target.born.Format("yyyy/MM/dd hh:mm:ss")
+                                },
+                                {
+                                    "type": "text",
+                                    "text": "品種：" + target.skin
+                                },
+                                {
+                                    "type": "text",
+                                    "text": "等級：" + target.level
+                                },
+                                {
+                                    "type": "text",
+                                    "text": "性格：" + target.character,
+                                },
+                                {
+                                    "type": "text",
+                                    "text": "agi/vit/str/lucky：" + target.agi + '/' + target.vit + '/' + target.str + '/' + target.lucky
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "footer": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                        {
+                            "type": "separator"
+                        },
+                        {
+                            "type": "button",
+                            "action": {
+                                "type": "postback",
+                                "label": "戰鬥",
+                                "data": "戰鬥:" + target.monsterId,
+                            }
+                        }
+                    ]
+                }
+            }
+        )
+    }
+    return output;
+}
+
 const target = async (event) => {
     let user;
     let monster;
-    let target;
+    let target = [];
+    let tmp;
+    let output;
     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
-    
+
     try {
         user = await dbUser.searchById(userId);
         monster = await dbMonster.searchById(user.monsterId);
-        target = await dbMonster.searchByRandom();
+        for (let i = 0; i < 3; i++) {
+            tmp = await dbMonster.searchByRandomAndLevel(monster.level);
+            target.push(tmp);
+        }
+        output = genByTarget(target);
         // console.log("monster:" + JSON.stringify(monster));
     } catch (err) {
         console.log(err);
     }
-
     // let r = Math.round((Math.random() * (name.length - 1)));
-    
+
     return {
         "type": "flex",
         "altText": "Flex Message",
         "contents": {
             "type": "carousel",
-            "contents": [
-                {
-                    "type": "bubble",
-                    "direction": "ltr",
-                    "header": {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "text",
-                                "text": name[Math.round((Math.random() * (name.length - 1)))],
-                                "size": "lg",
-                                "align": "center",
-                                "weight": "bold"
-                            }
-                        ]
-                    },
-                    "hero": {
-                        "type": "image",
-                        "url": "https://images2.gamme.com.tw/news2/2018/86/51/qZqVnqaYl6aWp6Q.gif",  //皮卡丘
-                        // "url": "https://i.imgur.com/YptXiwa.gif",   //綠水靈
-                        // "url": skin.image,
-                        "size": "lg",
-                        "aspectRatio": "1.51:1",
-                        "aspectMode": "fit",
-                        "action": {
-                            "type": "postback",
-                            "label": "叫聲",
-                            "data": '皮卡皮卡'
-                        }
-                    },
-                    "body": {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "separator"
-                            },
-                            {
-                                "type": "box",
-                                "layout": "vertical",
-                                "spacing": "none",
-                                "margin": "lg",
-                                "contents": [
-                                    {
-                                        "type": "text",
-                                        "text": "誕辰：" + date
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": "品種：皮卡丘"
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": "等級：" + monster.level
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": "性格：" + character[Math.round((Math.random() * (character.length - 1)))],
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": "agi/vit/str/lucky：" + monster.agi + '/' + monster.vit + '/' + monster.str + '/' + monster.lucky
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    "footer": {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "separator"
-                            },
-                            {
-                                "type": "button",
-                                "action": {
-                                    "type": "postback",
-                                    "label": "戰鬥",
-                                    "data": "戰鬥",
-                                }
-                            }
-                        ]
-                    }
-                },
-                {
-                    "type": "bubble",
-                    "direction": "ltr",
-                    "header": {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "text",
-                                "text": name[Math.round((Math.random() * (name.length - 1)))],
-                                "size": "lg",
-                                "align": "center",
-                                "weight": "bold"
-                            }
-                        ]
-                    },
-                    "hero": {
-                        "type": "image",
-                        // "url": "https://images2.gamme.com.tw/news2/2018/86/51/qZqVnqaYl6aWp6Q.gif",  //皮卡丘
-                        "url": "https://i.imgur.com/YptXiwa.gif",   //綠水靈
-                        // "url": skin.image,
-                        "size": "lg",
-                        "aspectRatio": "1.51:1",
-                        "aspectMode": "fit",
-                        "action": {
-                            "type": "postback",
-                            "label": "叫聲",
-                            "data": 'ㄉㄨㄞ~ㄉㄨㄞ~'
-                        }
-                    },
-                    "body": {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "separator"
-                            },
-                            {
-                                "type": "box",
-                                "layout": "vertical",
-                                "spacing": "none",
-                                "margin": "lg",
-                                "contents": [
-                                    {
-                                        "type": "text",
-                                        "text": "誕辰：" + date
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": "品種：綠水靈"
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": "等級：" + monster.level
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": "性格：" + character[Math.round((Math.random() * (character.length - 1)))],
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": "agi/vit/str/lucky：" + monster.agi + '/' + monster.vit + '/' + monster.str + '/' + monster.lucky
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    "footer": {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "separator"
-                            },
-                            {
-                                "type": "button",
-                                "action": {
-                                    "type": "postback",
-                                    "label": "戰鬥",
-                                    "data": "戰鬥",
-                                }
-                            }
-                        ]
-                    }
-                }
-            ]
+            "contents": output
         }
     }
 }
-
 
 const call = (event) => {
     return {

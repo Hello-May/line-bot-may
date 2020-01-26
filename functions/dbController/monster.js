@@ -2,6 +2,7 @@ const db = require('../../models');
 const { monsters } = require("../../models");
 const Monster = db.monsters;
 const character = ['行動派', '嚴謹派', '領導派', '樂天派', '懵懂無知'];
+const targetName = ['AAA', 'BBB', 'CCC', 'DDD', 'EEE'];
 
 const searchById = async (id) => {
     let monster = await monsters.findAll({ where: { monsterId: id } });
@@ -11,7 +12,9 @@ const searchById = async (id) => {
 const searchByRandomAndLevel = async (level) => {
     let monster = await monsters.findAll({ where: { level: level } });
     if (monster.length == 0) {
-
+        createByRandom(level);
+        let monster = await monsters.findAll({ where: { level: level, target: true } });
+        return monster[monster.length - 1];
     }
     return monster[Math.round((Math.random() * (monster.length - 1)))];
 }
@@ -58,7 +61,7 @@ async function createByRandom(level) {
 
     await Monster.create({
         force: true,
-        name: '小怪獸',
+        name: targetName[Math.round((Math.random() * (targetName.length - 1)))],
         skin: '喵仔獸',
         born: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
         level: level,
@@ -70,7 +73,7 @@ async function createByRandom(level) {
         vit: 1 + point[1],
         str: 1 + point[2],
         lucky: 1 + point[3],
-        target :true,
+        target: true,
         createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
         updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
     });
@@ -91,7 +94,7 @@ const create = async () => {
         vit: 1,
         str: 1,
         lucky: 1,
-        target :false,
+        target: false,
         createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
         updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
     });
@@ -112,7 +115,7 @@ const initialization = async (id) => {
         vit: 1,
         str: 1,
         lucky: 1,
-        target :false,
+        target: false,
         createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
         updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
     }, { where: { monsterId: id } });
