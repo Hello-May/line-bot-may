@@ -100,7 +100,7 @@ const postbackCommandSolver = async (event, status) => {
     } else {
         switch (input) {
             case '戰鬥隨機':
-                output = pk.target(event);
+                output = pk.target(event).catch(err=>{console.log(err)});
                 // output =  {
                 //     type: 'text',
                 //     text: '測試'
