@@ -151,7 +151,7 @@ const target = async (event) => {
         "altText": "Flex Message",
         "contents": {
             "type": "carousel",
-            "contents": {
+            "contents": [{
                   "type": "bubble",
                   "direction": "ltr",
                   "header": {
@@ -242,6 +242,7 @@ const target = async (event) => {
                     ]
                   }
                 }
+            ]
         }
     }
 }
