@@ -25,7 +25,7 @@ async function genByTarget(target) {
     let output = [];
     let skin;
     for (let i = 0; i < target.length; i++) {
-        skin = await dbSkin.searchByNameAndRandom(monster.skin);
+        skin = await dbSkin.searchByNameAndRandom(target.skin);
         output.push(
             {
                 "type": "bubble",
