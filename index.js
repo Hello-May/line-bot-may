@@ -130,41 +130,41 @@ app.get("/send", function (req, res) {
 //     }
 //   });
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
 
-app.post("/saveimage", async function (req, res) {
-  let data = req.body.image;
-  console.log(data + "<------data");
-  let matches = data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/), imageBuffer = {};
-  if (matches.length !== 3) {
-    res.send('無效的影像編碼');
-  } else {
-    console.log('有效的影像編碼');
-    console.log(matches[1]);
-    console.log(matches[2]);
-  }
-  let imgName = uuidV4();
+// app.post("/saveimage", async function (req, res) {
+//   let data = req.body.image;
+//   console.log(data + "<------data");
+//   let matches = data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/), imageBuffer = {};
+//   if (matches.length !== 3) {
+//     res.send('無效的影像編碼');
+//   } else {
+//     console.log('有效的影像編碼');
+//     console.log(matches[1]);
+//     console.log(matches[2]);
+//   }
+//   let imgName = uuidV4();
 
-  try {
-    imageBuffer.type = matches[1];
-    imageBuffer.data = Buffer.from(matches[2], 'base64');
-    console.log(imageBuffer.data);
+//   try {
+//     imageBuffer.type = matches[1];
+//     imageBuffer.data = Buffer.from(matches[2], 'base64');
+//     console.log(imageBuffer.data);
 
-    await fs.writeFile(imgName + '.jpg', imageBuffer.data, function (err) {
-      if (err) {
-        console.error(err);
-      }
-      console.log('file ' + imgName + '.jpg saved.')
-    });
-  } catch (err) {
-    console.log(err);
-  }
+//     await fs.writeFile(imgName + '.jpg', imageBuffer.data, function (err) {
+//       if (err) {
+//         console.error(err);
+//       }
+//       console.log('file ' + imgName + '.jpg saved.')
+//     });
+//   } catch (err) {
+//     console.log(err);
+//   }
 
-  res.send(imgName, function (err) {
-    if (err) res.send(404);
-  });
-});
+//   res.send(imgName, function (err) {
+//     if (err) res.send(404);
+//   });
+// });
 
 // app.get("/image.png", (req, res) => {
 //   res.sendFile(path.join(__dirname, "./imgs/image.png"));
