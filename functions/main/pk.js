@@ -117,6 +117,9 @@ async function genByTarget(target) {
             }
         )
     }
+    console.log('----------------------------------');
+    console.log(output);
+    console.log('----------------------------------');
     return output;
 }
 
