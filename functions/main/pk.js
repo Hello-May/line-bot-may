@@ -24,11 +24,6 @@ const target = async (event) => {
     let user;
     let monster;
     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
-
-    return {
-        type: 'text',
-        text: '測試'
-    };
     
     try {
         user = await dbUser.searchById(userId);
