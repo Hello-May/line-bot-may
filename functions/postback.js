@@ -99,6 +99,9 @@ const postbackCommandSolver = async (event, status) => {
         }
     } else {
         switch (input) {
+            case '戰鬥隨機':
+                output = pk.target(event);
+                break;
             case '查詢指令':
                 output = {
                     type: 'text',

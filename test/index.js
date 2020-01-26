@@ -363,8 +363,9 @@ Date.prototype.Format = function (fmt) { //author: meizz
 // let d = t.getTime();
 // console.log(d);
 
-const uuidV4 = require('uuid/v4');
-let n = uuidV4();
-console.log(n);
+// const uuidV4 = require('uuid/v4');
+// let n = uuidV4();
+// console.log(n);
 
-
+let date =  new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
+console.log(date);

@@ -157,7 +157,6 @@ app.post("/saveimage", async function (req, res) {
       }
       console.log('file ' + imgName + '.jpg saved.')
     });
-
   } catch (err) {
     console.log(err);
   }

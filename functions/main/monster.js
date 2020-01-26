@@ -52,7 +52,7 @@ const call = async (event) => {
         default:
             character = "懵懂無知";
     }
-   
+
     return {
         "type": "flex",
         "altText": "Flex Message",
@@ -105,6 +105,10 @@ const call = async (event) => {
                             },
                             {
                                 "type": "text",
+                                "text": "品種：" + monster.skin
+                            },
+                            {
+                                "type": "text",
                                 "text": "等級：" + monster.level
                             },
                             {
@@ -122,6 +126,10 @@ const call = async (event) => {
                             {
                                 "type": "text",
                                 "text": "精神糧食：" + monster.food + " (每日-1)"
+                            },
+                            {
+                                "type": "text",
+                                "text": "agi/vit/str/lucky：" + monster.agi + '/' + monster.vit + '/' + monster.str + '/' + monster.lucky
                             }
                         ]
                     },
