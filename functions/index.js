@@ -334,8 +334,9 @@ const textCommandSolver = async (event, status) => {
             }
             return clientBot.replyMessage(event.replyToken, [output, output2]);
         }
+    } else {
+        return clientBot.replyMessage(event.replyToken, output);
     }
-    return clientBot.replyMessage(event.replyToken, output);
 }
 
 const imgCommandSolver = (event) => {
