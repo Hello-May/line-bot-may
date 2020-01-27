@@ -30,7 +30,7 @@ const round = async (userId, focus) => {
     hp: (focus == 'player' ? (target.hp - player.str * 5) : (palyer.hp - target.str * 5)),
   }, { where: { userId: userId, identity: focus } });
 
-  return focus + '造成' + (focus == 'player' ? 'target扣' + player.str * 5 + '傷害' : 'player扣' + target.str * 5 + '傷害')
+  return focus + '造成' + (focus == 'player' ? 'target扣' + (player.str * 5) + '傷害' : 'player扣' + (target.str * 5) + '傷害')
 }
 
 //接受到userId，抓battle的兩隻出來比對數值，先判斷是不是某方死了，看目前是誰攻擊，進行回合後扣血，再存進去
