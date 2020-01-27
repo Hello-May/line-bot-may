@@ -28,13 +28,13 @@ const round = async (userId, focus) => {
 
   //lucky可能爆擊
   //agi可能打兩次
-  console.log(target.hp+'<-----------------target.hp');
-  console.log( player.str+'<-----------------player.str');
-  console.log(player.hp+'<-----------------player.hp');
-  console.log(target.str+'<-----------------target.str');
+  console.log(target.hp + '<-----------------target.hp');
+  console.log(player.str + '<-----------------player.str');
+  console.log(player.hp + '<-----------------player.hp');
+  console.log(target.str + '<-----------------target.str');
   let newHp = (focus == 'player' ? (target.hp - player.str * 5) : (player.hp - target.str * 5));
   let passive = (focus == 'player' ? 'target' : 'player');
-  console.log(newHp+'<----------------newHp-');
+  console.log(newHp + '<----------------newHp-');
 
   await Battle.update({
     hp: newHp,
@@ -52,6 +52,11 @@ const create = async (userId, myMonster, tarMonster) => {
     monsterId: myMonster.monsterId,
     identity: 'player',
     hp: myMonster.vit * 50,
+    agi: myMonster.agi,
+    vit: myMonster.vit,
+    str: myMonster.str,
+    lucky: myMonster.lucky,
+    character: myMonster.character,
     createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
     updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
   });
@@ -61,6 +66,11 @@ const create = async (userId, myMonster, tarMonster) => {
     monsterId: tarMonster.monsterId,
     identity: 'target',
     hp: tarMonster.vit * 50,
+    agi: tarMonster.agi,
+    vit: tarMonster.vit,
+    str: tarMonster.str,
+    lucky: tarMonster.lucky,
+    character: tarMonster.character,
     createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
     updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
   });

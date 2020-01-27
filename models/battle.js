@@ -22,6 +22,26 @@ module.exports = (sequelize, DataTypes) => sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    agi: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    vit: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    str: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    lucky: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    character: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
 }, {
