@@ -48,7 +48,7 @@ const textCommandSolver = async (event, status) => {
     let tmpMonster;
     let tmpUser = await dbUser.searchById(userId);
     let habit = await dbHabit.getAll();
-    onsole.log('還是這?<-----------------------')
+    console.log('還是這?<-----------------------')
     for (let i = 0; i < habit.length; i++) {
         if (habit[i].secret == input && timeFn(date + ' ' + habit[i].time) < 30) {
             let stickno = Math.floor(Math.random() * sticker.length);
@@ -66,6 +66,7 @@ const textCommandSolver = async (event, status) => {
         }
     }
     console.log('還在八?<-----------------------')
+    console.log(status+'<-----------------status')
     if (input.includes('你') && input.includes('誰')) {
         output = {
             type: 'text',
