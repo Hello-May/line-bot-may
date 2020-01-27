@@ -43,27 +43,27 @@ const increaseEXP = async (id) => {
     await monsters.increment({ exp: 1 }, { where: { monsterId: id } });
 }
 
-const levelUp = async (monster) => {
-    let point = monster.character;
+const levelUp = async (tmpMonster) => {
+    let point = tmpMonster.character;
     if (point == 0) {
         point = Math.round((Math.random() * 3) + 1);
     }
     switch (point) {
         case 1:
-            await monsters.increment({ agi: 1 }, { where: { monsterId: monster.monsterId } });
+            await monsters.increment({ agi: 1 }, { where: { monsterId: tmpMonster.monsterId } });
             break;
         case 2:
-            await monsters.increment({ vit: 1 }, { where: { monsterId: monster.monsterId } });
+            await monsters.increment({ vit: 1 }, { where: { monsterId: tmpMonster.monsterId } });
             break;
         case 3:
-            await monsters.increment({ str: 1 }, { where: { monsterId: monster.monsterId } });
+            await monsters.increment({ str: 1 }, { where: { monsterId: tmpMonster.monsterId } });
             break;
         case 4:
-            await monsters.increment({ lucky: 1 }, { where: { monsterId: monster.monsterId } });
+            await monsters.increment({ lucky: 1 }, { where: { monsterId: tmpMonster.monsterId } });
             break;
     }
-    await monsters.update({ exp: 0 }, { where: { monsterId: monster.monsterId } });
-    await monsters.increment({ level: 1 }, { where: { monsterId: monster.monsterId } });
+    await monsters.update({ exp: 0 }, { where: { monsterId: tmpMonster.monsterId } });
+    await monsters.increment({ level: 1 }, { where: { monsterId: tmpMonster.monsterId } });
 }
 
 const saveCharacter = async (id, character) => {

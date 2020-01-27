@@ -337,6 +337,8 @@ const textCommandSolver = async (event, status) => {
                 }
         }
     }
+    console.log('<-------------------------------')
+    console.log(output)
     if (input.includes("#")) {  //這樣會有缺點是非指令也會增加經驗值
         tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
         await dbMonster.increaseEXP(tmpMonster);
