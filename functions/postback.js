@@ -173,6 +173,7 @@ const postbackCommandSolver = async (event, status) => {
                 //如果有一方血沒了，改變狀態為正常，回傳勝利訊息及增加經驗等獎勵
                 //要繼續打call dbBattle的函式，傳userId和目前攻擊的人是誰，傳進去抓battle的兩隻比對
                 let j2 = await dbBattle.round(userId, str[1]);
+                console.log(j2+'<--------------')
                 switch (j2) {
                     case '對方勝':
                         output = {
