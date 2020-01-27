@@ -27,7 +27,7 @@ const round = async (userId, focus) => {
   //lucky可能爆擊
   //agi可能打兩次
   await Battle.update({
-    hp: (focus == 'player' ? (target.hp - player.str * 5) : (palyer.hp - target.str * 5)),
+    hp: (focus == 'player' ? (target.hp - player.str * 5) : (player.hp - target.str * 5)),
   }, { where: { userId: userId, identity: focus } });
 
   return focus + '造成' + (focus == 'player' ? 'target扣' + (player.str * 5) + '傷害' : 'player扣' + (target.str * 5) + '傷害')
