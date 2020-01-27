@@ -111,7 +111,7 @@ const postbackCommandSolver = async (event, status) => {
                         // await dbUser.saveStatus(userId, '戰鬥回合:player');
                         output = {  //玩家選?
                             type: 'postback',
-                            text: '玩家先攻',
+                            label: '玩家先攻',
                             data: '戰鬥回合:player'
                         }
                         break;
@@ -119,7 +119,7 @@ const postbackCommandSolver = async (event, status) => {
                         // await dbUser.saveStatus(userId, '戰鬥回合:target');
                         output = {
                             type: 'postback',
-                            text: '對手先攻',
+                            label: '對手先攻',
                             data: '戰鬥回合:target'
                         }
                         break;
