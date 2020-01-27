@@ -271,8 +271,7 @@ const textCommandSolver = async (event, status) => {
                         }, {
                             type: 'text',
                             text: 'two'
-                        }
-                        ]
+                        }]
                         break;
                     case 'T':
                         output = life.selectTime('自律時間');

@@ -78,7 +78,7 @@ const postbackCommandSolver = async (event, status) => {
                 break;
             case '戰鬥先攻':
                 if (status == '猜拳監聽') {
-                    output = pk.firstMoveJudge(userId,str[1]);
+                    output = await pk.firstMoveJudge(userId, str[1]);
                 } else {
                     output = {
                         type: 'text',

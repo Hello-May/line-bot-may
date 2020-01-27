@@ -362,7 +362,7 @@ const firstMove = async (userId, tarMonsterId) => {
     }
 }
 
-const firstMoveJudge = (userId, player) => {
+const firstMoveJudge = async (userId, player) => {
     let target = opt[Math.round(Math.random() * (opt.length - 1))];
     let winner = checkWinner(player, target);
     if (winner == 0) {
