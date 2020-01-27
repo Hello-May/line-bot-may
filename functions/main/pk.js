@@ -5,6 +5,7 @@ const dbMonster = require('../dbController/monster');
 // const date = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
 const dbSkin = require('../dbController/skin');
 const dbBattle = require('../dbController/battle');
+const opt = ['剪刀', '石頭', '布'];
 
 Date.prototype.Format = function (fmt) { //author: meizz 
     var o = {
@@ -354,6 +355,7 @@ const firstMove = async (userId, tarMonsterId) => {
 }
 
 const firstMoveJudge = (player, target) => {
+    let target = opt[Math.round(Math.random() * (opt.length - 1))];
     let winner = checkWinner(player, target);
     switch (winner) {
         case 0:

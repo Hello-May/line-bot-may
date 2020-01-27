@@ -19,35 +19,6 @@ const dbMonster = require('./dbController/monster');
 const dbTask = require('./dbController/task');
 const dbHabit = require('./dbController/habit');
 const dbBattle = require('./dbController/battle');
-const opt = ['剪刀', '石頭', '布'];
-
-function checkWinner(player, target) {
-    let winner;
-    if (player == target) {
-        winner = 0;
-    }
-    if (player == opt[0] && target == opt[1]) {
-        winner = 2;
-    }
-    if (player == opt[0] && target == opt[2]) {
-        winner = 1;
-    }
-
-    if (player == opt[1] && target == opt[0]) {
-        winner = 1;
-    }
-    if (player == opt[1] && target == opt[2]) {
-        winner = 2;
-    }
-
-    if (player == opt[2] && target == opt[0]) {
-        winner = 2;
-    }
-    if (player == opt[2] && target == opt[1]) {
-        winner = 1;
-    }
-    return winner;
-}
 
 const postbackCommandSolver = async (event, status) => {
     let input = event.postback.data;
@@ -100,7 +71,6 @@ const postbackCommandSolver = async (event, status) => {
                 output = await pk.firstMove(userId, str[1]);    //tarMonster.monsterId
                 break;
             case '戰鬥先攻':
-                let target = opt[Math.round(Math.random() * (opt.length - 1))];
                 output = pk.firstMoveJudge(str[1], target);
                 // let winner = checkWinner(str[1], target);
                 // switch (winner) {
