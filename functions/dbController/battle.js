@@ -28,8 +28,14 @@ const round = async (userId, focus) => {
 
   //lucky可能爆擊
   //agi可能打兩次
+  console.log(target.hp+'<-----------------target.hp');
+  console.log( player.str+'<-----------------player.str');
+  console.log(player.hp+'<-----------------player.hp');
+  console.log(target.str+'<-----------------target.str');
   let newHp = (focus == 'player' ? (target.hp - player.str * 5) : (player.hp - target.str * 5));
   let passive = (focus == 'player' ? 'target' : 'player');
+  console.log(newHp+'<----------------newHp-');
+
   await Battle.update({
     hp: newHp,
   }, { where: { userId: userId, identity: passive } });
