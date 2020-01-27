@@ -119,12 +119,12 @@ const postbackCommandSolver = async (event, status) => {
                             //我方做動作之後(focus為對方) 我打對方的戰鬥訊息+對方的戰鬥訊息+我方動作視窗
                             // let outputTarget;
                             // if (str[2] == 'target') {
-                            output2 = {
+                            output = {
                                 type: 'text',
                                 text: j2
                             }
                             // }
-                            output = {
+                            output2 = {
                                 "type": "flex",
                                 "altText": "Flex Message",
                                 "contents": {
