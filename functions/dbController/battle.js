@@ -18,14 +18,7 @@ const round = async (userId, focus) => {
   let player = p[0];
   let target = t[0];
 
-  console.log(player.hp)
-  console.log(target.hp)
-  if(player.hp <= '0' ){
-    console.log('test')
-  }
-
   if (player.hp <= 0 || target.hp <= 0) {
-    console.log('into')
     await Battle.destroy({ where: { userId: userId } });
     if (player.hp <= 0) {
       return '對方勝'
@@ -35,9 +28,10 @@ const round = async (userId, focus) => {
 
   //lucky可能爆擊
   //agi可能打兩次
+  let newHp = (focus == 'player' ? (target.hp - player.str * 5) : (player.hp - target.str * 5));
   await Battle.update({
-    hp: (focus == 'player' ? (target.hp - player.str * 5) : (player.hp - target.str * 5)),
-  }, { where: { userId: userId, identity: focus } });
+    hp: newHp,
+  }, { where: { userId: userId, identity: (focus == 'player' ? 'target' : 'player') } });
 
   return focus + '造成' + (focus == 'player' ? 'target扣' + (player.str * 5) + '傷害' : 'player扣' + (target.str * 5) + '傷害')
 }
