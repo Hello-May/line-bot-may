@@ -6,6 +6,8 @@ const dbMonster = require('../dbController/monster');
 const dbSkin = require('../dbController/skin');
 const dbBattle = require('../dbController/battle');
 const opt = ['剪刀', '石頭', '布'];
+const pic = ['https://image.winudf.com/v2/image1/dHcubmV0Lml3b3JrLnNpZHNzY19zY3JlZW5fMV8xNTQ3Nzk5Mzk3XzAwMw/screen-1.jpg?fakeurl=1&type=.jpg', 'https://image.winudf.com/v2/image1/dHcubmV0Lml3b3JrLnNpZHNzY19zY3JlZW5fMl8xNTQ3Nzk5Mzk5XzAxNQ/screen-2.jpg?fakeurl=1&type=.jpg', 'https://image.winudf.com/v2/image1/dHcubmV0Lml3b3JrLnNpZHNzY19zY3JlZW5fM18xNTQ3Nzk5NDAwXzA0MQ/screen-3.jpg?fakeurl=1&type=.jpg'];
+
 
 Date.prototype.Format = function (fmt) { //author: meizz 
     var o = {
@@ -308,6 +310,12 @@ const firstMove = async (userId, tarMonsterId) => {
                 "contents": [
                     {
                         "type": "text",
+                        "text": "對手：" + target.name,
+                        "align": "center",
+                        "wrap": true
+                    },
+                    {
+                        "type": "text",
                         "text": "請猜拳決定先攻",
                         "align": "center",
                         "wrap": true
@@ -374,6 +382,40 @@ const firstMoveJudge = (player) => {
                                 "text": "平手，再來一次！",
                                 "align": "center",
                                 "wrap": true
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "margin": "lg",
+                                "contents": [
+                                    {
+                                        "type": "image",
+                                        "url": (player == opt[0] ? pic[0] : (player == opt[1] ? pic[1] : pic[2])),
+                                        "gravity": "center",
+                                        "size": "sm"
+                                    },
+                                    {
+                                        "type": "image",
+                                        "url": (target == opt[0] ? pic[0] : (target == opt[1] ? pic[1] : pic[2])),
+                                        "size": "sm"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "player",
+                                        "align": "center"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "target",
+                                        "align": "center"
+                                    }
+                                ]
                             }
                         ]
                     },
@@ -422,6 +464,46 @@ const firstMoveJudge = (player) => {
                 "contents": {
                     "type": "bubble",
                     "direction": "ltr",
+                    "body": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "margin": "lg",
+                                "contents": [
+                                    {
+                                        "type": "image",
+                                        "url": (player == opt[0] ? pic[0] : (player == opt[1] ? pic[1] : pic[2])),
+                                        "gravity": "center",
+                                        "size": "sm"
+                                    },
+                                    {
+                                        "type": "image",
+                                        "url": (target == opt[0] ? pic[0] : (target == opt[1] ? pic[1] : pic[2])),
+                                        "size": "sm"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "player",
+                                        "align": "center"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "target",
+                                        "align": "center"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
                     "footer": {
                         "type": "box",
                         "layout": "horizontal",
@@ -445,6 +527,46 @@ const firstMoveJudge = (player) => {
                 "contents": {
                     "type": "bubble",
                     "direction": "ltr",
+                    "body": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "margin": "lg",
+                                "contents": [
+                                    {
+                                        "type": "image",
+                                        "url": (player == opt[0] ? pic[0] : (player == opt[1] ? pic[1] : pic[2])),
+                                        "gravity": "center",
+                                        "size": "sm"
+                                    },
+                                    {
+                                        "type": "image",
+                                        "url": (target == opt[0] ? pic[0] : (target == opt[1] ? pic[1] : pic[2])),
+                                        "size": "sm"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "player",
+                                        "align": "center"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "target",
+                                        "align": "center"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
                     "footer": {
                         "type": "box",
                         "layout": "horizontal",
