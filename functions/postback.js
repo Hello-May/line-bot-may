@@ -188,12 +188,15 @@ const postbackCommandSolver = async (event, status) => {
                         }
                         break;
                     default:
-                        // output = {
+                        // output = {   //要一直監聽避免一直案
                         //     type: 'postback',
                         //     label: j2 + '\n下回合',
                         //     data: '戰鬥回合:' + (focus == 'player' ? 'target' : 'player')
                         // }
-                        output = {
+                        output = [{
+                            type: 'text',
+                            text: j2
+                        },{
                             "type": "flex",
                             "altText": "Flex Message",
                             "contents": {
@@ -207,14 +210,14 @@ const postbackCommandSolver = async (event, status) => {
                                             "type": "button",
                                             "action": {
                                                 "type": "postback",
-                                                "label": j2 + '\n下回合',
-                                                "data": '戰鬥回合:' + ( str[1]== 'player' ? 'target' : 'player')
+                                                "label": '\n下回合',
+                                                "data": '戰鬥回合:' + (str[1] == 'player' ? 'target' : 'player')
                                             }
                                         }
                                     ]
                                 }
                             }
-                        }
+                        }]
                         break;
                 }
                 break;
