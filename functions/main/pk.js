@@ -240,7 +240,7 @@ const firstMove = async (userId, tarMonsterId) => {
     let monster = await dbMonster.searchById(user.monsterId);
     let target = await dbMonster.searchById(tarMonsterId);
     let tarSkin = await dbSkin.searchByNameAndRandom(target.skin);
-    await dbBattle.create(userId, monster, targer);
+    await dbBattle.create(userId, monster, target);
 
     return {
         "type": "flex",
