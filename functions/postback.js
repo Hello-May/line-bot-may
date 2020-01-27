@@ -71,7 +71,7 @@ const postbackCommandSolver = async (event, status) => {
                 output = await pk.firstMove(userId, str[1]);    //tarMonster.monsterId
                 break;
             case '戰鬥先攻':
-                output = pk.firstMoveJudge(str[1], target);
+                output = pk.firstMoveJudge(str[1]);
                 // let winner = checkWinner(str[1], target);
                 // switch (winner) {
                 //     case 0:
