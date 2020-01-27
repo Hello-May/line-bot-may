@@ -69,7 +69,6 @@ async function createByRandom(level) {
     let tmp;
     for (let i = 0; i < point.length; i++) {
         r = Math.round((Math.random() * ((point.length - 1) - i) + i));
-        console.log('i=' + i + '  r=' + r);
         tmp = point[i];
         point[i] = point[r];
         point[r] = tmp;
