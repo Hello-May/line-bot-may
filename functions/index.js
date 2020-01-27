@@ -72,6 +72,15 @@ const textCommandSolver = async (event, status) => {
     } else if (status.includes(':')) {
         let str = status.split(":");
         switch (str[0]) {
+            case '戰鬥回合':    //強制逃跑
+                if (input == '逃跑') {
+                    output = {
+                        type: 'text',
+                        text: '[結束戰鬥] 逃跑成功'
+                    }
+                    await dbUser.saveStatus(userId, '正常');
+                }
+                break;
             case '新增象限監聽':
                 await dbTask.create(userId, str[1], input);
                 output = {
