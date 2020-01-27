@@ -208,7 +208,7 @@ const postbackCommandSolver = async (event, status) => {
                                             "action": {
                                                 "type": "postback",
                                                 "label": j2 + '\n下回合',
-                                                "data": '戰鬥回合:' + (focus == 'player' ? 'target' : 'player')
+                                                "data": '戰鬥回合:' + ( str[1]== 'player' ? 'target' : 'player')
                                             }
                                         }
                                     ]
