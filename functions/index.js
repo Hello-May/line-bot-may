@@ -48,7 +48,6 @@ const textCommandSolver = async (event, status) => {
     let tmpMonster;
     let tmpUser = await dbUser.searchById(userId);
     let habit = await dbHabit.getAll();
-    console.log('還是這?<-----------------------')
     for (let i = 0; i < habit.length; i++) {
         if (habit[i].secret == input && timeFn(date + ' ' + habit[i].time) < 30) {
             let stickno = Math.floor(Math.random() * sticker.length);
@@ -65,8 +64,6 @@ const textCommandSolver = async (event, status) => {
             }]);
         }
     }
-    console.log('還在八?<-----------------------')
-    console.log(status+'<-----------------status')
     if (input.includes('你') && input.includes('誰')) {
         output = {
             type: 'text',
@@ -76,7 +73,6 @@ const textCommandSolver = async (event, status) => {
         let str = status.split(":");
         switch (str[0]) {
             case '戰鬥監聽':    //強制逃跑
-            console.log('into<-------------------------')
                 if (input == '逃跑') {
                     output = {
                         type: 'text',
@@ -341,12 +337,10 @@ const textCommandSolver = async (event, status) => {
                 }
         }
     }
-    console.log('<------------------------------------')
-    console.log(output)
     if (input.includes("#")) {  //這樣會有缺點是非指令也會增加經驗值
         tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
-        await dbMonster.increaseEXP(tmpMonster.monsterId);
-        if (tmpMonster.exp == tmpMonster.level * 5) {   //判斷升等
+        await dbMonster.increaseEXP(tmpMonster);
+        if (tmpMonster.exp == tmpMonster.level * 5) {   //判斷升等 依據個性分配點數
             await dbMonster.levelUp(tmpMonster.monsterId);
             let output2 = {
                 type: 'text',

@@ -301,9 +301,9 @@ const postbackCommandSolver = async (event, status) => {
                 }
         }
     }
-    //判斷升等
+    //判斷升等  依據個性分配點數
     if (tmpMonster.exp == tmpMonster.level * 5) {
-        await dbMonster.levelUp(tmpMonster.monsterId);
+        await dbMonster.levelUp(tmpMonster);
         output2 = {
             type: 'text',
             text: '[LEVEL UP] ' + tmpMonster.name + '長大了!!'
