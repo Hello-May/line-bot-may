@@ -512,7 +512,7 @@ const firstMoveJudge = (player) => {
                         "action": {
                             "type": "postback",
                             "label": (winner == 1 ? "玩家先攻" : "對手先攻"),
-                            "data": "戰鬥回合:" + (winner == 1 ? "player" : "target")
+                            "data": "戰鬥回合:1:" + (winner == 1 ? "player" : "target")
                         }
                     }
                 ]

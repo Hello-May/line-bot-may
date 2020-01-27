@@ -150,6 +150,8 @@ const textCommandSolver = async (event, status) => {
         }
     } else {
         switch (status) {
+            // case '猜拳監聽':
+            //     break;
             case '購買商品監聽':
                 if (input < 1 || input > 6) {
                     output = {
@@ -324,7 +326,7 @@ const textCommandSolver = async (event, status) => {
     if (input.includes("#")) {  //這樣會有缺點是非指令也會增加經驗值
         tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
         await dbMonster.increaseEXP(tmpMonster.monsterId);
-        if (tmpMonster.exp == tmpMonster.level * 5) {
+        if (tmpMonster.exp == tmpMonster.level * 5) {   //判斷升等
             await dbMonster.levelUp(tmpMonster.monsterId);
             let output2 = {
                 type: 'text',

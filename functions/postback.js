@@ -58,8 +58,6 @@ const postbackCommandSolver = async (event, status) => {
                 break;
             case '任務完成':
                 let tmpTask = await dbTask.searchByDesc(userId, str[1]);
-                // let tmpUser = await dbUser.searchById(userId);
-                // let tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
                 await dbMonster.saveCharacter(tmpMonster.monsterId, tmpTask.level); //怪物個性先直接存成任務象限
                 await dbTask.destroy(userId, str[1]);
                 output = {
@@ -68,70 +66,88 @@ const postbackCommandSolver = async (event, status) => {
                 }
                 break;
             case '戰鬥開始':
-                output = await pk.firstMove(userId, str[1]);    //tarMonster.monsterId
+                if (status != '正常') {
+                    output = {
+                        type: 'text',
+                        text: '請先輸入取消，以取消當前操作。'
+                    }
+                } else {
+                    await dbUser.saveStatus(userId, '猜拳監聽');
+                    output = await pk.firstMove(userId, str[1]);    //str[1]=tarMonster.monsterId
+                }
                 break;
             case '戰鬥先攻':
-                output = pk.firstMoveJudge(str[1]);
+                if (status == '猜拳監聽') {
+                    output = pk.firstMoveJudge(str[1]);
+                } else {
+                    output = {
+                        type: 'text',
+                        text: '無效'
+                    }
+                }
                 break;
             case '戰鬥回合':
-                //如果有一方血沒了，改變狀態為正常，回傳勝利訊息及增加經驗等獎勵
-                //要繼續打call dbBattle的函式，傳userId和目前攻擊的人是誰，傳進去抓battle的兩隻比對
-                let j2 = await dbBattle.round(userId, str[1]);
-                console.log(j2 + '<--------------')
-                switch (j2) {
-                    case '對方勝':
-                        output = {
-                            type: 'text',
-                            text: '[戰鬥結束] ' + j2
-                        }
-                        break;
-                    case '玩家勝':
-                        //獎勵
-                        output = {
-                            type: 'text',
-                            text: '[戰鬥結束] ' + j2
-                        }
-                        break;
-                    default:
-                        // output = {   //要一直監聽避免一直案
-                        //     type: 'postback',
-                        //     label: j2 + '\n下回合',
-                        //     data: '戰鬥回合:' + (focus == 'player' ? 'target' : 'player')
-                        // }
-                        output = {
-                            "type": "flex",
-                            "altText": "Flex Message",
-                            "contents": {
-                                "type": "bubble",
-                                "direction": "ltr",
-                                "body": {
-                                    "type": "box",
-                                    "layout": "vertical",
-                                    "contents": [
-                                        {
-                                            "type": "text",
-                                            "text": j2,
-                                            "align": "center"
-                                        }
-                                    ]
-                                },
-                                "footer": {
-                                    "type": "box",
-                                    "layout": "horizontal",
-                                    "contents": [
-                                        {
-                                            "type": "button",
-                                            "action": {
-                                                "type": "postback",
-                                                "label": '\n下回合',
-                                                "data": '戰鬥回合:' + (str[1] == 'player' ? 'target' : 'player')
+                let str2 = status.split(":");
+                if (str2[1] != str[1] && str[1] != '1') {
+                    output = {
+                        type: 'text',
+                        text: '無效'
+                    }
+                } else {
+                    await dbUser.saveStatus(userId, '戰鬥中:' + (str[1] + 1)); //這裡應該監聽是否正確回合
+                    //如果有一方血沒了，改變狀態為正常，回傳勝利訊息及增加經驗等獎勵
+                    //要繼續打call dbBattle的函式，傳userId和目前攻擊的人是誰，傳進去抓battle的兩隻比對
+                    let j2 = await dbBattle.round(userId, str[2]);
+                    switch (j2) {
+                        case '對方勝':
+                            output = {
+                                type: 'text',
+                                text: '[戰鬥結束] ' + j2
+                            }
+                            break;
+                        case '玩家勝':
+                            //獎勵
+                            output = {
+                                type: 'text',
+                                text: '[戰鬥結束] ' + j2
+                            }
+                            break;
+                        default:  //要一直監聽避免一直案
+                            output = {
+                                "type": "flex",
+                                "altText": "Flex Message",
+                                "contents": {
+                                    "type": "bubble",
+                                    "direction": "ltr",
+                                    "body": {
+                                        "type": "box",
+                                        "layout": "vertical",
+                                        "contents": [
+                                            {
+                                                "type": "text",
+                                                "text": j2,
+                                                "align": "center"
                                             }
-                                        }
-                                    ]
+                                        ]
+                                    },
+                                    "footer": {
+                                        "type": "box",
+                                        "layout": "horizontal",
+                                        "contents": [
+                                            {
+                                                "type": "button",
+                                                "action": {
+                                                    "type": "postback",
+                                                    "label": '\n下回合',
+                                                    "data": '戰鬥回合:' + (str[1] + 1) + ':' + (str[2] == 'player' ? 'target' : 'player')
+                                                }
+                                            }
+                                        ]
+                                    }
                                 }
                             }
-                        }
-                        break;
+                            break;
+                    }
                 }
                 break;
             case '修改自律監聽':
