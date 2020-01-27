@@ -146,7 +146,7 @@ const postbackCommandSolver = async (event, status) => {
                     default:
                         output = {
                             type: 'postback',
-                            text: j2,
+                            label: j2+'\n下回合',
                             data: '戰鬥回合:' + (focus == 'player' ? 'target' : 'player')
                         }
                         break;
