@@ -265,13 +265,23 @@ const textCommandSolver = async (event, status) => {
                         }
                         break;
                     case '回傳兩個':
-                        output = [{
+                        output =[{
                             type: 'text',
-                            text: 'one'
+                            text: '測試'
                         }, {
-                            type: 'text',
-                            text: 'two'
+                            id: '325708',
+                            type: 'sticker',
+                            packageId: '1',
+                            stickerId: '1',
+                            stickerResourceType: 'STATIC'
                         }]
+                        // output = [{
+                        //     type: 'text',
+                        //     text: 'one'
+                        // }, {
+                        //     type: 'text',
+                        //     text: 'two'
+                        // }]
                         break;
                     case 'T':
                         output = life.selectTime('自律時間');
