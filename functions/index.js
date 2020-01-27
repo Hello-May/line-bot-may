@@ -268,7 +268,7 @@ const textCommandSolver = async (event, status) => {
                         output = life.selectTime('自律時間');
                         break;
                     case 'P':
-                        output = lineNotify.test(); //paint
+                        output = lineNotify.test();
                         break;
                     case '嗨':
                         output = main.test(event);
@@ -334,9 +334,8 @@ const textCommandSolver = async (event, status) => {
             }
             return clientBot.replyMessage(event.replyToken, [output, output2]);
         }
-    } else {
-        return clientBot.replyMessage(event.replyToken, output);
     }
+    return clientBot.replyMessage(event.replyToken, output);
 }
 
 const imgCommandSolver = (event) => {
