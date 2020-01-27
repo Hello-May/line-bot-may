@@ -22,6 +22,34 @@ Date.prototype.Format = function (fmt) { //author: meizz
     return fmt;
 }
 
+function checkWinner(player, target) {
+    let winner;
+    if (player == target) {
+        winner = 0;
+    }
+    if (player == opt[0] && target == opt[1]) {
+        winner = 2;
+    }
+    if (player == opt[0] && target == opt[2]) {
+        winner = 1;
+    }
+
+    if (player == opt[1] && target == opt[0]) {
+        winner = 1;
+    }
+    if (player == opt[1] && target == opt[2]) {
+        winner = 2;
+    }
+
+    if (player == opt[2] && target == opt[0]) {
+        winner = 2;
+    }
+    if (player == opt[2] && target == opt[1]) {
+        winner = 1;
+    }
+    return winner;
+}
+
 async function genByTarget(target) {
     let output = [];
     let skin;
@@ -325,62 +353,112 @@ const firstMove = async (userId, tarMonsterId) => {
     }
 }
 
-const firstMoveAgain = () => {
-    return {
-        "type": "flex",
-        "altText": "Flex Message",
-        "contents": {
-            "type": "bubble",
-            "direction": "ltr",
-            "body": {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                    {
-                        "type": "text",
-                        "text": "平手，再來一次！",
-                        "align": "center",
-                        "wrap": true
+const firstMoveJudge = (player, target) => {
+    let winner = checkWinner(player, target);
+    switch (winner) {
+        case 0:
+            return {
+                "type": "flex",
+                "altText": "Flex Message",
+                "contents": {
+                    "type": "bubble",
+                    "direction": "ltr",
+                    "body": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "平手，再來一次！",
+                                "align": "center",
+                                "wrap": true
+                            }
+                        ]
+                    },
+                    "footer": {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                            {
+                                "type": "button",
+                                "action": {
+                                    "type": "postback",
+                                    "label": "剪刀",
+                                    "data": "戰鬥先攻:剪刀"
+                                }
+                            },
+                            {
+                                "type": "separator"
+                            },
+                            {
+                                "type": "button",
+                                "action": {
+                                    "type": "postback",
+                                    "label": "石頭",
+                                    "data": "戰鬥先攻:石頭"
+                                }
+                            },
+                            {
+                                "type": "separator"
+                            },
+                            {
+                                "type": "button",
+                                "action": {
+                                    "type": "postback",
+                                    "label": "布",
+                                    "data": "戰鬥先攻:布"
+                                }
+                            }
+                        ]
                     }
-                ]
-            },
-            "footer": {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                    {
-                        "type": "button",
-                        "action": {
-                            "type": "postback",
-                            "label": "剪刀",
-                            "data": "戰鬥先攻:剪刀"
-                        }
-                    },
-                    {
-                        "type": "separator"
-                    },
-                    {
-                        "type": "button",
-                        "action": {
-                            "type": "postback",
-                            "label": "石頭",
-                            "data": "戰鬥先攻:石頭"
-                        }
-                    },
-                    {
-                        "type": "separator"
-                    },
-                    {
-                        "type": "button",
-                        "action": {
-                            "type": "postback",
-                            "label": "布",
-                            "data": "戰鬥先攻:布"
-                        }
-                    }
-                ]
+                }
             }
-        }
+        case 1:
+            return {
+                "type": "flex",
+                "altText": "Flex Message",
+                "contents": {
+                    "type": "bubble",
+                    "direction": "ltr",
+                    "footer": {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                            {
+                                "type": "button",
+                                "action": {
+                                    "type": "postback",
+                                    "label": "玩家先攻",
+                                    "data": "戰鬥回合:player"
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        case 2:
+            return {
+                "type": "flex",
+                "altText": "Flex Message",
+                "contents": {
+                    "type": "bubble",
+                    "direction": "ltr",
+                    "footer": {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                            {
+                                "type": "button",
+                                "action": {
+                                    "type": "postback",
+                                    "label": "對手先攻",
+                                    "data": "戰鬥回合:target"
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
     }
 }
 
@@ -388,5 +466,5 @@ module.exports = {
     call,
     target,
     firstMove,
-    firstMoveAgain
+    firstMoveJudge
 }

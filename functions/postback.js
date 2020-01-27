@@ -101,73 +101,74 @@ const postbackCommandSolver = async (event, status) => {
                 break;
             case '戰鬥先攻':
                 let target = opt[Math.round(Math.random() * (opt.length - 1))];
-                let winner = checkWinner(str[1], target);
-                switch (winner) {
-                    case 0:
-                        output = pk.firstMoveAgain();
-                        break;
-                    case 1:
-                        //自動戰?
-                        // await dbUser.saveStatus(userId, '戰鬥回合:player');
-                        // output = {  //玩家選?
-                        //     type: 'postback',
-                        //     label: '玩家先攻',
-                        //     data: '戰鬥回合:player'
-                        // }
-                        output = {
-                            "type": "flex",
-                            "altText": "Flex Message",
-                            "contents": {
-                                "type": "bubble",
-                                "direction": "ltr",
-                                "footer": {
-                                    "type": "box",
-                                    "layout": "horizontal",
-                                    "contents": [
-                                        {
-                                            "type": "button",
-                                            "action": {
-                                                "type": "postback",
-                                                "label": "玩家先攻",
-                                                "data": "戰鬥回合:player"
-                                            }
-                                        }
-                                    ]
-                                }
-                            }
-                        }
-                        break;
-                    case 2:
-                        // await dbUser.saveStatus(userId, '戰鬥回合:target');
-                        // output = {
-                        //     type: 'postback',
-                        //     label: '對手先攻',
-                        //     data: '戰鬥回合:target'
-                        // }
-                        output = {
-                            "type": "flex",
-                            "altText": "Flex Message",
-                            "contents": {
-                                "type": "bubble",
-                                "direction": "ltr",
-                                "footer": {
-                                    "type": "box",
-                                    "layout": "horizontal",
-                                    "contents": [
-                                        {
-                                            "type": "button",
-                                            "action": {
-                                                "type": "postback",
-                                                "label": "對手先攻",
-                                                "data": "戰鬥回合:target"
-                                            }
-                                        }
-                                    ]
-                                }
-                            }
-                        }
-                        break;
-                }
+                output = pk.firstMoveJudge(str[1], target);
+                // let winner = checkWinner(str[1], target);
+                // switch (winner) {
+                //     case 0:
+                //         output = pk.firstMoveAgain();
+                //         break;
+                //     case 1:
+                //         //自動戰?
+                //         // await dbUser.saveStatus(userId, '戰鬥回合:player');
+                //         // output = {  //玩家選?
+                //         //     type: 'postback',
+                //         //     label: '玩家先攻',
+                //         //     data: '戰鬥回合:player'
+                //         // }
+                //         output = {
+                //             "type": "flex",
+                //             "altText": "Flex Message",
+                //             "contents": {
+                //                 "type": "bubble",
+                //                 "direction": "ltr",
+                //                 "footer": {
+                //                     "type": "box",
+                //                     "layout": "horizontal",
+                //                     "contents": [
+                //                         {
+                //                             "type": "button",
+                //                             "action": {
+                //                                 "type": "postback",
+                //                                 "label": "玩家先攻",
+                //                                 "data": "戰鬥回合:player"
+                //                             }
+                //                         }
+                //                     ]
+                //                 }
+                //             }
+                //         }
+                //         break;
+                //     case 2:
+                //         // await dbUser.saveStatus(userId, '戰鬥回合:target');
+                //         // output = {
+                //         //     type: 'postback',
+                //         //     label: '對手先攻',
+                //         //     data: '戰鬥回合:target'
+                //         // }
+                //         output = {
+                //             "type": "flex",
+                //             "altText": "Flex Message",
+                //             "contents": {
+                //                 "type": "bubble",
+                //                 "direction": "ltr",
+                //                 "footer": {
+                //                     "type": "box",
+                //                     "layout": "horizontal",
+                //                     "contents": [
+                //                         {
+                //                             "type": "button",
+                //                             "action": {
+                //                                 "type": "postback",
+                //                                 "label": "對手先攻",
+                //                                 "data": "戰鬥回合:target"
+                //                             }
+                //                         }
+                //                     ]
+                //                 }
+                //             }
+                //         }
+                //         break;
+                // }
                 break;
             case '戰鬥回合':
                 //如果有一方血沒了，改變狀態為正常，回傳勝利訊息及增加經驗等獎勵
