@@ -29,11 +29,12 @@ const round = async (userId, focus) => {
   //lucky可能爆擊
   //agi可能打兩次
   let newHp = (focus == 'player' ? (target.hp - player.str * 5) : (player.hp - target.str * 5));
+  let passive = (focus == 'player' ? 'target' : 'player');
   await Battle.update({
     hp: newHp,
-  }, { where: { userId: userId, identity: (focus == 'player' ? 'target' : 'player') } });
+  }, { where: { userId: userId, identity: passive } });
 
-  return focus + '造成' + (focus == 'player' ? 'target扣' + (player.str * 5) + '傷害' : 'player扣' + (target.str * 5) + '傷害')
+  return focus + '造成' + passive + '扣' + (focus == 'player' ? (player.str * 5) + '傷害' : (target.str * 5) + '傷害')
 }
 
 //接受到userId，抓battle的兩隻出來比對數值，先判斷是不是某方死了，看目前是誰攻擊，進行回合後扣血，再存進去
