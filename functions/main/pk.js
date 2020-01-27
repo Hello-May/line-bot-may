@@ -365,224 +365,159 @@ const firstMove = async (userId, tarMonsterId) => {
 const firstMoveJudge = (player) => {
     let target = opt[Math.round(Math.random() * (opt.length - 1))];
     let winner = checkWinner(player, target);
-    switch (winner) {
-        case 0:
-            return {
-                "type": "flex",
-                "altText": "Flex Message",
-                "contents": {
-                    "type": "bubble",
-                    "direction": "ltr",
-                    "body": {
+    if (winner == 0) {
+        return {
+            "type": "flex",
+            "altText": "Flex Message",
+            "contents": {
+                "type": "bubble",
+                "direction": "ltr",
+                "body": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "text": "平手，再來一次！",
+                            "align": "center",
+                            "wrap": true
+                        },
+                        {
+                            "type": "box",
+                            "layout": "horizontal",
+                            "margin": "lg",
+                            "contents": [
+                                {
+                                    "type": "image",
+                                    "url": (player == opt[0] ? pic[0] : (player == opt[1] ? pic[1] : pic[2])),
+                                    "gravity": "center",
+                                    "size": "xxs"
+                                },
+                                {
+                                    "type": "image",
+                                    "url": (target == opt[0] ? pic[0] : (target == opt[1] ? pic[1] : pic[2])),
+                                    "size": "xxs"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "box",
+                            "layout": "horizontal",
+                            "contents": [
+                                {
+                                    "type": "text",
+                                    "text": "player",
+                                    "align": "center"
+                                },
+                                {
+                                    "type": "text",
+                                    "text": "target",
+                                    "align": "center"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "footer": {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                        {
+                            "type": "button",
+                            "action": {
+                                "type": "postback",
+                                "label": "剪刀",
+                                "data": "戰鬥先攻:剪刀"
+                            }
+                        },
+                        {
+                            "type": "separator"
+                        },
+                        {
+                            "type": "button",
+                            "action": {
+                                "type": "postback",
+                                "label": "石頭",
+                                "data": "戰鬥先攻:石頭"
+                            }
+                        },
+                        {
+                            "type": "separator"
+                        },
+                        {
+                            "type": "button",
+                            "action": {
+                                "type": "postback",
+                                "label": "布",
+                                "data": "戰鬥先攻:布"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    }
+    return {
+        "type": "flex",
+        "altText": "Flex Message",
+        "contents": {
+            "type": "bubble",
+            "direction": "ltr",
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
                         "type": "box",
-                        "layout": "vertical",
+                        "layout": "horizontal",
+                        "margin": "lg",
+                        "contents": [
+                            {
+                                "type": "image",
+                                "url": (player == opt[0] ? pic[0] : (player == opt[1] ? pic[1] : pic[2])),
+                                "gravity": "center",
+                                "size": "xxs"
+                            },
+                            {
+                                "type": "image",
+                                "url": (target == opt[0] ? pic[0] : (target == opt[1] ? pic[1] : pic[2])),
+                                "size": "xxs"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
                         "contents": [
                             {
                                 "type": "text",
-                                "text": "平手，再來一次！",
-                                "align": "center",
-                                "wrap": true
+                                "text": "player",
+                                "align": "center"
                             },
                             {
-                                "type": "box",
-                                "layout": "horizontal",
-                                "margin": "lg",
-                                "contents": [
-                                    {
-                                        "type": "image",
-                                        "url": (player == opt[0] ? pic[0] : (player == opt[1] ? pic[1] : pic[2])),
-                                        "gravity": "center",
-                                        "size": "sm"
-                                    },
-                                    {
-                                        "type": "image",
-                                        "url": (target == opt[0] ? pic[0] : (target == opt[1] ? pic[1] : pic[2])),
-                                        "size": "sm"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "box",
-                                "layout": "horizontal",
-                                "contents": [
-                                    {
-                                        "type": "text",
-                                        "text": "player",
-                                        "align": "center"
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": "target",
-                                        "align": "center"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    "footer": {
-                        "type": "box",
-                        "layout": "horizontal",
-                        "contents": [
-                            {
-                                "type": "button",
-                                "action": {
-                                    "type": "postback",
-                                    "label": "剪刀",
-                                    "data": "戰鬥先攻:剪刀"
-                                }
-                            },
-                            {
-                                "type": "separator"
-                            },
-                            {
-                                "type": "button",
-                                "action": {
-                                    "type": "postback",
-                                    "label": "石頭",
-                                    "data": "戰鬥先攻:石頭"
-                                }
-                            },
-                            {
-                                "type": "separator"
-                            },
-                            {
-                                "type": "button",
-                                "action": {
-                                    "type": "postback",
-                                    "label": "布",
-                                    "data": "戰鬥先攻:布"
-                                }
+                                "type": "text",
+                                "text": "target",
+                                "align": "center"
                             }
                         ]
                     }
-                }
-            }
-        case 1:
-            return {
-                "type": "flex",
-                "altText": "Flex Message",
-                "contents": {
-                    "type": "bubble",
-                    "direction": "ltr",
-                    "body": {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "box",
-                                "layout": "horizontal",
-                                "margin": "lg",
-                                "contents": [
-                                    {
-                                        "type": "image",
-                                        "url": (player == opt[0] ? pic[0] : (player == opt[1] ? pic[1] : pic[2])),
-                                        "gravity": "center",
-                                        "size": "sm"
-                                    },
-                                    {
-                                        "type": "image",
-                                        "url": (target == opt[0] ? pic[0] : (target == opt[1] ? pic[1] : pic[2])),
-                                        "size": "sm"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "box",
-                                "layout": "horizontal",
-                                "contents": [
-                                    {
-                                        "type": "text",
-                                        "text": "player",
-                                        "align": "center"
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": "target",
-                                        "align": "center"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    "footer": {
-                        "type": "box",
-                        "layout": "horizontal",
-                        "contents": [
-                            {
-                                "type": "button",
-                                "action": {
-                                    "type": "postback",
-                                    "label": "玩家先攻",
-                                    "data": "戰鬥回合:player"
-                                }
-                            }
-                        ]
+                ]
+            },
+            "footer": {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "button",
+                        "action": {
+                            "type": "postback",
+                            "label": (winner == 1 ? "玩家先攻" : "對手先攻"),
+                            "data": "戰鬥回合:" + (winner == 1 ? "player" : "target")
+                        }
                     }
-                }
+                ]
             }
-        case 2:
-            return {
-                "type": "flex",
-                "altText": "Flex Message",
-                "contents": {
-                    "type": "bubble",
-                    "direction": "ltr",
-                    "body": {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "box",
-                                "layout": "horizontal",
-                                "margin": "lg",
-                                "contents": [
-                                    {
-                                        "type": "image",
-                                        "url": (player == opt[0] ? pic[0] : (player == opt[1] ? pic[1] : pic[2])),
-                                        "gravity": "center",
-                                        "size": "sm"
-                                    },
-                                    {
-                                        "type": "image",
-                                        "url": (target == opt[0] ? pic[0] : (target == opt[1] ? pic[1] : pic[2])),
-                                        "size": "sm"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "box",
-                                "layout": "horizontal",
-                                "contents": [
-                                    {
-                                        "type": "text",
-                                        "text": "player",
-                                        "align": "center"
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": "target",
-                                        "align": "center"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    "footer": {
-                        "type": "box",
-                        "layout": "horizontal",
-                        "contents": [
-                            {
-                                "type": "button",
-                                "action": {
-                                    "type": "postback",
-                                    "label": "對手先攻",
-                                    "data": "戰鬥回合:target"
-                                }
-                            }
-                        ]
-                    }
-                }
-            }
+        }
     }
 }
 
