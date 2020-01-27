@@ -47,7 +47,7 @@ const saveId = async (event) => {
             userId: id,
             token: 'null',
             monsterId: monster[monster.length-1].monsterId,
-            status: 'null',
+            status: '正常',
             createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
             updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
         });
