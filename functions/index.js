@@ -337,13 +337,12 @@ const textCommandSolver = async (event, status) => {
                 }
         }
     }
-    console.log('<-------------------------------')
-    console.log(output)
+    
     if (input.includes("#")) {  //這樣會有缺點是非指令也會增加經驗值
         tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
-        await dbMonster.increaseEXP(tmpMonster);
+        await dbMonster.increaseEXP(tmpMonster.monsterId);
         if (tmpMonster.exp == tmpMonster.level * 5) {   //判斷升等 依據個性分配點數
-            await dbMonster.levelUp(tmpMonster.monsterId);
+            await dbMonster.levelUp(tmpMonster);
             let output2 = {
                 type: 'text',
                 text: '[LEVEL UP] ' + tmpMonster.name + '長大了!!'
