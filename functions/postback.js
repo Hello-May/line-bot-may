@@ -66,7 +66,7 @@ const postbackCommandSolver = async (event, status) => {
                 }
                 break;
             case '戰鬥開始':
-                if (status != '正常') {
+                if (status != '正常' || status != null) {
                     output = {
                         type: 'text',
                         text: '請先輸入取消，以取消當前操作。'
