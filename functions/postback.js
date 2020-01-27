@@ -109,18 +109,62 @@ const postbackCommandSolver = async (event, status) => {
                     case 1:
                         //自動戰?
                         // await dbUser.saveStatus(userId, '戰鬥回合:player');
-                        output = {  //玩家選?
-                            type: 'postback',
-                            label: '玩家先攻',
-                            data: '戰鬥回合:player'
+                        // output = {  //玩家選?
+                        //     type: 'postback',
+                        //     label: '玩家先攻',
+                        //     data: '戰鬥回合:player'
+                        // }
+                        output = {
+                            "type": "flex",
+                            "altText": "Flex Message",
+                            "contents": {
+                                "type": "bubble",
+                                "direction": "ltr",
+                                "footer": {
+                                    "type": "box",
+                                    "layout": "horizontal",
+                                    "contents": [
+                                        {
+                                            "type": "button",
+                                            "action": {
+                                                "type": "postback",
+                                                "label": "玩家先攻",
+                                                "data": "戰鬥回合:player"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
                         }
                         break;
                     case 2:
                         // await dbUser.saveStatus(userId, '戰鬥回合:target');
+                        // output = {
+                        //     type: 'postback',
+                        //     label: '對手先攻',
+                        //     data: '戰鬥回合:target'
+                        // }
                         output = {
-                            type: 'postback',
-                            label: '對手先攻',
-                            data: '戰鬥回合:target'
+                            "type": "flex",
+                            "altText": "Flex Message",
+                            "contents": {
+                                "type": "bubble",
+                                "direction": "ltr",
+                                "footer": {
+                                    "type": "box",
+                                    "layout": "horizontal",
+                                    "contents": [
+                                        {
+                                            "type": "button",
+                                            "action": {
+                                                "type": "postback",
+                                                "label": "對手先攻",
+                                                "data": "戰鬥回合:target"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
                         }
                         break;
                 }
@@ -144,10 +188,32 @@ const postbackCommandSolver = async (event, status) => {
                         }
                         break;
                     default:
+                        // output = {
+                        //     type: 'postback',
+                        //     label: j2 + '\n下回合',
+                        //     data: '戰鬥回合:' + (focus == 'player' ? 'target' : 'player')
+                        // }
                         output = {
-                            type: 'postback',
-                            label: j2+'\n下回合',
-                            data: '戰鬥回合:' + (focus == 'player' ? 'target' : 'player')
+                            "type": "flex",
+                            "altText": "Flex Message",
+                            "contents": {
+                                "type": "bubble",
+                                "direction": "ltr",
+                                "footer": {
+                                    "type": "box",
+                                    "layout": "horizontal",
+                                    "contents": [
+                                        {
+                                            "type": "button",
+                                            "action": {
+                                                "type": "postback",
+                                                "label": j2 + '\n下回合',
+                                                "data": '戰鬥回合:' + (focus == 'player' ? 'target' : 'player')
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
                         }
                         break;
                 }
