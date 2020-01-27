@@ -293,7 +293,7 @@ const textCommandSolver = async (event, status) => {
                         output = await task.call(event);
                         break;
                     case '#小怪獸':
-                        output = await monster.call(event);
+                        output = await monster.call(userId);
                         // output = monster.call(event).catch(err=>{console.log(err)});
                         break;
                     case '#戰鬥':

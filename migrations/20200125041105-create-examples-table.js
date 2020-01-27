@@ -188,6 +188,34 @@ module.exports = {
       }, {
         initialAutoIncrement: 1
       });
+      await queryInterface.createTable('battles', {
+        battleId: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+          primaryKey: true,
+          autoIncrement: true
+        },
+        userId: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
+        monsterId: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+        },
+        identity: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
+        hp: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+        },
+        createdAt: DataTypes.DATE,
+        updatedAt: DataTypes.DATE,
+      }, {
+        initialAutoIncrement: 1
+      });
       return Promise.resolve();
     } catch (e) {
       return Promise.reject(e);

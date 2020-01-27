@@ -48,63 +48,54 @@
 //         console.error('Unable to connect to the database:', err);
 //     });
 
-// const db = require('../models');
-// const { groups } = require("../models");
+const db = require('../models');
+const { monsters } = require("../models");
 
 // (async () => {
 //     // 搜尋多個例項
-//     const group = await groups.findAll({ where: { groupId: 'C53dba6bb007ff46457c28be90b10208c' } });
+//     const monster = await monsters.findAll({ where: { monsterId: 1 } });
 //     // 條件搜尋name = 'John Doe'
 //     // const user = await users.findByPk(1)
 
-//     console.log(group)
-//     if (group == '') {
+//     console.log(monster)
+//     console.log(JSON.stringify(monster))
+//     if (monster == '') {
 //         console.log('哈哈哈哈')
 //     }
-//     console.log(group[0].token);
-// console.log('--------------1-------------------')
-// console.log(user[4])
-// console.log('---------------2------------------')
-// console.log(user[4].id)
-// console.log('---------------3------------------')
-// console.log(user[4].createdAt)
-// console.log('----------------4-----------------')
-// console.log(user[4].updatedAt)
-
+//     console.log(monster[0].name);
 //     process.exit();
 // })()
 
 // const User = db.users;
-// const Group = db.groups;
 
-// const User = db.sequelize.define('users', {
-//     userId: {
-//         type: Sequelize.STRING,
-//         autoIncrement: true,
-//         primaryKey: true
-//     }
-// });
+const Sequelize = db.Sequelize;
 
-// User.create({
-//     force: true,
-//     userId: 'Utest777',
-//     token:'null',
-//     mosterId:'null',
-//     status: false,
-//     createdAt: new Date(),
-//     updatedAt: new Date()
-// });
+const Test = db.sequelize.define('tests', {
+    testId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true
+    },
+    text: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+    createdAt: Sequelize.DATE,
+    updatedAt: Sequelize.DATE,
+}, {
+    tableName: 'sayings',
+    // 以下兩個屬性是針對createAt、updateAt這兩個預設屬性的，timestamps是不使用，而underscored則是將createAt轉化為create_at
+    timestamps: true,
+    underscored: false,
+});
 
-// Group.create({
-//     force: true,
-//     groupId: 'Gtest777',
-//     token:'null',
-//     mosterId:'null',
-//     status: false,
-//     createdAt: new Date(),
-//     updatedAt: new Date()
-// });
-
+Test.create({
+    force: true,
+    text: '測試',
+    createdAt: new Date(),
+    updatedAt: new Date()
+});
 
 // User.sync({
 //     force: true
@@ -163,9 +154,9 @@
 
 // create();
 
-// const destroy = async (id, desc) => {
-//     await Task.destroy({ where: { userId: id, desc: desc } });
-// }
+const destroy = async (id, desc) => {
+    await Task.destroy({ where: { userId: id, desc: desc } });
+}
 
 // destroy('555','5566');
 
@@ -392,19 +383,19 @@ Date.prototype.Format = function (fmt) { //author: meizz
 // }
 // console.log(point);
 
-let c = 3;
-let target = [00, 11, 22, 33, 44, 55];
-let t = [];
-for (let i = 0; i < target.length; i++) {
-    t.push(i);
-}
-console.log(t);
+// let c = 3;
+// let target = [00, 11, 22, 33, 44, 55];
+// let t = [];
+// for (let i = 0; i < target.length; i++) {
+//     t.push(i);
+// }
+// console.log(t);
 
-for (let i = 0; i < c; i++) {
-    let r = Math.round(((Math.random() * ((t.length - 1) - i)) + i));
-    console.log('i=' + i + '  r=' + r);
-    let tmp = t[i];
-    t[i] = t[r];
-    t[r] = tmp;
-}
-console.log(t);
+// for (let i = 0; i < c; i++) {
+//     let r = Math.round(((Math.random() * ((t.length - 1) - i)) + i));
+//     console.log('i=' + i + '  r=' + r);
+//     let tmp = t[i];
+//     t[i] = t[r];
+//     t[r] = tmp;
+// }
+// console.log(t);

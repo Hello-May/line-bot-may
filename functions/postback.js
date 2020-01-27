@@ -18,6 +18,36 @@ const dbUser = require('./dbController/user');
 const dbMonster = require('./dbController/monster');
 const dbTask = require('./dbController/task');
 const dbHabit = require('./dbController/habit');
+const dbBattle = require('./dbController/battle');
+const opt = ['剪刀', '石頭', '布'];
+
+function checkWinner(player, target) {
+    let winner;
+    if (player == target) {
+        winner = 0;
+    }
+    if (player == opt[0] && target == opt[1]) {
+        winner = 2;
+    }
+    if (player == opt[0] && target == opt[2]) {
+        winner = 1;
+    }
+
+    if (player == opt[1] && target == opt[0]) {
+        winner = 1;
+    }
+    if (player == opt[1] && target == opt[2]) {
+        winner = 2;
+    }
+
+    if (player == opt[2] && target == opt[0]) {
+        winner = 2;
+    }
+    if (player == opt[2] && target == opt[1]) {
+        winner = 1;
+    }
+    return winner;
+}
 
 const postbackCommandSolver = async (event, status) => {
     let input = event.postback.data;
@@ -66,10 +96,60 @@ const postbackCommandSolver = async (event, status) => {
                     text: '[已完成任務] ' + tmpMonster.name + '更有主見了~'
                 }
                 break;
-            case '戰鬥':
-                output = {
-                    type: 'text',
-                    text: input
+            case '戰鬥開始':
+                output = await pk.firstMove(userId, str[1]);    //tarMonster.monsterId
+                break;
+            case '戰鬥先攻':
+                let target = opt[Math.round(Math.random() * (opt.length - 1))];
+                let winner = checkWinner(str[1], target);
+                switch (winner) {
+                    case 0:
+                        output = pk.firstMoveAgain();
+                        break;
+                    case 1:
+                        //自動戰?
+                        // await dbUser.saveStatus(userId, '戰鬥回合:player');
+                        output = {  //玩家選?
+                            type: 'postback',
+                            text: '玩家先攻',
+                            data: '戰鬥回合:player'
+                        }
+                        break;
+                    case 2:
+                        // await dbUser.saveStatus(userId, '戰鬥回合:target');
+                        output = {
+                            type: 'postback',
+                            text: '對手先攻',
+                            data: '戰鬥回合:target'
+                        }
+                        break;
+                }
+                break;
+            case '戰鬥回合':
+                //如果有一方血沒了，改變狀態為正常，回傳勝利訊息及增加經驗等獎勵
+                //要繼續打call dbBattle的函式，傳userId和目前攻擊的人是誰，傳進去抓battle的兩隻比對
+                let j = await dbBattle.round(userId, str[1]);
+                switch (j) {
+                    case '對方勝':
+                        output = {
+                            type: 'text',
+                            text: '[戰鬥結束] ' + j
+                        }
+                        break;
+                    case '玩家勝':
+                        //獎勵
+                        output = {
+                            type: 'text',
+                            text: '[戰鬥結束] ' + j
+                        }
+                        break;
+                    default:
+                        output = {
+                            type: 'postback',
+                            text: j,
+                            data: '戰鬥回合:' + (focus == 'player' ? 'target' : 'player')
+                        }
+                        break;
                 }
                 break;
             case '修改自律監聽':

@@ -19,12 +19,12 @@ Date.prototype.Format = function (fmt) { //author: meizz
     return fmt;
 }
 
-const call = async (event) => {
+const call = async (userId) => {
     let user;
     let monster;
     let saying;
     let skin;
-    let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
+    // let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
     try {
         user = await dbUser.searchById(userId);
         monster = await dbMonster.searchById(user.monsterId);

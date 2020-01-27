@@ -4,6 +4,7 @@ const dbMonster = require('../dbController/monster');
 // const character = ['行動派', '嚴謹派', '領導派', '樂天派', '懵懂無知'];
 // const date = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
 const dbSkin = require('../dbController/skin');
+const dbBattle = require('../dbController/battle');
 
 Date.prototype.Format = function (fmt) { //author: meizz 
     var o = {
@@ -122,7 +123,7 @@ async function genByTarget(target) {
                         "action": {
                             "type": "postback",
                             "label": "戰鬥",
-                            "data": "戰鬥:" + target[i].monsterId,
+                            "data": "戰鬥開始:" + target[i].monsterId,
                         }
                     }
                 ]
@@ -142,13 +143,13 @@ const target = async (event) => {
     try {
         user = await dbUser.searchById(userId);
         monster = await dbMonster.searchById(user.monsterId);
-        target = await dbMonster.searchByRandomAndLevel(monster.level,3);
+        target = await dbMonster.searchByRandomAndLevel(monster.level, 3);
         output = await genByTarget(target);
         // console.log("monster:" + JSON.stringify(monster));
     } catch (err) {
         console.log(err);
     }
-    
+
     return {
         "type": "flex",
         "altText": "Flex Message",
@@ -234,7 +235,158 @@ const call = (event) => {
     }
 }
 
+const firstMove = async (userId, tarMonsterId) => {
+    let user = await dbUser.searchById(userId);
+    let monster = await dbMonster.searchById(user.monsterId);
+    let target = await dbMonster.searchById(tarMonsterId);
+    let tarSkin = await dbSkin.searchByNameAndRandom(target.skin);
+    await dbBattle.create(userId, monster, targer);
+
+    return {
+        "type": "flex",
+        "altText": "Flex Message",
+        "contents": {
+            "type": "bubble",
+            "direction": "ltr",
+            "header": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "戰鬥開始",
+                        "size": "lg",
+                        "align": "center",
+                        "weight": "bold"
+                    }
+                ]
+            },
+            "hero": {
+                "type": "image",
+                "url": tarSkin.image,
+                "size": "lg",
+                "aspectRatio": "1.51:1",
+                "aspectMode": "fit",
+                "action": {
+                    "type": "postback",
+                    "label": "叫聲",
+                    "data": tarSkin.say
+                }
+            },
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "請猜拳決定先攻",
+                        "align": "center",
+                        "wrap": true
+                    }
+                ]
+            },
+            "footer": {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "button",
+                        "action": {
+                            "type": "postback",
+                            "label": "剪刀",
+                            "data": "戰鬥先攻:剪刀"
+                        }
+                    },
+                    {
+                        "type": "separator"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                            "type": "postback",
+                            "label": "石頭",
+                            "data": "戰鬥先攻:石頭"
+                        }
+                    },
+                    {
+                        "type": "separator"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                            "type": "postback",
+                            "label": "布",
+                            "data": "戰鬥先攻:布"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
+
+const firstMoveAgain = () => {
+    return {
+        "type": "flex",
+        "altText": "Flex Message",
+        "contents": {
+            "type": "bubble",
+            "direction": "ltr",
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "平手，再來一次！",
+                        "align": "center",
+                        "wrap": true
+                    }
+                ]
+            },
+            "footer": {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "button",
+                        "action": {
+                            "type": "postback",
+                            "label": "剪刀",
+                            "data": "戰鬥先攻:剪刀"
+                        }
+                    },
+                    {
+                        "type": "separator"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                            "type": "postback",
+                            "label": "石頭",
+                            "data": "戰鬥先攻:石頭"
+                        }
+                    },
+                    {
+                        "type": "separator"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                            "type": "postback",
+                            "label": "布",
+                            "data": "戰鬥先攻:布"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
+
 module.exports = {
     call,
-    target
+    target,
+    firstMove,
+    firstMoveAgain
 }
