@@ -79,6 +79,11 @@ const textCommandSolver = async (event, status) => {
                         text: '[結束戰鬥] 逃跑成功'
                     }
                     await dbUser.saveStatus(userId, '正常');
+                } else {
+                    output = {
+                        type: 'text',
+                        text: '戰鬥還未結束'
+                    }
                 }
                 break;
             case '新增象限監聽':
@@ -332,6 +337,8 @@ const textCommandSolver = async (event, status) => {
                 }
         }
     }
+    console.log('<------------------------------------')
+    console.log(output)
     if (input.includes("#")) {  //這樣會有缺點是非指令也會增加經驗值
         tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
         await dbMonster.increaseEXP(tmpMonster.monsterId);
