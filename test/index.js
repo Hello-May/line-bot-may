@@ -48,8 +48,8 @@
 //         console.error('Unable to connect to the database:', err);
 //     });
 
-const db = require('../models');
-const { monsters } = require("../models");
+// const db = require('../models');
+// const { monsters } = require("../models");
 
 // (async () => {
 //     // 搜尋多個例項
@@ -68,34 +68,34 @@ const { monsters } = require("../models");
 
 // const User = db.users;
 
-const Sequelize = db.Sequelize;
+// const Sequelize = db.Sequelize;
 
-const Test = db.sequelize.define('tests', {
-    testId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true
-    },
-    text: {
-        type: Sequelize.STRING,
-        allowNull: false,
-    },
-    createdAt: Sequelize.DATE,
-    updatedAt: Sequelize.DATE,
-}, {
-    tableName: 'sayings',
-    // 以下兩個屬性是針對createAt、updateAt這兩個預設屬性的，timestamps是不使用，而underscored則是將createAt轉化為create_at
-    timestamps: true,
-    underscored: false,
-});
+// const Test = db.sequelize.define('tests', {
+//     testId: {
+//         type: Sequelize.INTEGER,
+//         allowNull: false,
+//         autoIncrement: true,
+//         primaryKey: true
+//     },
+//     text: {
+//         type: Sequelize.STRING,
+//         allowNull: false,
+//     },
+//     createdAt: Sequelize.DATE,
+//     updatedAt: Sequelize.DATE,
+// }, {
+//     tableName: 'sayings',
+//     // 以下兩個屬性是針對createAt、updateAt這兩個預設屬性的，timestamps是不使用，而underscored則是將createAt轉化為create_at
+//     timestamps: true,
+//     underscored: false,
+// });
 
-Test.create({
-    force: true,
-    text: '測試',
-    createdAt: new Date(),
-    updatedAt: new Date()
-});
+// Test.create({
+//     force: true,
+//     text: '測試',
+//     createdAt: new Date(),
+//     updatedAt: new Date()
+// });
 
 // User.sync({
 //     force: true
@@ -399,3 +399,9 @@ Date.prototype.Format = function (fmt) { //author: meizz
 //     t[r] = tmp;
 // }
 // console.log(t);
+
+let i='ooo'
+if (i != undefined) {
+    console.log('哈');
+}
+console.log(i);

@@ -23,6 +23,7 @@ const dbBattle = require('./dbController/battle');
 const postbackCommandSolver = async (event, status) => {
     let input = event.postback.data;
     let output;
+    let output2;
     let str;
     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
     //↓增加經驗值
@@ -113,23 +114,33 @@ const postbackCommandSolver = async (event, status) => {
                             }
                             break;
                         default:  //要一直監聽避免一直案
+                            //如果是對方先攻 那對方先打 跳出戰鬥訊息+我方動作視窗
+                            //如果是我方先攻 跳出戰鬥訊息+我方動作視窗
+                            //我方做動作之後(focus為對方) 我打對方的戰鬥訊息+對方的戰鬥訊息+我方動作視窗
+                            // let outputTarget;
+                            // if (str[2] == 'target') {
+                            output2 = {
+                                type: 'text',
+                                text: j2
+                            }
+                            // }
                             output = {
                                 "type": "flex",
                                 "altText": "Flex Message",
                                 "contents": {
                                     "type": "bubble",
                                     "direction": "ltr",
-                                    "body": {
-                                        "type": "box",
-                                        "layout": "vertical",
-                                        "contents": [
-                                            {
-                                                "type": "text",
-                                                "text": j2,
-                                                "align": "center"
-                                            }
-                                        ]
-                                    },
+                                    // "body": {
+                                    //     "type": "box",
+                                    //     "layout": "vertical",
+                                    //     "contents": [
+                                    //         {
+                                    //             "type": "text",
+                                    //             "text": j2,
+                                    //             "align": "center"
+                                    //         }
+                                    //     ]
+                                    // },
                                     "footer": {
                                         "type": "box",
                                         "layout": "horizontal",
@@ -283,14 +294,15 @@ const postbackCommandSolver = async (event, status) => {
     //判斷升等
     if (tmpMonster.exp == tmpMonster.level * 5) {
         await dbMonster.levelUp(tmpMonster.monsterId);
-        let output2 = {
+        output2 = {
             type: 'text',
             text: '[LEVEL UP] ' + tmpMonster.name + '長大了!!'
         }
-        return clientBot.replyMessage(event.replyToken, [output, output2]);
-    } else {
-        return clientBot.replyMessage(event.replyToken, output);
     }
+    if (output2 != undefined) {
+        return clientBot.replyMessage(event.replyToken, [output, output2]);
+    }
+    return clientBot.replyMessage(event.replyToken, output);
 }
 
 module.exports = {
