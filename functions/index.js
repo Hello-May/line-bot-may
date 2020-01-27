@@ -72,7 +72,7 @@ const textCommandSolver = async (event, status) => {
     } else if (status.includes(':')) {
         let str = status.split(":");
         switch (str[0]) {
-            case '戰鬥回合':    //強制逃跑
+            case '戰鬥監聽':    //強制逃跑
             console.log('into<-------------------------')
                 if (input == '逃跑') {
                     output = {
