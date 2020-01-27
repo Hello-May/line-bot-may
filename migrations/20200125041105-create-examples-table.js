@@ -250,6 +250,7 @@ module.exports = {
       await queryInterface.dropTable('habits');
       await queryInterface.dropTable('sayings');
       await queryInterface.dropTable('skins');
+      await queryInterface.dropTable('battles');
       return Promise.resolve();
     } catch (e) {
       return Promise.reject(e);
