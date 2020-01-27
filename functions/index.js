@@ -265,16 +265,18 @@ const textCommandSolver = async (event, status) => {
                         }
                         break;
                     case '回傳兩個':
-                        output =[{
+                        output = [];
+                        output.push({
                             type: 'text',
                             text: '測試'
-                        }, {
+                        });
+                        output.push({
                             id: '325708',
                             type: 'sticker',
                             packageId: '1',
                             stickerId: '1',
                             stickerResourceType: 'STATIC'
-                        }]
+                        });
                         // output = [{
                         //     type: 'text',
                         //     text: 'one'
