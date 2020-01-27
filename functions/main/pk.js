@@ -362,7 +362,7 @@ const firstMove = async (userId, tarMonsterId) => {
     }
 }
 
-const firstMoveJudge = (player) => {
+const firstMoveJudge = (userId, player) => {
     let target = opt[Math.round(Math.random() * (opt.length - 1))];
     let winner = checkWinner(player, target);
     if (winner == 0) {
@@ -389,13 +389,13 @@ const firstMoveJudge = (player) => {
                             "contents": [
                                 {
                                     "type": "image",
-                                    "url": (player == opt[0] ? pic[0] : (player == opt[1] ? pic[1] : pic[2])),
+                                    "url": (target == opt[0] ? pic[0] : (target == opt[1] ? pic[1] : pic[2])),
                                     "gravity": "center",
                                     "size": "xxs"
                                 },
                                 {
                                     "type": "image",
-                                    "url": (target == opt[0] ? pic[0] : (target == opt[1] ? pic[1] : pic[2])),
+                                    "url": (player == opt[0] ? pic[0] : (player == opt[1] ? pic[1] : pic[2])),
                                     "size": "xxs"
                                 }
                             ]
@@ -406,12 +406,12 @@ const firstMoveJudge = (player) => {
                             "contents": [
                                 {
                                     "type": "text",
-                                    "text": "player",
+                                    "text": "target",
                                     "align": "center"
                                 },
                                 {
                                     "type": "text",
-                                    "text": "target",
+                                    "text": "player",
                                     "align": "center"
                                 }
                             ]
@@ -457,6 +457,7 @@ const firstMoveJudge = (player) => {
             }
         }
     }
+    await dbUser.saveStatus(userId, "戰鬥回合:1:" + (winner == 1 ? "player" : "target"));
     return {
         "type": "flex",
         "altText": "Flex Message",
@@ -474,13 +475,13 @@ const firstMoveJudge = (player) => {
                         "contents": [
                             {
                                 "type": "image",
-                                "url": (player == opt[0] ? pic[0] : (player == opt[1] ? pic[1] : pic[2])),
+                                "url": (target == opt[0] ? pic[0] : (target == opt[1] ? pic[1] : pic[2])),
                                 "gravity": "center",
                                 "size": "xxs"
                             },
                             {
                                 "type": "image",
-                                "url": (target == opt[0] ? pic[0] : (target == opt[1] ? pic[1] : pic[2])),
+                                "url": (player == opt[0] ? pic[0] : (player == opt[1] ? pic[1] : pic[2])),
                                 "size": "xxs"
                             }
                         ]
@@ -491,12 +492,12 @@ const firstMoveJudge = (player) => {
                         "contents": [
                             {
                                 "type": "text",
-                                "text": "player",
+                                "text": "target",
                                 "align": "center"
                             },
                             {
                                 "type": "text",
-                                "text": "target",
+                                "text": "player",
                                 "align": "center"
                             }
                         ]

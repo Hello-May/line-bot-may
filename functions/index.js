@@ -264,11 +264,21 @@ const textCommandSolver = async (event, status) => {
                             }
                         }
                         break;
+                    case '回傳兩個':
+                        output = [{
+                            type: 'text',
+                            text: 'one'
+                        }, {
+                            type: 'text',
+                            text: 'two'
+                        }
+                        ]
+                        break;
                     case 'T':
                         output = life.selectTime('自律時間');
                         break;
                     case 'P':
-                        output = lineNotify.test();
+                        output = lineNotify.test(); //paint
                         break;
                     case '嗨':
                         output = main.test(event);

@@ -78,7 +78,7 @@ const postbackCommandSolver = async (event, status) => {
                 break;
             case '戰鬥先攻':
                 if (status == '猜拳監聽') {
-                    output = pk.firstMoveJudge(str[1]);
+                    output = pk.firstMoveJudge(userId,str[1]);
                 } else {
                     output = {
                         type: 'text',
@@ -88,7 +88,7 @@ const postbackCommandSolver = async (event, status) => {
                 break;
             case '戰鬥回合':
                 let str2 = status.split(":");
-                if (str2[1] != str[1] && str[1] != '1') {
+                if (str2[1] != str[1]) {
                     output = {
                         type: 'text',
                         text: '無效'
@@ -138,10 +138,21 @@ const postbackCommandSolver = async (event, status) => {
                                                 "type": "button",
                                                 "action": {
                                                     "type": "postback",
-                                                    "label": '\n下回合',
+                                                    "label": '下回合',
                                                     "data": '戰鬥回合:' + (str[1] + 1) + ':' + (str[2] == 'player' ? 'target' : 'player')
                                                 }
-                                            }
+                                            },
+                                            // {
+                                            //   "type": "separator"
+                                            // },
+                                            // {
+                                            //     "type": "button",
+                                            //     "action": {
+                                            //         "type": "postback",
+                                            //         "label": '逃跑',
+                                            //         "data": '戰鬥回合:' + (str[1] + 1) + ':' + (str[2] == 'player' ? 'target' : 'player')
+                                            //     }
+                                            // }
                                         ]
                                     }
                                 }
