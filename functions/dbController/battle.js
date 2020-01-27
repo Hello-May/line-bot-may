@@ -13,14 +13,16 @@ const searchByMonsterId = async (id) => {
 }
 
 const round = async (userId, focus) => {
-  let player = await battles.findAll({ where: { userId: userId, identity: 'player' } });
-  let target = await battles.findAll({ where: { userId: userId, identity: 'target' } });
+  let p = await battles.findAll({ where: { userId: userId, identity: 'player' } });
+  let t = await battles.findAll({ where: { userId: userId, identity: 'target' } });
+  let player = p[0];
+  let target = t[0];
+
   console.log(player.hp)
   console.log(target.hp)
   if(player.hp <= '0' ){
     console.log('test')
   }
-
 
   if (player.hp <= 0 || target.hp <= 0) {
     console.log('into')
