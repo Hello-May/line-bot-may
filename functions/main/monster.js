@@ -109,28 +109,28 @@ const call = async (userId) => {
                             },
                             {
                                 "type": "text",
-                                "text": "等級：" + monster.level
-                            },
-                            {
-                                "type": "text",
-                                "text": "經驗值：" + monster.exp
-                            },
-                            {
-                                "type": "text",
                                 "text": "性格：" + character
-                            },
-                            {
-                                "type": "text",
-                                "text": "自律幣：$" + monster.money
-                            },
-                            {
-                                "type": "text",
-                                "text": "戰利幣：$" + monster.battleMoney
                             },
                             {
                                 "type": "text",
                                 "text": "精神糧食：" + monster.food + " (-1/hr)"
                             },
+                            {
+                                "type": "text",
+                                "text": "等級/經驗值：" + monster.level + '/' + monster.exp
+                            },
+                            // {
+                            //     "type": "text",
+                            //     "text": "經驗值：" + monster.exp
+                            // },
+                            {
+                                "type": "text",
+                                "text": "自律幣/戰利幣：$" + monster.money + '/$' + monster.battleMoney
+                            },
+                            // {
+                            //     "type": "text",
+                            //     "text": "戰利幣：$" + monster.battleMoney
+                            // },                       
                             {
                                 "type": "text",
                                 "text": "agi/vit/str/lucky：" + monster.agi + '/' + monster.vit + '/' + monster.str + '/' + monster.lucky
