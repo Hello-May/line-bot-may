@@ -377,7 +377,7 @@ const call = async (event) => {
                                 },
                                 {
                                     "type": "text",
-                                    "text": "目前小怪獸擁有自律幣 $" + monster.money,
+                                    "text": "目前小怪獸擁有自律幣 $64",
                                     "margin": "lg",
                                     "align": "center",
                                     "wrap": false
