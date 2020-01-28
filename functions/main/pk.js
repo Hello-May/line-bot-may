@@ -310,7 +310,7 @@ const firstMove = async (userId, tarMonsterId) => {
                 "contents": [
                     {
                         "type": "text",
-                        "text": "對手：" + target.name,
+                        "text": "敵方：" + target.name,
                         "align": "center",
                         "wrap": true
                     },
@@ -406,12 +406,12 @@ const firstMoveJudge = async (userId, player) => {
                             "contents": [
                                 {
                                     "type": "text",
-                                    "text": "target",
+                                    "text": "敵方",
                                     "align": "center"
                                 },
                                 {
                                     "type": "text",
-                                    "text": "player",
+                                    "text": "我方",
                                     "align": "center"
                                 }
                             ]
@@ -523,7 +523,7 @@ const firstMoveJudge = async (userId, player) => {
 }
 
 const round = async (userId, next, focus) => {
-    let battle = dbBattle.searchByUserId(userId);
+    let battle = await dbBattle.searchByUserId(userId);
     let target;
     let player;
     for (let i = 0; i < battle.length; i++) {
@@ -575,12 +575,12 @@ const round = async (userId, next, focus) => {
                         "contents": [
                             {
                                 "type": "text",
-                                "text": target.name,
+                                "text": "敵方:" + target.name,
                                 "align": "center"
                             },
                             {
                                 "type": "text",
-                                "text": player.name,
+                                "text": "我方:" + player.name,
                                 "align": "center"
                             }
                         ]
