@@ -14,5 +14,3 @@ async function clearNotify() {
 
 clearAll();
 clearNotify();
-
-//這裡還要做food-1

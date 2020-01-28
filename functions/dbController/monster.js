@@ -1,4 +1,5 @@
 const db = require('../../models');
+const Op = db.Sequelize.Op;
 const { monsters } = require("../../models");
 const Monster = db.monsters;
 const character = ['行動派', '嚴謹派', '領導派', '樂天派', '懵懂無知'];
@@ -33,6 +34,16 @@ const searchByRandomAndLevel = async (level, count) => {
         output.push(monster[t[i]])
     }
     return output;
+}
+
+const decreaseFoodEveryOne = async () => {
+    await monsters.decrement({ food: 1 }, { where: { food: { [Op.gt]: 0 } } });
+    await Monster.destroy({ where: { food: 0, target: true } });
+}
+
+const hungry = async () => {
+    let hungry = await monsters.findAll({ where: { food: 0, target: false } });
+    return hungry;
 }
 
 const increaseMoney = async (id) => {
@@ -101,7 +112,7 @@ async function createByRandom(level) {
         exp: 0,
         character: Math.round((Math.random() * (character.length - 1))),
         money: 0,
-        food: 3,
+        food: 24,
         agi: 1 + point[0],
         vit: 1 + point[1],
         str: 1 + point[2],
@@ -122,7 +133,7 @@ const create = async () => {
         exp: 0,
         character: 0,
         money: 0,
-        food: 10,
+        food: 100,
         agi: 1,
         vit: 1,
         str: 1,
@@ -143,7 +154,7 @@ const initialization = async (id) => {
         exp: 0,
         character: 0,
         money: 0,
-        food: 10,
+        food: 100,
         agi: 1,
         vit: 1,
         str: 1,
@@ -163,5 +174,7 @@ module.exports = {
     increaseEXP,
     levelUp,
     increaseMoney,
-    searchByRandomAndLevel
+    searchByRandomAndLevel,
+    decreaseFoodEveryOne,
+    hungry
 }

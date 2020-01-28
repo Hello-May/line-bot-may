@@ -125,7 +125,7 @@ const call = async (userId) => {
                             },
                             {
                                 "type": "text",
-                                "text": "精神糧食：" + monster.food + " (每日-1)"
+                                "text": "精神糧食：" + monster.food + " (-1/hr)"
                             },
                             {
                                 "type": "text",
