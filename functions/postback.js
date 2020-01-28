@@ -119,7 +119,7 @@ const postbackCommandSolver = async (event, status) => {
                                             "action": {
                                                 "type": "postback",
                                                 "label": "下回合",
-                                                "data": str[0] + str[1] + str[2] + '下回合'
+                                                "data": str[0] +':'+ str[1] +':'+ str[2] + ':下回合'
                                             }
                                         }
                                     ]
@@ -137,10 +137,6 @@ const postbackCommandSolver = async (event, status) => {
                         // switch (str[2]) {
                         //     case 'player':
                         if (str[2] == 'player' && input.includes('下回合')) {
-                            output2 = await pk.round(userId, next, str[2]);
-                            // break;
-                            // case 'target':
-                        } else {
                             j2 = await dbBattle.round(userId, str[2]);  //round
                             switch (j2) {
                                 case '對方勝':
@@ -156,23 +152,70 @@ const postbackCommandSolver = async (event, status) => {
                                         text: '[戰鬥結束] ' + j2
                                     }
                                     break;
-                                default:  //要一直監聽避免一直案
-                                    //如果是對方先攻 那對方先打 跳出戰鬥訊息+我方動作視窗
-                                    //如果是我方先攻 跳出戰鬥訊息+我方動作視窗
-                                    //我方做動作之後(focus為對方) 我打對方的戰鬥訊息+對方的戰鬥訊息+我方動作視窗
+                                default:
                                     output = {
                                         type: 'text',
                                         text: '戰鬥回合' + str[1] + ': ' + j2 + '  foucs:' + str[2]
                                     }
-                                    output2 = await pk.round(userId, next, str[2]);
+                                    output2 ={
+                                        "type": "flex",
+                                        "altText": "Flex Message",
+                                        "contents": {
+                                            "type": "bubble",
+                                            "direction": "ltr",
+                                            "footer": {
+                                                "type": "box",
+                                                "layout": "horizontal",
+                                                "contents": [
+                                                    {
+                                                        "type": "button",
+                                                        "action": {
+                                                            "type": "postback",
+                                                            "label": "對方攻來",
+                                                            "data": str[0] +':'+ next +':'+ 'target'+ '下回合'
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
                                     break;
+                                }
+                                // break;
+                                // case 'target':
+                            } else if (str[2] == 'target' && input.includes('下回合')) {
+                                j2 = await dbBattle.round(userId, str[2]);  //round
+                                switch (j2) {
+                                    case '對方勝':
+                                        output = {
+                                            type: 'text',
+                                            text: '[戰鬥結束] ' + j2
+                                        }
+                                        break;
+                                    case '玩家勝':
+                                        //獎勵
+                                        output = {
+                                            type: 'text',
+                                            text: '[戰鬥結束] ' + j2
+                                        }
+                                        break;
+                                    default:  //要一直監聽避免一直案
+                                        //如果是對方先攻 那對方先打 跳出戰鬥訊息+我方動作視窗
+                                        //如果是我方先攻 跳出戰鬥訊息+我方動作視窗
+                                        //我方做動作之後(focus為對方) 我打對方的戰鬥訊息+對方的戰鬥訊息+我方動作視窗
+                                        output = {
+                                            type: 'text',
+                                            text: '戰鬥回合' + str[1] + ': ' + j2 + '  foucs:' + str[2]
+                                        }
+                                        output2 = await pk.round(userId, next, 'player');
+                                        break;
+                                }
+                                // break;
+                                // }
                             }
-                            // break;
-                            // }
                         }
                     }
-                }
-                break;
+                    break;
             case '修改自律監聽':
                 let j = await dbHabit.searchByHabit(userId, str[2]);
                 if (j == 0) {
