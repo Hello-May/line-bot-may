@@ -84,7 +84,7 @@ const textCommandSolver = async (event, status) => {
                 } else {
                     output = {
                         type: 'text',
-                        text: '戰鬥還未結束'
+                        text: '戰鬥還未結束，請輸入逃跑以強制結束。'
                     }
                 }
                 break;
@@ -166,13 +166,26 @@ const textCommandSolver = async (event, status) => {
         }
     } else {
         switch (status) {
-            // case '猜拳監聽':
-            //     break;
+            case '猜拳監聽':    //強制逃跑
+                if (input == '逃跑') {
+                    output = {
+                        type: 'text',
+                        text: '[結束戰鬥] 逃跑成功'
+                    }
+                    await dbUser.saveStatus(userId, '正常');
+                    await dbBattle.destroy(userId);
+                } else {
+                    output = {
+                        type: 'text',
+                        text: '戰鬥還未結束，請輸入逃跑以強制結束。'
+                    }
+                }
+                break;
             case '購買商品監聽':
                 if (input < 1 || input > 6) {
                     output = {
                         type: 'text',
-                        text: '沒有此商品編號，請重新輸入，或輸入取消'
+                        text: '沒有此商品編號，請重新輸入，或輸入取消。'
                     }
                 } else {
                     output = {      //還沒做完  //還要扣錢，不夠錢要擋
