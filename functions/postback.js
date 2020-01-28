@@ -38,7 +38,8 @@ const postbackCommandSolver = async (event, status) => {
                 output = life.skinStore(str[1]);
                 break;
             case '購買外觀':
-                //確認錢夠不夠 不夠回傳錢不夠 夠的話回傳購買成功 然後扣錢 換成新外觀 
+                //確認戰利夠不夠 不夠回傳錢不夠 夠的話回傳購買成功 然後扣錢 換成新外觀 
+                let canBuy;
                 output = {
                     type: 'text',
                     text: '[購買成功] ' + tmpMonster.name + '把東西吃掉後，身體產生巨大變化！'

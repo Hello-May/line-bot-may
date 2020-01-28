@@ -47,8 +47,16 @@ const hungry = async () => {
     return hungry;
 }
 
+const canBuy = async (price) =>{
+
+}
+
 const increaseMoney = async (id) => {
     await monsters.increment({ money: 1 }, { where: { monsterId: id } });
+}
+
+const increaseBattleMoney = async (id) => {
+    await monsters.increment({ battleMoney: 1 }, { where: { monsterId: id } });
 }
 
 const increaseEXP = async (id) => {
@@ -134,6 +142,7 @@ const create = async () => {
         exp: 0,
         character: 0,
         money: 0,
+        battleMoney: 0,
         food: 100,
         agi: 1,
         vit: 1,
@@ -155,6 +164,7 @@ const initialization = async (id) => {
         exp: 0,
         character: 0,
         money: 0,
+        battleMoney: 0,
         food: 100,
         agi: 1,
         vit: 1,
@@ -177,5 +187,6 @@ module.exports = {
     increaseMoney,
     searchByRandomAndLevel,
     decreaseFoodEveryOne,
-    hungry
+    hungry,
+    increaseBattleMoney
 }

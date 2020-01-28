@@ -13,7 +13,7 @@ const skin = [  //賣變身食物
     { monster: '太陽獸', image: 'https://i.postimg.cc/Nf1c73RR/0.png', price: '1', belong: 'light', name: '熾熱溫度' },
     { monster: '摩卡獸', image: 'https://i.postimg.cc/52MtfNNY/0.png', price: '1', belong: 'light', name: '黃金比例' },
     { monster: '塔派獸', image: 'https://i.postimg.cc/rwrtJFQQ/0.png', price: '1', belong: 'dark', name: '奶香秋意濃' },
-    { monster: '可可獸', image: 'https://i.postimg.cc/htH6kfS6/0.png', price: '1', belong: 'dark', name: '漂浮棉花糖' },
+    { monster: '可可獸', image: 'https://i.postimg.cc/htH6kfS6/0.png', price: '1', belong: 'dark', name: '漂浮雲朵' },
     { monster: '炸蝦獸', image: 'https://i.postimg.cc/t4VXNgGB/0.png', price: '1', belong: 'dark', name: '深夜食堂' },
     { monster: '星月獸', image: 'https://i.postimg.cc/rww0Wwxd/0.png', price: '1', belong: 'dark', name: '海中撈月' },
     { monster: '銀河獸', image: 'https://i.postimg.cc/hvGWs6r0/0.png', price: '1', belong: 'dark', name: '城市夜色' },
@@ -419,7 +419,7 @@ const call = async (event) => {
                         "contents": [
                             {
                                 "type": "text",
-                                "text": "自律商城",
+                                "text": "商城",
                                 "size": "lg",
                                 "align": "center",
                                 "weight": "bold"
@@ -435,15 +435,33 @@ const call = async (event) => {
                             },
                             {
                                 "type": "text",
-                                "text": "目前小怪獸擁有自律幣 $" + monster.money,
+                                "text": "目前小怪獸擁有",
                                 "margin": "lg",
                                 "align": "center",
                                 "wrap": false
                             },
                             {
+                                "type": "text",
+                                "text": "[自律幣] $" + monster.money,
+                                "margin": "lg",
+                                "align": "center",
+                                "wrap": false
+                            },
+                            {
+                                "type": "text",
+                                "text": "[戰利幣] $" + monster.battleMoney,
+                                "margin": "lg",
+                                "align": "center",
+                                "wrap": false
+                            },
+                            {
+                                "type": "separator",
+                                "margin": "lg"
+                            },
+                            {
                                 "type": "box",
                                 "layout": "vertical",
-                                "spacing": "xxl",
+                                "spacing": "lg",
                                 "margin": "lg",
                                 "contents": [
                                     {
@@ -458,16 +476,16 @@ const call = async (event) => {
                                         "type": "button",
                                         "action": {
                                             "type": "postback",
-                                            "label": "變身商店",
-                                            "data": "變身商店"
+                                            "label": "能力商店",
+                                            "data": "能力商店"
                                         }
                                     },
                                     {
                                         "type": "button",
                                         "action": {
                                             "type": "postback",
-                                            "label": "能力商店",
-                                            "data": "能力商店"
+                                            "label": "變身商店",
+                                            "data": "變身商店"
                                         }
                                     }
                                 ]

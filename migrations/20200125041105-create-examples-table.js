@@ -63,6 +63,10 @@ module.exports = {
           type: DataTypes.INTEGER,
           allowNull: false,
         },
+        battleMoney: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+        },
         food: {
           type: DataTypes.INTEGER,
           allowNull: false,

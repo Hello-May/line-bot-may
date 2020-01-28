@@ -125,6 +125,10 @@ const call = async (userId) => {
                             },
                             {
                                 "type": "text",
+                                "text": "戰利幣：$" + monster.battleMoney
+                            },
+                            {
+                                "type": "text",
                                 "text": "精神糧食：" + monster.food + " (-1/hr)"
                             },
                             {
