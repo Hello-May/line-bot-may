@@ -57,6 +57,7 @@ const create = async (userId, myMonster, tarMonster) => {
     lucky: myMonster.lucky,
     character: myMonster.character,
     skin :myMonster.skin,
+    name: myMonster.name,
     createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
     updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
   });
@@ -72,6 +73,7 @@ const create = async (userId, myMonster, tarMonster) => {
     lucky: tarMonster.lucky,
     character: tarMonster.character,
     skin :tarMonster.skin,
+    name: tarMonster.name,
     createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
     updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
   });
