@@ -169,7 +169,7 @@ function genBySkin(skin, belong) {
                         "action": {
                             "type": "postback",
                             "label": "購買",
-                            "data": "購買外觀:" + skin[i].monster
+                            "data": "購買外觀:" + skin[i].monster + ':' + skin[i].price
                         }
                     }
                 ]
@@ -433,13 +433,6 @@ const call = async (event) => {
                             {
                                 "type": "separator"
                             },
-                            // {
-                            //     "type": "text",
-                            //     "text": "目前小怪獸擁有",
-                            //     "margin": "lg",
-                            //     "align": "center",
-                            //     "wrap": false
-                            // },
                             {
                                 "type": "text",
                                 "text": "[自律幣] $" + monster.money,
@@ -492,88 +485,6 @@ const call = async (event) => {
                         ]
                     }
                 },
-                // {
-                //     "type": "bubble",
-                //     "direction": "ltr",
-                //     "header": {
-                //         "type": "box",
-                //         "layout": "vertical",
-                //         "contents": [
-                //             {
-                //                 "type": "text",
-                //                 "text": "自律商城",
-                //                 "size": "lg",
-                //                 "align": "center",
-                //                 "weight": "bold"
-                //             }
-                //         ]
-                //     },
-                //     "body": {
-                //         "type": "box",
-                //         "layout": "vertical",
-                //         "contents": [
-                //             {
-                //                 "type": "separator"
-                //             },
-                //             {
-                //                 "type": "box",
-                //                 "layout": "horizontal",
-                //                 "margin": "xs",
-                //                 "contents": [
-                //                     {
-                //                         "type": "text",
-                //                         "text": "商品",
-                //                         "align": "start"
-                //                     },
-                //                     {
-                //                         "type": "text",
-                //                         "text": "獎勵",
-                //                         "align": "start"
-                //                     },
-                //                     {
-                //                         "type": "text",
-                //                         "text": "自律幣"
-                //                     }
-                //                 ]
-                //             },
-                //             {
-                //                 "type": "separator",
-                //                 "margin": "xs"
-                //             },
-                //             {
-                //                 "type": "box",
-                //                 "layout": "vertical",
-                //                 "margin": "lg",
-                //                 "contents": output2
-                //             },
-                //             {
-                //                 "type": "separator",
-                //                 "margin": "lg"
-                //             },
-                //             {
-                //                 "type": "text",
-                //                 "text": "目前小怪獸擁有自律幣 $" + monster.money,
-                //                 "margin": "lg",
-                //                 "align": "center",
-                //                 "wrap": false
-                //             }
-                //         ]
-                //     },
-                //     "footer": {
-                //         "type": "box",
-                //         "layout": "horizontal",
-                //         "contents": [
-                //             {
-                //                 "type": "button",
-                //                 "action": {
-                //                     "type": "postback",
-                //                     "label": "購買",
-                //                     "data": "購買自律商品"
-                //                 }
-                //             }
-                //         ]
-                //     }
-                // },
                 {
                     "type": "bubble",
                     "direction": "ltr",
@@ -583,7 +494,7 @@ const call = async (event) => {
                         "contents": [
                             {
                                 "type": "text",
-                                "text": "自律說明",
+                                "text": "說明",
                                 "size": "lg",
                                 "align": "center",
                                 "weight": "bold"
@@ -600,21 +511,16 @@ const call = async (event) => {
                             {
                                 "type": "box",
                                 "layout": "vertical",
-                                "spacing": "xxl",
+                                "spacing": "lg",
                                 "margin": "lg",
                                 "contents": [
                                     {
                                         "type": "text",
                                         "text": "* 時間到了，會跳出提醒通知",
-                                        "wrap": false
                                     },
                                     {
                                         "type": "text",
-                                        "text": "* 請回答 [密語] 幫助小怪獸自律"
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": "* 密語可多種組合，以；做分隔"
+                                        "text": "* 請在此輸入 [密語] 以完成自律"
                                     },
                                     {
                                         "type": "text",
@@ -622,12 +528,20 @@ const call = async (event) => {
                                     },
                                     {
                                         "type": "text",
-                                        "text": "* 連續達成21天，獎勵雙倍自律幣"
+                                        "text": "* 每戰鬥勝利，可賺取戰利幣 $1"
                                     },
                                     {
                                         "type": "text",
-                                        "text": "* 獎勵可+小怪獸精神糧食 (20%)"
-                                    }
+                                        "text": "* 在糧食商店內，可購買精神糧食"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "* 在能力商店內，可提升戰鬥素質"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "* 在變身商店內，可改變怪獸品種"
+                                    },
                                 ]
                             }
                         ]

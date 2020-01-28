@@ -37,6 +37,24 @@ const searchByRandomAndLevel = async (level, count) => {
     return output;
 }
 
+const updateSkin = async (id, skin) => {
+    await Monster.update({
+        skin: skin,
+    }, { where: { monsterId: id } });
+}
+
+const updateMoney = async (id, money) => {
+    await Monster.update({
+        money: money,
+    }, { where: { monsterId: id } });
+}
+
+const updateBattleMoney = async (id, money) => {
+    await Monster.update({
+        battleMoney: money,
+    }, { where: { monsterId: id } });
+}
+
 const decreaseFoodEveryOne = async () => {
     await monsters.decrement({ food: 1 }, { where: { food: { [Op.gt]: 0 } } });
     await Monster.destroy({ where: { food: 0, target: true } });
@@ -45,10 +63,6 @@ const decreaseFoodEveryOne = async () => {
 const hungry = async () => {
     let hungry = await monsters.findAll({ where: { food: 0, target: false } });
     return hungry;
-}
-
-const canBuy = async (price) =>{
-
 }
 
 const increaseMoney = async (id) => {
@@ -188,5 +202,8 @@ module.exports = {
     searchByRandomAndLevel,
     decreaseFoodEveryOne,
     hungry,
-    increaseBattleMoney
+    increaseBattleMoney,
+    updateMoney,
+    updateBattleMoney,
+    updateSkin
 }
