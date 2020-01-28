@@ -99,6 +99,7 @@ const postbackCommandSolver = async (event, status) => {
                     if (input.includes('逃跑')) {
                         //這裡判斷雙方agi
                         await dbUser.saveStatus(userId, '正常');
+                        await dbBattle.destroy(userId);
                         output = {
                             type: 'text',
                             text: '[戰鬥結束] 逃跑成功'

@@ -12,6 +12,10 @@ const searchByMonsterId = async (id) => {
   return battle[0];
 }
 
+const destroy = async (id)=>{
+  await Battle.destroy({ where: { userId: id } });
+}
+
 const round = async (userId, focus) => {
   let p = await battles.findAll({ where: { userId: userId, identity: 'player' } });
   let t = await battles.findAll({ where: { userId: userId, identity: 'target' } });
@@ -77,5 +81,6 @@ module.exports = {
   searchByUserId,
   searchByMonsterId,
   create,
-  round
+  round,
+  destroy
 }

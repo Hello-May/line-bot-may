@@ -79,6 +79,7 @@ const textCommandSolver = async (event, status) => {
                         text: '[結束戰鬥] 逃跑成功'
                     }
                     await dbUser.saveStatus(userId, '正常');
+                    await dbBattle.destroy(userId);
                 } else {
                     output = {
                         type: 'text',
