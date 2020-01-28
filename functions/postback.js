@@ -136,7 +136,7 @@ const postbackCommandSolver = async (event, status) => {
                         let j2;
                         // switch (str[2]) {
                         //     case 'player':
-                        if (str[2] == 'player' && input.includes('下回合')) {
+                        if (str[2] == 'player') {
                             j2 = await dbBattle.round(userId, str[2]);  //round
                             switch (j2) {
                                 case '對方勝':
@@ -183,7 +183,7 @@ const postbackCommandSolver = async (event, status) => {
                                 }
                                 // break;
                                 // case 'target':
-                            } else if (str[2] == 'target' && input.includes('下回合')) {
+                            } else if (str[2] == 'target') {
                                 j2 = await dbBattle.round(userId, str[2]);  //round
                                 switch (j2) {
                                     case '對方勝':

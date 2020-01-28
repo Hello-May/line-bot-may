@@ -469,7 +469,7 @@ const firstMoveJudge = async (userId, player) => {
             }
         }
     }
-    await dbUser.saveStatus(userId, "戰鬥回合:1:" + (winner == 1 ? "player" : "target")+':下回合');
+    await dbUser.saveStatus(userId, "戰鬥回合:1:" + (winner == 1 ? "player" : "target") + ':下回合');
     return {
         "type": "flex",
         "altText": "Flex Message",
