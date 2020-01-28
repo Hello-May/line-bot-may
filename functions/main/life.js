@@ -4,20 +4,21 @@ const dbMonster = require('../dbController/monster');
 const reward = ["糧食商店", "外觀商店", "能力商店", "商品4", "商品5", "商品6"];
 const price = ['600', '300', '200', '100', '50', '10'];
 const skin = [  //賣變身食物
-    { monster: '炸蝦獸', image: 'https://i.postimg.cc/t4VXNgGB/0.png', price: '1', name: '深夜食堂' },
-    { monster: '草莓獸', image: 'https://i.postimg.cc/yxhBp04V/0.png', price: '1', name: '少女心' },
-    { monster: '餅乾獸', image: 'https://i.postimg.cc/bv6Rb5ZP/0.png', price: '1', name: '呆萌奶糖味' },
-    { monster: '星月獸', image: 'https://i.postimg.cc/rww0Wwxd/0.png', price: '1', name: '海中撈月' },
-    { monster: '銀河獸', image: 'https://i.postimg.cc/hvGWs6r0/0.png', price: '1', name: '城市夜色' },
-    { monster: '蛋蛋獸', image: 'https://i.postimg.cc/gcDXShYS/0.png', price: '1', name: '一日之計' },
-    { monster: '浪濤獸', image: 'https://i.postimg.cc/rF58ZXC8/0.png', price: '1', name: '擱淺浪花' },
-    { monster: '哈味獸', image: 'https://i.postimg.cc/zvtT9H1g/0.png', price: '1', name: '青之森' },
-    { monster: '摩卡獸', image: 'https://i.postimg.cc/52MtfNNY/0.png', price: '1', name: '黃金比例' },
-    { monster: '可可獸', image: 'https://i.postimg.cc/htH6kfS6/0.png', price: '1', name: '漂浮棉花糖' },
-    { monster: '芒果獸', image: 'https://i.postimg.cc/HxKSfL1j/0.png', price: '1', name: '初夏滋味' },
-    { monster: '太陽獸', image: 'https://i.postimg.cc/Nf1c73RR/0.png', price: '1', name: '熾熱溫度' },
-    { monster: '塔派獸', image: 'https://i.postimg.cc/rwrtJFQQ/0.png', price: '1', name: '奶香秋意濃' },
-    { monster: '神秘獸', image: 'https://i.postimg.cc/s20xdk6v/0.png', price: '1', name: '仲夏夜之夢' }
+    { monster: '草莓獸', image: 'https://i.postimg.cc/yxhBp04V/0.png', price: '1', belong: 'light', name: '少女心' },
+    { monster: '餅乾獸', image: 'https://i.postimg.cc/bv6Rb5ZP/0.png', price: '1', belong: 'light', name: '呆萌奶糖味' },
+    { monster: '蛋蛋獸', image: 'https://i.postimg.cc/gcDXShYS/0.png', price: '1', belong: 'light', name: '一日之計' },
+    { monster: '浪濤獸', image: 'https://i.postimg.cc/rF58ZXC8/0.png', price: '1', belong: 'light', name: '擱淺浪花' },
+    { monster: '哈味獸', image: 'https://i.postimg.cc/zvtT9H1g/0.png', price: '1', belong: 'light', name: '青之森' },
+    { monster: '芒果獸', image: 'https://i.postimg.cc/HxKSfL1j/0.png', price: '1', belong: 'light', name: '初夏滋味' },
+    { monster: '太陽獸', image: 'https://i.postimg.cc/Nf1c73RR/0.png', price: '1', belong: 'light', name: '熾熱溫度' },
+    { monster: '摩卡獸', image: 'https://i.postimg.cc/52MtfNNY/0.png', price: '1', belong: 'light', name: '黃金比例' },
+    { monster: '塔派獸', image: 'https://i.postimg.cc/rwrtJFQQ/0.png', price: '1', belong: 'dark', name: '奶香秋意濃' },
+    { monster: '可可獸', image: 'https://i.postimg.cc/htH6kfS6/0.png', price: '1', belong: 'dark', name: '漂浮棉花糖' },
+    { monster: '炸蝦獸', image: 'https://i.postimg.cc/t4VXNgGB/0.png', price: '1', belong: 'dark', name: '深夜食堂' },
+    { monster: '星月獸', image: 'https://i.postimg.cc/rww0Wwxd/0.png', price: '1', belong: 'dark', name: '海中撈月' },
+    { monster: '銀河獸', image: 'https://i.postimg.cc/hvGWs6r0/0.png', price: '1', belong: 'dark', name: '城市夜色' },
+    { monster: '神秘獸', image: 'https://i.postimg.cc/s20xdk6v/0.png', price: '1', belong: 'dark', name: '仲夏夜之夢' },
+    { monster: '喵仔獸', image: 'https://i.postimg.cc/Y9xRRZ59/0.jpg', price: '1', belong: 'dark', name: '渾沌之初' }
 ]
 
 Date.prototype.Format = function (fmt) { //author: meizz 
@@ -117,66 +118,128 @@ const selectTime = (postback) => {
     };
 }
 
-function genBySkin(skin) {
+function genBySkin(skin, belong) {
     let output = [];
-    for (let i = 0; i < skin.length/4; i++) {
+    for (let i = 0; i < skin.length; i++) {
+        if (skin[i].belong != belong) {
+            continue;
+        }
         output.push({
-                "type": "bubble",
-                "direction": "ltr",
-                "header": {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [
-                        {
-                            "type": "text",
-                            "text": skin[i].name,
-                            "size": "lg",
-                            "align": "center",
-                            "weight": "bold"
+            "type": "bubble",
+            "direction": "ltr",
+            "header": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": skin[i].name,
+                        "size": "lg",
+                        "align": "center",
+                        "weight": "bold"
+                    }
+                ]
+            },
+            "hero": {
+                "type": "image",
+                "url": skin[i].image,
+                "size": "lg",
+                "aspectRatio": "1.51:1",
+                "aspectMode": "fit"
+            },
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "自律幣 $" + skin[i].price,
+                        "margin": "lg",
+                        "align": "center",
+                        "wrap": false
+                    }
+                ]
+            },
+            "footer": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "button",
+                        "action": {
+                            "type": "postback",
+                            "label": "購買",
+                            "data": "購買外觀:" + skin[i].monster
                         }
-                    ]
-                },
-                "hero": {
-                    "type": "image",
-                    "url": skin[i].image,
-                    "size": "lg",
-                    "aspectRatio": "1.51:1",
-                    "aspectMode": "fit"
-                },
-                "body": {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [
-                        {
-                            "type": "text",
-                            "text": "自律幣 $" + skin[i].price,
-                            "margin": "lg",
-                            "align": "center",
-                            "wrap": false
-                        }
-                    ]
-                },
-                "footer": {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [
-                        {
-                            "type": "button",
-                            "action": {
-                                "type": "postback",
-                                "label": "購買",
-                                "data": "購買外觀:" + skin[i].monster
-                            }
-                        }
-                    ]
-                }
-            })
+                    }
+                ]
+            }
+        })
+    }
+    let r;
+    let tmp;
+    for (let i = 0; i < output.length; i++) {
+        r = Math.round(((Math.random() * ((output.length - 1) - i)) + i));
+        tmp = output[i];
+        output[i] = output[r];
+        output[r] = tmp;
     }
     return output;
 }
 
-const skinStore = () => {
-    let output = genBySkin(skin);
+const lightOrDark = () => {
+    return {
+        "type": "flex",
+        "altText": "Flex Message",
+        "contents": {
+            "type": "bubble",
+            "direction": "ltr",
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "請點選",
+                        "align": "center",
+                        "wrap": true
+                    },
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "margin": "lg",
+                        "contents": [
+                            {
+                                "type": "image",
+                                "url": "https://i.postimg.cc/Wb10ZXs2/light.png",
+                                "gravity": "center",
+                                "size": "sm",
+                                "action": {
+                                    "type": "postback",
+                                    "label": "變身商店",
+                                    "data": "變身商店:light"
+                                }
+                            },
+                            {
+                                "type": "image",
+                                "url": "https://i.postimg.cc/9XpGzv58/dark.png",
+                                "size": "sm",
+                                "action": {
+                                    "type": "postback",
+                                    "label": "變身商店",
+                                    "data": "變身商店:dark"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}
+
+const skinStore = (belong) => {
+    let output = genBySkin(skin, belong);
     return {
         "type": "flex",
         "altText": "Flex Message",
@@ -378,29 +441,36 @@ const call = async (event) => {
                                 "wrap": false
                             },
                             {
-                                "type": "button",
-                                "action": {
-                                    "type": "postback",
-                                    "label": "糧食商店",
-                                    "data": "糧食商店"
-                                },
-                                "margin": "lg"
-                            },
-                            {
-                                "type": "button",
-                                "action": {
-                                    "type": "postback",
-                                    "label": "變身商店",
-                                    "data": "變身商店"
-                                }
-                            },
-                            {
-                                "type": "button",
-                                "action": {
-                                    "type": "postback",
-                                    "label": "能力商店",
-                                    "data": "能力商店"
-                                }
+                                "type": "box",
+                                "layout": "vertical",
+                                "spacing": "xxl",
+                                "margin": "lg",
+                                "contents": [
+                                    {
+                                        "type": "button",
+                                        "action": {
+                                            "type": "postback",
+                                            "label": "糧食商店",
+                                            "data": "糧食商店"
+                                        }
+                                    },
+                                    {
+                                        "type": "button",
+                                        "action": {
+                                            "type": "postback",
+                                            "label": "變身商店",
+                                            "data": "變身商店"
+                                        }
+                                    },
+                                    {
+                                        "type": "button",
+                                        "action": {
+                                            "type": "postback",
+                                            "label": "能力商店",
+                                            "data": "能力商店"
+                                        }
+                                    }
+                                ]
                             }
                         ]
                     }
@@ -614,5 +684,6 @@ module.exports = {
     call,
     selectTime,
     update,
-    skinStore
+    skinStore,
+    lightOrDark
 }

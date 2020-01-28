@@ -34,11 +34,14 @@ const postbackCommandSolver = async (event, status) => {
     if (input.includes(':')) {
         str = input.split(":");
         switch (str[0]) {
+            case '變身商店':
+                output = life.skinStore(str[1]);
+                break;
             case '購買外觀':
                 //確認錢夠不夠 不夠回傳錢不夠 夠的話回傳購買成功 然後扣錢 換成新外觀 
                 output = {
                     type: 'text',
-                    text: '[購買成功] ' + tmpMonster.name + '把東西吃掉後，身體產生變化！'
+                    text: '[購買成功] ' + tmpMonster.name + '把東西吃掉後，身體產生巨大變化！'
                 }
                 break;
             case '新增象限':
@@ -259,10 +262,6 @@ const postbackCommandSolver = async (event, status) => {
                     type: 'text',
                     text: 'HI~麻煩轉帳至台新銀行(812)帳號是28881001521601或是點擊連結開啟Richart APP可以直接帶入我的帳號唷 https://richart.tw/TSDIB_RichartWeb/RC04/RC040300?token=my3nMz81ous%3D'
                 };
-                break;
-            case '變身商店':
-                output = life.skinStore();
-                console.log(output);
                 break;
             case '糧食商店':
                 output = {
