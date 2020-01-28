@@ -1,8 +1,8 @@
 const dbUser = require('../dbController/user');
 const dbHabit = require('../dbController/habit');
 const dbMonster = require('../dbController/monster');
-const reward = ["糧食商店", "外觀商店", "能力商店", "商品4", "商品5", "商品6"];
-const price = ['600', '300', '200', '100', '50', '10'];
+// const reward = ["糧食商店", "外觀商店", "能力商店", "商品4", "商品5", "商品6"];
+// const price = ['600', '300', '200', '100', '50', '10'];
 const skin = [  //賣變身食物
     { monster: '草莓獸', image: 'https://i.postimg.cc/yxhBp04V/0.png', price: '1', belong: 'light', name: '少女心' },
     { monster: '餅乾獸', image: 'https://i.postimg.cc/bv6Rb5ZP/0.png', price: '1', belong: 'light', name: '呆萌奶糖味' },
@@ -37,31 +37,31 @@ Date.prototype.Format = function (fmt) { //author: meizz
     return fmt;
 }
 
-function genByReward(reward, price) {
-    let output = [];
-    for (let i = 0; i < reward.length; i++) {
-        output.push({
-            "type": "box",
-            "layout": "horizontal",
-            "contents": [
-                {
-                    "type": "text",
-                    "text": (i + 1) + '',
-                    "align": "center"
-                },
-                {
-                    "type": "text",
-                    "text": reward[i]
-                },
-                {
-                    "type": "text",
-                    "text": '$' + price[i]
-                }
-            ]
-        })
-    }
-    return output;
-}
+// function genByReward(reward, price) {
+//     let output = [];
+//     for (let i = 0; i < reward.length; i++) {
+//         output.push({
+//             "type": "box",
+//             "layout": "horizontal",
+//             "contents": [
+//                 {
+//                     "type": "text",
+//                     "text": (i + 1) + '',
+//                     "align": "center"
+//                 },
+//                 {
+//                     "type": "text",
+//                     "text": reward[i]
+//                 },
+//                 {
+//                     "type": "text",
+//                     "text": '$' + price[i]
+//                 }
+//             ]
+//         })
+//     }
+//     return output;
+// }
 
 function genByHabit(habit) {
     let output = [];
@@ -153,7 +153,7 @@ function genBySkin(skin, belong) {
                 "contents": [
                     {
                         "type": "text",
-                        "text": "自律幣 $" + skin[i].price,
+                        "text": "戰利幣 $" + skin[i].price,
                         "margin": "lg",
                         "align": "center",
                         "wrap": false
@@ -264,7 +264,7 @@ const call = async (event) => {
     }
 
     let output = genByHabit(habit);
-    let output2 = genByReward(reward, price);
+    // let output2 = genByReward(reward, price);
 
     return {
         "type": "flex",
