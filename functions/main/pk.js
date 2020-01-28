@@ -289,99 +289,6 @@ const firstMove = async (userId, tarMonsterId) => {
         "type": "flex",
         "altText": "Flex Message",
         "contents": {
-          "type": "bubble",
-          "direction": "ltr",
-          "body": {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "text",
-                "text": "請猜拳決定先攻",
-                "align": "center",
-                "wrap": true
-              },
-              {
-                "type": "box",
-                "layout": "horizontal",
-                "margin": "lg",
-                "contents": [
-                  {
-                    "type": "image",
-                    "url": "https://i.postimg.cc/d0k3NGNh/1.jpg",
-                    "gravity": "center",
-                    "size": "sm"
-                  },
-                  {
-                    "type": "image",
-                    "url": "https://i.postimg.cc/d0k3NGNh/1.jpg",
-                    "size": "sm"
-                  }
-                ]
-              },
-              {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": "player",
-                    "align": "center"
-                  },
-                  {
-                    "type": "text",
-                    "text": "target",
-                    "align": "center"
-                  }
-                ]
-              }
-            ]
-          },
-          "footer": {
-            "type": "box",
-            "layout": "horizontal",
-            "contents": [
-              {
-                "type": "button",
-                "action": {
-                  "type": "postback",
-                  "label": "剪刀",
-                  "text": "剪刀",
-                  "data": "剪刀"
-                }
-              },
-              {
-                "type": "separator"
-              },
-              {
-                "type": "button",
-                "action": {
-                  "type": "postback",
-                  "label": "石頭",
-                  "text": "石頭",
-                  "data": "石頭"
-                }
-              },
-              {
-                "type": "separator"
-              },
-              {
-                "type": "button",
-                "action": {
-                  "type": "postback",
-                  "label": "布",
-                  "text": "布",
-                  "data": "布"
-                }
-              }
-            ]
-          }
-        }
-      }
-    return {
-        "type": "flex",
-        "altText": "Flex Message",
-        "contents": {
             "type": "bubble",
             "direction": "ltr",
             "header": {
@@ -567,6 +474,96 @@ const firstMoveJudge = async (userId, player) => {
         "type": "flex",
         "altText": "Flex Message",
         "contents": {
+          "type": "bubble",
+          "direction": "ltr",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": "請猜拳決定先攻",
+                "align": "center",
+                "wrap": true
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "margin": "lg",
+                "contents": [
+                  {
+                    "type": "image",
+                    "url": "https://i.postimg.cc/d0k3NGNh/1.jpg",
+                    "gravity": "center",
+                    "size": "sm"
+                  },
+                  {
+                    "type": "image",
+                    "url": "https://i.postimg.cc/d0k3NGNh/1.jpg",
+                    "size": "sm"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "player",
+                    "align": "center"
+                  },
+                  {
+                    "type": "text",
+                    "text": "target",
+                    "align": "center"
+                  }
+                ]
+              }
+            ]
+          },
+          "footer": {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+              {
+                "type": "button",
+                "action": {
+                  "type": "postback",
+                  "label": "剪刀",
+                  "data": "剪刀"
+                }
+              },
+              {
+                "type": "separator"
+              },
+              {
+                "type": "button",
+                "action": {
+                  "type": "postback",
+                  "label": "石頭",
+                  "data": "石頭"
+                }
+              },
+              {
+                "type": "separator"
+              },
+              {
+                "type": "button",
+                "action": {
+                  "type": "postback",
+                  "label": "布",
+                  "data": "布"
+                }
+              }
+            ]
+          }
+        }
+      }
+    return {
+        "type": "flex",
+        "altText": "Flex Message",
+        "contents": {
             "type": "bubble",
             "direction": "ltr",
             "body": {
@@ -597,12 +594,12 @@ const firstMoveJudge = async (userId, player) => {
                         "contents": [
                             {
                                 "type": "text",
-                                "text": "target",
+                                "text": "敵方",
                                 "align": "center"
                             },
                             {
                                 "type": "text",
-                                "text": "player",
+                                "text": "我方",
                                 "align": "center"
                             }
                         ]
