@@ -350,66 +350,66 @@ const call = async (event) => {
                     }
                 },
                 {
-                    "type": "bubble",
-                    "direction": "ltr",
-                    "header": {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "text",
-                                "text": "自律商城",
-                                "size": "lg",
-                                "align": "center",
-                                "weight": "bold"
-                            }
-                        ]
-                    },
-                    "body": {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "separator"
-                            },
-                            {
-                                "type": "text",
-                                "text": "目前小怪獸擁有自律幣 $64",
-                                "margin": "lg",
-                                "align": "center",
-                                "wrap": false
-                            }
-                        ]
-                    },
-                    "footer": {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "button",
-                                "action": {
-                                    "type": "postback",
-                                    "label": "糧食商店",
-                                    "data": "糧食商店"
+                    "type": "flex",
+                    "altText": "Flex Message",
+                    "contents": {
+                        "type": "bubble",
+                        "direction": "ltr",
+                        "header": {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [
+                                {
+                                    "type": "text",
+                                    "text": "自律商城",
+                                    "size": "lg",
+                                    "align": "center",
+                                    "weight": "bold"
                                 }
-                            },
-                            {
-                                "type": "button",
-                                "action": {
-                                    "type": "postback",
-                                    "label": "變身商店",
-                                    "data": "變身商店"
+                            ]
+                        },
+                        "body": {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [
+                                {
+                                    "type": "separator"
+                                },
+                                {
+                                    "type": "text",
+                                    "text": "目前小怪獸擁有自律幣 $" + monster.money,
+                                    "margin": "lg",
+                                    "align": "center",
+                                    "wrap": false
+                                },
+                                {
+                                    "type": "button",
+                                    "action": {
+                                        "type": "postback",
+                                        "label": "糧食商店",
+                                        "text": "糧食商店",
+                                        "data": "糧食商店"
+                                    },
+                                    "margin": "lg"
+                                },
+                                {
+                                    "type": "button",
+                                    "action": {
+                                        "type": "postback",
+                                        "label": "變身商店",
+                                        "data": "變身商店"
+                                    }
+                                },
+                                {
+                                    "type": "button",
+                                    "action": {
+                                        "type": "postback",
+                                        "label": "能力商店",
+                                        "data": "能力商店"
+                                    }
                                 }
-                            },
-                            {
-                                "type": "button",
-                                "action": {
-                                    "type": "postback",
-                                    "label": "能力商店",
-                                    "data": "能力商店"
-                                }
-                            }
-                        ]
+                            ]
+                        }
                     }
                 },
                 // {
