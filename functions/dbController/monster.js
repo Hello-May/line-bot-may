@@ -3,7 +3,8 @@ const Op = db.Sequelize.Op;
 const { monsters } = require("../../models");
 const Monster = db.monsters;
 const character = ['行動派', '嚴謹派', '領導派', '樂天派', '懵懂無知'];
-const targetName = ['AAA', 'BBB', 'CCC', 'DDD', 'EEE'];
+const targetName = ['AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG', 'HHH', 'III', 'JJJ', 'KKK', 'LLL', 'MMM', 'NNN', 'OOO', 'PPP', 'QQQ', 'RRR', 'SSS', 'TTT', 'UUU', 'VVV', 'WWW', 'XXX', 'YYY', 'ZZZ'];
+const skinName = ['喵仔獸', '炸蝦獸', '草莓獸', '餅乾獸', '星月獸', '銀河獸', '蛋蛋獸', '浪濤獸', '哈味獸', '摩卡獸', '可可獸', '芒果獸', '太陽獸', '塔派獸', '神秘獸']
 
 const searchById = async (id) => {
     let monster = await monsters.findAll({ where: { monsterId: id } });
@@ -106,7 +107,7 @@ async function createByRandom(level) {
     await Monster.create({
         force: true,
         name: targetName[Math.round((Math.random() * (targetName.length - 1)))],
-        skin: '喵仔獸',
+        skin: skinName[Math.round((Math.random() * (skinName.length - 1)))],
         born: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
         level: level,
         exp: 0,

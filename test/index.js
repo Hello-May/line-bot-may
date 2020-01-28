@@ -405,13 +405,16 @@ Date.prototype.Format = function (fmt) { //author: meizz
 //     console.log('哈');
 // }
 // console.log(i);
-const dbMonster = require('../functions/dbController/monster');
-let target;
-const go = async () => {
-    target = await dbMonster.searchById(2);
-}
-go();
-console.log(target);
-if (target == undefined) {
-    console.log('哈哈')
-}
+// const dbMonster = require('../functions/dbController/monster');
+// let target;
+// const go = async () => {
+//     target = await dbMonster.searchById(2);
+// }
+// go();
+// console.log(target);
+// if (target == undefined) {
+//     console.log('哈哈')
+// }
+
+const test ={哈:'哈哈'}
+console.log(test.哈)

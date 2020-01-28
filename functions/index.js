@@ -181,20 +181,20 @@ const textCommandSolver = async (event, status) => {
                     }
                 }
                 break;
-            case '購買商品監聽':
-                if (input < 1 || input > 6) {
-                    output = {
-                        type: 'text',
-                        text: '沒有此商品編號，請重新輸入，或輸入取消。'
-                    }
-                } else {
-                    output = {      //還沒做完  //還要扣錢，不夠錢要擋
-                        type: 'text',
-                        text: '[已購買] 商品編號:' + input
-                    }
-                    await dbUser.saveStatus(userId, '正常');
-                }
-                break;
+            // case '購買商品監聽':
+            //     if (input < 1 || input > 6) {
+            //         output = {
+            //             type: 'text',
+            //             text: '沒有此商品編號，請重新輸入，或輸入取消。'
+            //         }
+            //     } else {
+            //         output = {      //還沒做完  //還要扣錢，不夠錢要擋
+            //             type: 'text',
+            //             text: '[已購買] 商品編號:' + input
+            //         }
+            //         await dbUser.saveStatus(userId, '正常');
+            //     }
+            //     break;
             case '修改自律視窗':
                 if (input == '取消') {
                     output = {

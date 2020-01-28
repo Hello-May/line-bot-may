@@ -106,7 +106,421 @@ module.exports = {
         say: '累累～',
         createdAt: new Date(),
         updatedAt: new Date()
-      }]);
+      },
+      {
+        name: '炸蝦獸',
+        image: 'https://i.postimg.cc/LsKmCMH2/1.png',
+        say: '炸蝦～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '炸蝦獸',
+        image: 'https://i.postimg.cc/x8CQJfPy/2.png',
+        say: '炸蝦～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '炸蝦獸',
+        image: 'https://i.postimg.cc/KjH2t6qX/3.png',
+        say: '炸蝦～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '炸蝦獸',
+        image: 'https://i.postimg.cc/1zGsbYt6/4.png',
+        say: '炸蝦～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '炸蝦獸',
+        image: 'https://i.postimg.cc/SsVqx2cx/5.png',
+        say: '炸蝦～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '草莓獸',
+        image: 'https://i.postimg.cc/kX976YKD/1.png',
+        say: '草莓～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '草莓獸',
+        image: 'https://i.postimg.cc/Z5smQTgy/2.png',
+        say: '草莓～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '草莓獸',
+        image: 'https://i.postimg.cc/fRRZ53HN/3.png',
+        say: '草莓～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '草莓獸',
+        image: 'https://i.postimg.cc/s2BzdkdH/4.png',
+        say: '草莓～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '餅乾獸',
+        image: 'https://i.postimg.cc/4dmQ11c9/1.png',
+        say: '餅乾～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '餅乾獸',
+        image: 'https://i.postimg.cc/7PJNGmwv/2.png',
+        say: '餅乾～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '餅乾獸',
+        image: 'https://i.postimg.cc/MTNb3j0r/3.png',
+        say: '餅乾～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '餅乾獸',
+        image: 'https://i.postimg.cc/PJDbgr2f/4.png',
+        say: '餅乾～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '星月獸',
+        image: 'https://i.postimg.cc/nL6C6K57/1.png',
+        say: '星月～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '星月獸',
+        image: 'https://i.postimg.cc/dVN79cj5/2.png',
+        say: '星月～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '星月獸',
+        image: 'https://i.postimg.cc/DzWSjpCn/3.png',
+        say: '星月～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '星月獸',
+        image: 'https://i.postimg.cc/RFKN965Y/4.png',
+        say: '星月～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '銀河獸',
+        image: 'https://i.postimg.cc/KjsXHfph/1.png',
+        say: '銀河～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '銀河獸',
+        image: 'https://i.postimg.cc/1RWZXRm7/2.png',
+        say: '銀河～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '銀河獸',
+        image: 'https://i.postimg.cc/CLzpqydh/3.png',
+        say: '銀河～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '銀河獸',
+        image: 'https://i.postimg.cc/wTZ85Wsh/4.png',
+        say: '銀河～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '蛋蛋獸',
+        image: 'https://i.postimg.cc/bNwGKvrz/1.png',
+        say: '蛋蛋～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '蛋蛋獸',
+        image: 'https://i.postimg.cc/ncSsZt9q/2.png',
+        say: '蛋蛋～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '蛋蛋獸',
+        image: 'https://i.postimg.cc/d0rD8kH9/3.png',
+        say: '蛋蛋～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '蛋蛋獸',
+        image: 'https://i.postimg.cc/3xykxb2V/4.png',
+        say: '蛋蛋～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '蛋蛋獸',
+        image: 'https://i.postimg.cc/t4LYZt5T/5.png',
+        say: '蛋蛋～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '浪濤獸',
+        image: 'https://i.postimg.cc/g2dGfSN3/1.png',
+        say: '浪濤～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '浪濤獸',
+        image: 'https://i.postimg.cc/13HyPGj2/2.png',
+        say: '浪濤～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '浪濤獸',
+        image: 'https://i.postimg.cc/d0Vw07M1/3.png',
+        say: '浪濤～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '浪濤獸',
+        image: 'https://i.postimg.cc/432ZHJZ1/4.png',
+        say: '浪濤～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '浪濤獸',
+        image: 'https://i.postimg.cc/QtBDpRdZ/5.png',
+        say: '浪濤～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '哈味獸',
+        image: 'https://i.postimg.cc/02jY7npd/1.png',
+        say: '哈密瓜～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '哈味獸',
+        image: 'https://i.postimg.cc/9XJP4KqQ/2.png',
+        say: '哈密瓜～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '哈味獸',
+        image: 'https://i.postimg.cc/TYsr0b08/3.png',
+        say: '哈密瓜～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '摩卡獸',
+        image: 'https://i.postimg.cc/YCfC0KhX/1.png',
+        say: '摩卡～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '摩卡獸',
+        image: 'https://i.postimg.cc/zfzXRthq/2.png',
+        say: '摩卡～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '摩卡獸',
+        image: 'https://i.postimg.cc/yNL6hmhc/3.png',
+        say: '摩卡～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '摩卡獸',
+        image: 'https://i.postimg.cc/bJMzWqBv/4.png',
+        say: '摩卡～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '摩卡獸',
+        image: 'https://i.postimg.cc/pTyWsmk7/5.png',
+        say: '摩卡～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '可可獸',
+        image: 'https://i.postimg.cc/cJw200CH/1.png',
+        say: '可可～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '可可獸',
+        image: 'https://i.postimg.cc/brNBxnTD/2.png',
+        say: '可可～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '可可獸',
+        image: 'https://i.postimg.cc/rmTbp3R9/3.png',
+        say: '可可～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '可可獸',
+        image: 'https://i.postimg.cc/hj0YQs9R/4.png',
+        say: '可可～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '芒果獸',
+        image: 'https://i.postimg.cc/C5qvYVw7/1.png',
+        say: '芒果～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '芒果獸',
+        image: 'https://i.postimg.cc/y6MQjWTb/2.png',
+        say: '芒果～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '芒果獸',
+        image: 'https://i.postimg.cc/5N8PR17N/3.png',
+        say: '芒果～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '芒果獸',
+        image: 'https://i.postimg.cc/662bCCCZ/4.png',
+        say: '芒果～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '太陽獸',
+        image: 'https://i.postimg.cc/L82MyxVw/1.png',
+        say: '太陽～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '太陽獸',
+        image: 'https://i.postimg.cc/vZhwC5qB/2.png',
+        say: '太陽～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '太陽獸',
+        image: 'https://i.postimg.cc/6QQxKTgh/3.png',
+        say: '太陽～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '太陽獸',
+        image: 'https://i.postimg.cc/g0BF2mPb/4.png',
+        say: '太陽～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '塔派獸',
+        image: 'https://i.postimg.cc/43RHFk0Z/1.png',
+        say: '塔派～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '塔派獸',
+        image: 'https://i.postimg.cc/3wj4sfMG/2.png',
+        say: '塔派～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '塔派獸',
+        image: 'https://i.postimg.cc/d14717Vt/3.png',
+        say: '塔派～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '塔派獸',
+        image: 'https://i.postimg.cc/1t9ns0Pj/4.png',
+        say: '塔派～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '神秘獸',
+        image: 'https://i.postimg.cc/XJGJVsmx/1.png',
+        say: '神秘～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '神秘獸',
+        image: 'https://i.postimg.cc/FRMK1jQv/2.png',
+        say: '神秘～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '神秘獸',
+        image: 'https://i.postimg.cc/PJ15DPtw/3.png',
+        say: '神秘～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: '神秘獸',
+        image: 'https://i.postimg.cc/DfGZHYqw/4.png',
+        say: '神秘～',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      }
+    ]);
       return Promise.resolve();
     } catch (e) {
       return Promise.reject(e);

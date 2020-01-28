@@ -34,6 +34,13 @@ const postbackCommandSolver = async (event, status) => {
     if (input.includes(':')) {
         str = input.split(":");
         switch (str[0]) {
+            case '購買外觀':
+                //確認錢夠不夠 不夠回傳錢不夠 夠的話回傳購買成功 然後扣錢 換成新外觀 
+                output = {
+                    type: 'text',
+                    text: '[購買成功] ' + tmpMonster.name + '把東西吃掉後，身體產生變化！'
+                }
+                break;
             case '新增象限':
                 await dbUser.saveStatus(userId, '新增象限監聽:' + str[1]);
                 output = {
@@ -178,7 +185,7 @@ const postbackCommandSolver = async (event, status) => {
                                     break;
                             }
                         } else if (str[2] == 'target') {
-                            j2 = await dbBattle.round(userId, str[2]); 
+                            j2 = await dbBattle.round(userId, str[2]);
                             switch (j2) {
                                 case '對方勝':
                                     output = {
@@ -193,7 +200,7 @@ const postbackCommandSolver = async (event, status) => {
                                         text: '[戰鬥結束] ' + j2
                                     }
                                     break;
-                                default: 
+                                default:
                                     output = {
                                         type: 'text',
                                         text: '戰鬥回合' + str[1] + ': ' + j2 + '  foucs:' + str[2]
@@ -253,13 +260,28 @@ const postbackCommandSolver = async (event, status) => {
                     text: 'HI~麻煩轉帳至台新銀行(812)帳號是28881001521601或是點擊連結開啟Richart APP可以直接帶入我的帳號唷 https://richart.tw/TSDIB_RichartWeb/RC04/RC040300?token=my3nMz81ous%3D'
                 };
                 break;
-            case '購買自律商品':
-                await dbUser.saveStatus(userId, '購買商品監聽');
+            case '變身商店':
+                output = life.skinStore();
+                break;
+            case '糧食商店':
                 output = {
                     type: 'text',
-                    text: '請輸入欲購買之商品編號'
+                    text: '糧食商店的訊息窗'
                 };
                 break;
+            case '能力商店':
+                output = {
+                    type: 'text',
+                    text: '能力商店的訊息窗'
+                };
+                break;
+            // case '購買自律商品':
+            //     await dbUser.saveStatus(userId, '購買商品監聽');
+            //     output = {
+            //         type: 'text',
+            //         text: '請輸入欲購買之商品編號'
+            //     };
+            //     break;
             case '刪除自律指令':
                 await dbUser.saveStatus(userId, '刪除自律監聽');
                 output = {

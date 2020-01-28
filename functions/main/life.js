@@ -1,8 +1,24 @@
 const dbUser = require('../dbController/user');
 const dbHabit = require('../dbController/habit');
 const dbMonster = require('../dbController/monster');
-const reward = ["商品1", "商品2", "商品3", "商品4", "商品5", "商品6"];
+const reward = ["糧食商店", "外觀商店", "能力商店", "商品4", "商品5", "商品6"];
 const price = ['600', '300', '200', '100', '50', '10'];
+const skin = [  //賣外觀的商店
+    { monster: '炸蝦獸', image: 'https://i.postimg.cc/t4VXNgGB/0.png', price: '1', name: '深夜食堂' },
+    { monster: '草莓獸', image: 'https://i.postimg.cc/yxhBp04V/0.png', price: '1', name: '少女心' },
+    { monster: '餅乾獸', image: 'https://i.postimg.cc/bv6Rb5ZP/0.png', price: '1', name: '呆萌奶糖味' },
+    { monster: '星月獸', image: 'https://i.postimg.cc/rww0Wwxd/0.png', price: '1', name: '海中撈月' },
+    { monster: '銀河獸', image: 'https://i.postimg.cc/hvGWs6r0/0.png', price: '1', name: '城市夜色' },
+    { monster: '蛋蛋獸', image: 'https://i.postimg.cc/gcDXShYS/0.png', price: '1', name: '一日之計' },
+    { monster: '浪濤獸', image: 'https://i.postimg.cc/rF58ZXC8/0.png', price: '1', name: '擱淺浪花' },
+    { monster: '哈味獸', image: 'https://i.postimg.cc/zvtT9H1g/0.png', price: '1', name: '青之森' },
+    { monster: '摩卡獸', image: 'https://i.postimg.cc/52MtfNNY/0.png', price: '1', name: '黃金比例' },
+    { monster: '可可獸', image: 'https://i.postimg.cc/htH6kfS6/0.png', price: '1', name: '漂浮棉花糖' },
+    { monster: '芒果獸', image: 'https://i.postimg.cc/HxKSfL1j/0.png', price: '1', name: '初夏滋味' },
+    { monster: '太陽獸', image: 'https://i.postimg.cc/Nf1c73RR/0.png', price: '1', name: '熾熱溫度' },
+    { monster: '塔派獸', image: 'https://i.postimg.cc/rwrtJFQQ/0.png', price: '1', name: '奶香秋意濃' },
+    { monster: '神秘獸', image: 'https://i.postimg.cc/s20xdk6v/0.png', price: '1', name: '仲夏夜之夢' }
+]
 
 Date.prototype.Format = function (fmt) { //author: meizz 
     var o = {
@@ -99,6 +115,78 @@ const selectTime = (postback) => {
             }
         }
     };
+}
+
+function genBySkin(skin) {
+    let output = [];
+    for (let i = 0; i < skin.length; i++) {
+        output.push(
+            {
+                "type": "bubble",
+                "direction": "ltr",
+                "header": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "text": skin[i].name,
+                            "size": "lg",
+                            "align": "center",
+                            "weight": "bold"
+                        }
+                    ]
+                },
+                "hero": {
+                    "type": "image",
+                    "url": skin[i].image,
+                    "size": "lg",
+                    "aspectRatio": "1.51:1",
+                    "aspectMode": "fit"
+                },
+                "body": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "text": "自律幣 $" + skin[i].price,
+                            "margin": "lg",
+                            "align": "center",
+                            "wrap": false
+                        }
+                    ]
+                },
+                "footer": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                        {
+                            "type": "button",
+                            "action": {
+                                "type": "postback",
+                                "label": "購買",
+                                "data": "購買外觀:" + skin[i].monster
+                            }
+                        }
+                    ]
+                }
+            }
+        )
+    }
+    return output;
+}
+
+const skinStore = () => {
+    let output = genBySkin(skin);
+    return {
+        "type": "flex",
+        "altText": "Flex Message",
+        "contents": {
+            "type": "carousel",
+            "contents": output
+        }
+    }
 }
 
 const call = async (event) => {
@@ -285,43 +373,8 @@ const call = async (event) => {
                                 "type": "separator"
                             },
                             {
-                                "type": "box",
-                                "layout": "horizontal",
-                                "margin": "xs",
-                                "contents": [
-                                    {
-                                        "type": "text",
-                                        "text": "商品",
-                                        "align": "start"
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": "獎勵",
-                                        "align": "start"
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": "自律幣"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "separator",
-                                "margin": "xs"
-                            },
-                            {
-                                "type": "box",
-                                "layout": "vertical",
-                                "margin": "lg",
-                                "contents": output2
-                            },
-                            {
-                                "type": "separator",
-                                "margin": "lg"
-                            },
-                            {
                                 "type": "text",
-                                "text": "目前小怪獸擁有自律幣 $" + monster.money,
+                                "text": "目前小怪獸擁有自律幣 $64",
                                 "margin": "lg",
                                 "align": "center",
                                 "wrap": false
@@ -330,19 +383,117 @@ const call = async (event) => {
                     },
                     "footer": {
                         "type": "box",
-                        "layout": "horizontal",
+                        "layout": "vertical",
                         "contents": [
                             {
                                 "type": "button",
                                 "action": {
                                     "type": "postback",
-                                    "label": "購買",
-                                    "data": "購買自律商品"
+                                    "label": "糧食商店",
+                                    "data": "糧食商店"
+                                }
+                            },
+                            {
+                                "type": "button",
+                                "action": {
+                                    "type": "postback",
+                                    "label": "變身商店",
+                                    "data": "變身商店"
+                                }
+                            },
+                            {
+                                "type": "button",
+                                "action": {
+                                    "type": "postback",
+                                    "label": "能力商店",
+                                    "data": "能力商店"
                                 }
                             }
                         ]
                     }
                 },
+                // {
+                //     "type": "bubble",
+                //     "direction": "ltr",
+                //     "header": {
+                //         "type": "box",
+                //         "layout": "vertical",
+                //         "contents": [
+                //             {
+                //                 "type": "text",
+                //                 "text": "自律商城",
+                //                 "size": "lg",
+                //                 "align": "center",
+                //                 "weight": "bold"
+                //             }
+                //         ]
+                //     },
+                //     "body": {
+                //         "type": "box",
+                //         "layout": "vertical",
+                //         "contents": [
+                //             {
+                //                 "type": "separator"
+                //             },
+                //             {
+                //                 "type": "box",
+                //                 "layout": "horizontal",
+                //                 "margin": "xs",
+                //                 "contents": [
+                //                     {
+                //                         "type": "text",
+                //                         "text": "商品",
+                //                         "align": "start"
+                //                     },
+                //                     {
+                //                         "type": "text",
+                //                         "text": "獎勵",
+                //                         "align": "start"
+                //                     },
+                //                     {
+                //                         "type": "text",
+                //                         "text": "自律幣"
+                //                     }
+                //                 ]
+                //             },
+                //             {
+                //                 "type": "separator",
+                //                 "margin": "xs"
+                //             },
+                //             {
+                //                 "type": "box",
+                //                 "layout": "vertical",
+                //                 "margin": "lg",
+                //                 "contents": output2
+                //             },
+                //             {
+                //                 "type": "separator",
+                //                 "margin": "lg"
+                //             },
+                //             {
+                //                 "type": "text",
+                //                 "text": "目前小怪獸擁有自律幣 $" + monster.money,
+                //                 "margin": "lg",
+                //                 "align": "center",
+                //                 "wrap": false
+                //             }
+                //         ]
+                //     },
+                //     "footer": {
+                //         "type": "box",
+                //         "layout": "horizontal",
+                //         "contents": [
+                //             {
+                //                 "type": "button",
+                //                 "action": {
+                //                     "type": "postback",
+                //                     "label": "購買",
+                //                     "data": "購買自律商品"
+                //                 }
+                //             }
+                //         ]
+                //     }
+                // },
                 {
                     "type": "bubble",
                     "direction": "ltr",
@@ -469,5 +620,6 @@ const update = (habit) => {
 module.exports = {
     call,
     selectTime,
-    update
+    update,
+    skinStore
 }
