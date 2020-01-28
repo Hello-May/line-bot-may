@@ -536,6 +536,10 @@ const round = async (userId, next, focus) => {
     let targetSkin = await dbSkin.searchByNameAndRandom(target.skin);
     let playerSkin = await dbSkin.searchByNameAndRandom(player.skin);
     return {
+        type: 'text',
+        text: 'test'
+    }
+    return {
         "type": "flex",
         "altText": "Flex Message",
         "contents": {
