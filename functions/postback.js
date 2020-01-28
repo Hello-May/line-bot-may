@@ -74,7 +74,6 @@ const postbackCommandSolver = async (event, status) => {
                         text: '請先輸入取消，以取消當前操作。'
                     }
                 } else {
-                    await dbUser.saveStatus(userId, '猜拳監聽');
                     output = await pk.firstMove(userId, str[1]);    //str[1]=tarMonster.monsterId
                 }
                 break;

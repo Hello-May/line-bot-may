@@ -284,7 +284,7 @@ const firstMove = async (userId, tarMonsterId) => {
     }
     let tarSkin = await dbSkin.searchByNameAndRandom(target.skin);
     await dbBattle.create(userId, monster, target);
-
+    await dbUser.saveStatus(userId, '猜拳監聽');
     return {
         "type": "flex",
         "altText": "Flex Message",
