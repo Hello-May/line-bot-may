@@ -24,6 +24,7 @@ const postbackCommandSolver = async (event, status) => {
     let input = event.postback.data;
     let output;
     let output2;
+    let output3;
     let str;
     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
     //↓增加經驗值
@@ -304,12 +305,23 @@ const postbackCommandSolver = async (event, status) => {
     //判斷升等  依據個性分配點數
     if (tmpMonster.exp == tmpMonster.level * 5) {
         await dbMonster.levelUp(tmpMonster);
-        output2 = {
-            type: 'text',
-            text: '[LEVEL UP] ' + tmpMonster.name + '長大了!!'
+        if (output2 == undefined) {
+            output2 = {
+                type: 'text',
+                text: '[LEVEL UP] ' + tmpMonster.name + '長大了!!'
+            }
+        } else {
+            output3 = {
+                type: 'text',
+                text: '[LEVEL UP] ' + tmpMonster.name + '長大了!!'
+            }
         }
+
     }
     if (output2 != undefined) {
+        if (output3 != undefined) {
+            return clientBot.replyMessage(event.replyToken, [output, output2, output3]);
+        }
         return clientBot.replyMessage(event.replyToken, [output, output2]);
     }
     return clientBot.replyMessage(event.replyToken, output);
