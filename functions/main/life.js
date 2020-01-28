@@ -433,13 +433,13 @@ const call = async (event) => {
                             {
                                 "type": "separator"
                             },
-                            {
-                                "type": "text",
-                                "text": "目前小怪獸擁有",
-                                "margin": "lg",
-                                "align": "center",
-                                "wrap": false
-                            },
+                            // {
+                            //     "type": "text",
+                            //     "text": "目前小怪獸擁有",
+                            //     "margin": "lg",
+                            //     "align": "center",
+                            //     "wrap": false
+                            // },
                             {
                                 "type": "text",
                                 "text": "[自律幣] $" + monster.money,
