@@ -126,18 +126,14 @@ const postbackCommandSolver = async (event, status) => {
                                 }
                             }
                         }
+                    } else if (input.includes('選擇')) {
+                        output = await pk.round(userId, next, 'player');
                     } else {
                         let next = parseInt(str[1]) + 1;
-                        await dbUser.saveStatus(userId, '戰鬥監聽:' + next); //這裡應該監聽是否正確回合
-                        //如果有一方血沒了，改變狀態為正常，回傳勝利訊息及增加經驗等獎勵
-                        //如果str[2]==player先跳回合視窗點選
-                        //如果是str[2]==target就進行回合
-                        //如果玩家點選下回合，那也進行回合
+                        await dbUser.saveStatus(userId, '戰鬥監聽:' + next);
                         let j2;
-                        if (str[2] == 'player' && input.includes('選擇')) {
-                            output2 = await pk.round(userId, next, 'player');
-                        } else if (str[2] == 'player' && input.includes('攻擊')) {
-                            j2 = await dbBattle.round(userId, str[2]);  //round
+                        if (str[2] == 'player' && input.includes('攻擊')) {
+                            j2 = await dbBattle.round(userId, str[2]);
                             switch (j2) {
                                 case '對方勝':
                                     output = {
@@ -182,7 +178,7 @@ const postbackCommandSolver = async (event, status) => {
                                     break;
                             }
                         } else if (str[2] == 'target') {
-                            j2 = await dbBattle.round(userId, str[2]);  //round
+                            j2 = await dbBattle.round(userId, str[2]);
                             switch (j2) {
                                 case '對方勝':
                                     output = {
@@ -197,10 +193,7 @@ const postbackCommandSolver = async (event, status) => {
                                         text: '[戰鬥結束] ' + j2
                                     }
                                     break;
-                                default:  //要一直監聽避免一直案
-                                    //如果是對方先攻 那對方先打 跳出戰鬥訊息+我方動作視窗
-                                    //如果是我方先攻 跳出戰鬥訊息+我方動作視窗
-                                    //我方做動作之後(focus為對方) 我打對方的戰鬥訊息+對方的戰鬥訊息+我方動作視窗
+                                default:
                                     output = {
                                         type: 'text',
                                         text: '戰鬥回合' + str[1] + ': ' + j2 + '  foucs:' + str[2]
