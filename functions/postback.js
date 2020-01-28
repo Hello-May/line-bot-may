@@ -103,11 +103,12 @@ const postbackCommandSolver = async (event, status) => {
                             type: 'text',
                             text: '[戰鬥結束] 逃跑成功'
                         }
+                    // }else if(input.includes('道具')){
+                    
                     } else {
                         let next = parseInt(str[1] + 1);
                         await dbUser.saveStatus(userId, '戰鬥監聽:' + next); //這裡應該監聽是否正確回合
                         //如果有一方血沒了，改變狀態為正常，回傳勝利訊息及增加經驗等獎勵
-                        //要繼續打call dbBattle的函式，傳userId和目前攻擊的人是誰，傳進去抓battle的兩隻比對
                         let j2 = await dbBattle.round(userId, str[2]);
                         switch (j2) {
                             case '對方勝':
@@ -134,50 +135,62 @@ const postbackCommandSolver = async (event, status) => {
                                     text: j2
                                 }
                                 // }
-                                output2 = {
-                                    "type": "flex",
-                                    "altText": "Flex Message",
-                                    "contents": {
-                                        "type": "bubble",
-                                        "direction": "ltr",
-                                        // "body": {
-                                        //     "type": "box",
-                                        //     "layout": "vertical",
-                                        //     "contents": [
-                                        //         {
-                                        //             "type": "text",
-                                        //             "text": j2,
-                                        //             "align": "center"
-                                        //         }
-                                        //     ]
-                                        // },
-                                        "footer": {
-                                            "type": "box",
-                                            "layout": "horizontal",
-                                            "contents": [
-                                                {
-                                                    "type": "button",
-                                                    "action": {
-                                                        "type": "postback",
-                                                        "label": '下回合',
-                                                        "data": '戰鬥回合:' + next + ':' + (str[2] == 'player' ? 'target' : 'player')
-                                                    }
-                                                },
-                                                {
-                                                    "type": "separator"
-                                                },
-                                                {
-                                                    "type": "button",
-                                                    "action": {
-                                                        "type": "postback",
-                                                        "label": '逃跑',
-                                                        "data": '戰鬥回合:' + next + ':' + (str[2] == 'player' ? 'target' : 'player' + ':逃跑')
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                }
+                                output2 = await pk.round(userId,next,str[2]);
+                                // output2 = {
+                                //     "type": "flex",
+                                //     "altText": "Flex Message",
+                                //     "contents": {
+                                //         "type": "bubble",
+                                //         "direction": "ltr",
+                                //         // "body": {
+                                //         //     "type": "box",
+                                //         //     "layout": "vertical",
+                                //         //     "contents": [
+                                //         //         {
+                                //         //             "type": "text",
+                                //         //             "text": j2,
+                                //         //             "align": "center"
+                                //         //         }
+                                //         //     ]
+                                //         // },
+                                //         "footer": {
+                                //             "type": "box",
+                                //             "layout": "horizontal",
+                                //             "contents": [
+                                //                 {
+                                //                     "type": "button",
+                                //                     "action": {
+                                //                         "type": "postback",
+                                //                         "label": '下回合',
+                                //                         "data": '戰鬥回合:' + next + ':' + (str[2] == 'player' ? 'target' : 'player')
+                                //                     }
+                                //                 },
+                                //                 {
+                                //                     "type": "separator"
+                                //                 },
+                                //                 {
+                                //                     "type": "button",
+                                //                     "action": {
+                                //                         "type": "postback",
+                                //                         "label": '道具',
+                                //                         "data": '戰鬥回合:' + next + ':' + (str[2] == 'player' ? 'target' : 'player' + ':道具')
+                                //                     }
+                                //                 },
+                                //                 {
+                                //                     "type": "separator"
+                                //                 },
+                                //                 {
+                                //                     "type": "button",
+                                //                     "action": {
+                                //                         "type": "postback",
+                                //                         "label": '逃跑',
+                                //                         "data": '戰鬥回合:' + next + ':' + (str[2] == 'player' ? 'target' : 'player' + ':逃跑')
+                                //                     }
+                                //                 }
+                                //             ]
+                                //         }
+                                //     }
+                                // }
                                 break;
                         }
                     }

@@ -522,9 +522,115 @@ const firstMoveJudge = async (userId, player) => {
     }
 }
 
+const round = async (userId, next, focus) => {
+    let battle = dbBattle.searchByUserId(userId);
+    let target;
+    let player;
+    for (let i = 0; i < battle.length; i++) {
+        if (battle[i].target == ture) {
+            target = battle[i];
+        } else {
+            player = battle[i];
+        }
+    }
+    let targetSkin = await dbSkin.searchByNameAndRandom(target.skin);
+    let playerSkin = await dbSkin.searchByNameAndRandom(player.skin);
+    return {
+        "type": "flex",
+        "altText": "Flex Message",
+        "contents": {
+            "type": "bubble",
+            "direction": "ltr",
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "戰鬥回合:" + next + " focus:" + focus,
+                        "align": "center",
+                        "wrap": true
+                    },
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "margin": "lg",
+                        "contents": [
+                            {
+                                "type": "image",
+                                "url": targetSkin,
+                                "gravity": "center",
+                                "size": "sm"
+                            },
+                            {
+                                "type": "image",
+                                "url": playerSkin,
+                                "size": "sm"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": target.name,
+                                "align": "center"
+                            },
+                            {
+                                "type": "text",
+                                "text": player.name,
+                                "align": "center"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "footer": {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "button",
+                        "action": {
+                            "type": "postback",
+                            "label": '下回合',
+                            "data": '戰鬥回合:' + next + ':' + (focus == 'player' ? 'target' : 'player')
+                        }
+                    },
+                    {
+                        "type": "separator"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                            "type": "postback",
+                            "label": '道具',
+                            "data": '戰鬥回合:' + next + ':' + (focus == 'player' ? 'target' : 'player' + ':道具')
+                        }
+                    },
+                    {
+                        "type": "separator"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                            "type": "postback",
+                            "label": '逃跑',
+                            "data": '戰鬥回合:' + next + ':' + (focus == 'player' ? 'target' : 'player' + ':逃跑')
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
+
 module.exports = {
     call,
     target,
     firstMove,
-    firstMoveJudge
+    firstMoveJudge,
+    round
 }
