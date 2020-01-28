@@ -126,13 +126,13 @@ const postbackCommandSolver = async (event, status) => {
                                 }
                             }
                         }
-                    } else if (input.includes('選擇')) {
-                        output = await pk.round(userId, next, 'player');
                     } else {
                         let next = parseInt(str[1]) + 1;
                         await dbUser.saveStatus(userId, '戰鬥監聽:' + next);
                         let j2;
-                        if (str[2] == 'player' && input.includes('攻擊')) {
+                        if (str[2] == 'player' && input.includes('選擇')) {
+                            output2 = await pk.round(userId, next, 'player');
+                        } else if (str[2] == 'player' && input.includes('攻擊')) {
                             j2 = await dbBattle.round(userId, str[2]);
                             switch (j2) {
                                 case '對方勝':
@@ -178,7 +178,7 @@ const postbackCommandSolver = async (event, status) => {
                                     break;
                             }
                         } else if (str[2] == 'target') {
-                            j2 = await dbBattle.round(userId, str[2]);
+                            j2 = await dbBattle.round(userId, str[2]); 
                             switch (j2) {
                                 case '對方勝':
                                     output = {
@@ -193,7 +193,7 @@ const postbackCommandSolver = async (event, status) => {
                                         text: '[戰鬥結束] ' + j2
                                     }
                                     break;
-                                default:
+                                default: 
                                     output = {
                                         type: 'text',
                                         text: '戰鬥回合' + str[1] + ': ' + j2 + '  foucs:' + str[2]
