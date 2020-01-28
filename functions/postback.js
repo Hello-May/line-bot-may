@@ -104,7 +104,7 @@ const postbackCommandSolver = async (event, status) => {
                             text: '[戰鬥結束] 逃跑成功'
                         }
                     } else if (input.includes('道具')) {
-                        return {
+                        output = {
                             "type": "flex",
                             "altText": "Flex Message",
                             "contents": {
@@ -119,7 +119,7 @@ const postbackCommandSolver = async (event, status) => {
                                             "action": {
                                                 "type": "postback",
                                                 "label": "下回合",
-                                                "data": str[0] + ':' + str[1] + ':' + str[2] + ':下回合'
+                                                "data": str[0] + ':' + str[1] + ':' + str[2] + ':攻擊'
                                             }
                                         }
                                     ]
