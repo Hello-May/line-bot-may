@@ -612,7 +612,7 @@ const round = async (userId, next, focus) => {
                         "action": {
                             "type": "postback",
                             "label": '攻擊',
-                            "data": '戰鬥回合:' + next + ':' + (focus == 'player' ? 'target' : 'player' + ':攻擊')
+                            "data": '戰鬥回合:' + next + ':' + 'player' + ':攻擊'
                         }
                     },
                     {
@@ -623,7 +623,7 @@ const round = async (userId, next, focus) => {
                         "action": {
                             "type": "postback",
                             "label": '道具',
-                            "data": '戰鬥回合:' + next + ':' + (focus == 'player' ? 'target' : 'player' + ':道具')
+                            "data": '戰鬥回合:' + next + ':' + 'player' + ':道具'
                         }
                     },
                     {
@@ -634,7 +634,7 @@ const round = async (userId, next, focus) => {
                         "action": {
                             "type": "postback",
                             "label": '逃跑',
-                            "data": '戰鬥回合:' + next + ':' + (focus == 'player' ? 'target' : 'player' + ':逃跑')
+                            "data": '戰鬥回合:' + next + ':' + 'player' + ':逃跑'
                         }
                     }
                 ]
