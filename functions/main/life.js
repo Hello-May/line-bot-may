@@ -461,7 +461,6 @@ const call = async (event) => {
                             {
                                 "type": "box",
                                 "layout": "vertical",
-                                "spacing": "lg",
                                 "margin": "lg",
                                 "contents": [
                                     {
