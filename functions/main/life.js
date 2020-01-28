@@ -179,7 +179,6 @@ function genBySkin(skin) {
 
 const skinStore = () => {
     let output = genBySkin(skin);
-    console.log(output);
     return {
         "type": "flex",
         "altText": "Flex Message",

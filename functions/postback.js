@@ -262,6 +262,7 @@ const postbackCommandSolver = async (event, status) => {
                 break;
             case '變身商店':
                 output = life.skinStore();
+                console.log(output);
                 break;
             case '糧食商店':
                 output = {
