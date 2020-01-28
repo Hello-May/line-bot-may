@@ -387,7 +387,6 @@ const call = async (event) => {
                                     "action": {
                                         "type": "postback",
                                         "label": "糧食商店",
-                                        "text": "糧食商店",
                                         "data": "糧食商店"
                                     },
                                     "margin": "lg"
