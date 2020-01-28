@@ -469,7 +469,7 @@ const firstMoveJudge = async (userId, player) => {
             }
         }
     }
-    await dbUser.saveStatus(userId, "戰鬥回合:1:" + (winner == 1 ? "player" : "target") + ':下回合');
+    await dbUser.saveStatus(userId, "戰鬥回合:1:" + (winner == 1 ? "player" : "target") + ':選擇');
     return {
         "type": "flex",
         "altText": "Flex Message",
@@ -525,7 +525,7 @@ const firstMoveJudge = async (userId, player) => {
                         "action": {
                             "type": "postback",
                             "label": (winner == 1 ? "玩家先攻" : "對手先攻"),
-                            "data": "戰鬥回合:1:" + (winner == 1 ? "player" : "target")
+                            "data": "戰鬥回合:1:" + (winner == 1 ? "player" : "target" + ':選擇')
                         }
                     }
                 ]
@@ -563,7 +563,7 @@ const round = async (userId, next, focus) => {
                 "contents": [
                     {
                         "type": "text",
-                        "text": "戰鬥回合:" + next + " focus:" + focus,
+                        "text": "戰鬥回合:" + next + "  focus:" + focus,
                         "align": "center",
                         "wrap": true
                     },
@@ -611,8 +611,8 @@ const round = async (userId, next, focus) => {
                         "type": "button",
                         "action": {
                             "type": "postback",
-                            "label": '下回合',
-                            "data": '戰鬥回合:' + next + ':' + (focus == 'player' ? 'target' : 'player' + ':下回合')
+                            "label": '攻擊',
+                            "data": '戰鬥回合:' + next + ':' + (focus == 'player' ? 'target' : 'player' + ':攻擊')
                         }
                     },
                     {
