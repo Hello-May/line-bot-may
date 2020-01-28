@@ -231,6 +231,10 @@ module.exports = {
           type: DataTypes.INTEGER,
           allowNull: false,
         },
+        skin: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
         createdAt: DataTypes.DATE,
         updatedAt: DataTypes.DATE,
       }, {
