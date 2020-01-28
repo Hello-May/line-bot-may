@@ -38,7 +38,6 @@ const postbackCommandSolver = async (event, status) => {
                 output = life.skinStore(str[1]);
                 break;
             case '購買外觀':
-                //確認戰利夠不夠 不夠回傳錢不夠 夠的話回傳購買成功 然後扣錢 換成新外觀 
                 if (tmpMonster.battleMoney >= parseInt(str[2])) {
                     await dbMonster.updateBattleMoney(tmpMonster.monsterId, tmpMonster.battleMoney - parseInt(str[2]));
                     await dbMonster.updateSkin(tmpMonster.monsterId, str[1]);
@@ -161,10 +160,11 @@ const postbackCommandSolver = async (event, status) => {
                                     }
                                     break;
                                 case '玩家勝':
-                                    //獎勵
+                                    //增加戰利幣
+                                    await dbMonster.increaseBattleMoney(tmpMonster.monsterId);
                                     output = {
                                         type: 'text',
-                                        text: '[戰鬥結束] ' + j2
+                                        text: '[戰鬥結束] ' + j2 + '，贏得戰利幣$1'
                                     }
                                     break;
                                 default:
@@ -206,7 +206,8 @@ const postbackCommandSolver = async (event, status) => {
                                     }
                                     break;
                                 case '玩家勝':
-                                    //獎勵
+                                    //增加戰利幣
+                                    await dbMonster.increaseBattleMoney(tmpMonster.monsterId);
                                     output = {
                                         type: 'text',
                                         text: '[戰鬥結束] ' + j2

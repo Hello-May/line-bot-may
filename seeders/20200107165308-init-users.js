@@ -57,7 +57,73 @@ module.exports = {
         sentence: '腦中有知識，勝過手中有金錢。Wisdom in the mind is better than money in the hand.',
         createdAt: new Date(),
         updatedAt: new Date()
-      }]);
+      },
+      {
+        sentence: '勇氣和堅定是美德的精神與靈魂。Courage and resolution are the spirit and soul of virtue.',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        sentence: '忍耐和專心會使我們度過難關。Patience and application will carry us through.',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        sentence: '健康的身體貴於黃金鑄成的皇冠。A good healthy body is worth more a crown in gold.',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        sentence: '千言萬語不如一個行動。A thousand words will not leave so deep an impression as one deed.',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        sentence: '任何值得做的，就把它做好。Whatever is worth doing is worth doing well.',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        sentence: '如果你竭盡全力，你就不用擔心失敗。If you are doing your best,you will not have to worry about failure.',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        sentence: '鏈條的堅固程度取決於它最薄弱的環節。A chain is no stronger than its weakest link.',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        sentence: '一次痛苦的經驗抵得上千百次的告誡。One thorn of experience is worth a whole wilderness of warning.',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        sentence: '當你停止嘗試的時候，你就完全失敗了。You make the failure complete when you stop trying.',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        sentence: '能處處尋求快樂的人才是最富有的人。That man is the richest whose pleasure are the cheapest.',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        sentence: '逆境能打敗弱者而造就強者。Adversity can beat the weak and the strong.',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        sentence: '怎樣思想，就有怎樣的生活。How to thought, there is what kind of life.',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        sentence: '世上本沒有路，走的人多了便成了路。This no way in the world, more people became walk.',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      }
+      ]);
       await queryInterface.bulkInsert('skins', [{
         name: '喵仔獸',
         image: 'https://i.postimg.cc/d0k3NGNh/1.jpg',
@@ -520,7 +586,7 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date()
       }
-    ]);
+      ]);
       return Promise.resolve();
     } catch (e) {
       return Promise.reject(e);
