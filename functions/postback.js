@@ -136,11 +136,11 @@ const postbackCommandSolver = async (event, status) => {
                         let j2;
                         // switch (str[2]) {
                         //     case 'player':
-                        // if (str[2] == 'player' && input.includes('下回合')) {
-                        //     output2 = await pk.round(userId, next, str[2]);
+                        if (str[2] == 'player' && input.includes('下回合')) {
+                            output2 = await pk.round(userId, next, str[2]);
                             // break;
                             // case 'target':
-                        // } else {
+                        } else {
                             j2 = await dbBattle.round(userId, str[2]);  //round
                             switch (j2) {
                                 case '對方勝':
@@ -164,12 +164,12 @@ const postbackCommandSolver = async (event, status) => {
                                         type: 'text',
                                         text: '戰鬥回合' + str[1] + ': ' + j2 + '  foucs:' + str[2]
                                     }
-                                    output2 = await pk.round(userId, next, 'player');
+                                    output2 = await pk.round(userId, next, str[2]);
                                     break;
                             }
                             // break;
                             // }
-                        // }
+                        }
                     }
                 }
                 break;
