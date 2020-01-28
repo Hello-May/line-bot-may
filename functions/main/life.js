@@ -406,7 +406,7 @@ const call = async (event) => {
                             }
                         ]
                     }
-                }
+                },
                 // {
                 //     "type": "bubble",
                 //     "direction": "ltr",
