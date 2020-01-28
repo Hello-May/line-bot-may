@@ -3,7 +3,7 @@ const dbHabit = require('../dbController/habit');
 const dbMonster = require('../dbController/monster');
 const reward = ["糧食商店", "外觀商店", "能力商店", "商品4", "商品5", "商品6"];
 const price = ['600', '300', '200', '100', '50', '10'];
-const skin = [  //賣外觀的商店
+const skin = [  //賣變身食物
     { monster: '炸蝦獸', image: 'https://i.postimg.cc/t4VXNgGB/0.png', price: '1', name: '深夜食堂' },
     { monster: '草莓獸', image: 'https://i.postimg.cc/yxhBp04V/0.png', price: '1', name: '少女心' },
     { monster: '餅乾獸', image: 'https://i.postimg.cc/bv6Rb5ZP/0.png', price: '1', name: '呆萌奶糖味' },
@@ -119,9 +119,8 @@ const selectTime = (postback) => {
 
 function genBySkin(skin) {
     let output = [];
-    for (let i = 0; i < skin.length; i++) {
-        output.push(
-            {
+    for (let i = 0; i < skin.length/4; i++) {
+        output.push({
                 "type": "bubble",
                 "direction": "ltr",
                 "header": {
@@ -171,8 +170,7 @@ function genBySkin(skin) {
                         }
                     ]
                 }
-            }
-        )
+            })
     }
     return output;
 }
