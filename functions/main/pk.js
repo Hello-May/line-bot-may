@@ -527,7 +527,7 @@ const round = async (userId, next, focus) => {
     let target;
     let player;
     for (let i = 0; i < battle.length; i++) {
-        if (battle[i].target == true) {
+        if (battle[i].identity == true) {
             target = battle[i];
         } else {
             player = battle[i];
