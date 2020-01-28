@@ -172,7 +172,7 @@ const postbackCommandSolver = async (event, status) => {
                                                         "action": {
                                                             "type": "postback",
                                                             "label": "對方攻來",
-                                                            "data": str[0] +':'+ next +':'+ 'target'+ '下回合'
+                                                            "data": str[0] +':'+ next +':'+ 'target'+ ':下回合'
                                                         }
                                                     }
                                                 ]
