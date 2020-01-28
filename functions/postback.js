@@ -108,24 +108,24 @@ const postbackCommandSolver = async (event, status) => {
                             "type": "flex",
                             "altText": "Flex Message",
                             "contents": {
-                              "type": "bubble",
-                              "direction": "ltr",
-                              "footer": {
-                                "type": "box",
-                                "layout": "horizontal",
-                                "contents": [
-                                  {
-                                    "type": "button",
-                                    "action": {
-                                      "type": "postback",
-                                      "label": "下回合",
-                                      "data": str[0]+str[1]+str[2]+'下回合'
-                                    }
-                                  }
-                                ]
-                              }
+                                "type": "bubble",
+                                "direction": "ltr",
+                                "footer": {
+                                    "type": "box",
+                                    "layout": "horizontal",
+                                    "contents": [
+                                        {
+                                            "type": "button",
+                                            "action": {
+                                                "type": "postback",
+                                                "label": "下回合",
+                                                "data": str[0] + str[1] + str[2] + '下回合'
+                                            }
+                                        }
+                                    ]
+                                }
                             }
-                          }
+                        }
                     } else {
                         let next = parseInt(str[1]) + 1;
                         await dbUser.saveStatus(userId, '戰鬥監聽:' + next); //這裡應該監聽是否正確回合
@@ -136,40 +136,40 @@ const postbackCommandSolver = async (event, status) => {
                         let j2;
                         // switch (str[2]) {
                         //     case 'player':
-                        if(str[2]=='player'&&input.includes('下回合')){
-                                output2 = await pk.round(userId, next, str[2]);
-                                // break;
+                        if (str[2] == 'player' && input.includes('下回合')) {
+                            output2 = await pk.round(userId, next, str[2]);
+                            // break;
                             // case 'target':
-                        }else{
-                                j2 = await dbBattle.round(userId, str[2]);  //round
-                                switch (j2) {
-                                    case '對方勝':
-                                        output = {
-                                            type: 'text',
-                                            text: '[戰鬥結束] ' + j2
-                                        }
-                                        break;
-                                    case '玩家勝':
-                                        //獎勵
-                                        output = {
-                                            type: 'text',
-                                            text: '[戰鬥結束] ' + j2
-                                        }
-                                        break;
-                                    default:  //要一直監聽避免一直案
-                                        //如果是對方先攻 那對方先打 跳出戰鬥訊息+我方動作視窗
-                                        //如果是我方先攻 跳出戰鬥訊息+我方動作視窗
-                                        //我方做動作之後(focus為對方) 我打對方的戰鬥訊息+對方的戰鬥訊息+我方動作視窗
-                                        output = {
-                                            type: 'text',
-                                            text: j2
-                                        }
-                                        output2 = await pk.round(userId, next, str[2]);
-                                        break;
-                                }
-                                // break;
-                        // }
+                        } else {
+                            j2 = await dbBattle.round(userId, str[2]);  //round
+                            switch (j2) {
+                                case '對方勝':
+                                    output = {
+                                        type: 'text',
+                                        text: '[戰鬥結束] ' + j2
+                                    }
+                                    break;
+                                case '玩家勝':
+                                    //獎勵
+                                    output = {
+                                        type: 'text',
+                                        text: '[戰鬥結束] ' + j2
+                                    }
+                                    break;
+                                default:  //要一直監聽避免一直案
+                                    //如果是對方先攻 那對方先打 跳出戰鬥訊息+我方動作視窗
+                                    //如果是我方先攻 跳出戰鬥訊息+我方動作視窗
+                                    //我方做動作之後(focus為對方) 我打對方的戰鬥訊息+對方的戰鬥訊息+我方動作視窗
+                                    output = {
+                                        type: 'text',
+                                        text: '戰鬥回合' + str[1] + ': ' + j2 + '  foucs:' + str[2]
+                                    }
+                                    output2 = await pk.round(userId, next, 'player');
+                                    break;
                             }
+                            // break;
+                            // }
+                        }
                     }
                 }
                 break;
