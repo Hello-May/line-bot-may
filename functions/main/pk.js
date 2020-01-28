@@ -267,9 +267,21 @@ const call = (event) => {
 }
 
 const firstMove = async (userId, tarMonsterId) => {
+    let target = await dbMonster.searchById(tarMonsterId);
+    if (target == undefined) {
+        return {
+            type: 'text',
+            text: '已沒有此敵人'
+        }
+    }
     let user = await dbUser.searchById(userId);
     let monster = await dbMonster.searchById(user.monsterId);
-    let target = await dbMonster.searchById(tarMonsterId);
+    if (target.level < monster.level) {
+        return {
+            type: 'text',
+            text: '敵人等級低於' + monster.name
+        }
+    }
     let tarSkin = await dbSkin.searchByNameAndRandom(target.skin);
     await dbBattle.create(userId, monster, target);
 

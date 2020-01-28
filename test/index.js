@@ -400,8 +400,18 @@ Date.prototype.Format = function (fmt) { //author: meizz
 // }
 // console.log(t);
 
-let i='ooo'
-if (i != undefined) {
-    console.log('哈');
+// let i='ooo'
+// if (i != undefined) {
+//     console.log('哈');
+// }
+// console.log(i);
+const dbMonster = require('../functions/dbController/monster');
+let target;
+const go = async () => {
+    target = await dbMonster.searchById(2);
 }
-console.log(i);
+go();
+console.log(target);
+if (target == undefined) {
+    console.log('哈哈')
+}
