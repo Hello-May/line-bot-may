@@ -259,9 +259,8 @@ const postbackCommandSolver = async (event, status) => {
                 break;
             case '抖內開發者':
                 // output = talk.donate();
-                return clientBot.replyMessage(event.replyToken, 
-                {
-                    "type": "video",
+                return clientBot.replyMessage(event.replyToken, {
+                    // "type": "video",
                     "originalContentUrl": "https://r1---sn-npoeene6.googlevideo.com/videoplayback?expire=1580330877&ei=HZsxXueQEIjb7QSQhoT4Bw&ip=92.63.195.213&id=o-AGLj7qG5550jaTtp8p2Orq6jkJTvniUFhPM62JFKb1Mr&itag=18&source=youtube&requiressl=yes&vprv=1&mime=video/mp4&gir=yes&clen=2784971&ratebypass=yes&dur=30.093&lmt=1486017765637119&fvip=6&fexp=23842630&c=WEB&sparams=expire,ei,ip,id,itag,source,requiressl,vprv,mime,gir,clen,ratebypass,dur,lmt&sig=ALgxI2wwRgIhAMAREi1478a_UPWJD8-aXEJMEFMj3elHAkoB2r-dTRorAiEApZ2GEs_dFDnsq1G7Q6RmOtp6pTTlo_dLn3CQn4kMKus=&title=美食篇_30秒_短廣告&cm2rm=sn-ipoxu-un5e77e,sn-un567d&req_id=3c722c7539d7a3ee&ipbypass=yes&redirect_counter=2&cms_redirect=yes&mip=2001:b400:e2a8:85b2:d09a:55e5:e2ec:4331&mm=34&mn=sn-npoeene6&ms=ltu&mt=1580309190&mv=m&mvi=0&pl=44&lsparams=ipbypass,mip,mm,mn,ms,mv,mvi,pl&lsig=AHylml4wRgIhAMOtnoGreL4nYd1y4EzCC2DvVhloH9V6z_C1lIsGQ8QkAiEAy3g3Ul_3ZvHvuDF_agN4P263XEVqPmXpc8XYQFq8MXw=",
                     "previewImageUrl:": "https://i.ytimg.com/vi/qTIepMobf3A/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLCcR31hQkIr0bv8GP48TsH-qzkZ_Q"
                 });
