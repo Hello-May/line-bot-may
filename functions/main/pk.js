@@ -303,7 +303,7 @@ const firstMove = async (userId, player, tarMonsterId) => {
                 "contents": [
                     {
                         "type": "text",
-                        "text": "戰鬥開始",
+                        "text": "請猜拳決定先攻",
                         "size": "lg",
                         "align": "center",
                         "weight": "bold"
@@ -314,12 +314,12 @@ const firstMove = async (userId, player, tarMonsterId) => {
                 "type": "box",
                 "layout": "vertical",
                 "contents": [
-                    {
-                        "type": "text",
-                        "text": "請猜拳決定先攻",
-                        "align": "center",
-                        "wrap": true
-                    },
+                    // {
+                    //     "type": "text",
+                    //     "text": "請猜拳決定先攻",
+                    //     "align": "center",
+                    //     "wrap": true
+                    // },
                     {
                         "type": "box",
                         "layout": "horizontal",
@@ -386,13 +386,15 @@ const firstMove = async (userId, player, tarMonsterId) => {
                         "contents": [
                             {
                                 "type": "text",
-                                "text": "agi/vit/str/lucky：" + battleTarget.agi + '/' + battleTarget.vit + '/' + battleTarget.str + '/' + battleTarget.lucky,
-                                "align": "center"
+                                "text": "agi/vit/str/lucky:" + battleTarget.agi + '/' + battleTarget.vit + '/' + battleTarget.str + '/' + battleTarget.lucky,
+                                "align": "center",
+                                "wrap": true
                             },
                             {
                                 "type": "text",
-                                "text": "agi/vit/str/lucky：" + battlePlayer.agi + '/' + battlePlayer.vit + '/' + battlePlayer.str + '/' + battlePlayer.lucky,
-                                "align": "center"
+                                "text": "agi/vit/str/lucky:" + battlePlayer.agi + '/' + battlePlayer.vit + '/' + battlePlayer.str + '/' + battlePlayer.lucky,
+                                "align": "center",
+                                "wrap": true
                             }
                         ]
                     }
