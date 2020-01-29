@@ -139,6 +139,42 @@ const keyWord = () => {
                         "type": "separator"
                     },
                     {
+                        "type": "text",
+                        "text": "☺這裡有五大功能☺",
+                        "margin": "lg",
+                        "align": "center",
+                        "wrap": true
+                    },
+                    {
+                        "type": "text",
+                        "text": "［修練］養成自律習慣",
+                        "align": "center"
+                    },
+                    {
+                        "type": "text",
+                        "text": "［任務］記錄備忘事項",
+                        "align": "center"
+                    },
+                    {
+                        "type": "text",
+                        "text": "［小怪獸］成長型怪獸",
+                        "align": "center"
+                    },
+                    {
+                        "type": "text",
+                        "text": "［戰鬥］朋友社交娛樂",
+                        "align": "center"
+                    },
+                    {
+                        "type": "text",
+                        "text": "［酒館］其他查詢資訊",
+                        "align": "center"
+                    },
+                    {
+                        "type": "separator",
+                        "margin": "lg"
+                    },
+                    {
                         "type": "box",
                         "layout": "horizontal",
                         "margin": "xs",
