@@ -190,6 +190,8 @@ const postbackCommandSolver = async (event, status) => {
                                         type: 'text',
                                         text: '戰鬥回合' + str[1] + ': ' + j2 + '  foucs:' + str[2]
                                     }
+                                    console.log(' output2<------------------');
+                                    console.log(output2);
                                     // output2 = {
                                     //     "type": "flex",
                                     //     "altText": "Flex Message",
