@@ -129,7 +129,7 @@ const textCommandSolver = async (event, status) => {
                             await dbHabit.create(userId, str[1] + ":" + str[2], str[3], input);
                             output = {
                                 type: 'text',
-                                text: '[已新增自律指令]\n' + '時間: '+str[1] + ":" + str[2] + " / 習慣: " + str[3] + " / 密語: " + input
+                                text: '[已新增自律指令]\n' + '時間: '+str[1] + ":" + str[2] + "\n習慣: " + str[3] + "\n密語: " + input
                             };
                             await dbUser.saveStatus(userId, '正常');
                             break;
