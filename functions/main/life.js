@@ -33,9 +33,9 @@ const food = [
 ]
 
 const props = [
-    { name: '毒', image: 'https://i.postimg.cc/BvBnLSKX/1.png', price: 1 },
-    { name: '炸', image: 'https://i.postimg.cc/MTZK1C7t/2.png', price: 1 },
-    { name: '醫', image: 'https://i.postimg.cc/SR3SFjwt/5.png', price: 1 },
+    { name: '毒', image: 'https://i.postimg.cc/bYnLN06n/2.png', price: 1 },
+    { name: '炸', image: 'https://i.postimg.cc/nct2ss5P/3.png', price: 1 },
+    { name: '醫', image: 'https://i.postimg.cc/rs59ncdj/1.png', price: 1 },
 ]
 
 Date.prototype.Format = function (fmt) { //author: meizz 
@@ -144,7 +144,7 @@ function genByProps(props) {
         },
         "hero": {
             "type": "image",
-            "url": 'https://i.postimg.cc/yNrn4Z1H/image.png',
+            "url": 'https://i.postimg.cc/2SgV6W9q/image.png',
             "size": "xxl",
             "aspectRatio": "1.51:1",
             "aspectMode": "fit"
@@ -155,7 +155,7 @@ function genByProps(props) {
             "contents": [
                 {
                     "type": "text",
-                    "text": '\n物質可以匱乏，思想不能貧瘠。',
+                    "text": '\小小的藥丸，大大的威力。。',
                     "margin": "lg",
                     "align": "center",
                     "wrap": true
