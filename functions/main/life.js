@@ -637,6 +637,7 @@ const call = async (event) => {
                                             {
                                                 "type": "text",
                                                 "text": "糧食",
+                                                "margin": "lg",
                                                 "align": "center"
                                             }
                                         ]
@@ -657,6 +658,7 @@ const call = async (event) => {
                                             {
                                                 "type": "text",
                                                 "text": "能力",
+                                                "margin": "lg",
                                                 "align": "center"
                                             }
                                         ]
@@ -677,6 +679,7 @@ const call = async (event) => {
                                             {
                                                 "type": "text",
                                                 "text": "變種",
+                                                "margin": "lg",
                                                 "align": "center"
                                             }
                                         ]
