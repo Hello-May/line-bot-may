@@ -110,9 +110,61 @@ const selectTime = (postback) => {
 }
 
 const propStore = () => {
-    let props = [];
+    let output = genByProps(food);
+    return {
+        "type": "flex",
+        "altText": "Flex Message",
+        "contents": {
+            "type": "carousel",
+            "contents": output
+        }
+    }
+}
+
+function genByProps(props) {
+    let output = [];
+    output.push({
+        "type": "bubble",
+        "direction": "ltr",
+        "header": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+                {
+                    "type": "text",
+                    "text": "道具商店",
+                    "size": "lg",
+                    "align": "center",
+                    "weight": "bold"
+                },
+                {
+                    "type": "spacer"
+                }
+            ]
+        },
+        "hero": {
+            "type": "image",
+            "url": 'https://i.postimg.cc/yNrn4Z1H/image.png',
+            "size": "xxl",
+            "aspectRatio": "1.51:1",
+            "aspectMode": "fit"
+        },
+        "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+                {
+                    "type": "text",
+                    "text": '\n物質可以匱乏，思想不能貧瘠。',
+                    "margin": "lg",
+                    "align": "center",
+                    "wrap": true
+                }
+            ]
+        }
+    })
     for (let i = 0; i < props.length; i++) {
-        props.push({
+        output.push({
             "type": "bubble",
             "direction": "ltr",
             "header": {
@@ -164,54 +216,7 @@ const propStore = () => {
             }
         })
     }
-    return {
-        "type": "flex",
-        "altText": "Flex Message",
-        "contents": {
-            "type": "carousel",
-            "contents": [{
-                "type": "bubble",
-                "direction": "ltr",
-                "header": {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [
-                        {
-                            "type": "text",
-                            "text": "道具商店",
-                            "size": "lg",
-                            "align": "center",
-                            "weight": "bold"
-                        },
-                        {
-                            "type": "spacer"
-                        }
-                    ]
-                },
-                "hero": {
-                    "type": "image",
-                    "url": 'https://i.postimg.cc/yNrn4Z1H/image.png',
-                    "size": "xxl",
-                    "aspectRatio": "1.51:1",
-                    "aspectMode": "fit"
-                },
-                "body": {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [
-                        {
-                            "type": "text",
-                            "text": '\n物質可以匱乏，思想不能貧瘠。',
-                            "margin": "lg",
-                            "align": "center",
-                            "wrap": true
-                        }
-                    ]
-                }
-            }, props
-            ]
-        }
-    }
+    return output;
 }
 
 function genByFood(food) {
