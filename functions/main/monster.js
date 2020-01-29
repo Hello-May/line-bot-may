@@ -144,8 +144,7 @@ const call = async (userId) => {
                                 "action": {
                                     "type": "postback",
                                     "label": "小語",
-                                    "text": saying.sentence,
-                                    "data": "#whisper"
+                                    "data": saying.sentence
                                 },
                                 "flex": 10,
                                 "wrap": true
@@ -157,8 +156,7 @@ const call = async (userId) => {
                                 "action": {
                                     "type": "postback",
                                     "label": "小語",
-                                    "text": saying.sentence,
-                                    "data": "#whisper"
+                                    "data": saying.sentence
                                 },
                                 "gravity": "center",
                                 "flex": 1,
