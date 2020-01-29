@@ -166,7 +166,7 @@ const postbackCommandSolver = async (event, status) => {
                                                 {
                                                     "type": "image",
                                                     "url": "https://i.postimg.cc/bYnLN06n/2.png",
-                                                    "size": "xs",
+                                                    "size": "xxs",
                                                     "action": {
                                                         "type": "postback",
                                                         "label": "毒",
@@ -177,7 +177,7 @@ const postbackCommandSolver = async (event, status) => {
                                                     "type": "image",
                                                     "url": "https://i.postimg.cc/nct2ss5P/3.png",
                                                     "gravity": "center",
-                                                    "size": "xs",
+                                                    "size": "xxs",
                                                     "action": {
                                                         "type": "postback",
                                                         "label": "炸",
@@ -187,7 +187,7 @@ const postbackCommandSolver = async (event, status) => {
                                                 {
                                                     "type": "image",
                                                     "url": "https://i.postimg.cc/rs59ncdj/1.png",
-                                                    "size": "xs",
+                                                    "size": "xxs",
                                                     "action": {
                                                         "type": "postback",
                                                         "label": "醫",
@@ -204,16 +204,19 @@ const postbackCommandSolver = async (event, status) => {
                                                 {
                                                     "type": "text",
                                                     "text": "毒*0",
+                                                    "size": "sm",
                                                     "align": "center"
                                                 },
                                                 {
                                                     "type": "text",
                                                     "text": "炸*0",
+                                                    "size": "sm",
                                                     "align": "center"
                                                 },
                                                 {
                                                     "type": "text",
                                                     "text": "醫*0",
+                                                    "size": "sm",
                                                     "align": "center"
                                                 }
                                             ]
