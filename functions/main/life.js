@@ -1,24 +1,30 @@
 const dbUser = require('../dbController/user');
 const dbHabit = require('../dbController/habit');
 const dbMonster = require('../dbController/monster');
-// const reward = ["糧食商店", "外觀商店", "能力商店", "商品4", "商品5", "商品6"];
-// const price = ['600', '300', '200', '100', '50', '10'];
-const skin = [  //賣變身食物
-    { monster: '草莓獸', image: 'https://i.postimg.cc/yxhBp04V/0.png', price: '1', belong: 'light', name: '少女心' },
-    { monster: '餅乾獸', image: 'https://i.postimg.cc/bv6Rb5ZP/0.png', price: '1', belong: 'light', name: '呆萌奶糖味' },
-    { monster: '蛋蛋獸', image: 'https://i.postimg.cc/gcDXShYS/0.png', price: '1', belong: 'light', name: '一日之計' },
-    { monster: '浪濤獸', image: 'https://i.postimg.cc/rF58ZXC8/0.png', price: '1', belong: 'light', name: '擱淺浪花' },
-    { monster: '哈味獸', image: 'https://i.postimg.cc/zvtT9H1g/0.png', price: '1', belong: 'light', name: '青之森' },
-    { monster: '芒果獸', image: 'https://i.postimg.cc/HxKSfL1j/0.png', price: '1', belong: 'light', name: '初夏滋味' },
-    { monster: '太陽獸', image: 'https://i.postimg.cc/Nf1c73RR/0.png', price: '1', belong: 'light', name: '熾熱溫度' },
-    { monster: '摩卡獸', image: 'https://i.postimg.cc/52MtfNNY/0.png', price: '1', belong: 'light', name: '黃金比例' },
-    { monster: '塔派獸', image: 'https://i.postimg.cc/rwrtJFQQ/0.png', price: '1', belong: 'dark', name: '奶香秋意濃' },
-    { monster: '可可獸', image: 'https://i.postimg.cc/htH6kfS6/0.png', price: '1', belong: 'dark', name: '漂浮雲朵' },
-    { monster: '炸蝦獸', image: 'https://i.postimg.cc/t4VXNgGB/0.png', price: '1', belong: 'dark', name: '深夜食堂' },
-    { monster: '星月獸', image: 'https://i.postimg.cc/rww0Wwxd/0.png', price: '1', belong: 'dark', name: '海中撈月' },
-    { monster: '銀河獸', image: 'https://i.postimg.cc/hvGWs6r0/0.png', price: '1', belong: 'dark', name: '城市夜色' },
-    { monster: '神秘獸', image: 'https://i.postimg.cc/s20xdk6v/0.png', price: '1', belong: 'dark', name: '仲夏夜之夢' },
-    { monster: '喵仔獸', image: 'https://i.postimg.cc/Y9xRRZ59/0.jpg', price: '1', belong: 'dark', name: '渾沌之初' }
+const skin = [
+    { monster: '草莓獸', image: 'https://i.postimg.cc/yxhBp04V/0.png', price: 1, belong: 'light', name: '少女心' },
+    { monster: '餅乾獸', image: 'https://i.postimg.cc/bv6Rb5ZP/0.png', price: 1, belong: 'light', name: '呆萌奶糖味' },
+    { monster: '蛋蛋獸', image: 'https://i.postimg.cc/gcDXShYS/0.png', price: 1, belong: 'light', name: '一日之計' },
+    { monster: '浪濤獸', image: 'https://i.postimg.cc/rF58ZXC8/0.png', price: 1, belong: 'light', name: '擱淺浪花' },
+    { monster: '哈味獸', image: 'https://i.postimg.cc/zvtT9H1g/0.png', price: 1, belong: 'light', name: '青之森' },
+    { monster: '芒果獸', image: 'https://i.postimg.cc/HxKSfL1j/0.png', price: 1, belong: 'light', name: '初夏滋味' },
+    { monster: '太陽獸', image: 'https://i.postimg.cc/Nf1c73RR/0.png', price: 1, belong: 'light', name: '熾熱溫度' },
+    { monster: '摩卡獸', image: 'https://i.postimg.cc/52MtfNNY/0.png', price: 1, belong: 'light', name: '黃金比例' },
+    { monster: '塔派獸', image: 'https://i.postimg.cc/rwrtJFQQ/0.png', price: 1, belong: 'dark', name: '奶香秋意濃' },
+    { monster: '可可獸', image: 'https://i.postimg.cc/htH6kfS6/0.png', price: 1, belong: 'dark', name: '漂浮雲朵' },
+    { monster: '炸蝦獸', image: 'https://i.postimg.cc/t4VXNgGB/0.png', price: 1, belong: 'dark', name: '深夜食堂' },
+    { monster: '星月獸', image: 'https://i.postimg.cc/rww0Wwxd/0.png', price: 1, belong: 'dark', name: '海中撈月' },
+    { monster: '銀河獸', image: 'https://i.postimg.cc/hvGWs6r0/0.png', price: 1, belong: 'dark', name: '城市夜色' },
+    { monster: '神秘獸', image: 'https://i.postimg.cc/s20xdk6v/0.png', price: 1, belong: 'dark', name: '仲夏夜之夢' },
+    { monster: '喵仔獸', image: 'https://i.postimg.cc/Y9xRRZ59/0.jpg', price: 1, belong: 'dark', name: '渾沌之初' }
+]
+
+const food = [
+    { name: '補充能量', image: 'https://i.postimg.cc/BvBnLSKX/1.png', price: 5, effect: 24 },
+    { name: '休閒娛樂', image: 'https://i.postimg.cc/MTZK1C7t/2.png', price: 10, effect: 48 },
+    { name: '社會實踐', image: 'https://i.postimg.cc/SR3SFjwt/5.png', price: 15, effect: 72 },
+    { name: '修身養性', image: 'https://i.postimg.cc/3Nd8c2bv/4.png', price: 20, effect: 96 },
+    { name: '大吃特吃', image: 'https://i.postimg.cc/JnT7xpK8/3.png', price: 25, effect: 120 },
 ]
 
 Date.prototype.Format = function (fmt) { //author: meizz 
@@ -116,6 +122,63 @@ const selectTime = (postback) => {
             }
         }
     };
+}
+
+function genByFood(food) {
+    let output = [];
+    for (let i = 0; i < food.length; i++) {
+        output.push({
+            "type": "bubble",
+            "direction": "ltr",
+            "header": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": food[i].name,
+                        "size": "lg",
+                        "align": "center",
+                        "weight": "bold"
+                    }
+                ]
+            },
+            "hero": {
+                "type": "image",
+                "url": food[i].image,
+                "size": "lg",
+                "aspectRatio": "1.51:1",
+                "aspectMode": "fit"
+            },
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "自律幣 $" + food[i].price,
+                        "margin": "lg",
+                        "align": "center",
+                        "wrap": false
+                    }
+                ]
+            },
+            "footer": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "button",
+                        "action": {
+                            "type": "postback",
+                            "label": "購買",
+                            "data": "購買糧食:" + food[i].effect + ':' + food[i].price
+                        }
+                    }
+                ]
+            }
+        })
+    }
 }
 
 function genBySkin(skin, belong) {
@@ -240,6 +303,18 @@ const lightOrDark = () => {
 
 const skinStore = (belong) => {
     let output = genBySkin(skin, belong);
+    return {
+        "type": "flex",
+        "altText": "Flex Message",
+        "contents": {
+            "type": "carousel",
+            "contents": output
+        }
+    }
+}
+
+const foodStore = () => {
+    let output = genByFood(food);
     return {
         "type": "flex",
         "altText": "Flex Message",
@@ -520,7 +595,7 @@ const call = async (event) => {
                                     },
                                     {
                                         "type": "text",
-                                        "text": "* 請在此輸入 [密語] 以完成自律"
+                                        "text": "* 30分鐘內輸入 [密語] 以完成自律"
                                     },
                                     {
                                         "type": "text",
@@ -616,5 +691,6 @@ module.exports = {
     selectTime,
     update,
     skinStore,
-    lightOrDark
+    lightOrDark,
+    foodStore
 }

@@ -34,6 +34,12 @@ const postbackCommandSolver = async (event, status) => {
     if (input.includes(':')) {
         str = input.split(":");
         switch (str[0]) {
+            case '購買糧食':
+                output = {
+                    type: 'text',
+                    text: '[購買成功] ' + input
+                }
+                break;
             case '變身商店':
                 output = life.skinStore(str[1]);
                 break;
@@ -277,10 +283,7 @@ const postbackCommandSolver = async (event, status) => {
                 output = life.lightOrDark();
                 break;
             case '糧食商店':
-                output = {
-                    type: 'text',
-                    text: '糧食商店的訊息窗'
-                };
+                output = life.foodStore();
                 break;
             case '能力商店':
                 output = {
