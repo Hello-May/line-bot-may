@@ -161,7 +161,7 @@ async function genByTarget(target) {
     return output;
 }
 
-const target = async (monster) => {
+const target = async (event) => {
     let user;
     let monster;
     let target;
