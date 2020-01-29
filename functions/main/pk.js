@@ -631,12 +631,12 @@ const fight = async (userId, round, hurt, foucs) => {
                 "type": "box",
                 "layout": "vertical",
                 "contents": [
-                    {
-                        "type": "text",
-                        "text": '戰鬥回合' + round + ': 傷害' + hurt + '  foucs:' + foucs,
-                        "align": "center",
-                        "wrap": true
-                    },
+                    // {
+                    //     "type": "text",
+                    //     "text": '戰鬥回合' + round + ': 傷害' + hurt + '  foucs:' + foucs,
+                    //     "align": "center",
+                    //     "wrap": true
+                    // },
                     {
                         "type": "box",
                         "layout": "horizontal",
@@ -787,11 +787,31 @@ const round = async (userId, next, focus) => {
                 "type": "box",
                 "layout": "vertical",
                 "contents": [
+                    // {
+                    //     "type": "text",
+                    //     "text": "戰鬥回合:" + next + "  focus:" + focus,
+                    //     "align": "center",
+                    //     "wrap": true
+                    // },
                     {
-                        "type": "text",
-                        "text": "戰鬥回合:" + next + "  focus:" + focus,
-                        "align": "center",
-                        "wrap": true
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": (foucs == 'target' ? "⌛" : ""),
+                                "align": "center",
+                                "weight": "bold",
+                                // "color": (foucs == 'target' ? "#0700FF" : "#FF0000")
+                            },
+                            {
+                                "type": "text",
+                                "text": (foucs == 'player' ? "" : "⌛"),
+                                "align": "center",
+                                "weight": "bold",
+                                // "color": (foucs == 'player' ? "#0700FF" : "#FF0000")
+                            }
+                        ]
                     },
                     // {
                     //     "type": "box",
