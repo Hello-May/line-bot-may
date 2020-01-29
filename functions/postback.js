@@ -148,6 +148,81 @@ const postbackCommandSolver = async (event, status) => {
                             "contents": {
                                 "type": "bubble",
                                 "direction": "ltr",
+                                "body": {
+                                    "type": "box",
+                                    "layout": "vertical",
+                                    "contents": [
+                                        {
+                                            "type": "text",
+                                            "text": "請點選道具(目前只能下回合)",
+                                            "align": "center",
+                                            "wrap": true
+                                        },
+                                        {
+                                            "type": "box",
+                                            "layout": "horizontal",
+                                            "margin": "lg",
+                                            "contents": [
+                                                {
+                                                    "type": "image",
+                                                    "url": "https://i.postimg.cc/bYnLN06n/2.png",
+                                                    "size": "xs",
+                                                    "action": {
+                                                        "type": "postback",
+                                                        "label": "毒",
+                                                        "text": "毒",
+                                                        "data": "毒"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "image",
+                                                    "url": "https://i.postimg.cc/nct2ss5P/3.png",
+                                                    "gravity": "center",
+                                                    "size": "xs",
+                                                    "action": {
+                                                        "type": "postback",
+                                                        "label": "炸",
+                                                        "text": "炸",
+                                                        "data": "炸"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "image",
+                                                    "url": "https://i.postimg.cc/rs59ncdj/1.png",
+                                                    "size": "xs",
+                                                    "action": {
+                                                        "type": "postback",
+                                                        "label": "醫",
+                                                        "text": "醫",
+                                                        "data": "醫"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "box",
+                                            "layout": "horizontal",
+                                            "margin": "lg",
+                                            "contents": [
+                                                {
+                                                    "type": "text",
+                                                    "text": "毒*0",
+                                                    "align": "center"
+                                                },
+                                                {
+                                                    "type": "text",
+                                                    "text": "炸*0",
+                                                    "align": "center"
+                                                },
+                                                {
+                                                    "type": "text",
+                                                    "text": "醫*0",
+                                                    "align": "center"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
                                 "footer": {
                                     "type": "box",
                                     "layout": "horizontal",
@@ -164,6 +239,28 @@ const postbackCommandSolver = async (event, status) => {
                                 }
                             }
                         }
+                        // output = {
+                        //     "type": "flex",
+                        //     "altText": "Flex Message",
+                        //     "contents": {
+                        //         "type": "bubble",
+                        //         "direction": "ltr",
+                        //         "footer": {
+                        //             "type": "box",
+                        //             "layout": "horizontal",
+                        //             "contents": [
+                        //                 {
+                        //                     "type": "button",
+                        //                     "action": {
+                        //                         "type": "postback",
+                        //                         "label": "下回合",
+                        //                         "data": str[0] + ':' + str[1] + ':' + str[2] + ':攻擊'
+                        //                     }
+                        //                 }
+                        //             ]
+                        //         }
+                        //     }
+                        // }
                     } else {
                         let next = parseInt(str[1]) + 1;
                         let j2;

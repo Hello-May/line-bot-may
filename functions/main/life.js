@@ -155,7 +155,7 @@ function genByProps(props) {
             "contents": [
                 {
                     "type": "text",
-                    "text": '\小小的藥丸，大大的威力。。',
+                    "text": '\小小的藥丸，大大的威力。',
                     "margin": "lg",
                     "align": "center",
                     "wrap": true
