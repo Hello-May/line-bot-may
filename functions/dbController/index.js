@@ -52,19 +52,107 @@ const saveId = async (event) => {
         });
     }
     let output = [{
-        "type": "text",
-        "text": "您好～☺☺☺\n歡迎來到小怪獸的世界，這裡可以協助［養成習慣］及［記錄備忘］的地方，同時還能［養成小怪獸］！\n在開始之前請先加入line notify好友，並在下方按鈕連動line notify，它會在未來幫助提醒你。\n連動後，就可使用下方的圖文選單進行使用，若是在群組中，可輸入\"#\"呼叫圖文選單喔！"
-    }, {
-        "type": "image",
-        "originalContentUrl": "https://i.postimg.cc/MKwj8XRN/linenotify.png",
-        "previewImageUrl": "https://i.postimg.cc/MKwj8XRN/linenotify.png",
-        "animated": false
-    }, {
         "type": "flex",
         "altText": "Flex Message",
         "contents": {
             "type": "bubble",
             "direction": "ltr",
+            "header": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "歡迎來到小怪獸的世界",
+                        "size": "lg",
+                        "align": "center",
+                        "weight": "bold"
+                    }
+                ]
+            },
+            "hero": {
+                "type": "image",
+                "url": "https://i.postimg.cc/bvvLBTjg/image.jpg",
+                "size": "xl",
+                "aspectRatio": "1.51:1",
+                "aspectMode": "fit"
+            },
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "separator"
+                    },
+                    {
+                        "type": "text",
+                        "text": "☺這裡有五大功能☺",
+                        "margin": "lg",
+                        "align": "center",
+                        "wrap": true
+                    },
+                    {
+                        "type": "text",
+                        "text": "［修練］養成自律習慣",
+                        "align": "center"
+                    },
+                    {
+                        "type": "text",
+                        "text": "［任務］記錄備忘事項",
+                        "align": "center"
+                    },
+                    {
+                        "type": "text",
+                        "text": "［小怪獸］成長型怪獸",
+                        "align": "center"
+                    },
+                    {
+                        "type": "text",
+                        "text": "［戰鬥］朋友社交娛樂",
+                        "align": "center"
+                    },
+                    {
+                        "type": "text",
+                        "text": "［酒館］其他查詢資訊",
+                        "align": "center"
+                    },
+                    {
+                        "type": "separator",
+                        "margin": "lg"
+                    },
+                    {
+                        "type": "text",
+                        "text": "在下方圖文選單或輸入「#」",
+                        "margin": "lg",
+                        "align": "center"
+                    },
+                    {
+                        "type": "text",
+                        "text": "即可點選以上五大功能喔！",
+                        "align": "center"
+                    },
+                    {
+                        "type": "separator",
+                        "margin": "lg"
+                    },
+                    {
+                        "type": "text",
+                        "text": "在開始之前，",
+                        "margin": "lg",
+                        "align": "center"
+                    },
+                    {
+                        "type": "text",
+                        "text": "請先加入［Line Notify］",
+                        "align": "center"
+                    },
+                    {
+                        "type": "text",
+                        "text": "加入好友後，開啟連動！",
+                        "align": "center"
+                    }
+                ]
+            },
             "footer": {
                 "type": "box",
                 "layout": "horizontal",
@@ -80,6 +168,11 @@ const saveId = async (event) => {
                 ]
             }
         }
+    }, {
+        "type": "image",
+        "originalContentUrl": "https://i.postimg.cc/MKwj8XRN/linenotify.png",
+        "previewImageUrl": "https://i.postimg.cc/MKwj8XRN/linenotify.png",
+        "animated": false
     }]
     if (tmpUser.length == 0) {
         let stickno = Math.floor(Math.random() * sticker.length);

@@ -691,7 +691,7 @@ const call = async (event) => {
                                 "contents": [
                                     {
                                         "type": "text",
-                                        "text": "* 自律時間到了，會跳出提醒通知",
+                                        "text": "* 時間到了，line notify會提醒",
                                     },
                                     {
                                         "type": "text",
