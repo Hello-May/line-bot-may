@@ -170,7 +170,6 @@ const postbackCommandSolver = async (event, status) => {
                                                     "action": {
                                                         "type": "postback",
                                                         "label": "毒",
-                                                        "text": "毒",
                                                         "data": "毒"
                                                     }
                                                 },
@@ -182,7 +181,6 @@ const postbackCommandSolver = async (event, status) => {
                                                     "action": {
                                                         "type": "postback",
                                                         "label": "炸",
-                                                        "text": "炸",
                                                         "data": "炸"
                                                     }
                                                 },
@@ -193,7 +191,6 @@ const postbackCommandSolver = async (event, status) => {
                                                     "action": {
                                                         "type": "postback",
                                                         "label": "醫",
-                                                        "text": "醫",
                                                         "data": "醫"
                                                     }
                                                 }
