@@ -136,11 +136,11 @@ const call = async (userId) => {
                     {
                         "type": "box",
                         "layout": "horizontal",
+                        "spacing": "lg",
                         "contents": [
                             {
                                 "type": "text",
                                 "text": saying.sentence,
-                                "margin": "lg",
                                 "action": {
                                     "type": "postback",
                                     "label": "小語",
@@ -152,7 +152,6 @@ const call = async (userId) => {
                             {
                                 "type": "text",
                                 "text": ">",
-                                "margin": "lg",
                                 "action": {
                                     "type": "postback",
                                     "label": "小語",
