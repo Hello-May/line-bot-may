@@ -793,34 +793,34 @@ const round = async (userId, next, focus) => {
                         "align": "center",
                         "wrap": true
                     },
-                    {
-                        "type": "box",
-                        "layout": "horizontal",
-                        "margin": "lg",
-                        "contents": [
-                            {
-                                "type": "image",
-                                "url": targetSkin.image,
-                                "gravity": "center",
-                                "size": "xs",
-                                "action": {
-                                    "type": "postback",
-                                    "label": "叫聲",
-                                    "data": targetSkin.say
-                                }
-                            },
-                            {
-                                "type": "image",
-                                "url": playerSkin.image,
-                                "size": "xs",
-                                "action": {
-                                    "type": "postback",
-                                    "label": "叫聲",
-                                    "data": playerSkin.say
-                                }
-                            }
-                        ]
-                    },
+                    // {
+                    //     "type": "box",
+                    //     "layout": "horizontal",
+                    //     "margin": "lg",
+                    //     "contents": [
+                    //         {
+                    //             "type": "image",
+                    //             "url": targetSkin.image,
+                    //             "gravity": "center",
+                    //             "size": "xs",
+                    //             "action": {
+                    //                 "type": "postback",
+                    //                 "label": "叫聲",
+                    //                 "data": targetSkin.say
+                    //             }
+                    //         },
+                    //         {
+                    //             "type": "image",
+                    //             "url": playerSkin.image,
+                    //             "size": "xs",
+                    //             "action": {
+                    //                 "type": "postback",
+                    //                 "label": "叫聲",
+                    //                 "data": playerSkin.say
+                    //             }
+                    //         }
+                    //     ]
+                    // },
                     {
                         "type": "box",
                         "layout": "horizontal",
