@@ -45,9 +45,6 @@ function genByTask(task) {
             })
         }
     }
-    // for (let i = 0; i < 4; i++) {
-    //     console.log(JSON.stringify(output[i]));
-    // }
     return output;
 }
 

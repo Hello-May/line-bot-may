@@ -134,16 +134,36 @@ const call = async (userId) => {
                         "margin": "lg"
                     },
                     {
-                        "type": "text",
-                        "text": saying.sentence,
-                        "margin": "lg",
-                        "action": {
-                            "type": "postback",
-                            "label": "小語",
-                            "text": saying.sentence,
-                            "data": "#whisper"
-                        },
-                        "wrap": true
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": saying.sentence,
+                                "margin": "lg",
+                                "action": {
+                                    "type": "postback",
+                                    "label": "小語",
+                                    "text": saying.sentence,
+                                    "data": "#whisper"
+                                },
+                                "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": ">",
+                                "margin": "lg",
+                                "action": {
+                                    "type": "postback",
+                                    "label": "小語",
+                                    "text": saying.sentence,
+                                    "data": "#whisper"
+                                },
+                                "gravity": "center",
+                                "flex": 1,
+                                "align": "end"
+                            }
+                        ]
                     }
                 ]
             },
