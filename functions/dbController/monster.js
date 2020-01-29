@@ -141,6 +141,7 @@ async function createByRandom(level) {
         exp: 0,
         character: Math.round((Math.random() * (character.length - 1))),
         money: 0,
+        battleMoney: 0,
         food: 24,
         agi: 1 + point[0],
         vit: 1 + point[1],

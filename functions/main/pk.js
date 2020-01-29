@@ -225,7 +225,7 @@ const call = (event) => {
                     },
                     {
                         "type": "text",
-                        "text": "range:3等內",
+                        "text": "小怪獸們認為不打不相識，每遇見一隻獸，總要打上一場才算交流，並且堅信著在與他獸的切磋中，更能激發潛能、成長茁壯。\nrange:小怪獸同等或高於3等內",
                         "margin": "xxl",
                         "align": "start",
                         "gravity": "center",
