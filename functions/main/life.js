@@ -179,6 +179,7 @@ function genByFood(food) {
             }
         })
     }
+    return output;
 }
 
 function genBySkin(skin, belong) {
