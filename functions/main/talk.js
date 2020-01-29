@@ -127,7 +127,7 @@ const keyWord = () => {
             "hero": {
                 "type": "image",
                 "url": "https://i.postimg.cc/bvvLBTjg/image.jpg",
-                "size": "lg",
+                "size": "xl",
                 "aspectRatio": "1.51:1",
                 "aspectMode": "fit"
             },
@@ -314,7 +314,7 @@ const keyWord = () => {
                                 "contents": [
                                     {
                                         "type": "text",
-                                        "text": "輸入數字",
+                                        "text": "輸入公式",
                                         "align": "center"
                                     },
                                     {
