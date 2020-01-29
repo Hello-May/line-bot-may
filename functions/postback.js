@@ -164,7 +164,7 @@ const postbackCommandSolver = async (event, status) => {
                         let j2;
                         if (str[2] == 'player' && input.includes('選擇')) {
                             await dbUser.saveStatus(userId, '戰鬥監聽:' + str[1]);
-                            output = await pk.round(userId, next, 'player');
+                            output = await pk.round(userId, str[1], 'player');
                         } else if (str[2] == 'player' && input.includes('攻擊')) {
                             await dbUser.saveStatus(userId, '戰鬥監聽:' + next);
                             j2 = await dbBattle.round(userId, str[2]);
