@@ -10,8 +10,9 @@ const { monsters } = require("../../models");
 const User = db.users;
 var type;
 var tmpId;
+const sticker = [[1, 2], [1, 4], [1, 5], [1, 13], [1, 14], [1, 114], [1, 119], [1, 125], [1, 132], [1, 134], [1, 137], [1, 138], [1, 139], [1, 407], [2, 34], [2, 45], [2, 144], [2, 164], [2, 166], [2, 171], [2, 172], [2, 516], [3, 180], [3, 184], [3, 186], [3, 195], [3, 200]];
 
-//這樣會有bug是當很多人傳訊息就被替換
+//這樣會有bug是當很多人傳訊息就被替換#連動
 const saveTmpId = (event) => {
     type = event.source.type;
     switch (type) {
@@ -35,8 +36,6 @@ const saveId = async (event) => {
             break;
     }
     let tmpUser = await users.findAll({ where: { userId: id } });
-    // console.log(tmpUser)
-    // console.log(tmpUser.length)
     if (tmpUser.length == 0) {
         await dbMonster.create();
         await dbTask.initialization(id);
@@ -46,59 +45,69 @@ const saveId = async (event) => {
             force: true,
             userId: id,
             token: 'null',
-            monsterId: monster[monster.length-1].monsterId,
+            monsterId: monster[monster.length - 1].monsterId,
             status: '正常',
             createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
             updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
         });
     }
-    return clientBot.replyMessage(event.replyToken, {
-        type: 'text',
-        text: (tmpUser.length == 0 ? '我存進db=>' : '不用存進db=>') + (event.source.type == 'user' ? 'userId:' + id : 'groupId:' + id)
-    });
-}
-
-const checkId = (event) => {
-    //回傳model跟id是啥，之後再寫
+    let output = [{
+        "type": "text",
+        "text": "您好～☺☺☺\n歡迎來到小怪獸的世界，這裡可以協助［養成習慣］及［記錄備忘］的地方，同時能夠［養成小怪獸］，在開始之前請先加入line notify好友，並在下方按鈕連動line notify，它會在未來幫助提醒你。連動後，就可使用下方的圖文選單進行使用，若是在群組中，可輸入\"#\"呼叫圖文選單喔！"
+    }, {
+        "type": "image",
+        "originalContentUrl": "https://i.postimg.cc/MKwj8XRN/linenotify.png",
+        "previewImageUrl": "https://i.postimg.cc/MKwj8XRN/linenotify.png",
+        "animated": false
+    }, {
+        "type": "flex",
+        "altText": "Flex Message",
+        "contents": {
+            "type": "bubble",
+            "direction": "ltr",
+            "footer": {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "button",
+                        "action": {
+                            "type": "uri",
+                            "label": "按此連動 Line Notify",
+                            "uri": "line://app/1653656986-Jq9lxgNw"
+                        }
+                    }
+                ]
+            }
+        }
+    }]
+    if (tmpUser.length == 0) {
+        let stickno = Math.floor(Math.random() * sticker.length);
+        output.push({
+            type: 'sticker',
+            packageId: sticker[stickno][0].toString(),
+            stickerId: sticker[stickno][1].toString(),
+            stickerResourceType: 'STATIC'
+        });
+    }
+    return clientBot.replyMessage(event.replyToken, output);
 }
 
 const saveToken = async (token) => {
     let judge;
-    // switch (type) {
-    //     case 'user':
-    //         // id = event.source.userId;
-    //         judge = await users.update({ token: token }, { where: { userId: tmpId } });
-    //         break;
-    //     case 'group':
-    //         // id = event.source.groupId;
-    //         judge = await groups.update({ token: token }, { where: { groupId: tmpId } });
-    //         break;
-    // }
     judge = await users.update({ token: token }, { where: { userId: tmpId } });
     console.log((judge == '1' ? '我存進db=>' : '沒存進db=>') + token);
-    // return clientBot.replyMessage(event.replyToken, {
-    //     type: 'text',
-    //     text: (judge == '1' ? '我存進db=>' : '沒存進db=>') + token
-    // });
 }
 
 const getToken = (event) => {
-    return new Promise( async (resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
         let id;
         switch (event.source.type) {
             case 'user':
                 id = event.source.userId;
-                // let user = await users.findAll({ where: { userId: event.source.userId } });
-                // console.log('我都抓到了!!'+user[0].token)
-                // token =user[0].token;
-                // return resolve(user[0].token);
                 break;
             case 'group':
                 id = event.source.groupId;
-                // let group = await groups.findAll({ where: { groupId: event.source.groupId } });
-                // console.log('我都抓到了!!'+group[0].token)
-                // token =group[0].token;
-                // return resolve(group[0].token);
                 break;
         }
         let user = await users.findAll({ where: { userId: id } });
