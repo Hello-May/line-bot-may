@@ -162,15 +162,15 @@ async function genByTarget(target) {
 }
 
 const target = async (monster) => {
-    // let user;
-    // let monster;
+    let user;
+    let monster;
     let target;
     let output;
-    // let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
+    let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
 
     try {
-        // user = await dbUser.searchById(userId);
-        // monster = await dbMonster.searchById(user.monsterId);
+        user = await dbUser.searchById(userId);
+        monster = await dbMonster.searchById(user.monsterId);
         target = await dbMonster.searchByRandomAndLevel(monster, monster.level, 3);
         output = await genByTarget(target);
         // console.log("monster:" + JSON.stringify(monster));
