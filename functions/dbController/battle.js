@@ -30,16 +30,16 @@ const round = async (userId, focus) => {
     return '玩家勝'
   }
   let luckyDifference = (focus == 'player' ? (player.lucky - target.lucky) : (target.lucky - player.lucky)); //我比對方多出多少幸運值
-  if (luckyDifference > 7) {
-    luckyDifference = 7;
+  if (luckyDifference > 5) {
+    luckyDifference = 5;
   }
-  let luckyRate = Math.round((Math.random() * (10 - luckyDifference))); //自身爆擊率就越高，負數爆擊率越低
+  let luckyRate = Math.round((Math.random() * (7 - luckyDifference))); //自身爆擊率就越高，負數爆擊率越低
 
   let agiDifference = (focus == 'player' ? (target.agi - player.agi) : (player.agi - target.agi)); //對方比我多出多少敏捷
-  if (agiDifference > 7) {
-    agiDifference = 7;
+  if (agiDifference > 5) {
+    agiDifference = 5;
   }
-  let agiRate = Math.round((Math.random() * (10 - agiDifference))); //對方閃避率就越高，負數閃避率越低
+  let agiRate = Math.round((Math.random() * (7 - agiDifference))); //對方閃避率就越高，負數閃避率越低
 
   let hurt = (focus == 'player' ? (luckyRate == 0 ? player.str * 8 : player.str * 5) : (luckyRate == 0 ? target.str * 8 : target.str * 5));
   let extraHurt = (luckyRate == 0 ? (player.str * 8 - player.str * 5) : 0);
