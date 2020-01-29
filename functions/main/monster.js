@@ -24,7 +24,6 @@ const call = async (userId) => {
     let monster;
     let saying;
     let skin;
-    // let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
     try {
         user = await dbUser.searchById(userId);
         monster = await dbMonster.searchById(user.monsterId);
@@ -188,24 +187,7 @@ const call = async (userId) => {
                         ]
                     }
                 ]
-            },
-            // "footer": {
-            //     "type": "box",
-            //     "layout": "vertical",
-            //     "contents": [
-            //         {
-            //             "type": "separator"
-            //         },
-            //         {
-            //             "type": "button",
-            //             "action": {
-            //                 "type": "postback",
-            //                 "label": "修改",
-            //                 "data": "小怪獸修改",
-            //             }
-            //         }
-            //     ]
-            // }
+            }
         }
     }
 }

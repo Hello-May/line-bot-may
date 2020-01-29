@@ -678,7 +678,7 @@ const call = async (event) => {
                                     },
                                     {
                                         "type": "text",
-                                        "text": "* 30分鐘內輸入 [密語] 以完成自律"
+                                        "text": "* 半小時內輸入[密語]以完成自律"
                                     },
                                     {
                                         "type": "text",
