@@ -489,12 +489,14 @@ const firstMoveJudge = async (userId, player) => {
                                 {
                                     "type": "text",
                                     "text": "敵方",
-                                    "align": "center"
+                                    "align": "center",
+                                    "size": "xs"
                                 },
                                 {
                                     "type": "text",
                                     "text": "我方",
-                                    "align": "center"
+                                    "align": "center",
+                                    "size": "xs"
                                 }
                             ]
                         }
@@ -575,12 +577,14 @@ const firstMoveJudge = async (userId, player) => {
                             {
                                 "type": "text",
                                 "text": "敵方",
-                                "align": "center"
+                                "align": "center",
+                                "size": "xs"
                             },
                             {
                                 "type": "text",
                                 "text": "我方",
-                                "align": "center"
+                                "align": "center",
+                                "size": "xs"
                             }
                         ]
                     }
@@ -608,6 +612,7 @@ const round = async (userId, next, focus) => {
     let battle = await dbBattle.searchByUserId(userId);
     let target;
     let player;
+    let btn;
     for (let i = 0; i < battle.length; i++) {
         if (battle[i].identity == 'target') {
             target = battle[i];
@@ -617,10 +622,67 @@ const round = async (userId, next, focus) => {
     }
     let targetSkin = await dbSkin.searchByNameAndRandom(target.skin);
     let playerSkin = await dbSkin.searchByNameAndRandom(player.skin);
-    // return {
-    //     type: 'text',
-    //     text: 'test'
-    // }
+    if (focus == 'player') {
+        btn = {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+                {
+                    "type": "button",
+                    "action": {
+                        "type": "postback",
+                        "label": '攻擊',
+                        "data": '戰鬥回合:' + next + ':' + 'player' + ':攻擊'
+                    }
+                },
+                {
+                    "type": "separator"
+                },
+                {
+                    "type": "button",
+                    "action": {
+                        "type": "postback",
+                        "label": '道具',
+                        "data": '戰鬥回合:' + next + ':' + 'player' + ':道具'
+                    }
+                },
+                {
+                    "type": "separator"
+                },
+                {
+                    "type": "button",
+                    "action": {
+                        "type": "postback",
+                        "label": '逃跑',
+                        "data": '戰鬥回合:' + next + ':' + 'player' + ':逃跑'
+                    }
+                }
+            ]
+        }
+    } else {
+        btn = {
+            "type": "flex",
+            "altText": "Flex Message",
+            "contents": {
+                "type": "bubble",
+                "direction": "ltr",
+                "footer": {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                        {
+                            "type": "button",
+                            "action": {
+                                "type": "postback",
+                                "label": "對方攻來",
+                                "data": '戰鬥回合:' + next + ':' + 'target' + ':下回合'
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    }
     return {
         "type": "flex",
         "altText": "Flex Message",
@@ -727,42 +789,7 @@ const round = async (userId, next, focus) => {
                     }
                 ]
             },
-            "footer": {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                    {
-                        "type": "button",
-                        "action": {
-                            "type": "postback",
-                            "label": '攻擊',
-                            "data": '戰鬥回合:' + next + ':' + 'player' + ':攻擊'
-                        }
-                    },
-                    {
-                        "type": "separator"
-                    },
-                    {
-                        "type": "button",
-                        "action": {
-                            "type": "postback",
-                            "label": '道具',
-                            "data": '戰鬥回合:' + next + ':' + 'player' + ':道具'
-                        }
-                    },
-                    {
-                        "type": "separator"
-                    },
-                    {
-                        "type": "button",
-                        "action": {
-                            "type": "postback",
-                            "label": '逃跑',
-                            "data": '戰鬥回合:' + next + ':' + 'player' + ':逃跑'
-                        }
-                    }
-                ]
-            }
+            "footer": btn
         }
     }
 }

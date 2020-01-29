@@ -185,32 +185,33 @@ const postbackCommandSolver = async (event, status) => {
                                     await dbUser.saveStatus(userId, '正常');
                                     break;
                                 default:
+                                    output2 = await pk.round(userId, next, 'target');
                                     output = {
                                         type: 'text',
                                         text: '戰鬥回合' + str[1] + ': ' + j2 + '  foucs:' + str[2]
                                     }
-                                    output2 = {
-                                        "type": "flex",
-                                        "altText": "Flex Message",
-                                        "contents": {
-                                            "type": "bubble",
-                                            "direction": "ltr",
-                                            "footer": {
-                                                "type": "box",
-                                                "layout": "horizontal",
-                                                "contents": [
-                                                    {
-                                                        "type": "button",
-                                                        "action": {
-                                                            "type": "postback",
-                                                            "label": "對方攻來",
-                                                            "data": str[0] + ':' + next + ':' + 'target' + ':下回合'
-                                                        }
-                                                    }
-                                                ]
-                                            }
-                                        }
-                                    }
+                                    // output2 = {
+                                    //     "type": "flex",
+                                    //     "altText": "Flex Message",
+                                    //     "contents": {
+                                    //         "type": "bubble",
+                                    //         "direction": "ltr",
+                                    //         "footer": {
+                                    //             "type": "box",
+                                    //             "layout": "horizontal",
+                                    //             "contents": [
+                                    //                 {
+                                    //                     "type": "button",
+                                    //                     "action": {
+                                    //                         "type": "postback",
+                                    //                         "label": "對方攻來",
+                                    //                         "data": str[0] + ':' + next + ':' + 'target' + ':下回合'
+                                    //                     }
+                                    //                 }
+                                    //             ]
+                                    //         }
+                                    //     }
+                                    // }
                                     break;
                             }
                         } else if (str[2] == 'target') {
