@@ -266,11 +266,8 @@ const postbackCommandSolver = async (event, status) => {
             case '糧食商店':
                 output = life.foodStore();
                 break;
-            case '能力商店':
-                output = {
-                    type: 'text',
-                    text: '能力商店的訊息窗'
-                };
+            case '道具商店':
+                output = life.propStore();
                 break;
             case '刪除自律指令':
                 await dbUser.saveStatus(userId, '刪除自律監聽');

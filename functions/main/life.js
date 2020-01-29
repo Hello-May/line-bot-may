@@ -32,6 +32,12 @@ const food = [
     { name: '大吃特吃', image: 'https://i.postimg.cc/JnT7xpK8/3.png', price: 25, effect: 120 },
 ]
 
+const props = [
+    { name: '毒', image: 'https://i.postimg.cc/BvBnLSKX/1.png', price: 1 },
+    { name: '炸', image: 'https://i.postimg.cc/MTZK1C7t/2.png', price: 1 },
+    { name: '醫', image: 'https://i.postimg.cc/SR3SFjwt/5.png', price: 1 },
+]
+
 Date.prototype.Format = function (fmt) { //author: meizz 
     var o = {
         "M+": this.getMonth() + 1, //月份 
@@ -101,6 +107,111 @@ const selectTime = (postback) => {
             }
         }
     };
+}
+
+const propStore = () => {
+    let props = [];
+    for (let i = 0; i < props.length; i++) {
+        props.push({
+            "type": "bubble",
+            "direction": "ltr",
+            "header": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": props[i].name,
+                        "size": "lg",
+                        "align": "center",
+                        "weight": "bold"
+                    }
+                ]
+            },
+            "hero": {
+                "type": "image",
+                "url": props[i].image,
+                "size": "lg",
+                "aspectRatio": "1.51:1",
+                "aspectMode": "fit"
+            },
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "自律幣 $" + props[i].price,
+                        "margin": "lg",
+                        "align": "center",
+                        "wrap": true
+                    }
+                ]
+            },
+            "footer": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "button",
+                        "action": {
+                            "type": "postback",
+                            "label": "購買",
+                            "data": "購買糧食:" + props[i].name
+                        }
+                    }
+                ]
+            }
+        })
+    }
+    return {
+        "type": "flex",
+        "altText": "Flex Message",
+        "contents": {
+            "type": "carousel",
+            "contents": [{
+                "type": "bubble",
+                "direction": "ltr",
+                "header": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "text": "道具商店",
+                            "size": "lg",
+                            "align": "center",
+                            "weight": "bold"
+                        },
+                        {
+                            "type": "spacer"
+                        }
+                    ]
+                },
+                "hero": {
+                    "type": "image",
+                    "url": 'https://i.postimg.cc/yNrn4Z1H/image.png',
+                    "size": "xxl",
+                    "aspectRatio": "1.51:1",
+                    "aspectMode": "fit"
+                },
+                "body": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "text": '\n物質可以匱乏，思想不能貧瘠。',
+                            "margin": "lg",
+                            "align": "center",
+                            "wrap": true
+                        }
+                    ]
+                }
+            }, props
+            ]
+        }
+    }
 }
 
 function genByFood(food) {
@@ -622,13 +733,13 @@ const call = async (event) => {
                                                 "url": "https://i.postimg.cc/Z5FyX7tN/2.png",
                                                 "action": {
                                                     "type": "postback",
-                                                    "label": "能力商店",
-                                                    "data": "能力商店"
+                                                    "label": "道具商店",
+                                                    "data": "道具商店"
                                                 }
                                             },
                                             {
                                                 "type": "text",
-                                                "text": "能力",
+                                                "text": "道具",
                                                 "margin": "lg",
                                                 "align": "center"
                                             }
@@ -792,5 +903,6 @@ module.exports = {
     update,
     skinStore,
     lightOrDark,
-    foodStore
+    foodStore,
+    propStore
 }
