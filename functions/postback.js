@@ -107,7 +107,7 @@ const postbackCommandSolver = async (event, status) => {
                         text: '請先輸入取消，以取消當前操作。'
                     }
                 } else {
-                    output = await pk.firstMove(userId, str[1]);    //str[1]=tarMonster.monsterId
+                    output = await pk.firstMove(tmpMonster, str[1]);    //str[1]=tarMonster.monsterId
                 }
                 break;
             case '戰鬥先攻':
@@ -171,7 +171,7 @@ const postbackCommandSolver = async (event, status) => {
                                 case '對方勝':
                                     output = {
                                         type: 'text',
-                                        text: '[戰鬥結束] ' + j2
+                                        text: '[戰鬥結束] ' + j2 + '，繼續加油！'
                                     }
                                     await dbUser.saveStatus(userId, '正常');
                                     break;
@@ -219,7 +219,7 @@ const postbackCommandSolver = async (event, status) => {
                                 case '對方勝':
                                     output = {
                                         type: 'text',
-                                        text: '[戰鬥結束] ' + j2
+                                        text: '[戰鬥結束] ' + j2 + '，繼續加油！'
                                     }
                                     await dbUser.saveStatus(userId, '正常');
                                     break;

@@ -263,7 +263,7 @@ const call = (event) => {
     }
 }
 
-const firstMove = async (userId, tarMonsterId) => {
+const firstMove = async (player, tarMonsterId) => {
     let target = await dbMonster.searchById(tarMonsterId);
     if (target == undefined) {
         return {
@@ -271,16 +271,17 @@ const firstMove = async (userId, tarMonsterId) => {
             text: '已沒有此敵人'
         }
     }
-    let user = await dbUser.searchById(userId);
-    let monster = await dbMonster.searchById(user.monsterId);
-    if (target.level < monster.level) {
+    // let user = await dbUser.searchById(userId);
+    // let monster = await dbMonster.searchById(user.monsterId);
+    if (target.level < player.level) {
         return {
             type: 'text',
-            text: '敵人等級低於' + monster.name
+            text: '敵人等級低於' + player.name
         }
     }
-    let tarSkin = await dbSkin.searchByNameAndRandom(target.skin);
-    await dbBattle.create(userId, monster, target);
+    let targetSkin = await dbSkin.searchByNameAndRandom(target.skin);
+    let playerSkin = await dbSkin.searchByNameAndRandom(player.skin);
+    await dbBattle.create(userId, player, target);
     await dbUser.saveStatus(userId, '猜拳監聽');
     return {
         "type": "flex",
@@ -301,27 +302,65 @@ const firstMove = async (userId, tarMonsterId) => {
                     }
                 ]
             },
-            "hero": {
-                "type": "image",
-                "url": tarSkin.image,
-                "size": "lg",
-                "aspectRatio": "1.51:1",
-                "aspectMode": "fit",
-                "action": {
-                    "type": "postback",
-                    "label": "叫聲",
-                    "data": tarSkin.say
-                }
-            },
+            // "hero": {
+            //     "type": "image",
+            //     "url": tarSkin.image,
+            //     "size": "lg",
+            //     "aspectRatio": "1.51:1",
+            //     "aspectMode": "fit",
+            //     "action": {
+            //         "type": "postback",
+            //         "label": "叫聲",
+            //         "data": tarSkin.say
+            //     }
+            // },
             "body": {
                 "type": "box",
                 "layout": "vertical",
                 "contents": [
                     {
-                        "type": "text",
-                        "text": "敵方：" + target.name,
-                        "align": "center",
-                        "wrap": true
+                        "type": "box",
+                        "layout": "horizontal",
+                        "margin": "lg",
+                        "contents": [
+                            {
+                                "type": "image",
+                                "url": targetSkin.image,
+                                "gravity": "center",
+                                "size": "sm",
+                                "action": {
+                                    "type": "postback",
+                                    "label": "叫聲",
+                                    "data": targetSkin.say
+                                }
+                            },
+                            {
+                                "type": "image",
+                                "url": playerSkin.image,
+                                "size": "sm",
+                                "action": {
+                                    "type": "postback",
+                                    "label": "叫聲",
+                                    "data": playerSkin.say
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "敵方:" + target.name,
+                                "align": "center"
+                            },
+                            {
+                                "type": "text",
+                                "text": "我方:" + player.name,
+                                "align": "center"
+                            }
+                        ]
                     },
                     {
                         "type": "text",
