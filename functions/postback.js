@@ -258,10 +258,7 @@ const postbackCommandSolver = async (event, status) => {
                 output = talk.keyWord();
                 break;
             case '抖內開發者':
-                output = {
-                    type: 'text',
-                    text: 'HI~麻煩轉帳至台新銀行(812)帳號是28881001521601或是點擊連結開啟Richart APP可以直接帶入我的帳號唷 https://richart.tw/TSDIB_RichartWeb/RC04/RC040300?token=my3nMz81ous%3D'
-                };
+                output = talk.donate();
                 break;
             case '變種商店':
                 output = life.lightOrDark();
