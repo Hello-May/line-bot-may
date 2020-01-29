@@ -188,10 +188,6 @@ const postbackCommandSolver = async (event, status) => {
                                 default:
                                     output = await pk.fight(userId, str[1], j2, str[2]);
                                     output2 = await pk.round(userId, next, 'target');
-                                    // output = {
-                                    //     type: 'text',
-                                    //     text: '戰鬥回合' + str[1] + ': ' + j2 + '  foucs:' + str[2]
-                                    // }
                                     break;
                             }
                         } else if (str[2] == 'target') {
@@ -216,10 +212,6 @@ const postbackCommandSolver = async (event, status) => {
                                     break;
                                 default:
                                     output = await pk.fight(userId, str[1], j2, str[2]);
-                                    // output = {
-                                    //     type: 'text',
-                                    //     text: '戰鬥回合' + str[1] + ': ' + j2 + '  foucs:' + str[2]
-                                    // }
                                     output2 = await pk.round(userId, next, 'player');
                                     break;
                             }

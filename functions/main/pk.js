@@ -193,72 +193,138 @@ const call = (event) => {
         "type": "flex",
         "altText": "Flex Message",
         "contents": {
-            "type": "bubble",
-            "direction": "ltr",
-            "header": {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                    {
-                        "type": "text",
-                        "text": "戰鬥",
-                        "size": "lg",
-                        "align": "center",
-                        "weight": "bold",
-                        "color": "#000000"
-                    }
-                ]
-            },
-            "hero": {
-                "type": "image",
-                "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbWVf29gHx_rYMtQqzauk_l2KxzlhdVZq0Y8q9GxDkWbFaDmAI&s",
-                "size": "xl",
-                "aspectRatio": "1.51:1",
-                "aspectMode": "fit"
-            },
-            "body": {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                    {
-                        "type": "separator"
+            "type": "carousel",
+            "contents": [
+                {
+                    "type": "bubble",
+                    "direction": "ltr",
+                    "header": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "戰鬥",
+                                "size": "lg",
+                                "align": "center",
+                                "weight": "bold",
+                                "color": "#000000"
+                            }
+                        ]
                     },
-                    {
-                        "type": "text",
-                        "text": "小怪獸們認為不打不相識，每遇見一隻獸，總要打上一場才算交流，並且堅信著在與他獸的切磋中，更能激發潛能、成長茁壯。\nrange:小怪獸同等或高於3等內",
-                        "margin": "xxl",
-                        "align": "start",
-                        "gravity": "center",
-                        "weight": "bold",
-                        "wrap": true
-                    }
-                ]
-            },
-            "footer": {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                    {
-                        "type": "button",
-                        "action": {
-                            "type": "postback",
-                            "label": "隨機",
-                            "data": "戰鬥隨機"
-                        }
+                    "hero": {
+                        "type": "image",
+                        "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbWVf29gHx_rYMtQqzauk_l2KxzlhdVZq0Y8q9GxDkWbFaDmAI&s",
+                        "size": "xl",
+                        "aspectRatio": "1.51:1",
+                        "aspectMode": "fit"
                     },
-                    {
-                        "type": "separator"
+                    "body": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "separator"
+                            },
+                            {
+                                "type": "text",
+                                "text": "小怪獸們認為不打不相識，每遇見一隻獸，總要打上一場才算交流，並且堅信著在與他獸的切磋中，更能激發潛能、成長茁壯。\nrange:小怪獸同等或高於3等內",
+                                "margin": "xxl",
+                                "align": "start",
+                                "gravity": "center",
+                                "weight": "bold",
+                                "wrap": true
+                            }
+                        ]
                     },
-                    {
-                        "type": "button",
-                        "action": {
-                            "type": "postback",
-                            "label": "指定",
-                            "data": "戰鬥指定"
-                        }
+                    "footer": {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                            {
+                                "type": "button",
+                                "action": {
+                                    "type": "postback",
+                                    "label": "隨機",
+                                    "data": "戰鬥隨機"
+                                }
+                            },
+                            {
+                                "type": "separator"
+                            },
+                            {
+                                "type": "button",
+                                "action": {
+                                    "type": "postback",
+                                    "label": "指定",
+                                    "data": "戰鬥指定"
+                                }
+                            }
+                        ]
                     }
-                ]
-            }
+                }, {
+                    "type": "bubble",
+                    "direction": "ltr",
+                    "header": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "說明",
+                                "size": "lg",
+                                "align": "center",
+                                "weight": "bold"
+                            }
+                        ]
+                    },
+                    "body": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "separator"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "vertical",
+                                "spacing": "lg",
+                                "margin": "lg",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "* 每戰鬥勝利，可賺取戰利幣 $1",
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "* 任務四象限影響性格"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "* 性格影響升級點數分配"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "* agi影響命中及閃避"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "* vit影響hp多寡"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "* str影響攻擊力"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "* lucky影響爆擊率"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
         }
     }
 }
@@ -721,8 +787,6 @@ const round = async (userId, next, focus) => {
             player = battle[i];
         }
     }
-    let targetSkin = await dbSkin.searchByNameAndRandom(target.skin);
-    let playerSkin = await dbSkin.searchByNameAndRandom(player.skin);
     if (focus == 'player') {
         btn = {
             "type": "box",
@@ -786,12 +850,6 @@ const round = async (userId, next, focus) => {
                 "type": "box",
                 "layout": "vertical",
                 "contents": [
-                    // {
-                    //     "type": "text",
-                    //     "text": "戰鬥回合:" + next + "  focus:" + focus,
-                    //     "align": "center",
-                    //     "wrap": true
-                    // },
                     {
                         "type": "box",
                         "layout": "horizontal",
@@ -801,45 +859,15 @@ const round = async (userId, next, focus) => {
                                 "text": (focus == 'target' ? "☟" : " "),
                                 "align": "center",
                                 "weight": "bold",
-                                // "color": (foucs == 'target' ? "#0700FF" : "#FF0000")
                             },
                             {
                                 "type": "text",
                                 "text": (focus == 'player' ? "☟" : " "),
                                 "align": "center",
                                 "weight": "bold",
-                                // "color": (foucs == 'player' ? "#0700FF" : "#FF0000")
                             }
                         ]
                     },
-                    // {
-                    //     "type": "box",
-                    //     "layout": "horizontal",
-                    //     "margin": "lg",
-                    //     "contents": [
-                    //         {
-                    //             "type": "image",
-                    //             "url": targetSkin.image,
-                    //             "gravity": "center",
-                    //             "size": "xs",
-                    //             "action": {
-                    //                 "type": "postback",
-                    //                 "label": "叫聲",
-                    //                 "data": targetSkin.say
-                    //             }
-                    //         },
-                    //         {
-                    //             "type": "image",
-                    //             "url": playerSkin.image,
-                    //             "size": "xs",
-                    //             "action": {
-                    //                 "type": "postback",
-                    //                 "label": "叫聲",
-                    //                 "data": playerSkin.say
-                    //             }
-                    //         }
-                    //     ]
-                    // },
                     {
                         "type": "box",
                         "layout": "horizontal",
