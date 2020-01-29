@@ -146,7 +146,7 @@ function genByFood(food) {
                     "weight": "bold"
                 },
                 {
-                  "type": "spacer"
+                    "type": "spacer"
                 }
             ]
         },
@@ -201,10 +201,10 @@ function genByFood(food) {
                 "contents": [
                     {
                         "type": "text",
-                        "text": "自律幣 $" + food[i].price,
+                        "text": "自律幣 $" + food[i].price + '\n(精神糧食+' + food[i].effect + ')',
                         "margin": "lg",
                         "align": "center",
-                        "wrap": false
+                        "wrap": true
                     }
                 ]
             },
