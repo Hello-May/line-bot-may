@@ -37,10 +37,10 @@ const postbackCommandSolver = async (event, status) => {
             case '購買糧食':
                 if (tmpMonster.money >= parseInt(str[2])) {
                     await dbMonster.updateMoney(tmpMonster.monsterId, tmpMonster.money - parseInt(str[2]));
-                    await dbMonster.updateFood(tmpMonster.monsterId, tmpMonster.food - parseInt(str[1]));
+                    await dbMonster.updateFood(tmpMonster.monsterId, tmpMonster.food + parseInt(str[1]));
                     output = {
                         type: 'text',
-                        text: '[購買成功] ' + tmpMonster.name + '覺得活著更有意義了！'
+                        text: '[購買成功] ' + tmpMonster.name + '覺得活在世上更有意義了！'
                     }
                 } else {
                     output = {
