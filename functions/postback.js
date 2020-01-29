@@ -18,6 +18,7 @@ const dbMonster = require('./dbController/monster');
 const dbTask = require('./dbController/task');
 const dbHabit = require('./dbController/habit');
 const dbBattle = require('./dbController/battle');
+var tmpMonster;
 
 const postbackCommandSolver = async (event, status) => {
     let input = event.postback.data;
@@ -28,7 +29,7 @@ const postbackCommandSolver = async (event, status) => {
     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
     //↓增加經驗值
     let tmpUser = await dbUser.searchById(userId);
-    let tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
+    tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
     await dbMonster.increaseEXP(tmpMonster.monsterId);
     if (input.includes(':')) {
         str = input.split(":");
