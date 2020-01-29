@@ -65,7 +65,7 @@ const call = async (userId) => {
                 "margin": "lg",
                 "contents": [{
                     "type": "box",
-                    "layout": "vertical",
+                    "layout": "horizontal",
                     "contents": [
                         {
                             "type": "text",
