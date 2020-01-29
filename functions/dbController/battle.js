@@ -33,16 +33,16 @@ const round = async (userId, focus) => {
   if (luckyDifference > 5) {
     luckyDifference = 5;
   }
-  let luckyRate = Math.round((Math.random() * (7 - luckyDifference))); //自身爆擊率就越高，負數爆擊率越低
+  let luckyRate = Math.round((Math.random() * (6 - luckyDifference))); //自身爆擊率就越高，負數爆擊率越低
 
   let agiDifference = (focus == 'player' ? (target.agi - player.agi) : (player.agi - target.agi)); //對方比我多出多少敏捷
   if (agiDifference > 5) {
     agiDifference = 5;
   }
-  let agiRate = Math.round((Math.random() * (7 - agiDifference))); //對方閃避率就越高，負數閃避率越低
+  let agiRate = Math.round((Math.random() * (6 - agiDifference))); //對方閃避率就越高，負數閃避率越低
 
-  let hurt = (focus == 'player' ? (luckyRate == 0 ? player.str * 8 : player.str * 5) : (luckyRate == 0 ? target.str * 8 : target.str * 5));
-  let extraHurt = (luckyRate == 0 ? (focus == 'player' ? (player.str * 8 - player.str * 5) : (target.str * 8 - target.str * 5)) : 0);
+  let hurt = (focus == 'player' ? (luckyRate == 0 ? player.str * 15 : player.str * 10) : (luckyRate == 0 ? target.str * 15 : target.str * 10));
+  let extraHurt = (luckyRate == 0 ? (focus == 'player' ? (player.str * 15 - player.str * 10) : (target.str * 15 - target.str * 10)) : 0);
 
   if (agiRate == 0) {
     hurt = 0;
@@ -55,7 +55,6 @@ const round = async (userId, focus) => {
   }
 
   return { hurt: hurt, extraHurt: extraHurt };  //如果傷害是0就是miss //如果有額外傷害就是有爆擊
-  // return focus + '造成' + passive + '扣' + (focus == 'player' ? (player.str * 5) + '傷害' : (target.str * 5) + '傷害')
 }
 
 //接受到userId，抓battle的兩隻出來比對數值，先判斷是不是某方死了，看目前是誰攻擊，進行回合後扣血，再存進去
