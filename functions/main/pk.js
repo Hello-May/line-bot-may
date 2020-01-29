@@ -661,16 +661,16 @@ const round = async (userId, next, focus) => {
         }
     } else {
         btn = {
-            "type": "flex",
-            "altText": "Flex Message",
-            "contents": {
-                "type": "bubble",
-                "direction": "ltr",
-                "footer": {
-                    "type": "box",
-                    "layout": "horizontal",
-                    "contents": [
-                        {
+            // "type": "flex",
+            // "altText": "Flex Message",
+            // "contents": {
+            //     "type": "bubble",
+            //     "direction": "ltr",
+            //     "footer": {
+            //         "type": "box",
+            //         "layout": "horizontal",
+            //         "contents": [
+                        // {
                             "type": "button",
                             "action": {
                                 "type": "postback",
@@ -678,10 +678,10 @@ const round = async (userId, next, focus) => {
                                 "data": '戰鬥回合:' + next + ':' + 'target' + ':下回合'
                             }
                         }
-                    ]
-                }
-            }
-        }
+        //             ]
+        //         }
+        //     }
+        // }
     }
     return {
         "type": "flex",
