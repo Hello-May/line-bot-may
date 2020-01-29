@@ -608,7 +608,7 @@ const firstMoveJudge = async (userId, player) => {
     }
 }
 
-const fight = async (round, hurt, foucs) => {
+const fight = (round, hurt, foucs) => {
     return {
         "type": "flex",
         "altText": "Flex Message",
@@ -625,26 +625,26 @@ const fight = async (round, hurt, foucs) => {
                         "align": "center",
                         "wrap": true
                     },
-                    {
-                        "type": "box",
-                        "layout": "horizontal",
-                        "contents": [
-                            {
-                                "type": "text",
-                                "text": (foucs == 'target' ? "⚔" : "-" + hurt),
-                                "align": "center",
-                                "weight": "bold",
-                                "color": (foucs == 'target' ? "#0700FF" : "#FF0000")
-                            },
-                            {
-                                "type": "text",
-                                "text": "Text",
-                                "align": (foucs == 'player' ? "⚔" : "-" + hurt),
-                                "weight": "bold",
-                                "color": (foucs == 'player' ? "#0700FF" : "#FF0000")
-                            }
-                        ]
-                    },
+                    // {
+                    //     "type": "box",
+                    //     "layout": "horizontal",
+                    //     "contents": [
+                    //         {
+                    //             "type": "text",
+                    //             "text": (foucs == 'target' ? "⚔" : "-" + hurt),
+                    //             "align": "center",
+                    //             "weight": "bold",
+                    //             "color": (foucs == 'target' ? "#0700FF" : "#FF0000")
+                    //         },
+                    //         {
+                    //             "type": "text",
+                    //             "text": "Text",
+                    //             "align": (foucs == 'player' ? "⚔" : "-" + hurt),
+                    //             "weight": "bold",
+                    //             "color": (foucs == 'player' ? "#0700FF" : "#FF0000")
+                    //         }
+                    //     ]
+                    // },
                     {
                         "type": "box",
                         "layout": "horizontal",
