@@ -674,31 +674,7 @@ const round = async (userId, next, focus) => {
                 }
             ]
         }
-        // {
-        // "type": "flex",
-        // "altText": "Flex Message",
-        // "contents": {
-        //     "type": "bubble",
-        //     "direction": "ltr",
-        //     "footer": {
-        //         "type": "box",
-        //         "layout": "horizontal",
-        //         "contents": [
-        // {
-        //     "type": "button",
-        //     "action": {
-        //         "type": "postback",
-        //         "label": "對方攻來",
-        //         "data": '戰鬥回合:' + next + ':' + 'target' + ':下回合'
-        //     }
-        // }
-        //             ]
-        //         }
-        //     }
-        // }
     }
-    console.log('btn<------------------');
-    console.log(btn);
     return {
         "type": "flex",
         "altText": "Flex Message",

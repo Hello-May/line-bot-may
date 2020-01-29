@@ -160,12 +160,13 @@ const postbackCommandSolver = async (event, status) => {
                             }
                         }
                     } else {
-                        let next = parseInt(str[1]) + 1;
-                        await dbUser.saveStatus(userId, '戰鬥監聽:' + next);
+                        let next = parseInt(str[1]) + 1;                      
                         let j2;
                         if (str[2] == 'player' && input.includes('選擇')) {
+                            await dbUser.saveStatus(userId, '戰鬥監聽:' + str[1]);
                             output = await pk.round(userId, next, 'player');
                         } else if (str[2] == 'player' && input.includes('攻擊')) {
+                            await dbUser.saveStatus(userId, '戰鬥監聽:' + next);
                             j2 = await dbBattle.round(userId, str[2]);
                             switch (j2) {
                                 case '對方勝':
@@ -190,33 +191,10 @@ const postbackCommandSolver = async (event, status) => {
                                         type: 'text',
                                         text: '戰鬥回合' + str[1] + ': ' + j2 + '  foucs:' + str[2]
                                     }
-                                    console.log(' output2<------------------');
-                                    console.log(output2);
-                                    // output2 = {
-                                    //     "type": "flex",
-                                    //     "altText": "Flex Message",
-                                    //     "contents": {
-                                    //         "type": "bubble",
-                                    //         "direction": "ltr",
-                                    //         "footer": {
-                                    //             "type": "box",
-                                    //             "layout": "horizontal",
-                                    //             "contents": [
-                                    //                 {
-                                    //                     "type": "button",
-                                    //                     "action": {
-                                    //                         "type": "postback",
-                                    //                         "label": "對方攻來",
-                                    //                         "data": str[0] + ':' + next + ':' + 'target' + ':下回合'
-                                    //                     }
-                                    //                 }
-                                    //             ]
-                                    //         }
-                                    //     }
-                                    // }
                                     break;
                             }
                         } else if (str[2] == 'target') {
+                            await dbUser.saveStatus(userId, '戰鬥監聽:' + next);
                             j2 = await dbBattle.round(userId, str[2]);
                             switch (j2) {
                                 case '對方勝':
