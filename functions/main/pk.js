@@ -833,7 +833,7 @@ const round = async (userId, next, focus) => {
                     "type": "button",
                     "action": {
                         "type": "postback",
-                        "label": "對方攻來",
+                        "label": "敵方攻來",
                         "data": '戰鬥回合:' + next + ':' + 'target' + ':下回合'
                     }
                 }
