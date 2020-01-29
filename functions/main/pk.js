@@ -386,13 +386,13 @@ const firstMove = async (userId, player, tarMonsterId) => {
                         "contents": [
                             {
                                 "type": "text",
-                                "text": "agi/vit/str/lucky:" + battleTarget.agi + '/' + battleTarget.vit + '/' + battleTarget.str + '/' + battleTarget.lucky,
+                                "text": "agi/vit/str/lucky:\n" + battleTarget.agi + '/' + battleTarget.vit + '/' + battleTarget.str + '/' + battleTarget.lucky,
                                 "align": "center",
                                 "wrap": true
                             },
                             {
                                 "type": "text",
-                                "text": "agi/vit/str/lucky:" + battlePlayer.agi + '/' + battlePlayer.vit + '/' + battlePlayer.str + '/' + battlePlayer.lucky,
+                                "text": "agi/vit/str/lucky:\n" + battlePlayer.agi + '/' + battlePlayer.vit + '/' + battlePlayer.str + '/' + battlePlayer.lucky,
                                 "align": "center",
                                 "wrap": true
                             }
