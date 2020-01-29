@@ -117,7 +117,7 @@ const keyWord = () => {
                 "contents": [
                     {
                         "type": "text",
-                        "text": "指令",
+                        "text": "查詢指令",
                         "size": "lg",
                         "align": "center",
                         "weight": "bold"
@@ -127,7 +127,7 @@ const keyWord = () => {
             "hero": {
                 "type": "image",
                 "url": "https://i.postimg.cc/bvvLBTjg/image.jpg",
-                "size": "xl",
+                "size": "lg",
                 "aspectRatio": "1.51:1",
                 "aspectMode": "fit"
             },
@@ -136,11 +136,195 @@ const keyWord = () => {
                 "layout": "vertical",
                 "contents": [
                     {
-                        "type": "text",
-                        "text": "[指令] 說明\n[#] 叫出選單\n[#連動] 連動line notify\n[#呼叫] 啟動機器人\n[#閉嘴] 關閉機器人\n[#修煉] 選單1\n[#任務] 選單2\n[#小怪獸] 選單3\n[#戰鬥] 選單4\n[#酒館] 選單5",
+                        "type": "separator"
+                    },
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "margin": "xs",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "指令",
+                                "align": "center"
+                            },
+                            {
+                                "type": "text",
+                                "text": "說明",
+                                "align": "center"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "separator",
+                        "margin": "xs"
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
                         "margin": "lg",
-                        "align": "center",
-                        "wrap": true
+                        "contents": [
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "#",
+                                        "align": "center"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "呼叫選單",
+                                        "align": "start"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "#連動",
+                                        "align": "center"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "連動line notify",
+                                        "align": "start"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "#呼叫",
+                                        "align": "center"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "啟動line bot",
+                                        "align": "start"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "#閉嘴",
+                                        "align": "center"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "關閉line bot",
+                                        "align": "start"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "#修練",
+                                        "align": "center"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "圖文選單1",
+                                        "align": "start"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "#任務",
+                                        "align": "center"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "圖文選單2",
+                                        "align": "start"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "#小怪獸",
+                                        "align": "center"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "圖文選單3",
+                                        "align": "start"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "#戰鬥",
+                                        "align": "center"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "圖文選單4",
+                                        "align": "start"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "#酒館",
+                                        "align": "center"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "圖文選單5",
+                                        "align": "start"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "輸入數字",
+                                        "align": "center"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "進行計算與解答",
+                                        "align": "start"
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 ]
             }
