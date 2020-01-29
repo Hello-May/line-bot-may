@@ -61,16 +61,40 @@ const call = async (userId) => {
             "direction": "ltr",
             "header": {
                 "type": "box",
-                "layout": "vertical",
-                "contents": [
-                    {
-                        "type": "text",
-                        "text": monster.name,
-                        "size": "xl",
-                        "align": "center",
-                        "weight": "bold"
-                    }
-                ]
+                "layout": "horizontal",
+                "margin": "lg",
+                "contents": [{
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "text": monster.name,
+                            "size": "xl",
+                            "align": "center",
+                            "weight": "bold",
+                            "action": {
+                                "type": "postback",
+                                "label": "小怪獸修改",
+                                "data": "小怪獸修改"
+                            },
+                            "flex": 10,
+                            "wrap": true
+                        },
+                        {
+                            "type": "text",
+                            "text": ">",
+                            "action": {
+                                "type": "postback",
+                                "label": "小怪獸修改",
+                                "data": "小怪獸修改"
+                            },
+                            "gravity": "center",
+                            "flex": 1,
+                            "align": "end"
+                        }
+                    ]
+                }]
             },
             "hero": {
                 "type": "image",
@@ -118,11 +142,11 @@ const call = async (userId) => {
                             {
                                 "type": "text",
                                 "text": "精神糧食：" + monster.food + " (-1/hr)"
-                            },                   
+                            },
                             {
                                 "type": "text",
                                 "text": "自律幣/戰利幣：$" + monster.money + '/$' + monster.battleMoney
-                            },                  
+                            },
                             {
                                 "type": "text",
                                 "text": "agi/vit/str/lucky：" + monster.agi + '/' + monster.vit + '/' + monster.str + '/' + monster.lucky
@@ -165,23 +189,23 @@ const call = async (userId) => {
                     }
                 ]
             },
-            "footer": {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                    {
-                        "type": "separator"
-                    },
-                    {
-                        "type": "button",
-                        "action": {
-                            "type": "postback",
-                            "label": "修改",
-                            "data": "小怪獸修改",
-                        }
-                    }
-                ]
-            }
+            // "footer": {
+            //     "type": "box",
+            //     "layout": "vertical",
+            //     "contents": [
+            //         {
+            //             "type": "separator"
+            //         },
+            //         {
+            //             "type": "button",
+            //             "action": {
+            //                 "type": "postback",
+            //                 "label": "修改",
+            //                 "data": "小怪獸修改",
+            //             }
+            //         }
+            //     ]
+            // }
         }
     }
 }
