@@ -147,6 +147,7 @@ const call = async (userId) => {
                                     "text": saying.sentence,
                                     "data": "#whisper"
                                 },
+                                "flex": 10,
                                 "wrap": true
                             },
                             {
