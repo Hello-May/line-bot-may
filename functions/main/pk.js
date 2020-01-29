@@ -161,17 +161,17 @@ async function genByTarget(target) {
     return output;
 }
 
-const target = async (event) => {
-    let user;
-    let monster;
+const target = async (monster) => {
+    // let user;
+    // let monster;
     let target;
     let output;
-    let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
+    // let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
 
     try {
-        user = await dbUser.searchById(userId);
-        monster = await dbMonster.searchById(user.monsterId);
-        target = await dbMonster.searchByRandomAndLevel(monster.level, 3);
+        // user = await dbUser.searchById(userId);
+        // monster = await dbMonster.searchById(user.monsterId);
+        target = await dbMonster.searchByRandomAndLevel(monster, monster.level, 3);
         output = await genByTarget(target);
         // console.log("monster:" + JSON.stringify(monster));
     } catch (err) {
@@ -715,7 +715,7 @@ const fight = async (userId, round, battleMsg, foucs) => {
                             },
                             {
                                 "type": "text",
-                                "text": (foucs == 'player' ?  (battleMsg.extraHurt != 0 ? "⚔⚔" : "⚔") : (battleMsg.hurt == 0 ? "MISS" : "-" + (battleMsg.extraHurt != 0 ? (battleMsg.hurt - battleMsg.extraHurt) : battleMsg.hurt)) + (battleMsg.extraHurt != 0 ? "-" + battleMsg.extraHurt : "")),
+                                "text": (foucs == 'player' ? (battleMsg.extraHurt != 0 ? "⚔⚔" : "⚔") : (battleMsg.hurt == 0 ? "MISS" : "-" + (battleMsg.extraHurt != 0 ? (battleMsg.hurt - battleMsg.extraHurt) : battleMsg.hurt)) + (battleMsg.extraHurt != 0 ? "-" + battleMsg.extraHurt : "")),
                                 "align": "center",
                                 "weight": "bold",
                                 "color": (foucs == 'player' ? "#0700FF" : "#FF0000")

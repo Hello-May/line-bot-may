@@ -11,21 +11,21 @@ const searchById = async (id) => {
     return monster[0];
 }
 
-const searchByRandomAndLevel = async (level, count) => {
+const searchByRandomAndLevel = async (playerMonster, level, count) => {
     let monster = await monsters.findAll({ where: { level: level } });
     if (monster.length < count) {
-        for (let i = 0; i < count - monster.length; i++) {
+        for (let i = 0; i < count - monster.length + 2; i++) {
             await createByRandom(level);
         }
         monster = await monsters.findAll({ where: { level: level } });
-        return monster;
+        // return monster;
     }
     let t = [];
     let output = [];
     for (let i = 0; i < monster.length; i++) {
         t.push(i);
     }
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < monster.length; i++) {
         let r = Math.round(((Math.random() * ((t.length - 1) - i)) + i));
         let tmp = t[i];
         t[i] = t[r];

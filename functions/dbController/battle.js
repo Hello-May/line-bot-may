@@ -57,8 +57,6 @@ const round = async (userId, focus) => {
   return { hurt: hurt, extraHurt: extraHurt };  //如果傷害是0就是miss //如果有額外傷害就是有爆擊
 }
 
-//接受到userId，抓battle的兩隻出來比對數值，先判斷是不是某方死了，看目前是誰攻擊，進行回合後扣血，再存進去
-
 const create = async (userId, myMonster, tarMonster) => {
   await Battle.create({
     force: true,
