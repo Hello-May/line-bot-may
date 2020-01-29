@@ -150,7 +150,7 @@ function genByFood(food) {
         "hero": {
             "type": "image",
             "url": 'https://i.postimg.cc/yNrn4Z1H/image.png',
-            "size": "xl",
+            "size": "xxl",
             "aspectRatio": "1.51:1",
             "aspectMode": "fit"
         },
