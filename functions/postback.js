@@ -186,7 +186,7 @@ const postbackCommandSolver = async (event, status) => {
                                     await dbUser.saveStatus(userId, '正常');
                                     break;
                                 default:
-                                    output = pk.fight(str[1], j2, str[2]);
+                                    output = await pk.fight(userId, str[1], j2, str[2]);
                                     output2 = await pk.round(userId, next, 'target');
                                     // output = {
                                     //     type: 'text',
@@ -215,7 +215,7 @@ const postbackCommandSolver = async (event, status) => {
                                     await dbUser.saveStatus(userId, '正常');
                                     break;
                                 default:
-                                    output = pk.fight(str[1], j2, str[2]);
+                                    output = await pk.fight(userId, str[1], j2, str[2]);
                                     // output = {
                                     //     type: 'text',
                                     //     text: '戰鬥回合' + str[1] + ': ' + j2 + '  foucs:' + str[2]

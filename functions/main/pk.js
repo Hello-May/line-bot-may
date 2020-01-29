@@ -608,7 +608,19 @@ const firstMoveJudge = async (userId, player) => {
     }
 }
 
-const fight = (round, hurt, foucs) => {
+const fight = async (userId, round, hurt, foucs) => {
+    let battle = await dbBattle.searchByUserId(userId);
+    let target;
+    let player;
+    for (let i = 0; i < battle.length; i++) {
+        if (battle[i].identity == 'target') {
+            target = battle[i];
+        } else {
+            player = battle[i];
+        }
+    }
+    let targetSkin = await dbSkin.searchByNameAndRandom(target.skin);
+    let playerSkin = await dbSkin.searchByNameAndRandom(player.skin);
     return {
         "type": "flex",
         "altText": "Flex Message",
@@ -625,26 +637,26 @@ const fight = (round, hurt, foucs) => {
                         "align": "center",
                         "wrap": true
                     },
-                    // {
-                    //     "type": "box",
-                    //     "layout": "horizontal",
-                    //     "contents": [
-                    //         {
-                    //             "type": "text",
-                    //             "text": (foucs == 'target' ? "⚔" : "-" + hurt),
-                    //             "align": "center",
-                    //             "weight": "bold",
-                    //             "color": (foucs == 'target' ? "#0700FF" : "#FF0000")
-                    //         },
-                    //         {
-                    //             "type": "text",
-                    //             "text": "Text",
-                    //             "align": (foucs == 'player' ? "⚔" : "-" + hurt),
-                    //             "weight": "bold",
-                    //             "color": (foucs == 'player' ? "#0700FF" : "#FF0000")
-                    //         }
-                    //     ]
-                    // },
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": (foucs == 'target' ? "⚔" : "-" + hurt),
+                                "align": "center",
+                                "weight": "bold",
+                                "color": (foucs == 'target' ? "#0700FF" : "#FF0000")
+                            },
+                            {
+                                "type": "text",
+                                "text": "Text",
+                                "align": (foucs == 'player' ? "⚔" : "-" + hurt),
+                                "weight": "bold",
+                                "color": (foucs == 'player' ? "#0700FF" : "#FF0000")
+                            }
+                        ]
+                    },
                     {
                         "type": "box",
                         "layout": "horizontal",
