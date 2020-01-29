@@ -32,11 +32,13 @@ const searchByRandomAndLevel = async (playerMonster, level, count) => {
         t[r] = tmp;
     }
     // for (let i = 0; i < count; i++) {
+    let i=0;
     while (output.length < count) {
         if (playerMonster.monsterId == monster[t[i]].monsterId) {
             continue;
         }
-        output.push(monster[t[i]])
+        output.push(monster[t[i]]);
+        i++;
     }
     return output;
 }
