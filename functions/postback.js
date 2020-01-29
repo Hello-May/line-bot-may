@@ -33,6 +33,12 @@ const postbackCommandSolver = async (event, status) => {
     if (input.includes(':')) {
         str = input.split(":");
         switch (str[0]) {
+            case '購買道具':
+                output = {
+                    type: 'text',
+                    text: input
+                }
+                break;
             case '購買糧食':
                 if (tmpMonster.money >= parseInt(str[2])) {
                     await dbMonster.updateMoney(tmpMonster.monsterId, tmpMonster.money - parseInt(str[2]));
