@@ -42,7 +42,7 @@ const round = async (userId, focus) => {
   let agiRate = Math.round((Math.random() * (7 - agiDifference))); //對方閃避率就越高，負數閃避率越低
 
   let hurt = (focus == 'player' ? (luckyRate == 0 ? player.str * 8 : player.str * 5) : (luckyRate == 0 ? target.str * 8 : target.str * 5));
-  let extraHurt = (luckyRate == 0 ? (player.str * 8 - player.str * 5) : 0);
+  let extraHurt = (luckyRate == 0 ? (focus == 'player' ? (player.str * 8 - player.str * 5) : (target.str * 8 - target.str * 5)) : 0);
 
   if (agiRate == 0) {
     hurt = 0;
