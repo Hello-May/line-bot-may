@@ -110,7 +110,7 @@ const selectTime = (postback) => {
 }
 
 const propStore = () => {
-    let output = genByProps(food);
+    let output = genByProps(props);
     return {
         "type": "flex",
         "altText": "Flex Message",
