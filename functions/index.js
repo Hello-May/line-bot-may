@@ -56,7 +56,7 @@ const textCommandSolver = async (event, status) => {
             await dbMonster.increaseMoney(tmpUser.monsterId);
             return clientBot.replyMessage(event.replyToken, [{
                 type: 'text',
-                text: '[已簽到] 賺取自律幣$1'
+                text: '[已簽到] 賺取自律幣$1！'
             }, {
                 type: 'sticker',
                 packageId: sticker[stickno][0].toString(),

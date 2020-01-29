@@ -69,7 +69,7 @@ const call = async (userId) => {
                         {
                             "type": "text",
                             "text": monster.name,
-                            "size": "xl",
+                            "size": "lg",
                             "align": "center",
                             "weight": "bold",
                             "action": {
@@ -100,7 +100,7 @@ const call = async (userId) => {
                 // "url": "https://images2.gamme.com.tw/news2/2018/86/51/qZqVnqaYl6aWp6Q.gif",  //皮卡丘
                 // "url": "https://i.imgur.com/YptXiwa.gif",   //綠水靈
                 "url": skin.image,
-                "size": "lg",
+                "size": "xl",
                 "aspectRatio": "1.51:1",
                 "aspectMode": "fit",
                 "action": {

@@ -608,6 +608,96 @@ const firstMoveJudge = async (userId, player) => {
     }
 }
 
+const fight = async (round, hurt, foucs) => {
+    return {
+        "type": "flex",
+        "altText": "Flex Message",
+        "contents": {
+            "type": "bubble",
+            "direction": "ltr",
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": '戰鬥回合' + round + ': 傷害' + hurt + '  foucs:' + foucs,
+                        "align": "center",
+                        "wrap": true
+                    },
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": (foucs == 'target' ? "⚔" : "-" + hurt),
+                                "align": "center",
+                                "weight": "bold",
+                                "color": (foucs == 'target' ? "#0700FF" : "#FF0000")
+                            },
+                            {
+                                "type": "text",
+                                "text": "Text",
+                                "align": (foucs == 'player' ? "⚔" : "-" + hurt),
+                                "weight": "bold",
+                                "color": (foucs == 'player' ? "#0700FF" : "#FF0000")
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                            {
+                                "type": "image",
+                                "url": targetSkin.image,
+                                "gravity": "center",
+                                "size": "xs",
+                                "action": {
+                                    "type": "postback",
+                                    "label": "叫聲",
+                                    "data": targetSkin.say
+                                }
+                            },
+                            {
+                                "type": "image",
+                                "url": playerSkin.image,
+                                "size": "xs",
+                                "action": {
+                                    "type": "postback",
+                                    "label": "叫聲",
+                                    "data": playerSkin.say
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "敵方:" + target.name,
+                                "align": "center",
+                                "size": "xxs",
+                                "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "我方:" + player.name,
+                                "align": "center",
+                                "size": "xxs",
+                                "wrap": true
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}
+
 const round = async (userId, next, focus) => {
     let battle = await dbBattle.searchByUserId(userId);
     let target;
@@ -791,5 +881,6 @@ module.exports = {
     target,
     firstMove,
     firstMoveJudge,
-    round
+    round,
+    fight
 }

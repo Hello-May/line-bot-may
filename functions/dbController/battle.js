@@ -12,7 +12,7 @@ const searchByMonsterId = async (id) => {
   return battle[0];
 }
 
-const destroy = async (id)=>{
+const destroy = async (id) => {
   await Battle.destroy({ where: { userId: id } });
 }
 
@@ -39,7 +39,8 @@ const round = async (userId, focus) => {
     hp: newHp,
   }, { where: { userId: userId, identity: passive } });
 
-  return focus + '造成' + passive + '扣' + (focus == 'player' ? (player.str * 5) + '傷害' : (target.str * 5) + '傷害')
+  return (focus == 'player' ? (player.str * 5) : (target.str * 5));
+  // return focus + '造成' + passive + '扣' + (focus == 'player' ? (player.str * 5) + '傷害' : (target.str * 5) + '傷害')
 }
 
 //接受到userId，抓battle的兩隻出來比對數值，先判斷是不是某方死了，看目前是誰攻擊，進行回合後扣血，再存進去
@@ -56,7 +57,7 @@ const create = async (userId, myMonster, tarMonster) => {
     str: myMonster.str,
     lucky: myMonster.lucky,
     character: myMonster.character,
-    skin :myMonster.skin,
+    skin: myMonster.skin,
     name: myMonster.name,
     createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
     updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
@@ -72,7 +73,7 @@ const create = async (userId, myMonster, tarMonster) => {
     str: tarMonster.str,
     lucky: tarMonster.lucky,
     character: tarMonster.character,
-    skin :tarMonster.skin,
+    skin: tarMonster.skin,
     name: tarMonster.name,
     createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
     updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })

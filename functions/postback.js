@@ -45,7 +45,7 @@ const postbackCommandSolver = async (event, status) => {
                 } else {
                     output = {
                         type: 'text',
-                        text: '沒有足夠的自律幣'
+                        text: '沒有足夠的自律幣QQ'
                     }
                 }
                 break;
@@ -63,7 +63,7 @@ const postbackCommandSolver = async (event, status) => {
                 } else {
                     output = {
                         type: 'text',
-                        text: '沒有足夠的戰利幣'
+                        text: '沒有足夠的戰利幣QQ'
                     }
                 }
                 break;
@@ -160,7 +160,7 @@ const postbackCommandSolver = async (event, status) => {
                             }
                         }
                     } else {
-                        let next = parseInt(str[1]) + 1;                      
+                        let next = parseInt(str[1]) + 1;
                         let j2;
                         if (str[2] == 'player' && input.includes('選擇')) {
                             await dbUser.saveStatus(userId, '戰鬥監聽:' + str[1]);
@@ -181,16 +181,17 @@ const postbackCommandSolver = async (event, status) => {
                                     await dbMonster.increaseBattleMoney(tmpMonster.monsterId);
                                     output = {
                                         type: 'text',
-                                        text: '[戰鬥結束] ' + j2 + '，贏得戰利幣$1'
+                                        text: '[戰鬥結束] ' + j2 + '，贏得戰利幣$1！'
                                     }
                                     await dbUser.saveStatus(userId, '正常');
                                     break;
                                 default:
+                                    output = pk.fight(str[1], j2, str[2]);
                                     output2 = await pk.round(userId, next, 'target');
-                                    output = {
-                                        type: 'text',
-                                        text: '戰鬥回合' + str[1] + ': ' + j2 + '  foucs:' + str[2]
-                                    }
+                                    // output = {
+                                    //     type: 'text',
+                                    //     text: '戰鬥回合' + str[1] + ': ' + j2 + '  foucs:' + str[2]
+                                    // }
                                     break;
                             }
                         } else if (str[2] == 'target') {
@@ -209,15 +210,16 @@ const postbackCommandSolver = async (event, status) => {
                                     await dbMonster.increaseBattleMoney(tmpMonster.monsterId);
                                     output = {
                                         type: 'text',
-                                        text: '[戰鬥結束] ' + j2
+                                        text: '[戰鬥結束] ' + j2 + '，贏得戰利幣$1！'
                                     }
                                     await dbUser.saveStatus(userId, '正常');
                                     break;
                                 default:
-                                    output = {
-                                        type: 'text',
-                                        text: '戰鬥回合' + str[1] + ': ' + j2 + '  foucs:' + str[2]
-                                    }
+                                    output = pk.fight(str[1], j2, str[2]);
+                                    // output = {
+                                    //     type: 'text',
+                                    //     text: '戰鬥回合' + str[1] + ': ' + j2 + '  foucs:' + str[2]
+                                    // }
                                     output2 = await pk.round(userId, next, 'player');
                                     break;
                             }
