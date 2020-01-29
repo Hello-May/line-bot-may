@@ -136,7 +136,7 @@ const call = async (userId) => {
                     {
                         "type": "box",
                         "layout": "horizontal",
-                        "spacing": "lg",
+                        "margin": "lg",
                         "contents": [
                             {
                                 "type": "text",
