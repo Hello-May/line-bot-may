@@ -361,7 +361,6 @@ const imgCommandSolver = (event) => {
         type: 'text',
         text: msg
     }, {
-        // id: '325708',
         type: 'sticker',
         packageId: sticker[stickno][0].toString(),
         stickerId: sticker[stickno][1].toString(),
@@ -372,7 +371,6 @@ const imgCommandSolver = (event) => {
 const stickerCommandSolver = (event) => {
     let stickno = Math.floor(Math.random() * sticker.length);
     return clientBot.replyMessage(event.replyToken, {
-        // id: '325708',
         type: 'sticker',
         packageId: sticker[stickno][0].toString(),
         stickerId: sticker[stickno][1].toString(),
