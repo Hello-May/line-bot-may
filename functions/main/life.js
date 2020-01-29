@@ -209,7 +209,7 @@ function genByProps(props) {
                         "action": {
                             "type": "postback",
                             "label": "購買",
-                            "data": "購買糧食:" + props[i].name
+                            "data": "購買道具:" + props[i].name
                         }
                     }
                 ]
