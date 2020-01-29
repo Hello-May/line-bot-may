@@ -355,12 +355,16 @@ const firstMove = async (userId, player, tarMonsterId) => {
                             {
                                 "type": "text",
                                 "text": "敵方:" + target.name,
-                                "align": "center"
+                                "align": "center",
+                                "size": "xxs",
+                                "wrap": true
                             },
                             {
                                 "type": "text",
                                 "text": "我方:" + player.name,
-                                "align": "center"
+                                "align": "center",
+                                "size": "xxs",
+                                "wrap": true
                             }
                         ]
                     },
@@ -371,12 +375,16 @@ const firstMove = async (userId, player, tarMonsterId) => {
                             {
                                 "type": "text",
                                 "text": "HP:" + battleTarget.hp,
-                                "align": "center"
+                                "align": "center",
+                                "size": "xxs",
+                                "wrap": true
                             },
                             {
                                 "type": "text",
                                 "text": "HP:" + battlePlayer.hp,
-                                "align": "center"
+                                "align": "center",
+                                "size": "xxs",
+                                "wrap": true
                             }
                         ]
                     },
@@ -388,12 +396,14 @@ const firstMove = async (userId, player, tarMonsterId) => {
                                 "type": "text",
                                 "text": "agi/vit/str/lucky:\n" + battleTarget.agi + '/' + battleTarget.vit + '/' + battleTarget.str + '/' + battleTarget.lucky,
                                 "align": "center",
+                                "size": "xxs",
                                 "wrap": true
                             },
                             {
                                 "type": "text",
                                 "text": "agi/vit/str/lucky:\n" + battlePlayer.agi + '/' + battlePlayer.vit + '/' + battlePlayer.str + '/' + battlePlayer.lucky,
                                 "align": "center",
+                                "size": "xxs",
                                 "wrap": true
                             }
                         ]
