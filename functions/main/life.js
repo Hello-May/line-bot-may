@@ -610,33 +610,76 @@ const call = async (event) => {
                                 "margin": "lg"
                             },
                             {
+                                "type": "text",
+                                "text": "請點選欲前往之商店",
+                                "margin": "lg",
+                                "align": "center",
+                                "wrap": false
+                            },
+                            {
                                 "type": "box",
-                                "layout": "vertical",
+                                "layout": "horizontal",
                                 "margin": "lg",
                                 "contents": [
                                     {
-                                        "type": "button",
-                                        "action": {
-                                            "type": "postback",
-                                            "label": "糧食商店",
-                                            "data": "糧食商店"
-                                        }
+                                        "type": "box",
+                                        "layout": "vertical",
+                                        "contents": [
+                                            {
+                                                "type": "image",
+                                                "url": "https://i.postimg.cc/HkCyZGKH/1.png",
+                                                "action": {
+                                                    "type": "postback",
+                                                    "label": "糧食商店",
+                                                    "data": "糧食商店"
+                                                }
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": "糧食",
+                                                "align": "center"
+                                            }
+                                        ]
                                     },
                                     {
-                                        "type": "button",
-                                        "action": {
-                                            "type": "postback",
-                                            "label": "能力商店",
-                                            "data": "能力商店"
-                                        }
+                                        "type": "box",
+                                        "layout": "vertical",
+                                        "contents": [
+                                            {
+                                                "type": "image",
+                                                "url": "https://i.postimg.cc/Z5FyX7tN/2.png",
+                                                "action": {
+                                                    "type": "postback",
+                                                    "label": "能力商店",
+                                                    "data": "能力商店"
+                                                }
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": "能力",
+                                                "align": "center"
+                                            }
+                                        ]
                                     },
                                     {
-                                        "type": "button",
-                                        "action": {
-                                            "type": "postback",
-                                            "label": "變種商店",
-                                            "data": "變種商店"
-                                        }
+                                        "type": "box",
+                                        "layout": "vertical",
+                                        "contents": [
+                                            {
+                                                "type": "image",
+                                                "url": "https://i.postimg.cc/MG6jw7qF/3.png",
+                                                "action": {
+                                                    "type": "postback",
+                                                    "label": "變種商店",
+                                                    "data": "變種商店"
+                                                }
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": "變種",
+                                                "align": "center"
+                                            }
+                                        ]
                                     }
                                 ]
                             }
