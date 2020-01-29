@@ -3,7 +3,7 @@ const dbHabit = require('../dbController/habit');
 const dbMonster = require('../dbController/monster');
 const store = {
     light: { image: 'https://i.postimg.cc/Wb10ZXs2/light.png', msg: '晝行性生物\n\n日出而作，日落而息。' },
-    dark: { image: 'https://i.postimg.cc/9XpGzv58/dark.png', msg: '夜行性生物\n\n披星戴月，星移斗轉。' }
+    dark: { image: 'https://i.postimg.cc/9XpGzv58/dark.png', msg: '夜行性生物\n\n披星戴月，斗轉星移。' }
 }
 
 const skin = [
@@ -131,6 +131,43 @@ const selectTime = (postback) => {
 
 function genByFood(food) {
     let output = [];
+    output.push({
+        "type": "bubble",
+        "direction": "ltr",
+        "header": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+                {
+                    "type": "text",
+                    "text": "糧食商店",
+                    "size": "lg",
+                    "align": "center",
+                    "weight": "bold"
+                }
+            ]
+        },
+        "hero": {
+            "type": "image",
+            "url": 'https://i.postimg.cc/yNrn4Z1H/image.png',
+            "size": "xl",
+            "aspectRatio": "1.51:1",
+            "aspectMode": "fit"
+        },
+        "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+                {
+                    "type": "text",
+                    "text": '\n有時讓自己活著的不是食物',
+                    "margin": "lg",
+                    "align": "center",
+                    "wrap": true
+                }
+            ]
+        }
+    })
     for (let i = 0; i < food.length; i++) {
         output.push({
             "type": "bubble",
@@ -208,7 +245,7 @@ function genBySkin(skin, belong) {
         "hero": {
             "type": "image",
             "url": (belong == 'light' ? store.light.image : store.dark.image),
-            "size": "lg",
+            "size": "xl",
             "aspectRatio": "1.51:1",
             "aspectMode": "fit"
         },
@@ -218,7 +255,7 @@ function genBySkin(skin, belong) {
             "contents": [
                 {
                     "type": "text",
-                    "text":(belong == 'light' ? store.light.msg : store.dark.msg),
+                    "text": (belong == 'light' ? store.light.msg : store.dark.msg),
                     "margin": "lg",
                     "align": "center",
                     "wrap": true
@@ -319,7 +356,7 @@ const lightOrDark = () => {
                                 "type": "image",
                                 "url": store.light.image,
                                 "gravity": "center",
-                                "size": "sm",
+                                "size": "xs",
                                 "action": {
                                     "type": "postback",
                                     "label": "變身商店",
@@ -329,7 +366,7 @@ const lightOrDark = () => {
                             {
                                 "type": "image",
                                 "url": store.dark.image,
-                                "size": "sm",
+                                "size": "xs",
                                 "action": {
                                     "type": "postback",
                                     "label": "變身商店",
