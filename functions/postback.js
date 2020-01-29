@@ -173,6 +173,7 @@ const postbackCommandSolver = async (event, status) => {
                                         type: 'text',
                                         text: '[戰鬥結束] ' + j2
                                     }
+                                    await dbUser.saveStatus(userId, '正常');
                                     break;
                                 case '玩家勝':
                                     //增加戰利幣
@@ -181,6 +182,7 @@ const postbackCommandSolver = async (event, status) => {
                                         type: 'text',
                                         text: '[戰鬥結束] ' + j2 + '，贏得戰利幣$1'
                                     }
+                                    await dbUser.saveStatus(userId, '正常');
                                     break;
                                 default:
                                     output = {
@@ -219,6 +221,7 @@ const postbackCommandSolver = async (event, status) => {
                                         type: 'text',
                                         text: '[戰鬥結束] ' + j2
                                     }
+                                    await dbUser.saveStatus(userId, '正常');
                                     break;
                                 case '玩家勝':
                                     //增加戰利幣
@@ -227,6 +230,7 @@ const postbackCommandSolver = async (event, status) => {
                                         type: 'text',
                                         text: '[戰鬥結束] ' + j2
                                     }
+                                    await dbUser.saveStatus(userId, '正常');
                                     break;
                                 default:
                                     output = {
