@@ -2,8 +2,8 @@ const dbUser = require('../dbController/user');
 const dbHabit = require('../dbController/habit');
 const dbMonster = require('../dbController/monster');
 const store = {
-    light: { image: 'https://i.postimg.cc/Wb10ZXs2/light.png', msg: '晝行性生物\n日出而作，日落而息。' },
-    dark: { image: 'https://i.postimg.cc/9XpGzv58/dark.png', msg: '夜行性生物\n披星戴月，星移斗轉。' }
+    light: { image: 'https://i.postimg.cc/Wb10ZXs2/light.png', msg: '晝行性生物\n\n日出而作，日落而息。' },
+    dark: { image: 'https://i.postimg.cc/9XpGzv58/dark.png', msg: '夜行性生物\n\n披星戴月，星移斗轉。' }
 }
 
 const skin = [
