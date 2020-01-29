@@ -290,7 +290,7 @@ const postbackCommandSolver = async (event, status) => {
                 await dbUser.saveStatus(userId, '新增自律監聽:' + event.postback.params.time);
                 output = {
                     type: 'text',
-                    text: input
+                    text: '時間: ' + event.postback.params.time
                 };
                 output2 = {
                     type: 'text',

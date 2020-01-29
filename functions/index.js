@@ -117,7 +117,7 @@ const textCommandSolver = async (event, status) => {
                             await dbUser.saveStatus(userId, status + ':' + input);  //input是習慣
                             output = [{
                                 type: 'text',
-                                text: input
+                                text: '習慣: ' + input
                             },
                             {
                                 type: 'text',
@@ -129,7 +129,7 @@ const textCommandSolver = async (event, status) => {
                             await dbHabit.create(userId, str[1] + ":" + str[2], str[3], input);
                             output = {
                                 type: 'text',
-                                text: '[已新增自律指令]\n' + str[1] + ":" + str[2] + "/" + str[3] + "/" + input
+                                text: '[已新增自律指令]\n' + '時間: '+str[1] + ":" + str[2] + " / 習慣: " + str[3] + " / 密語: " + input
                             };
                             await dbUser.saveStatus(userId, '正常');
                             break;
@@ -342,7 +342,7 @@ const textCommandSolver = async (event, status) => {
                 }
         }
     }
-    
+
     if (input.includes("#")) {  //這樣會有缺點是非指令也會增加經驗值
         tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
         await dbMonster.increaseEXP(tmpMonster.monsterId);
