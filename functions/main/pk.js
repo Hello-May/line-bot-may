@@ -271,8 +271,6 @@ const firstMove = async (userId, player, tarMonsterId) => {
             text: '已沒有此敵人'
         }
     }
-    // let user = await dbUser.searchById(userId);
-    // let monster = await dbMonster.searchById(user.monsterId);
     if (target.level < player.level) {
         return {
             type: 'text',
@@ -283,6 +281,16 @@ const firstMove = async (userId, player, tarMonsterId) => {
     let playerSkin = await dbSkin.searchByNameAndRandom(player.skin);
     await dbBattle.create(userId, player, target);
     await dbUser.saveStatus(userId, '猜拳監聽');
+    let battle = await dbBattle.searchByUserId(userId);
+    let battleTarget;
+    let battlePlayer;
+    for (let i = 0; i < battle.length; i++) {
+        if (battle[i].identity == 'target') {
+            battleTarget = battle[i];
+        } else {
+            battlePlayer = battle[i];
+        }
+    }
     return {
         "type": "flex",
         "altText": "Flex Message",
@@ -302,22 +310,16 @@ const firstMove = async (userId, player, tarMonsterId) => {
                     }
                 ]
             },
-            // "hero": {
-            //     "type": "image",
-            //     "url": tarSkin.image,
-            //     "size": "lg",
-            //     "aspectRatio": "1.51:1",
-            //     "aspectMode": "fit",
-            //     "action": {
-            //         "type": "postback",
-            //         "label": "叫聲",
-            //         "data": tarSkin.say
-            //     }
-            // },
             "body": {
                 "type": "box",
                 "layout": "vertical",
                 "contents": [
+                    {
+                        "type": "text",
+                        "text": "請猜拳決定先攻",
+                        "align": "center",
+                        "wrap": true
+                    },
                     {
                         "type": "box",
                         "layout": "horizontal",
@@ -327,7 +329,7 @@ const firstMove = async (userId, player, tarMonsterId) => {
                                 "type": "image",
                                 "url": targetSkin.image,
                                 "gravity": "center",
-                                "size": "sm",
+                                "size": "xs",
                                 "action": {
                                     "type": "postback",
                                     "label": "叫聲",
@@ -337,7 +339,7 @@ const firstMove = async (userId, player, tarMonsterId) => {
                             {
                                 "type": "image",
                                 "url": playerSkin.image,
-                                "size": "sm",
+                                "size": "xs",
                                 "action": {
                                     "type": "postback",
                                     "label": "叫聲",
@@ -363,10 +365,36 @@ const firstMove = async (userId, player, tarMonsterId) => {
                         ]
                     },
                     {
-                        "type": "text",
-                        "text": "請猜拳決定先攻",
-                        "align": "center",
-                        "wrap": true
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "HP:" + battleTarget.hp,
+                                "align": "center"
+                            },
+                            {
+                                "type": "text",
+                                "text": "HP:" + battlePlayer.hp,
+                                "align": "center"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "agi/vit/str/lucky：" + battleTarget.agi + '/' + battleTarget.vit + '/' + battleTarget.str + '/' + battleTarget.lucky,
+                                "align": "center"
+                            },
+                            {
+                                "type": "text",
+                                "text": "agi/vit/str/lucky：" + battlePlayer.agi + '/' + battlePlayer.vit + '/' + battlePlayer.str + '/' + battlePlayer.lucky,
+                                "align": "center"
+                            }
+                        ]
                     }
                 ]
             },
@@ -612,12 +640,22 @@ const round = async (userId, next, focus) => {
                                 "type": "image",
                                 "url": targetSkin.image,
                                 "gravity": "center",
-                                "size": "sm"
+                                "size": "xs",
+                                "action": {
+                                    "type": "postback",
+                                    "label": "叫聲",
+                                    "data": targetSkin.say
+                                }
                             },
                             {
                                 "type": "image",
                                 "url": playerSkin.image,
-                                "size": "sm"
+                                "size": "xs",
+                                "action": {
+                                    "type": "postback",
+                                    "label": "叫聲",
+                                    "data": playerSkin.say
+                                }
                             }
                         ]
                     },
