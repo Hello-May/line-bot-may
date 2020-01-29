@@ -263,7 +263,7 @@ const call = (event) => {
     }
 }
 
-const firstMove = async (player, tarMonsterId) => {
+const firstMove = async (userId, player, tarMonsterId) => {
     let target = await dbMonster.searchById(tarMonsterId);
     if (target == undefined) {
         return {

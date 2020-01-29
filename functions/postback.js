@@ -107,7 +107,7 @@ const postbackCommandSolver = async (event, status) => {
                         text: '請先輸入取消，以取消當前操作。'
                     }
                 } else {
-                    output = await pk.firstMove(tmpMonster, str[1]);    //str[1]=tarMonster.monsterId
+                    output = await pk.firstMove(userId, tmpMonster, str[1]);    //str[1]=tarMonster.monsterId
                 }
                 break;
             case '戰鬥先攻':
