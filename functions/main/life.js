@@ -1,6 +1,11 @@
 const dbUser = require('../dbController/user');
 const dbHabit = require('../dbController/habit');
 const dbMonster = require('../dbController/monster');
+const store = {
+    light: { image: 'https://i.postimg.cc/Wb10ZXs2/light.png', msg: '晝行性：日出而作，日落而息。' },
+    dark: { image: 'https://i.postimg.cc/9XpGzv58/dark.png', msg: '夜行性：披星戴月，星移斗轉。' }
+}
+
 const skin = [
     { monster: '草莓獸', image: 'https://i.postimg.cc/yxhBp04V/0.png', price: 1, belong: 'light', name: '少女心' },
     { monster: '餅乾獸', image: 'https://i.postimg.cc/bv6Rb5ZP/0.png', price: 1, belong: 'light', name: '呆萌奶糖味' },
@@ -184,6 +189,57 @@ function genByFood(food) {
 
 function genBySkin(skin, belong) {
     let output = [];
+    output.push({
+        "type": "bubble",
+        "direction": "ltr",
+        "header": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+                {
+                    "type": "text",
+                    "text": "變身商店",
+                    "size": "lg",
+                    "align": "center",
+                    "weight": "bold"
+                }
+            ]
+        },
+        "hero": {
+            "type": "image",
+            "url": (belong == 'light' ? store.light.image : store.dark.image),
+            "size": "lg",
+            "aspectRatio": "1.51:1",
+            "aspectMode": "fit"
+        },
+        "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+                {
+                    "type": "text",
+                    "text":(belong == 'light' ? store.light.msg : store.dark.msg),
+                    "margin": "lg",
+                    "align": "center",
+                    "wrap": false
+                }
+            ]
+        },
+        // "footer": {
+        //     "type": "box",
+        //     "layout": "vertical",
+        //     "contents": [
+        //         {
+        //             "type": "button",
+        //             "action": {
+        //                 "type": "postback",
+        //                 "label": "購買",
+        //                 "data": "購買外觀:" + skin[i].monster + ':' + skin[i].price
+        //             }
+        //         }
+        //     ]
+        // }
+    })
     for (let i = 0; i < skin.length; i++) {
         if (skin[i].belong != belong) {
             continue;
@@ -275,7 +331,7 @@ const lightOrDark = () => {
                         "contents": [
                             {
                                 "type": "image",
-                                "url": "https://i.postimg.cc/Wb10ZXs2/light.png",
+                                "url": store.light.image,
                                 "gravity": "center",
                                 "size": "sm",
                                 "action": {
@@ -286,7 +342,7 @@ const lightOrDark = () => {
                             },
                             {
                                 "type": "image",
-                                "url": "https://i.postimg.cc/9XpGzv58/dark.png",
+                                "url": store.dark.image,
                                 "size": "sm",
                                 "action": {
                                     "type": "postback",
