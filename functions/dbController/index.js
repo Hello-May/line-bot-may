@@ -53,7 +53,7 @@ const saveId = async (event) => {
     }
     let output = [{
         "type": "text",
-        "text": "您好～☺☺☺\n歡迎來到小怪獸的世界，這裡可以協助［養成習慣］及［記錄備忘］的地方，同時能夠［養成小怪獸］，在開始之前請先加入line notify好友，並在下方按鈕連動line notify，它會在未來幫助提醒你。連動後，就可使用下方的圖文選單進行使用，若是在群組中，可輸入\"#\"呼叫圖文選單喔！"
+        "text": "您好～☺☺☺\n歡迎來到小怪獸的世界，這裡可以協助［養成習慣］及［記錄備忘］的地方，同時還能［養成小怪獸］！\n在開始之前請先加入line notify好友，並在下方按鈕連動line notify，它會在未來幫助提醒你。\n連動後，就可使用下方的圖文選單進行使用，若是在群組中，可輸入\"#\"呼叫圖文選單喔！"
     }, {
         "type": "image",
         "originalContentUrl": "https://i.postimg.cc/MKwj8XRN/linenotify.png",
