@@ -650,8 +650,8 @@ const fight = async (userId, round, hurt, foucs) => {
                             },
                             {
                                 "type": "text",
-                                "text": "Text",
-                                "align": (foucs == 'player' ? "⚔" : "-" + hurt),
+                                "text": (foucs == 'player' ? "⚔" : "-" + hurt),
+                                "align": "center",
                                 "weight": "bold",
                                 "color": (foucs == 'player' ? "#0700FF" : "#FF0000")
                             }
