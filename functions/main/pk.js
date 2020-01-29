@@ -805,7 +805,7 @@ const round = async (userId, next, focus) => {
                             },
                             {
                                 "type": "text",
-                                "text": (focus == 'player' ? " " : "⌛"),
+                                "text": (focus == 'player' ? "⌛" : " "),
                                 "align": "center",
                                 "weight": "bold",
                                 // "color": (foucs == 'player' ? "#0700FF" : "#FF0000")
