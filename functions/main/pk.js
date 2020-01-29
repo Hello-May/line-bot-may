@@ -314,12 +314,6 @@ const firstMove = async (userId, player, tarMonsterId) => {
                 "type": "box",
                 "layout": "vertical",
                 "contents": [
-                    // {
-                    //     "type": "text",
-                    //     "text": "請猜拳決定先攻",
-                    //     "align": "center",
-                    //     "wrap": true
-                    // },
                     {
                         "type": "box",
                         "layout": "horizontal",
@@ -678,12 +672,56 @@ const round = async (userId, next, focus) => {
                             {
                                 "type": "text",
                                 "text": "敵方:" + target.name,
-                                "align": "center"
+                                "align": "center",
+                                "size": "xxs",
+                                "wrap": true
                             },
                             {
                                 "type": "text",
                                 "text": "我方:" + player.name,
-                                "align": "center"
+                                "align": "center",
+                                "size": "xxs",
+                                "wrap": true
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "HP:" + target.hp,
+                                "align": "center",
+                                "size": "xxs",
+                                "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "HP:" + player.hp,
+                                "align": "center",
+                                "size": "xxs",
+                                "wrap": true
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "agi/vit/str/lucky:\n" + target.agi + '/' + target.vit + '/' + target.str + '/' + target.lucky,
+                                "align": "center",
+                                "size": "xxs",
+                                "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "agi/vit/str/lucky:\n" + player.agi + '/' + player.vit + '/' + player.str + '/' + player.lucky,
+                                "align": "center",
+                                "size": "xxs",
+                                "wrap": true
                             }
                         ]
                     }
