@@ -48,32 +48,6 @@ Date.prototype.Format = function (fmt) { //author: meizz
     return fmt;
 }
 
-// function genByReward(reward, price) {
-//     let output = [];
-//     for (let i = 0; i < reward.length; i++) {
-//         output.push({
-//             "type": "box",
-//             "layout": "horizontal",
-//             "contents": [
-//                 {
-//                     "type": "text",
-//                     "text": (i + 1) + '',
-//                     "align": "center"
-//                 },
-//                 {
-//                     "type": "text",
-//                     "text": reward[i]
-//                 },
-//                 {
-//                     "type": "text",
-//                     "text": '$' + price[i]
-//                 }
-//             ]
-//         })
-//     }
-//     return output;
-// }
-
 function genByHabit(habit) {
     let output = [];
     let tmpTime;
@@ -420,10 +394,7 @@ const call = async (event) => {
     } catch (err) {
         console.log(err);
     }
-
     let output = genByHabit(habit);
-    // let output2 = genByReward(reward, price);
-
     return {
         "type": "flex",
         "altText": "Flex Message",

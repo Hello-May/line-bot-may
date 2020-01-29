@@ -1,4 +1,3 @@
-
 // import { createPool } from "mysql";
 
 // var s = new Date(1577865102384).toLocaleString('zh-TW', {timeZone: 'Asia/Taipei'});
@@ -154,9 +153,9 @@
 
 // create();
 
-const destroy = async (id, desc) => {
-    await Task.destroy({ where: { userId: id, desc: desc } });
-}
+// const destroy = async (id, desc) => {
+//     await Task.destroy({ where: { userId: id, desc: desc } });
+// }
 
 // destroy('555','5566');
 
@@ -416,5 +415,20 @@ Date.prototype.Format = function (fmt) { //author: meizz
 //     console.log('哈哈')
 // }
 
-const test ={哈:'哈哈'}
-console.log(test.哈)
+// const test ={哈:'哈哈'}
+// console.log(test.哈)
+
+let focus = 'l';
+let pl = 2;
+let tl = 8;
+
+let d = (focus == 'player' ? (pl - tl) : (tl - pl)); //我比對方多出多少幸運值
+if (d > 7) {
+    d = 7;
+}
+
+let luckyRate = Math.round((Math.random() * (10 - d)));
+console.log(luckyRate);
+if (luckyRate == 0) {
+    console.log('爆擊')
+}

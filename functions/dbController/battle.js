@@ -29,17 +29,32 @@ const round = async (userId, focus) => {
     }
     return '玩家勝'
   }
+  let luckyDifference = (focus == 'player' ? (player.lucky - target.lucky) : (target.lucky - player.lucky)); //我比對方多出多少幸運值
+  if (luckyDifference > 7) {
+    luckyDifference = 7;
+  }
+  let luckyRate = Math.round((Math.random() * (10 - luckyDifference))); //自身爆擊率就越高，負數爆擊率越低
 
-  //lucky可能爆擊
-  //agi可能可以閃避
-  let newHp = (focus == 'player' ? (target.hp - player.str * 5) : (player.hp - target.str * 5));
-  let passive = (focus == 'player' ? 'target' : 'player');
+  let agiDifference = (focus == 'player' ? (target.agi - player.agi) : (player.agi - target.agi)); //對方比我多出多少敏捷
+  if (agiDifference > 7) {
+    agiDifference = 7;
+  }
+  let agiRate = Math.round((Math.random() * (10 - agiDifference))); //對方閃避率就越高，負數閃避率越低
 
-  await Battle.update({
-    hp: newHp,
-  }, { where: { userId: userId, identity: passive } });
+  let hurt = (focus == 'player' ? (luckyRate == 0 ? player.str * 8 : player.str * 5) : (luckyRate == 0 ? target.str * 8 : target.str * 5));
+  let extraHurt = (luckyRate == 0 ? (player.str * 8 - player.str * 5) : 0);
 
-  return (focus == 'player' ? (player.str * 5) : (target.str * 5));
+  if (agiRate == 0) {
+    hurt = 0;
+  } else {
+    let newHp = (focus == 'player' ? (target.hp - hurt) : (player.hp - hurt));
+    let passive = (focus == 'player' ? 'target' : 'player');
+    await Battle.update({
+      hp: newHp,
+    }, { where: { userId: userId, identity: passive } });
+  }
+
+  return { hurt: hurt, extraHurt: extraHurt };  //如果傷害是0就是miss //如果有額外傷害就是有爆擊
   // return focus + '造成' + passive + '扣' + (focus == 'player' ? (player.str * 5) + '傷害' : (target.str * 5) + '傷害')
 }
 

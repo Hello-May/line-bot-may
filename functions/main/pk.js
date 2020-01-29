@@ -673,7 +673,7 @@ const firstMoveJudge = async (userId, player) => {
     }
 }
 
-const fight = async (userId, round, hurt, foucs) => {
+const fight = async (userId, round, battleMsg, foucs) => {
     let battle = await dbBattle.searchByUserId(userId);
     let target;
     let player;
@@ -708,14 +708,14 @@ const fight = async (userId, round, hurt, foucs) => {
                         "contents": [
                             {
                                 "type": "text",
-                                "text": (foucs == 'target' ? "⚔" : "-" + hurt),
+                                "text": (foucs == 'target' ? (battleMsg.extraHurt != 0 ? "⚔⚔" : "⚔") : (battleMsg.hurt == 0 ? "MISS" : "-" + (battleMsg.extraHurt != 0 ? (battleMsg.hurt - battleMsg.extraHurt) : battleMsg.hurt)) + (battleMsg.extraHurt != 0 ? "-" + battleMsg.extraHurt : "")),
                                 "align": "center",
                                 "weight": "bold",
                                 "color": (foucs == 'target' ? "#0700FF" : "#FF0000")
                             },
                             {
                                 "type": "text",
-                                "text": (foucs == 'player' ? "⚔" : "-" + hurt),
+                                "text": (foucs == 'player' ?  (battleMsg.extraHurt != 0 ? "⚔⚔" : "⚔") : (battleMsg.hurt == 0 ? "MISS" : "-" + (battleMsg.extraHurt != 0 ? (battleMsg.hurt - battleMsg.extraHurt) : battleMsg.hurt)) + (battleMsg.extraHurt != 0 ? "-" + battleMsg.extraHurt : "")),
                                 "align": "center",
                                 "weight": "bold",
                                 "color": (foucs == 'player' ? "#0700FF" : "#FF0000")
