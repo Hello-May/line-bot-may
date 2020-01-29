@@ -4,7 +4,7 @@ const sticker = [[1, 2], [1, 4], [1, 5], [1, 13], [1, 14], [1, 114], [1, 119], [
 
 async function back() {
   let user = await dbUser.getAll();
-  let stickno = Math.floor(Math.random() * sticker.length)
+  let stickno = Math.floor(Math.random() * sticker.length);
   for (let i = 0; i < user.length; i++) {
     lineNotify.notify(user[i].token, {
       'message': '\n記得回來看看小怪獸～',
