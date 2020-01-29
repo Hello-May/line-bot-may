@@ -40,7 +40,7 @@ const postbackCommandSolver = async (event, status) => {
                     text: '[購買成功] ' + input
                 }
                 break;
-            case '變身商店':
+            case '變種商店':
                 output = life.skinStore(str[1]);
                 break;
             case '購買外觀':
@@ -268,10 +268,7 @@ const postbackCommandSolver = async (event, status) => {
                 output = await pk.target(event);
                 break;
             case '查詢指令':
-                output = {
-                    type: 'text',
-                    text: '[指令] 說明\n[#] 叫出選單\n[#連動] 連動line notify\n[#呼叫] 啟動機器人\n[#閉嘴] 關閉機器人\n[#修煉] 選單1\n[#任務] 選單2\n[#小怪獸] 選單3\n[#戰鬥] 選單4\n[#酒館] 選單5'
-                };
+                output = talk.keyWord();
                 break;
             case '抖內開發者':
                 output = {
@@ -279,7 +276,7 @@ const postbackCommandSolver = async (event, status) => {
                     text: 'HI~麻煩轉帳至台新銀行(812)帳號是28881001521601或是點擊連結開啟Richart APP可以直接帶入我的帳號唷 https://richart.tw/TSDIB_RichartWeb/RC04/RC040300?token=my3nMz81ous%3D'
                 };
                 break;
-            case '變身商店':
+            case '變種商店':
                 output = life.lightOrDark();
                 break;
             case '糧食商店':

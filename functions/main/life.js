@@ -144,6 +144,9 @@ function genByFood(food) {
                     "size": "lg",
                     "align": "center",
                     "weight": "bold"
+                },
+                {
+                  "type": "spacer"
                 }
             ]
         },
@@ -160,7 +163,7 @@ function genByFood(food) {
             "contents": [
                 {
                     "type": "text",
-                    "text": '\n有時讓自己活著的不是食物',
+                    "text": '\n物質可以匱乏，思想不能貧瘠。',
                     "margin": "lg",
                     "align": "center",
                     "wrap": true
@@ -235,7 +238,7 @@ function genBySkin(skin, belong) {
             "contents": [
                 {
                     "type": "text",
-                    "text": "變身商店",
+                    "text": "變種商店",
                     "size": "lg",
                     "align": "center",
                     "weight": "bold"
@@ -359,8 +362,8 @@ const lightOrDark = () => {
                                 "size": "xs",
                                 "action": {
                                     "type": "postback",
-                                    "label": "變身商店",
-                                    "data": "變身商店:light"
+                                    "label": "變種商店",
+                                    "data": "變種商店:light"
                                 }
                             },
                             {
@@ -369,8 +372,8 @@ const lightOrDark = () => {
                                 "size": "xs",
                                 "action": {
                                     "type": "postback",
-                                    "label": "變身商店",
-                                    "data": "變身商店:dark"
+                                    "label": "變種商店",
+                                    "data": "變種商店:dark"
                                 }
                             }
                         ]
@@ -631,8 +634,8 @@ const call = async (event) => {
                                         "type": "button",
                                         "action": {
                                             "type": "postback",
-                                            "label": "變身商店",
-                                            "data": "變身商店"
+                                            "label": "變種商店",
+                                            "data": "變種商店"
                                         }
                                     }
                                 ]
@@ -695,7 +698,7 @@ const call = async (event) => {
                                     },
                                     {
                                         "type": "text",
-                                        "text": "* 在變身商店內，可改變怪獸品種"
+                                        "text": "* 在變種商店內，可改變怪獸品種"
                                     },
                                 ]
                             }

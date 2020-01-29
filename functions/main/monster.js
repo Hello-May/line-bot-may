@@ -66,7 +66,7 @@ const call = async (userId) => {
                     {
                         "type": "text",
                         "text": monster.name,
-                        "size": "lg",
+                        "size": "xl",
                         "align": "center",
                         "weight": "bold"
                     }
