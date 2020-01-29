@@ -346,7 +346,7 @@ const lightOrDark = () => {
                 "contents": [
                     {
                         "type": "text",
-                        "text": "請點選",
+                        "text": "進入變種商店前，請點選",
                         "align": "center",
                         "wrap": true
                     },
@@ -619,7 +619,7 @@ const call = async (event) => {
                             {
                                 "type": "box",
                                 "layout": "horizontal",
-                                "margin": "lg",
+                                "margin": "xxl",
                                 "contents": [
                                     {
                                         "type": "box",
