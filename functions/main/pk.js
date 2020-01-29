@@ -317,7 +317,6 @@ const firstMove = async (userId, player, tarMonsterId) => {
                     {
                         "type": "box",
                         "layout": "horizontal",
-                        "margin": "lg",
                         "contents": [
                             {
                                 "type": "image",
