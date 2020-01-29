@@ -798,14 +798,14 @@ const round = async (userId, next, focus) => {
                         "contents": [
                             {
                                 "type": "text",
-                                "text": (focus == 'target' ? "⌛" : " "),
+                                "text": (focus == 'target' ? "☟" : " "),
                                 "align": "center",
                                 "weight": "bold",
                                 // "color": (foucs == 'target' ? "#0700FF" : "#FF0000")
                             },
                             {
                                 "type": "text",
-                                "text": (focus == 'player' ? "⌛" : " "),
+                                "text": (focus == 'player' ? "☟" : " "),
                                 "align": "center",
                                 "weight": "bold",
                                 // "color": (foucs == 'player' ? "#0700FF" : "#FF0000")
