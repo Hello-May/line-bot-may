@@ -65,6 +65,12 @@ const hungry = async () => {
     return hungry;
 }
 
+const updateFood = async (id, food) => {
+    await Monster.update({
+        food: food,
+    }, { where: { monsterId: id } });
+}
+
 const increaseMoney = async (id) => {
     await monsters.increment({ money: 1 }, { where: { monsterId: id } });
 }
@@ -205,5 +211,6 @@ module.exports = {
     increaseBattleMoney,
     updateMoney,
     updateBattleMoney,
-    updateSkin
+    updateSkin,
+    updateFood
 }

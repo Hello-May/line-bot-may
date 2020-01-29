@@ -35,9 +35,18 @@ const postbackCommandSolver = async (event, status) => {
         str = input.split(":");
         switch (str[0]) {
             case '購買糧食':
-                output = {
-                    type: 'text',
-                    text: '[購買成功] ' + input
+                if (tmpMonster.money >= parseInt(str[2])) {
+                    await dbMonster.updateMoney(tmpMonster.monsterId, tmpMonster.money - parseInt(str[2]));
+                    await dbMonster.updateFood(tmpMonster.monsterId, tmpMonster.food - parseInt(str[1]));
+                    output = {
+                        type: 'text',
+                        text: '[購買成功] ' + tmpMonster.name + '覺得活著更有意義了！'
+                    }
+                } else {
+                    output = {
+                        type: 'text',
+                        text: '沒有足夠的自律幣'
+                    }
                 }
                 break;
             case '變種商店':
