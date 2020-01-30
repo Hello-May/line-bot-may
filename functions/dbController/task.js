@@ -1,6 +1,7 @@
 const db = require('../../models');
 const { tasks } = require("../../models");
 const Task = db.tasks;
+const Op = db.Sequelize.Op;
 
 const searchById = async (id) => {
     let task = await tasks.findAll({ where: { userId: id } });
@@ -138,7 +139,7 @@ const destroy = async (id, desc) => {
 }
 
 const destroyAll = async (userId) => {
-    await Task.destroy({ where: { userId: userId } });
+    await Task.destroy({ where: { userId: userId, taskId: { [Op.gt]: 0 } } });
 }
 
 module.exports = {
