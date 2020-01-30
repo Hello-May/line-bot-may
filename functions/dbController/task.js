@@ -122,8 +122,8 @@ const create = async (id, level, desc) => {
         userId: id,
         level: level,
         desc: desc,
-        createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
-        updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
+        // createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
+        // updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
     });
     //  console.log("task:" + JSON.stringify(tmp));
 }
