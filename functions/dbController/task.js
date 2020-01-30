@@ -138,8 +138,8 @@ const destroy = async (id, desc) => {
     await Task.destroy({ where: { userId: id, desc: desc } });
 }
 
-const destroyAll = async (userId) => {
-    await tasks.destroy({ where: { UserId: userId } });
+const destroyAll = async (id) => {
+    await Task.destroy({ where: { userId: id } });
 }
 
 module.exports = {
