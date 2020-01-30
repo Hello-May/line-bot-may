@@ -62,7 +62,7 @@ async function handleEvent(event) {
       await dbMonster.destroy(userId);
       let task = await dbTask.searchById(userId);
       for (let i = 0; i < task.length; i++) {
-        await dbTask.destroy(userId, task[i]);
+        await dbTask.destroy(userId, task[i].desc);
       }
       break;
     case 'memberLeft':
