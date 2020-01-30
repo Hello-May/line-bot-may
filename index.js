@@ -57,9 +57,9 @@ async function handleEvent(event) {
     case 'unfollow':
     case 'leave':
       await dbBattle.destroy(userId);
-      await dbHabit.destroy(userId);
+      await dbHabit.destroyAll(userId);
       await dbMonster.destroy(userId);
-      await dbTask.destroy(userId);
+      await dbTask.destroyAll(userId);
       await dbUser.destroy(userId);
       break;
     case 'memberLeft':
