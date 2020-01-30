@@ -200,6 +200,10 @@ const initialization = async (id) => {
     }, { where: { monsterId: id } });
 }
 
+const destroy = async (id) => {
+    await Monster.destroy({ where: { userId: id } });
+}
+
 module.exports = {
     create,
     initialization,
@@ -216,5 +220,6 @@ module.exports = {
     updateMoney,
     updateBattleMoney,
     updateSkin,
-    updateFood
+    updateFood,
+    destroy
 }

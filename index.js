@@ -8,6 +8,9 @@ const bodyParser = require('body-parser');
 const clientBot = new lineBot.Client(configBot);
 const dbController = require('./functions/dbController');
 const dbMonster = require('./functions/dbController/monster');
+const dbBattle = require('./functions/dbController/battle');
+const dbHabit = require('./functions/dbController/habit');
+const dbTask = require('./functions/dbController/task');
 const path = require('path');
 const app = express();
 const dbUser = require('./functions/dbController/user');
@@ -53,6 +56,12 @@ async function handleEvent(event) {
       return postback.postbackCommandSolver(event, status);
     case 'unfollow':
     case 'leave':
+      await dbBattle.destroy(userId);
+      await dbHabit.destroy(userId);
+      await dbMonster.destroy(userId);
+      await dbTask.destroy(userId);
+      await dbUser.destroy(userId);
+      break;
     case 'memberLeft':
     case 'beacon':
     case 'account link':

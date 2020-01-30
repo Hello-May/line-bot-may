@@ -117,6 +117,10 @@ const update = async (id, item, habit, input) => {
     }
 }
 
+const destroy = async (id) => {
+    await Habit.destroy({ where: { userId: id } });
+}
+
 module.exports = {
     initialization,
     searchById,
@@ -127,5 +131,6 @@ module.exports = {
     searchByTime,
     clearAllDone,
     done,
-    getAll
+    getAll,
+    destroy
 }

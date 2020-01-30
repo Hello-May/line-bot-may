@@ -26,12 +26,17 @@ const getTokenByMonsterId = async (id) => {
     return user[0].token;
 }
 
+const destroy = async (id) => {
+    await User.destroy({ where: { userId: id } });
+}
+
 module.exports = {
     searchById,
     saveStatus,
     getToken,
     getAll,
-    getTokenByMonsterId
+    getTokenByMonsterId,
+    destroy
 }
 
 
