@@ -5,6 +5,8 @@ const db = require('../../models');
 const dbMonster = require('./monster');
 const dbTask = require('./task');
 const dbHabit = require('./habit');
+const dbUser = require('./user');
+const dbBattle = require('./battle');
 const { users } = require("../../models");
 const { monsters } = require("../../models");
 const User = db.users;
@@ -210,9 +212,22 @@ const getToken = (event) => {
 
 }
 
+const deleteAll = async (userId) => {
+    await dbBattle.destroy(userId);
+    await dbHabit.destroyAll(userId);
+    await dbUser.destroy(userId);
+    await dbMonster.destroy(userId);
+    await dbTask.destroy(userId);
+    // let task = await dbTask.searchById(user.userId);
+    // for (let i = 0; i < task.length; i++) {
+    //     await dbTask.destroy(user.userId, task[i].desc);
+    // }
+}
+
 module.exports = {
     saveId,
     saveToken,
     saveTmpId,
     getToken,
+    deleteAll
 }

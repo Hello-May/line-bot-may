@@ -56,14 +56,7 @@ async function handleEvent(event) {
       return postback.postbackCommandSolver(event, status);
     case 'unfollow':
     case 'leave':
-      await dbBattle.destroy(userId);
-      await dbHabit.destroyAll(userId);
-      await dbUser.destroy(userId);
-      await dbMonster.destroy(userId);
-      let task = await dbTask.searchById(user.userId);
-      for (let i = 0; i < task.length; i++) {
-        await dbTask.destroy(user.userId, task[i].desc);
-      }
+      await dbController.deleteAll(userId);
       break;
     case 'memberLeft':
     case 'beacon':
