@@ -62,6 +62,18 @@ module.exports = (sequelize, DataTypes) => sequelize.define(
         type: DataTypes.BOOLEAN,
         allowNull: false,
     },
+    poison: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      boom: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      medicine: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
 }, {

@@ -151,6 +151,9 @@ async function createByRandom(level) {
         str: 1 + point[2],
         lucky: 1 + point[3],
         target: true,
+        poison: 0,
+        boom: 0,
+        medicine: 0,
         createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
         updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
     });
@@ -173,10 +176,13 @@ const create = async () => {
         str: 1,
         lucky: 1,
         target: false,
+        poison: 0,
+        boom: 0,
+        medicine: 0,
         createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
         updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
     });
-}
+}   //這裡
 
 const initialization = async (id) => {
     await Monster.update({
@@ -195,6 +201,9 @@ const initialization = async (id) => {
         str: 1,
         lucky: 1,
         target: false,
+        poison: 0,
+        boom: 0,
+        medicine: 0,
         createdAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
         updatedAt: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
     }, { where: { monsterId: id } });
