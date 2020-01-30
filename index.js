@@ -56,8 +56,8 @@ async function handleEvent(event) {
       return postback.postbackCommandSolver(event, status);
     case 'unfollow':
     case 'leave':
-      await dbController.deleteAll(userId);
-      break;
+      // await dbController.deleteAll(userId);
+      // break;
     case 'memberLeft':
     case 'beacon':
     case 'account link':
