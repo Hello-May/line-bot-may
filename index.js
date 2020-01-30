@@ -60,7 +60,10 @@ async function handleEvent(event) {
       await dbHabit.destroyAll(userId);
       await dbUser.destroy(userId);
       await dbMonster.destroy(userId);
-      await dbTask.destroyAll(userId);
+      let task = await dbTask.searchById(userId);
+      for (let i = 0; i < task.length; i++) {
+        await dbTask.destroy(userId, task[i]);
+      }
       break;
     case 'memberLeft':
     case 'beacon':

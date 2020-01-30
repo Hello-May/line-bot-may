@@ -138,12 +138,12 @@ const destroy = async (id, desc) => {
     await Task.destroy({ where: { userId: id, desc: desc } });
 }
 
-const destroyAll = async (id) => {
-    let task = await tasks.findAll({ where: { userId: id } });
-    for (let i = 0; i < task.length; i++) {
-        await Task.destroy({ where: { userId: id, desc: task[i].desc } });
-    }
-}
+// const destroyAll = async (id) => {
+//     let task = await tasks.findAll({ where: { userId: id } });
+//     for (let i = 0; i < task.length; i++) {
+//         await Task.destroy({ where: { userId: id, desc: task[i].desc } });
+//     }
+// }
 
 module.exports = {
     searchById,
@@ -151,6 +151,6 @@ module.exports = {
     create,
     update,
     destroy,
-    searchByDesc,
-    destroyAll
+    searchByDesc
+    // destroyAll
 }
