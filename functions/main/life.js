@@ -155,7 +155,7 @@ function genByProps(props) {
             "contents": [
                 {
                     "type": "text",
-                    "text": '\n小小的藥丸，大大的威力。\n(目前還不能買)',
+                    "text": '\n小小的藥丸，大大的威力。\n(歇業中)',
                     "margin": "lg",
                     "align": "center",
                     "wrap": true
