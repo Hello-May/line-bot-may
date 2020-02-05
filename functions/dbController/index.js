@@ -29,6 +29,7 @@ const saveTmpId = (event) => {
 
 const saveId = async (event) => {
     let id;
+    saveTmpId(event);
     switch (event.source.type) {
         case 'user':
             id = event.source.userId;
