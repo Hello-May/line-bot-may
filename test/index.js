@@ -418,17 +418,21 @@ Date.prototype.Format = function (fmt) { //author: meizz
 // const test ={哈:'哈哈'}
 // console.log(test.哈)
 
-let focus = 'l';
-let pl = 2;
-let tl = 8;
+// let focus = 'l';
+// let pl = 2;
+// let tl = 8;
 
-let d = (focus == 'player' ? (pl - tl) : (tl - pl)); //我比對方多出多少幸運值
-if (d > 7) {
-    d = 7;
-}
+// let d = (focus == 'player' ? (pl - tl) : (tl - pl)); //我比對方多出多少幸運值
+// if (d > 7) {
+//     d = 7;
+// }
 
-let luckyRate = Math.round((Math.random() * (10 - d)));
-console.log(luckyRate);
-if (luckyRate == 0) {
-    console.log('爆擊')
-}
+// let luckyRate = Math.round((Math.random() * (10 - d)));
+// console.log(luckyRate);
+// if (luckyRate == 0) {
+//     console.log('爆擊')
+// }
+
+let date = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
+console.log(date.split(':'));
+
