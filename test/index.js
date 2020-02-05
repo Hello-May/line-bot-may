@@ -433,6 +433,6 @@ Date.prototype.Format = function (fmt) { //author: meizz
 //     console.log('爆擊')
 // }
 
-let date = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
-console.log(date.split(':'));
+let date = new Date().toLocaleTimeString('zh-TW', { timeZone: 'Asia/Taipei' ,hour12: false});
+console.log(date);
 

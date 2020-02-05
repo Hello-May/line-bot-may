@@ -6,8 +6,7 @@ const sticker = [[1, 2], [1, 4], [1, 5], [1, 13], [1, 14], [1, 114], [1, 119], [
 
 const send = () => {
   schedule.scheduleJob('15 * * * * *', async function () {
-    let date = new Date().toLocaleTimeString('zh-TW', { timeZone: 'Asia/Taipei' });
-    let date2 = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
+    let date = new Date().toLocaleTimeString('zh-TW', { timeZone: 'Asia/Taipei' ,hour12: false});
     let str = date.split(':');
     let hour = (str[0] < 10 ? '0' + str[0] : str[0]);
     let min = (str[1] < 10 ? '0' + str[1] : str[1]);
@@ -18,7 +17,6 @@ const send = () => {
     console.log(str2[1]);
 
     console.log(date);
-    console.log(date2);
     console.log(JSON.stringify(habitData));
 
     for (let i = 0; i < habitData.length; i++) {
