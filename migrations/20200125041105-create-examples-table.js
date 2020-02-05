@@ -130,8 +130,7 @@ module.exports = {
         createdAt: DataTypes.DATE,
         updatedAt: DataTypes.DATE,
       }, {
-        initialAutoIncrement: 1,
-        timestamps: false
+        initialAutoIncrement: 1
       });
       await queryInterface.createTable('habits', {
         habitId: {

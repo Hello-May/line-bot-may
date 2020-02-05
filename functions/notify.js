@@ -13,6 +13,9 @@ const send = () => {
     let habitData = await dbHabit.searchByTime(hour, min);
     let stickno = Math.floor(Math.random() * sticker.length)
 
+    console.log(hour);
+    console.log(JSON.stringify(habitData));
+
     for (let i = 0; i < habitData.length; i++) {
       let token = await dbUser.getToken(habitData[i].userId);
       if (token != 'null') {

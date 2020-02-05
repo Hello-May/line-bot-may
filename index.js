@@ -43,6 +43,7 @@ async function handleEvent(event) {
         case 'audio':
         case 'file':
         case 'location':
+          return;
       }
     case 'follow':
     case 'join':

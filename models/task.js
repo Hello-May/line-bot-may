@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => sequelize.define(
 }, {
   tableName: 'tasks',
   // 以下兩個屬性是針對createAt、updateAt這兩個預設屬性的，timestamps是不使用，而underscored則是將createAt轉化為create_at
-  timestamps: false,
+  timestamps: true,
   underscored: false,
 }
 )
