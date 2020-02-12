@@ -564,6 +564,7 @@ const call = async (event) => {
                                 "text": "*" + (user.token !== 'null' ? "已" : "尚未") + "連動 Line Notify",
                                 "margin": "xxl",
                                 "align": "start",
+                                "size": "xs",
                                 "gravity": "center",
                                 "wrap": true
                             }
