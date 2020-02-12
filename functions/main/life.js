@@ -558,6 +558,15 @@ const call = async (event) => {
                                 "gravity": "center",
                                 "weight": "bold",
                                 "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "*" + (user.token !== 'null' ? "已" : "未") + "連動Line Notify",
+                                "margin": "xxl",
+                                "align": "start",
+                                "gravity": "center",
+                                "weight": "bold",
+                                "wrap": true
                             }
                         ]
                     }
