@@ -22,7 +22,7 @@ async function handleEvent(event) {
   console.log(event);
   let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
   let user = await dbUser.searchById(userId);
-  if (user === undefined && (event.type !== 'follow' || event.type !== 'join')) {
+  if (user === undefined && event.type !== 'follow' && event.type !== 'join') {
     return clientBot.replyMessage(event.replyToken, main.stranger());
   }
   // console.log("user:" + JSON.stringify(user));
