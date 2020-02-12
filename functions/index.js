@@ -304,7 +304,7 @@ const textCommandSolver = async (event, status) => {
                         output = pause.pause(event);
                         break;
                     case '#閉嘴':
-                        dbUser.saveStatus(userId, '睡眠');
+                        await dbUser.saveStatus(userId, '睡眠');
                         output = pause.pause(event);
                         break;
                     case '#修煉':
