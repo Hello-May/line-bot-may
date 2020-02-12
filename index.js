@@ -26,7 +26,7 @@ async function handleEvent(event) {
   if (user !== undefined) {
     status = user.status;
   }
-  if (event.type === 'message' && event.message.text !== '呼叫' && status === '睡眠') {
+  if (event.type === 'message' && event.message.text !== '#呼叫' && status === '睡眠') {
     return;
   }
   switch (event.type) {
