@@ -249,7 +249,7 @@ const textCommandSolver = async (event, tmpUser, status) => {
                                             "type": "button",
                                             "action": {
                                                 "type": "uri",
-                                                "label": "TEST",
+                                                "label": "GET",
                                                 "uri": "line://app/1653656986-4qXdKG0k"
                                             }
                                         }
@@ -273,7 +273,7 @@ const textCommandSolver = async (event, tmpUser, status) => {
                                             "type": "button",
                                             "action": {
                                                 "type": "uri",
-                                                "label": "TEST",
+                                                "label": "SEND",
                                                 // "uri": "line://app/1653656986-RmBdnj2y"  //別人的網址
                                                 "uri": "line://app/1653656986-Vk7PXO28"  //自己做api
                                             }
