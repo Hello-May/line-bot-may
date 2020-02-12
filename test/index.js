@@ -436,10 +436,12 @@ Date.prototype.Format = function (fmt) { //author: meizz
 // let date = new Date().toLocaleTimeString('zh-TW', { timeZone: 'Asia/Taipei' ,hour12: false});
 // console.log(date);
 
-let a;
-let b = 'j';
+// let a;
+let b = '我是FUck';
 
-if (a === undefined && b !== 'join' && b !== 'follow') {
-    console.log('ok');
-}
+// if (a === undefined && b !== 'join' && b !== 'follow') {
+//     console.log('ok');
+// }
 
+// b.toLowerCase();
+console.log(b.toLowerCase());

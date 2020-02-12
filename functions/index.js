@@ -45,6 +45,7 @@ function timeFn(d1) {//di作为一个变量传进来
 const textCommandSolver = async (event, tmpUser, status) => {
     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
     let input = event.message.text;
+    input.toLowerCase();
     let output;
     let tmpMonster;
     // let tmpUser = await dbUser.searchById(userId);
@@ -283,13 +284,13 @@ const textCommandSolver = async (event, tmpUser, status) => {
                             }
                         }
                         break;
-                    case 'T':
+                    case 'time':
                         output = life.selectTime('自律時間');
                         break;
-                    case 'P':
+                    case 'paint':
                         output = lineNotify.test();
                         break;
-                    case '嗨':
+                    case 'hi':
                         output = main.test(event);
                         break;
                     case '#':
