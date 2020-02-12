@@ -3,6 +3,7 @@ const lineNotify = require('./functions/notification');
 const configBot = require('./config');
 const functions = require('./functions');
 const postback = require('./functions/postback');
+const main = require('./functions/main');
 const express = require('express');
 const bodyParser = require('body-parser');
 const clientBot = new lineBot.Client(configBot);
@@ -21,6 +22,9 @@ async function handleEvent(event) {
   console.log(event);
   let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
   let user = await dbUser.searchById(userId);
+  if(user === undefined){
+    return clientBot.replyMessage(event.replyToken, main.stranger());
+  }
   // console.log("user:" + JSON.stringify(user));
   let status;
   if (user !== undefined) {
@@ -34,7 +38,7 @@ async function handleEvent(event) {
       switch (event.message.type) {
         case 'text':
           // return functions.textCommandSolver(event).catch(err=>{console.log(err)});
-          return functions.textCommandSolver(event, status);
+          return functions.textCommandSolver(event, user, status);
         case 'image':
           return functions.imgCommandSolver(event);
         case 'sticker':
@@ -49,16 +53,13 @@ async function handleEvent(event) {
     case 'join':
       return dbController.saveId(event);
     case 'memberJoined':
-      return clientBot.replyMessage(event.replyToken, {
-        type: 'text',
-        text: '歡迎阿~~'
-      });
+      return clientBot.replyMessage(event.replyToken, main.memberJoined());
     case 'postback':
-      return postback.postbackCommandSolver(event, status);
+      return postback.postbackCommandSolver(event, user, status);
     case 'unfollow':
     case 'leave':
-      // await dbController.deleteAll(userId);
-      // break;
+    // await dbController.deleteAll(userId);
+    // break;
     case 'memberLeft':
     case 'beacon':
     case 'account link':
