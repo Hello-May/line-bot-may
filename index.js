@@ -26,10 +26,10 @@ async function handleEvent(event) {
     return clientBot.replyMessage(event.replyToken, main.stranger());
   }
   // console.log("user:" + JSON.stringify(user));
-  let status = user.status;
-  // if (user !== undefined) {
-  //   status = user.status;
-  // }
+  let status;
+  if (user !== undefined) {
+    status = user.status;
+  }
   if (event.type === 'message' && event.message.text !== '#呼叫' && status === '睡眠') {
     return;
   }
