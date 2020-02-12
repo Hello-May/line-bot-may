@@ -296,11 +296,11 @@ const textCommandSolver = async (event, status) => {
                         output = richMenu.call(event);
                         break;
                     case '#連動':
-                        dbController.saveTmpId(event);
+                        await dbController.saveTmpId(event);
                         output = lineNotify.authorize();
                         break;;
                     case '#呼叫':
-                        dbUser.saveStatus(userId, '正常');
+                        await dbUser.saveStatus(userId, '正常');
                         output = pause.pause(event);
                         break;
                     case '#閉嘴':
