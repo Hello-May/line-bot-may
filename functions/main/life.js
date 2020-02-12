@@ -561,11 +561,10 @@ const call = async (event) => {
                             },
                             {
                                 "type": "text",
-                                "text": "*" + (user.token !== 'null' ? "已" : "未") + " 連動Line Notify",
+                                "text": "*" + (user.token !== 'null' ? "已" : "尚未") + "連動 Line Notify",
                                 "margin": "xxl",
                                 "align": "start",
                                 "gravity": "center",
-                                // "weight": "bold",
                                 "wrap": true
                             }
                         ]
