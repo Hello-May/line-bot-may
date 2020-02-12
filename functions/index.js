@@ -45,7 +45,6 @@ function timeFn(d1) {//di作为一个变量传进来
 const textCommandSolver = async (event, tmpUser, status) => {
     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
     let input = event.message.text;
-    input.toLowerCase();
     let output;
     let tmpMonster;
     // let tmpUser = await dbUser.searchById(userId);
@@ -234,7 +233,7 @@ const textCommandSolver = async (event, tmpUser, status) => {
                 await dbUser.saveStatus(userId, '正常');
                 break;
             default:
-                switch (input) {
+                switch (input.toLowerCase()) {
                     case 'get':
                         output = {
                             "type": "flex",
