@@ -159,7 +159,7 @@
 
 // destroy('555','5566');
 
-Date.prototype.Format = function (fmt) { //author: meizz 
+Date.prototype.Format = function(fmt) { //author: meizz 
     var o = {
         "M+": this.getMonth() + 1, //月份 
         "d+": this.getDate(), //日 
@@ -437,11 +437,13 @@ Date.prototype.Format = function (fmt) { //author: meizz
 // console.log(date);
 
 // let a;
-let b = '我是FUck';
+// let b = 'j';
 
 // if (a === undefined && b !== 'join' && b !== 'follow') {
 //     console.log('ok');
 // }
 
 // b.toLowerCase();
-console.log(b.toLowerCase());
+// console.log(b.toLowerCase());
+
+console.log('test');

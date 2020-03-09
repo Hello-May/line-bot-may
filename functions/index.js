@@ -20,21 +20,49 @@ const dbTask = require('./dbController/task');
 const dbHabit = require('./dbController/habit');
 const dbBattle = require('./dbController/battle');
 const date = new Date().Format("yyyy/MM/dd");
-const sticker = [[1, 2], [1, 4], [1, 5], [1, 13], [1, 14], [1, 114], [1, 119], [1, 125], [1, 132], [1, 134], [1, 137], [1, 138], [1, 139], [1, 407], [2, 34], [2, 45], [2, 144], [2, 164], [2, 166], [2, 171], [2, 172], [2, 516], [3, 180], [3, 184], [3, 186], [3, 195], [3, 200]];
+const sticker = [
+    [1, 2],
+    [1, 4],
+    [1, 5],
+    [1, 13],
+    [1, 14],
+    [1, 114],
+    [1, 119],
+    [1, 125],
+    [1, 132],
+    [1, 134],
+    [1, 137],
+    [1, 138],
+    [1, 139],
+    [1, 407],
+    [2, 34],
+    [2, 45],
+    [2, 144],
+    [2, 164],
+    [2, 166],
+    [2, 171],
+    [2, 172],
+    [2, 516],
+    [3, 180],
+    [3, 184],
+    [3, 186],
+    [3, 195],
+    [3, 200]
+];
 
-function timeFn(d1) {//di作为一个变量传进来
+function timeFn(d1) { //di作为一个变量传进来
     //如果时间格式是正确的，那下面这一步转化时间格式就可以不用了
-    var dateBegin = new Date(d1.replace(/-/g, "/"));//将-转化为/，使用new Date
-    var dateEnd = new Date();//获取当前时间
-    var dateDiff = dateEnd.getTime() - dateBegin.getTime();//时间差的毫秒数
-    var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天数
-    var leave1 = dateDiff % (24 * 3600 * 1000)    //计算天数后剩余的毫秒数
-    var hours = Math.floor(leave1 / (3600 * 1000))//计算出小时数
-    //计算相差分钟数
-    var leave2 = leave1 % (3600 * 1000)    //计算小时数后剩余的毫秒数
-    var minutes = Math.floor(leave2 / (60 * 1000))//计算相差分钟数
-    //计算相差秒数
-    var leave3 = leave2 % (60 * 1000)      //计算分钟数后剩余的毫秒数
+    var dateBegin = new Date(d1.replace(/-/g, "/")); //将-转化为/，使用new Date
+    var dateEnd = new Date(); //获取当前时间
+    var dateDiff = dateEnd.getTime() - dateBegin.getTime(); //时间差的毫秒数
+    var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000)); //计算出相差天数
+    var leave1 = dateDiff % (24 * 3600 * 1000) //计算天数后剩余的毫秒数
+    var hours = Math.floor(leave1 / (3600 * 1000)) //计算出小时数
+        //计算相差分钟数
+    var leave2 = leave1 % (3600 * 1000) //计算小时数后剩余的毫秒数
+    var minutes = Math.floor(leave2 / (60 * 1000)) //计算相差分钟数
+        //计算相差秒数
+    var leave3 = leave2 % (60 * 1000) //计算分钟数后剩余的毫秒数
     var seconds = Math.round(leave3 / 1000)
     return minutes;
     // console.log(" 相差 "+dayDiff+"天 "+hours+"小时 "+minutes+" 分钟"+seconds+" 秒")
@@ -42,7 +70,7 @@ function timeFn(d1) {//di作为一个变量传进来
     // ,hours+"计算出小时数",minutes+"计算相差分钟数",seconds+"计算相差秒数");
 }
 
-const textCommandSolver = async (event, tmpUser, status) => {
+const textCommandSolver = async(event, tmpUser, status) => {
     let userId = (event.source.type == 'user' ? event.source.userId : event.source.groupId);
     let input = event.message.text;
     let output;
@@ -73,7 +101,7 @@ const textCommandSolver = async (event, tmpUser, status) => {
     } else if (status.includes(':')) {
         let str = status.split(":");
         switch (str[0]) {
-            case '戰鬥監聽':    //強制逃跑
+            case '戰鬥監聽': //強制逃跑
                 if (input == '逃跑') {
                     output = {
                         type: 'text',
@@ -104,7 +132,7 @@ const textCommandSolver = async (event, tmpUser, status) => {
                 }
                 await dbUser.saveStatus(userId, '正常');
                 break;
-            case '新增自律監聽':         //如果有重複的習慣就擋掉，還沒做
+            case '新增自律監聽': //如果有重複的習慣就擋掉，還沒做
                 if (input == '取消') {
                     output = {
                         type: 'text',
@@ -114,18 +142,19 @@ const textCommandSolver = async (event, tmpUser, status) => {
                 } else {
                     switch (str.length) {
                         case 3:
-                            await dbUser.saveStatus(userId, status + ':' + input);  //input是習慣
+                            await dbUser.saveStatus(userId, status + ':' + input); //input是習慣
                             output = [{
-                                type: 'text',
-                                text: '習慣: ' + input
-                            },
-                            {
-                                type: 'text',
-                                text: '請輸入密語，或者輸入取消'
-                            }];
+                                    type: 'text',
+                                    text: '習慣: ' + input
+                                },
+                                {
+                                    type: 'text',
+                                    text: '請輸入密語，或者輸入取消'
+                                }
+                            ];
                             break;
                         case 4:
-                            await dbUser.saveStatus(userId, status + ':' + input);  //input是密語
+                            await dbUser.saveStatus(userId, status + ':' + input); //input是密語
                             await dbHabit.create(userId, str[1] + ":" + str[2], str[3], input);
                             output = {
                                 type: 'text',
@@ -170,7 +199,7 @@ const textCommandSolver = async (event, tmpUser, status) => {
         }
     } else {
         switch (status) {
-            case '猜拳監聽':    //強制逃跑
+            case '猜拳監聽': //強制逃跑
                 if (input == '逃跑') {
                     output = {
                         type: 'text',
@@ -234,6 +263,40 @@ const textCommandSolver = async (event, tmpUser, status) => {
                 break;
             default:
                 switch (input.toLowerCase()) {
+                    case 'quick':
+                        output = {
+                            "type": "text",
+                            "text": "Select your favorite food category or send me your location!",
+                            "quickReply": {
+                                "items": [{
+                                        "type": "action",
+                                        "imageUrl": "https://example.com/sushi.png",
+                                        "action": {
+                                            "type": "message",
+                                            "label": "Sushi",
+                                            "text": "Sushi"
+                                        }
+                                    },
+                                    {
+                                        "type": "action",
+                                        "imageUrl": "https://example.com/tempura.png",
+                                        "action": {
+                                            "type": "message",
+                                            "label": "Tempura",
+                                            "text": "Tempura"
+                                        }
+                                    },
+                                    {
+                                        "type": "action",
+                                        "action": {
+                                            "type": "location",
+                                            "label": "Send location"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                        break;
                     case 'get':
                         output = {
                             "type": "flex",
@@ -244,16 +307,14 @@ const textCommandSolver = async (event, tmpUser, status) => {
                                 "footer": {
                                     "type": "box",
                                     "layout": "horizontal",
-                                    "contents": [
-                                        {
-                                            "type": "button",
-                                            "action": {
-                                                "type": "uri",
-                                                "label": "GET",
-                                                "uri": "line://app/1653656986-4qXdKG0k"
-                                            }
+                                    "contents": [{
+                                        "type": "button",
+                                        "action": {
+                                            "type": "uri",
+                                            "label": "GET",
+                                            "uri": "line://app/1653656986-4qXdKG0k"
                                         }
-                                    ]
+                                    }]
                                 }
                             }
                         }
@@ -268,17 +329,15 @@ const textCommandSolver = async (event, tmpUser, status) => {
                                 "footer": {
                                     "type": "box",
                                     "layout": "horizontal",
-                                    "contents": [
-                                        {
-                                            "type": "button",
-                                            "action": {
-                                                "type": "uri",
-                                                "label": "SEND",
-                                                // "uri": "line://app/1653656986-RmBdnj2y"  //別人的網址
-                                                "uri": "line://app/1653656986-Vk7PXO28"  //自己做api
-                                            }
+                                    "contents": [{
+                                        "type": "button",
+                                        "action": {
+                                            "type": "uri",
+                                            "label": "SEND",
+                                            // "uri": "line://app/1653656986-RmBdnj2y"  //別人的網址
+                                            "uri": "line://app/1653656986-Vk7PXO28" //自己做api
                                         }
-                                    ]
+                                    }]
                                 }
                             }
                         }
@@ -343,10 +402,10 @@ const textCommandSolver = async (event, tmpUser, status) => {
         }
     }
 
-    if (input.includes("#")) {  //這樣會有缺點是非指令也會增加經驗值
+    if (input.includes("#")) { //這樣會有缺點是非指令也會增加經驗值
         tmpMonster = await dbMonster.searchById(tmpUser.monsterId);
         await dbMonster.increaseEXP(tmpMonster.monsterId);
-        if (tmpMonster.exp == tmpMonster.level * 5) {   //判斷升等 依據個性分配點數
+        if (tmpMonster.exp == tmpMonster.level * 5) { //判斷升等 依據個性分配點數
             await dbMonster.levelUp(tmpMonster);
             let output2 = {
                 type: 'text',
