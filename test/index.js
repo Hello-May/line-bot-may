@@ -446,4 +446,11 @@ Date.prototype.Format = function(fmt) { //author: meizz
 // b.toLowerCase();
 // console.log(b.toLowerCase());
 
-console.log('test');
+const materials = [
+    'Hydrogen',
+    'Helium',
+    'Lithium',
+    'Beryllium'
+];
+
+console.log(materials.map(({ length }) => length));

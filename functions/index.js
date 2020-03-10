@@ -265,8 +265,9 @@ const textCommandSolver = async(event, tmpUser, status) => {
                 switch (input.toLowerCase()) {
                     case 'quick':
                         output = {
-                            "type": "text",
+                            "type": "postback",
                             "text": "Select your favorite food category or send me your location!",
+                            "postback": "我是postback~",
                             "quickReply": {
                                 "items": [{
                                         "type": "action",
