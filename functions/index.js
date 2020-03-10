@@ -265,26 +265,27 @@ const textCommandSolver = async(event, tmpUser, status) => {
                 switch (input.toLowerCase()) {
                     case 'quick':
                         output = {
-                            "type": "postback",
+                            "type": "text",
                             "text": "Select your favorite food category or send me your location!",
-                            "postback": "我是postback~",
                             "quickReply": {
                                 "items": [{
                                         "type": "action",
                                         "imageUrl": "https://example.com/sushi.png",
                                         "action": {
-                                            "type": "message",
+                                            "type": "postback",
                                             "label": "Sushi",
-                                            "text": "Sushi"
+                                            "text": "Sushi",
+                                            "data": "Sushi-postback"
                                         }
                                     },
                                     {
                                         "type": "action",
                                         "imageUrl": "https://example.com/tempura.png",
                                         "action": {
-                                            "type": "message",
+                                            "type": "postback",
                                             "label": "Tempura",
-                                            "text": "Tempura"
+                                            "text": "Tempura",
+                                            "data": "Tempura-postback"
                                         }
                                     },
                                     {
